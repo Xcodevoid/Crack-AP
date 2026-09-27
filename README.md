@@ -44,7 +44,7 @@ Learn what you need → understand it → practice it → identify mistakes → 
 - ✍️ **Active learning**: each concept has "Explain it in your own words" (write, compare with the key
   points, rate yourself), and every unit has Drills built from its flashcards: fill in the blank, matching,
   and sorting terms into their concepts. All of it feeds mastery.
-- 🔗 **Connected concepts**: 118 hand-written idea chains ("Enzymes → power → Cellular respiration → …")
+- 🔗 **Connected concepts**: 116 hand-written idea chains ("Enzymes → power → Cellular respiration → …")
   show how concepts cause or lead to each other across units, on each course page and each concept.
 - 🧠 **Mistakes grouped by concept**: "Elasticity: 42% mastery. You've missed 4 questions involving this concept."
   Every missed question is analyzed in five parts: what you misunderstood, the concept behind it, why the
