@@ -1042,3 +1042,5 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   .topbar .nav a { padding: 0 8px; }
   .topbar .icon-btn, .topbar .account-btn, .topbar .search-btn { width: 34px; height: 34px; }
 }
+/* Math superscripts/subscripts shouldn't stretch line height. */
+sup, sub { font-size: 0.72em; line-height: 0; }

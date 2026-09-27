@@ -137,7 +137,25 @@ function updateMistakeCount() {
 /* ================= Helpers ================= */
 
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-const fmt = (s) => esc(s).replace(/\n/g, "<br>");
+// Plain-text math in the content ("e^(−t/RC)", "x^2", "v_t") → real superscripts and subscripts.
+// Runs on already-escaped HTML; "_____" blanks are untouched because a subscript needs a letter before it.
+function mathify(h) {
+  let out = "";
+  for (let i = 0; i < h.length; ) {
+    if (h[i] === "^" && h[i + 1] === "(") {
+      let depth = 0, j = i + 1;
+      for (; j < h.length; j++) { if (h[j] === "(") depth++; else if (h[j] === ")" && --depth === 0) break; }
+      if (j < h.length) { out += `<sup>${mathify(h.slice(i + 2, j))}</sup>`; i = j + 1; continue; }
+    }
+    out += h[i++];
+  }
+  return out
+    .replace(/\^([−-]?(?:∞|[A-Za-z0-9]+(?:\.[0-9]+)?))/g, "<sup>$1</sup>")
+    .replace(/([A-Za-zΔ\u0370-\u03ff])_([A-Za-z0-9]+)/g, "$1<sub>$2</sub>");
+}
+const fmt = (s) => mathify(esc(s)).replace(/\n/g, "<br>");
+// Like esc() but with math formatting, for text shown as HTML content (never inside attributes).
+const txt = (s) => mathify(esc(s));
 const bar = (pct, cls = "") => `<div class="bar ${cls}" role="progressbar" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100"><span style="width:${pct}%"></span></div>`;
 const pctOf = (m) => Math.round(m * 100);
 
@@ -690,7 +708,7 @@ async function renderCourse(course) {
           ${content && content.tips ? `
           <div class="card">
             <h3 class="card-title">${icon("bulb", 16)} Exam strategy</h3>
-            <ul class="tips">${content.tips.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>
+            <ul class="tips">${content.tips.map((t) => `<li>${txt(t)}</li>`).join("")}</ul>
           </div>` : ""}
           <div class="card">
             <h3 class="card-title">${icon("external", 16)} Official resources</h3>
@@ -964,8 +982,8 @@ function renderFlashcards(body, course, idx, unit) {
         ${bar(Math.round((known / unit.terms.length) * 100))}
         <div class="flashcard ${flipped ? "is-flipped" : ""}" id="fc" tabindex="0" role="button" aria-label="Flip card">
           <div class="flashcard-inner">
-            <div class="flash-face front">${isKnown ? `<span class="known-tag">${icon("check", 12)} Known</span>` : ""}<div class="term">${esc(term)}</div><div class="hint">Click or press Space to flip</div></div>
-            <div class="flash-face back"><div class="def">${esc(def)}</div><div class="hint">${esc(term)}</div></div>
+            <div class="flash-face front">${isKnown ? `<span class="known-tag">${icon("check", 12)} Known</span>` : ""}<div class="term">${txt(term)}</div><div class="hint">Click or press Space to flip</div></div>
+            <div class="flash-face back"><div class="def">${txt(def)}</div><div class="hint">${txt(term)}</div></div>
           </div>
         </div>
         <div class="flash-controls">
@@ -983,7 +1001,7 @@ function renderFlashcards(body, course, idx, unit) {
       <div class="card term-card">
         <h3 class="card-title">${icon("list", 16)} All terms in this unit</h3>
         <table class="term-table">
-          ${unit.terms.map(([t, d]) => `<tr><td>${store.data.known[cardKey(t)] ? `<span class="known">${icon("check", 14)}</span>` : ""}${esc(t)}</td><td>${esc(d)}</td></tr>`).join("")}
+          ${unit.terms.map(([t, d]) => `<tr><td>${store.data.known[cardKey(t)] ? `<span class="known">${icon("check", 14)}</span>` : ""}${txt(t)}</td><td>${txt(d)}</td></tr>`).join("")}
         </table>
       </div>
     `;
@@ -1076,11 +1094,11 @@ function renderWatchOut(body, content, unit) {
   body.innerHTML = `
     <div class="card">
       <h3 class="card-title">${icon("alert", 16)} Common mistakes in this unit</h3>
-      <ul class="notes-list bad">${unit.mistakes.map((m) => `<li>${esc(m)}</li>`).join("")}</ul>
+      <ul class="notes-list bad">${unit.mistakes.map((m) => `<li>${txt(m)}</li>`).join("")}</ul>
     </div>
     ${content.tips ? `<div class="card">
       <h3 class="card-title">${icon("bulb", 16)} Exam strategy for this course</h3>
-      <ul class="notes-list good">${content.tips.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>
+      <ul class="notes-list good">${content.tips.map((t) => `<li>${txt(t)}</li>`).join("")}</ul>
     </div>` : ""}
   `;
 }
@@ -1767,8 +1785,8 @@ function drillMatch(el, course, idx, unit) {
     <div class="card drill-card">
       <div class="overline">Matching · pick a term, then its definition</div>
       <div class="match-grid">
-        <div class="match-col">${pick.map((ti) => `<button class="match-item term" data-t="${ti}">${esc(unit.terms[ti][0])}</button>`).join("")}</div>
-        <div class="match-col">${defs.map((ti) => `<button class="match-item def" data-d="${ti}">${esc(unit.terms[ti][1])}</button>`).join("")}</div>
+        <div class="match-col">${pick.map((ti) => `<button class="match-item term" data-t="${ti}">${txt(unit.terms[ti][0])}</button>`).join("")}</div>
+        <div class="match-col">${defs.map((ti) => `<button class="match-item def" data-d="${ti}">${txt(unit.terms[ti][1])}</button>`).join("")}</div>
       </div>
     </div>`;
   el.querySelectorAll("[data-t]").forEach((b) => b.addEventListener("click", () => {
