@@ -11,6 +11,8 @@ right before you'd forget it.
 
 ## The learning loop
 
+Learn what you need → understand it → practice it → identify mistakes → review weak areas → prove you mastered it.
+
 ```
 5-minute diagnostic → weak concepts pinpointed → question → answer → why you picked it
       ↑                                                            │
@@ -37,14 +39,20 @@ right before you'd forget it.
   (not just units), with an explanation for everything you missed.
   The diagnostic is optional: "Skip it: learn concepts" starts at Unit 1, and mastery builds as you practice.
 - 🎯 **Concept-level mastery**: every question is tagged to a concept. Each concept has a mastery score
-  and a status: Not started, Needs practice, Getting there, or Strong.
+  and a status: Strong, Developing, Needs review, or Not started. Every unit shows "73% mastery ·
+  6 strong · 4 developing · 2 need review", and Progress has a per-unit mastery table.
+- ✍️ **Active learning**: each concept has "Explain it in your own words" (write, compare with the key
+  points, rate yourself), and every unit has Drills built from its flashcards: fill in the blank, matching,
+  and sorting terms into their concepts. All of it feeds mastery.
+- 🔗 **Connected concepts**: 85 hand-written idea chains ("Enzymes → power → Cellular respiration → …")
+  show how concepts cause or lead to each other across units, on each course page and each concept.
 - 🧠 **Mistakes grouped by concept**: "Elasticity: 42% mastery. You've missed 4 questions involving this concept."
-  Shows your personal error pattern (from 768 hand-written misconception notes), the AP trap, and "Practice 5 similar,"
-  which ends with your mastery change (42% → 71%).
+  Every missed question is analyzed in five parts: what you misunderstood, the concept behind it, why the
+  correct answer is right, what to remember, and a similar question to try right there.
 - ⚡ **Smart practice**: due reviews first, then your weakest concepts, then new ones. Miss a question and
   it detects the weak concept, gives a refresher, and drills it on the spot.
 - 🗓️ **Spaced review**: concepts you get right come back after 1 → 3 → 7 → 14 → 30 days. Misses come
-  back in the next session.
+  back in the next session, with a prompt: "You learned this 5 days ago. Let's see if you still remember it."
 - 🃏 **Unlimited targeted questions**: besides 390 written questions, every flashcard term becomes a
   generated question tied to its concept, so each concept always has enough to practice.
 - 📈 **Progress = mastery**: a table of every concept with its mastery %, status and last practice date,
@@ -52,6 +60,8 @@ right before you'd forget it.
 - 📖 **Study guides**: plain-English concepts with exam-level detail, flashcards, free-response
   practice with scoring guides, common mistakes, and exam strategy for 14 courses.
 - 🗂️ **All 42 AP courses (2026-27)**: exam formats, 2027 changes, and official CED links.
+- 📝 **SAT prep**: the digital SAT's eight content domains (Reading and Writing plus Math) as units, with
+  original practice questions and the same adaptive tools, plus links to the free official practice tests.
 - 🔎 Search (`/` or `Ctrl K`), timed mixed quizzes, dark mode, mobile layout, keyboard shortcuts.
 - 🔑 **Student codes**: sign in with a code like `AP-7K3QXM` (or make your own) and your progress is kept
   separate from everyone else who uses the same computer. No email, no Google, no server, so it works
@@ -62,7 +72,7 @@ right before you'd forget it.
 
 Adaptive courses: AP Precalculus, Calculus AB, Calculus BC, Physics 1, Physics 2, Physics C: Mechanics,
 Physics C: E&M, Chemistry, Biology, Microeconomics, Psychology, U.S. History, World History: Modern,
-English Language.
+English Language. Plus SAT prep.
 
 ## Running it locally
 
@@ -94,6 +104,7 @@ content/<id>.js              study guide for one course (concepts, terms, questi
 content/diagnostics/<id>.js  concept tag + wrong-answer notes for every question in that guide
 content/traps/<id>.js        one "AP Trap" per concept
 content/deep/<id>.js         more key concepts per unit, each with its own trap and flashcards
+content/links/<id>.js        idea chains connecting concepts across units (format in content/links/_README.txt)
 research/                    notes from researching the official College Board CEDs
 ```
 

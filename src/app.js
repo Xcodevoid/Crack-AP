@@ -65,7 +65,10 @@ const CAT_META = {
   "World Languages & Cultures": { color: "#0284c7", icon: "globe" },
   "AP Capstone": { color: "#64748b", icon: "compass" },
   "Career Kickstart": { color: "#ea580c", icon: "briefcase" },
+  "SAT": { color: "#0077c8", icon: "target" },
 };
+// "AP" for AP courses, "SAT" for SAT: used in labels like "AP Trap" and "AP-style question".
+const examOf = (courseId) => courseById[courseId]?.examName || "AP";
 const catVars = (cat) => `--c:${(CAT_META[cat] || CAT_META["AP Capstone"]).color}`;
 const catIcon = (cat, size = 20) => icon((CAT_META[cat] || CAT_META["AP Capstone"]).icon, size);
 
@@ -281,7 +284,7 @@ async function route() {
   if (cleanup) { cleanup(); cleanup = null; }
   closePalette();
   const parts = location.hash.replace(/^#\/?/, "").split("/").filter(Boolean);
-  const section = parts[0] === "course" || !parts[0] ? "home" : parts[0] === "practice" ? "today" : parts[0];
+  const section = parts[0] === "course" && parts[1] === "sat" ? "sat" : parts[0] === "course" || !parts[0] ? "home" : parts[0] === "practice" ? "today" : parts[0];
   document.querySelectorAll("[data-nav]").forEach((a) => a.classList.toggle("is-active", a.dataset.nav === section));
   try {
     await loadAllGuides();
@@ -387,6 +390,14 @@ function renderHome() {
         <span class="muted">${GUIDE_IDS.length} adaptive courses · ${totalQ} written questions + ones generated from every flashcard</span></div>
       <div class="grid">${(active.length ? [...new Set([...active, ...store.data.mine.filter((id) => GUIDE_IDS.includes(id)), ...GUIDE_IDS])] : GUIDE_IDS).map((id) => courseCard(courseById[id])).join("")}</div>
 
+      <a class="card sat-banner" href="#/course/sat" style="${catVars("SAT")}">
+        <div class="cat-icon lg">${catIcon("SAT", 28)}</div>
+        <div class="grow"><div class="overline">Also here: SAT prep</div>
+          <h2>Digital SAT, concept by concept</h2>
+          <p class="muted">Reading and Writing plus Math, organized by the eight official content domains, with the same diagnostic, drills, mistake analysis and spaced review.</p></div>
+        <span class="btn btn-primary btn-lg">Open SAT prep ${icon("arrowR", 16)}</span>
+      </a>
+
       <div class="versus card">
         <h2>Why not just use a textbook?</h2>
         <div class="versus-grid">
@@ -397,7 +408,7 @@ function renderHome() {
         </div>
       </div>
 
-      <div class="section-head" id="browse"><h2>All ${COURSES.length} AP courses</h2><span class="muted">Exam formats, 2027 changes and official links for every course</span></div>
+      <div class="section-head" id="browse"><h2>All ${AP_COURSES.length} AP courses</h2><span class="muted">Exam formats, 2027 changes and official links for every course</span></div>
       <div class="filters">
         <div class="filter-search">${icon("search", 18)}<input id="search" type="search" placeholder="Filter courses…" value="${esc(homeState.query)}" aria-label="Filter courses" /></div>
         <div class="chips" id="chips">
@@ -415,7 +426,7 @@ function renderHome() {
       (!q || c.name.toLowerCase().includes(q) || c.blurb.toLowerCase().includes(q) || c.cat.toLowerCase().includes(q)) &&
       (homeState.cat === "All" || (homeState.cat === "Adaptive" ? c.guide : c.cat === homeState.cat));
     const html = CATEGORIES.map((cat) => {
-      const list = COURSES.filter((c) => c.cat === cat && match(c));
+      const list = AP_COURSES.filter((c) => c.cat === cat && match(c));
       return list.length ? `<h3 class="cat-title" style="${catVars(cat)}"><span class="cat-dot">${catIcon(cat, 16)}</span>${esc(cat)} <span class="muted">${list.length}</span></h3><div class="grid">${list.map(courseCard).join("")}</div>` : "";
     }).join("");
     results.innerHTML = html || `<div class="card empty"><p>No courses match "${esc(homeState.query)}".</p></div>`;
@@ -684,9 +695,10 @@ async function renderCourse(course) {
           <div class="card">
             <h3 class="card-title">${icon("external", 16)} Official resources</h3>
             <div class="link-list">
+              ${course.links ? course.links.map(([label, url]) => `<a href="${url}" target="_blank" rel="noopener">${esc(label)} ${icon("external", 14)}</a>`).join("") : `
               ${course.ced ? `<a href="${course.ced}" target="_blank" rel="noopener">Course & Exam Description (PDF) ${icon("external", 14)}</a>` : ""}
               <a href="${course.page}" target="_blank" rel="noopener">AP Central course page ${icon("external", 14)}</a>
-              <a href="${EXAM_WINDOW.schedule}" target="_blank" rel="noopener">2027 exam schedule ${icon("external", 14)}</a>
+              <a href="${EXAM_WINDOW.schedule}" target="_blank" rel="noopener">2027 exam schedule ${icon("external", 14)}</a>`}
             </div>
           </div>
         </aside>
@@ -766,7 +778,7 @@ async function renderUnit(course, idx, tab) {
           </div>
         </div>
         <nav class="tabs" role="tablist">
-          ${TABS.map(([k, label, ic]) => `<a class="tab ${k === tab ? "is-active" : ""}" href="${base}/${k}" role="tab" aria-selected="${k === tab}">${icon(ic, 16)}<span>${label}</span></a>`).join("")}
+          ${TABS.filter(([k]) => k !== "frq" || unit.frq).map(([k, label, ic]) => `<a class="tab ${k === tab ? "is-active" : ""}" href="${base}/${k}" role="tab" aria-selected="${k === tab}">${icon(ic, 16)}<span>${label}</span></a>`).join("")}
         </nav>
         <div id="tab-body" class="tab-body"></div>
         <div class="unit-nav">
@@ -790,7 +802,7 @@ async function renderUnit(course, idx, tab) {
       title: `Unit ${idx + 1} practice`, mode: "practice",
       onRestart: () => renderUnit(course, idx, "practice"),
     });
-  } else if (tab === "frq") renderFrq(body, course, idx, unit);
+  } else if (tab === "frq" && unit.frq) renderFrq(body, course, idx, unit);
   else renderWatchOut(body, content, unit);
 }
 
@@ -800,7 +812,7 @@ function renderLearn(body, course, idx, unit) {
     body.innerHTML = `
       <div class="tldr"><div class="tldr-ico">${icon("sparkle", 18)}</div><div><span class="label">The big idea</span>${fmt(unit.tldr)}</div></div>
       <div class="learn-bar">
-        <span class="muted small">${unit.concepts.length} concepts · each one: explanation → AP trap → try an AP-style question</span>
+        <span class="muted small">${unit.concepts.length} concepts · each one: explanation → ${examOf(course.id)} trap → try an ${examOf(course.id)}-style question</span>
         <div class="seg" role="group" aria-label="Explanation level">
           <button data-view="simple" class="${conceptView === "simple" ? "is-active" : ""}">Plain English</button>
           <button data-view="both" class="${conceptView === "both" ? "is-active" : ""}">+ Exam detail</button>
@@ -827,7 +839,7 @@ function renderLearn(body, course, idx, unit) {
           </details>
           ${c.example ? `<div class="note note-example"><b>${icon("pen", 14)} Example</b><div>${fmt(c.example)}</div></div>` : ""}
           ${c.hook ? `<div class="note note-hook"><b>${icon("bulb", 14)} Memory hook</b><div>${fmt(c.hook)}</div></div>` : ""}
-          ${c.trap ? `<div class="note note-trap"><b>⚠️ AP Trap</b><div>${fmt(c.trap)}</div></div>` : ""}
+          ${c.trap ? `<div class="note note-trap"><b>⚠️ ${examOf(course.id)} Trap</b><div>${fmt(c.trap)}</div></div>` : ""}
           ${connectionsHtml(course.id, idx, i)}
           <div class="explain-own" data-explain="${i}"></div>
           <div class="tryit" data-try="${i}"></div>
@@ -845,7 +857,7 @@ function renderLearn(body, course, idx, unit) {
 }
 
 // An inline AP-style question for one concept: answer, explain your reasoning, check, then a similar question.
-function tryIt(el, course, unitIdx, conceptIdx, excludeKey = null, label = "Try an AP-style question") {
+function tryIt(el, course, unitIdx, conceptIdx, excludeKey = null, label = `Try an ${examOf(course.id)}-style question`) {
   let queue = Engine.conceptItems(course.id, unitIdx, conceptIdx, 6, excludeKey);
   if (!queue.length) queue = Engine.conceptItems(course.id, unitIdx, conceptIdx, 6);
   let k = 0;
@@ -864,7 +876,7 @@ function tryIt(el, course, unitIdx, conceptIdx, excludeKey = null, label = "Try 
     const ok = picked === ans;
     el.innerHTML = `
       <div class="tryit-card">
-        <div class="tryit-top"><span class="overline">${icon("target", 12)} AP-style question ${k + 1}</span>${q.gen ? `<span class="q-source gen">${icon("cards", 12)} From flashcards</span>` : ""}</div>
+        <div class="tryit-top"><span class="overline">${icon("target", 12)} ${examOf(course.id)}-style question ${k + 1}</span>${q.gen ? `<span class="q-source gen">${icon("cards", 12)} From flashcards</span>` : ""}</div>
         <div class="q-text">${fmt(q.q)}</div>
         <div class="choices">${it.perm.map((orig, ci) => {
           let cls = "";
@@ -2001,7 +2013,7 @@ function renderReview() {
           </div>
           <p class="mc-count">You've missed <b>${g.prof.misses} question${g.prof.misses === 1 ? "" : "s"}</b> involving this concept${g.items.length < g.prof.misses ? ` (${g.items.length} still open)` : ""}.</p>
           ${g.prof.notes.length ? `<div class="mc-block"><div class="fb-label bad">Your error pattern</div><ul>${g.prof.notes.map((n) => `<li>${fmt(n)}</li>`).join("")}</ul></div>` : ""}
-          ${concept.trap ? `<div class="note note-trap"><b>⚠️ AP Trap</b><div>${fmt(concept.trap)}</div></div>` : ""}
+          ${concept.trap ? `<div class="note note-trap"><b>⚠️ ${examOf(g.courseId)} Trap</b><div>${fmt(concept.trap)}</div></div>` : ""}
           <div class="mc-actions">
             <a class="btn btn-primary" href="#/practice/concept/${g.courseId}/${g.unitIdx}/${g.conceptIdx}">${icon("play", 16)} Practice 5 similar</a>
             <a class="btn" href="#/course/${g.courseId}/unit/${g.unitIdx + 1}/learn">${icon("book", 16)} Review the concept</a>

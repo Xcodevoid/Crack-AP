@@ -1,0 +1,422 @@
+window.AP_CONTENT = window.AP_CONTENT || {};
+window.AP_CONTENT["sat"] = {
+  intro: "The digital SAT has two sections, Reading and Writing, then Math, each split into two adaptive modules: how you do on the first module sets the difficulty of the second. The units below follow the College Board's eight content domains, with each domain's approximate share of its section. All practice questions here are original; for real released tests, use the free official practice in the Bluebook app.",
+  tips: [
+    "There's no penalty for guessing. Never leave a question blank.",
+    "Every Reading and Writing question has its own short passage. Read the question first, then the passage with that task in mind.",
+    "The answer is always supported by the text. If a choice needs outside knowledge or goes further than the passage, it's wrong.",
+    "A graphing calculator (Desmos) is built into Bluebook for the whole Math section. Graph equations to check answers or find intersections fast.",
+    "About a quarter of Math questions are student-produced responses: type your own answer. Fractions and decimals are both accepted.",
+    "Pace yourself: about 71 seconds per Reading and Writing question and about 95 seconds per Math question. Flag hard ones and come back.",
+  ],
+  units: [
+    {
+      title: "Information and Ideas",
+      weightLabel: "≈26% of Reading and Writing",
+      tldr: "Understand what a text says and use evidence from it, including tables and graphs. Questions ask for the central idea, the evidence that best supports a claim, and the most logical way to complete a line of reasoning.",
+      concepts: [
+        {
+          title: "Central ideas and details",
+          simple: "Find the main point the whole passage supports, not just one interesting detail.",
+          detail: "The central idea covers the whole text. Wrong answers are often too narrow (one detail), too broad (a general claim the text doesn't make), or distorted (a word changed so it's no longer accurate). Paraphrase the main idea in your own words before looking at the choices.",
+          example: "A passage about coyotes shifting to night activity near homes has the main idea \"urban coyotes adjust their behavior to avoid people,\" not \"coyotes are dangerous.\"",
+        },
+        {
+          title: "Command of evidence: textual",
+          simple: "Pick the quotation or finding that most directly supports (or weakens) the stated claim.",
+          detail: "Identify exactly what the claim says, then look for evidence that proves THAT claim, not a related fact. For hypotheses, the best support shows the predicted result actually happening. For \"weaken\" questions, look for a result the claim would not predict.",
+          example: "Claim: otters protect kelp by eating urchins. Best support: \"Where otters returned, urchins fell and kelp increased.\"",
+        },
+        {
+          title: "Command of evidence: quantitative",
+          simple: "Read tables and graphs carefully and pick the choice that the data actually shows and that fits the claim.",
+          detail: "Check titles, units, and axes. The correct choice must be true according to the data AND relevant to the claim in the question. Many wrong choices state true facts from the table that don't address the claim.",
+          hook: "True isn't enough: the right answer is true AND relevant.",
+        },
+        {
+          title: "Inferences",
+          simple: "Complete the text with the conclusion that follows most logically from what's given.",
+          detail: "Inference questions end with a blank. The answer must follow from the passage's information without extra assumptions. Watch for qualifiers: if the text says evidence is mixed, the answer should be cautious (\"may,\" \"suggests\"), not absolute.",
+        },
+        {
+          title: "Reading without outside knowledge",
+          simple: "Answer only from the passage, even if you know more about the topic.",
+          detail: "The SAT rewards careful reading, not background knowledge. A choice can be true in real life and still be wrong because the passage doesn't support it. Ask: \"Where in the text does it say that?\"",
+        },
+      ],
+      terms: [
+        ["Central idea", "The main point that the whole passage develops."],
+        ["Supporting detail", "A specific fact or example that backs up the central idea."],
+        ["Textual evidence", "A quotation or finding from a text that supports a claim."],
+        ["Inference", "A logical conclusion drawn from the information given."],
+        ["Qualifier", "A word like \"may\" or \"often\" that limits how strong a claim is."],
+        ["Quantitative evidence", "Evidence from numbers, tables or graphs."],
+      ],
+      mistakes: [
+        "Choosing a true detail that doesn't address the question's claim.",
+        "Using outside knowledge instead of the passage.",
+        "Picking an answer that goes further than the text supports.",
+      ],
+      questions: [
+        { q: "Researchers tracked 60 coyotes in Chicago with GPS collars for five years. Although the coyotes lived within a few hundred meters of homes, they were active mostly at night and avoided busy areas during the day.\n\nWhich choice best states the main idea of the text?", choices: ["Coyotes are a danger to people living in Chicago.", "Urban coyotes adjust their activity to avoid people.", "Chicago's coyote population is shrinking.", "GPS collars are the best way to study wildlife."], answer: 1, explain: "The details (night activity, avoiding busy areas) all show coyotes adjusting to avoid humans." },
+        { q: "A student surveyed 200 teens about how often they read for fun: daily 34, weekly 58, monthly 52, rarely 56. The student claims that most of the teens read for fun at least weekly.\n\nWhich choice best uses the data to evaluate the claim?", choices: ["The claim is supported, because weekly readers (58) are the largest group.", "The claim is not supported, because only 92 of 200 teens (46%) read daily or weekly.", "The claim is supported, because 144 teens read at least monthly.", "The claim is not supported, because 56 teens rarely read."], answer: 1, explain: "\"At least weekly\" means daily + weekly = 92, which is less than half of 200." },
+        { q: "A marine biologist hypothesizes that sea otters help kelp forests survive by eating sea urchins, which feed on kelp.\n\nWhich finding, if true, would most directly support the hypothesis?", choices: ["Sea otters can spend up to 10 hours a day hunting.", "In areas where otters returned, urchin numbers fell and kelp cover increased.", "Kelp can grow up to 60 centimeters in a single day.", "Sea urchins live in oceans around the world."], answer: 1, explain: "It shows the predicted chain: more otters → fewer urchins → more kelp." },
+        { q: "Early printing presses made books much cheaper, and literacy rates in parts of Europe rose over the following century. However, historians note that literacy was already rising in some cities before the press arrived. This suggests that ______\n\nWhich choice most logically completes the text?", choices: ["the printing press alone caused literacy to rise.", "the printing press may have sped up, rather than started, a rise in literacy.", "literacy rates fell after the printing press was invented.", "historians disagree about when the printing press was invented."], answer: 1, explain: "If literacy was already rising, the press likely accelerated an existing trend." },
+      ],
+    },
+    {
+      title: "Craft and Structure",
+      weightLabel: "≈28% of Reading and Writing",
+      tldr: "Understand how a text is built: the precise meaning of words in context, the purpose of a sentence or passage, and how two texts on the same topic relate.",
+      concepts: [
+        {
+          title: "Words in context",
+          simple: "Choose the word that fits the sentence's exact meaning and tone.",
+          detail: "Read the whole sentence and find clues (contrast words like \"yet\" or \"although,\" or cause-and-effect words). Predict a word of your own first, then match it. Common words can have unusual meanings in context (e.g., \"qualified\" support = limited support).",
+          example: "\"The report was so ______ that readers finished it in minutes yet understood every point\" → concise.",
+        },
+        {
+          title: "Text structure and purpose",
+          simple: "Explain why the author wrote a text or what job a sentence does in it.",
+          detail: "Purpose questions ask what the text or a part of it DOES: introduces a problem, gives an example, contrasts views, explains a result. Use verbs to describe function. The answer must fit the whole text, not just part of it.",
+        },
+        {
+          title: "Cross-text connections",
+          simple: "Compare two short texts and predict how one author would respond to the other.",
+          detail: "Identify each text's main claim first. Then decide whether they agree, disagree, or whether one adds a limitation or evidence to the other. The correct answer usually uses Text 2's specific evidence to respond to Text 1's specific claim.",
+        },
+        {
+          title: "Tone and perspective",
+          simple: "Identify the author's attitude through word choice.",
+          detail: "Tone comes from connotation: \"bold but taken in the dark\" is admiring but uncertain. Correct tone answers are usually moderate; extreme answers (\"furious,\" \"entirely reckless\") are rarely right unless the text is equally extreme.",
+        },
+        {
+          title: "Eliminating wrong answers",
+          simple: "Cross out choices that are too extreme, off-topic, or only partly right.",
+          detail: "Common traps: half-right answers (first half fits, second doesn't), extreme wording (always, never, proves), answers about a different part of the text, and choices that repeat passage words without matching its meaning.",
+          hook: "If one word in a choice is wrong, the whole choice is wrong.",
+        },
+      ],
+      terms: [
+        ["Connotation", "The feeling or association a word carries beyond its dictionary meaning."],
+        ["Function", "The job a sentence or paragraph performs in a text."],
+        ["Tone", "The author's attitude toward the subject."],
+        ["Cross-text question", "A question comparing the claims of two short texts."],
+        ["Context clue", "Nearby words that reveal the meaning of an unfamiliar word."],
+        ["Extreme wording", "Absolute words like \"always\" or \"proves\" that often signal a wrong answer."],
+      ],
+      mistakes: [
+        "Picking a word that's a synonym in general but doesn't fit the sentence's meaning.",
+        "Describing what a sentence says instead of what it does.",
+        "Answering a cross-text question with only one text in mind.",
+      ],
+      questions: [
+        { q: "The committee's report was so ______ that most readers finished it in a few minutes yet understood every recommendation.\n\nWhich choice completes the text with the most logical and precise word?", choices: ["verbose", "concise", "ambiguous", "tedious"], answer: 1, explain: "Short to read yet clear: \"concise\" means brief and clear." },
+        { q: "Chemist Stephanie Kwolek was searching for a lightweight fiber strong enough for tires. Her first solution was cloudy and thin, the kind lab technicians usually threw away. Kwolek insisted on testing it anyway, and the result, Kevlar, proved five times stronger than steel by weight.\n\nWhich choice best describes the function of the second sentence?", choices: ["It explains why Kevlar is used in tires.", "It shows that a promising result first looked like a failure.", "It criticizes lab technicians for being careless.", "It compares the strength of Kevlar and steel."], answer: 1, explain: "The \"cloudy and thin\" solution sets up the surprise: something that looked useless became Kevlar." },
+        { q: "Text 1: Some economists argue that raising the minimum wage reduces employment, because businesses respond by hiring fewer workers.\nText 2: A study of neighboring counties found that when one raised its minimum wage, employment at its fast-food restaurants did not fall relative to the other county.\n\nBased on the texts, how would the author of Text 2 most likely respond to the claim in Text 1?", choices: ["By agreeing that higher wages always reduce hiring.", "By pointing to evidence that a minimum-wage increase did not reduce employment in one case.", "By arguing that fast-food workers should not receive raises.", "By claiming that economists rarely study wages."], answer: 1, explain: "Text 2 offers a specific case that challenges Text 1's general claim." },
+        { q: "In an essay, a critic calls the city's new transit plan \"a bold step, if one taken in the dark.\"\n\nThe phrase suggests that the critic views the plan as", choices: ["entirely reckless.", "admirable but uncertain in its effects.", "unimportant to most residents.", "already proven successful."], answer: 1, explain: "\"Bold\" is praise; \"taken in the dark\" adds uncertainty about the outcome." },
+      ],
+    },
+    {
+      title: "Expression of Ideas",
+      weightLabel: "≈20% of Reading and Writing",
+      tldr: "Revise writing to meet a goal. Rhetorical synthesis questions give you notes and a goal; transition questions ask for the word that shows the logical relationship between ideas.",
+      concepts: [
+        {
+          title: "Rhetorical synthesis",
+          simple: "Use a student's notes to write a sentence that accomplishes a stated goal.",
+          detail: "The question gives bullet-point notes and a goal (e.g., \"emphasize a difference,\" \"introduce the study to an unfamiliar audience\"). Many choices are accurate; only one does exactly what the goal asks. Read the goal first, then check each choice against it.",
+        },
+        {
+          title: "Matching the stated goal",
+          simple: "The goal decides the answer, not which sentence sounds best.",
+          detail: "Match key goal words: \"contrast\" needs two things and a difference; \"emphasize a similarity\" needs a shared feature; \"introduce\" needs background for a new reader; \"specify\" needs a precise detail. Eliminate choices that are true but serve a different goal.",
+          hook: "Circle the verb in the goal: contrast, emphasize, introduce, explain.",
+        },
+        {
+          title: "Transitions: logical relationships",
+          simple: "Pick the transition that shows how the second idea relates to the first.",
+          detail: "Categories: contrast (however, nevertheless, in contrast), continuation (additionally, moreover), cause/effect (therefore, as a result, consequently), example/specification (for example, specifically), sequence (then, finally), similarity (similarly, likewise). Decide the relationship BEFORE reading the choices.",
+          example: "\"Solar panels are cheaper than ever. ______, many homeowners still find installation too expensive.\" → Nevertheless (contrast).",
+        },
+        {
+          title: "Telling similar transitions apart",
+          simple: "Transitions in the same family can still differ in meaning.",
+          detail: "\"However\" contrasts; \"in contrast\" compares two different things; \"nevertheless\" means \"despite that\"; \"specifically\" narrows to a detail; \"for example\" gives one instance; \"therefore\" states a result. Two choices in the same category can't both be right, so look for the precise one.",
+        },
+      ],
+      terms: [
+        ["Rhetorical synthesis", "Combining information from notes to meet a specific writing goal."],
+        ["Transition", "A word or phrase that shows the relationship between ideas."],
+        ["Nevertheless", "A contrast transition meaning \"despite that.\""],
+        ["Specifically", "A transition that narrows to a precise detail."],
+        ["Consequently", "A transition that introduces a result."],
+        ["Likewise", "A transition that shows similarity."],
+      ],
+      mistakes: [
+        "Choosing an accurate sentence that doesn't meet the stated goal.",
+        "Picking a transition by sound instead of by logical relationship.",
+      ],
+      questions: [
+        { q: "While researching a topic, a student took these notes:\n• The Great Barrier Reef is the world's largest coral reef system.\n• It stretches about 2,300 kilometers.\n• It lies off the coast of Queensland, Australia.\n\nThe student wants to emphasize the reef's size. Which choice most effectively uses relevant information from the notes?", choices: ["The Great Barrier Reef lies off the coast of Queensland, Australia.", "Stretching about 2,300 kilometers, the Great Barrier Reef is the world's largest coral reef system.", "The Great Barrier Reef is a coral reef in Australia.", "Coral reefs like the Great Barrier Reef are found in many oceans."], answer: 1, explain: "Only this choice uses both size details: its length and its status as the largest system." },
+        { q: "Solar panels have become far cheaper over the past decade. ______ many homeowners still find the upfront installation cost too high.\n\nWhich choice completes the text with the most logical transition?", choices: ["Similarly,", "Therefore,", "Nevertheless,", "For example,"], answer: 2, explain: "Cheaper panels would suggest more people can afford them; \"nevertheless\" shows the contrasting reality." },
+        { q: "Honeybees communicate the location of food through a \"waggle dance.\" ______ the angle of the dance shows the direction of the food relative to the sun.\n\nWhich choice completes the text with the most logical transition?", choices: ["However,", "Specifically,", "In contrast,", "Meanwhile,"], answer: 1, explain: "The second sentence gives a precise detail about how the dance communicates location." },
+        { q: "A student took these notes:\n• Novel A is set in 1920s Harlem.\n• Novel B is set in rural Mississippi in the 1930s.\n• Both novels were written by Black women.\n\nThe student wants to contrast the two novels' settings. Which choice most effectively accomplishes this goal?", choices: ["Both novels were written by Black women.", "While Novel A is set in 1920s Harlem, Novel B takes place in rural 1930s Mississippi.", "Novel A is set in 1920s Harlem.", "Novel A and Novel B are both twentieth-century novels."], answer: 1, explain: "The goal is a contrast of settings; only this choice names both settings with a contrast word." },
+      ],
+    },
+    {
+      title: "Standard English Conventions",
+      weightLabel: "≈26% of Reading and Writing",
+      tldr: "Edit sentences so they follow standard grammar and punctuation: joining clauses correctly, punctuating within sentences, and making subjects, verbs, pronouns and modifiers agree.",
+      concepts: [
+        {
+          title: "Joining independent clauses",
+          simple: "Two complete sentences need a period, a semicolon, or a comma with a conjunction between them.",
+          detail: "Correct: \"It rained; the game was canceled.\" \"It rained, so the game was canceled.\" \"It rained. The game was canceled.\" Incorrect: a comma alone (comma splice) or nothing at all (run-on). A colon can join clauses when the second explains or illustrates the first. A dash can do the same informally.",
+          hook: "Semicolon = period. If both sides can stand alone, a semicolon works.",
+        },
+        {
+          title: "Punctuation within a sentence",
+          simple: "Don't put commas where they break the sentence's core, and put paired commas around extra information.",
+          detail: "Never put a single comma between a subject and its verb or between a verb and its object. Nonessential information (can be removed) needs a pair of commas, dashes, or parentheses. Essential (restrictive) information takes no commas: \"The novelist Herman Melville wrote…\" but \"Melville, a novelist, wrote…\"",
+        },
+        {
+          title: "Subject–verb agreement",
+          simple: "The verb must agree with its true subject, not with a nearby noun.",
+          detail: "Cross out prepositional phrases and interrupting clauses to find the subject: \"The collection [of rare maps] is…\" Collective nouns (team, collection) are usually singular. \"Each\" and \"every\" take singular verbs.",
+          example: "\"The list of items is long,\" not \"are long.\"",
+        },
+        {
+          title: "Pronouns and possessives",
+          simple: "Pronouns must match their nouns in number, and possessives use apostrophes correctly.",
+          detail: "\"The company announced its profits\" (company = singular = its). \"It's\" means \"it is\"; \"its\" is possessive. Plural possessive: \"the students' books.\" Singular possessive: \"the student's book.\" \"Their\" refers to plural nouns (or singular they for people).",
+        },
+        {
+          title: "Verb tense and modifiers",
+          simple: "Keep verb tenses consistent, and put a modifier right next to what it describes.",
+          detail: "Match the tense of the surrounding sentences unless the timeline changes. A modifying phrase at the start of a sentence must describe the subject that follows: \"Walking to school, I saw a deer,\" not \"Walking to school, a deer appeared\" (dangling modifier).",
+        },
+      ],
+      terms: [
+        ["Independent clause", "A group of words with a subject and verb that can stand alone as a sentence."],
+        ["Comma splice", "Two independent clauses joined with only a comma (an error)."],
+        ["Nonessential clause", "Extra information that can be removed; it needs paired punctuation."],
+        ["Restrictive phrase", "Information essential to the meaning; it takes no commas."],
+        ["Dangling modifier", "A modifying phrase that doesn't clearly describe the word it should."],
+        ["Its vs. it's", "\"Its\" is possessive; \"it's\" means \"it is.\""],
+      ],
+      mistakes: [
+        "Using a comma alone to join two complete sentences.",
+        "Making the verb agree with the noun right before it instead of the real subject.",
+        "Putting a single comma between a subject and its verb.",
+      ],
+      questions: [
+        { q: "The museum opened a new exhibit on ancient ______ features more than 200 artifacts.\n\nWhich choice completes the text so that it conforms to the conventions of Standard English?", choices: ["Egypt, it", "Egypt; it", "Egypt it", "Egypt, and, it"], answer: 1, explain: "Both sides are complete sentences, so a semicolon correctly joins them. A comma alone would be a comma splice." },
+        { q: "The collection of rare maps, which the library acquired last year, ______ now on display.\n\nWhich choice completes the text so that it conforms to the conventions of Standard English?", choices: ["are", "is", "were", "have been"], answer: 1, explain: "The subject is \"collection\" (singular), not \"maps.\"" },
+        { q: "The company announced that ______ quarterly profits had doubled since the previous year.\n\nWhich choice completes the text so that it conforms to the conventions of Standard English?", choices: ["it's", "its", "their", "its'"], answer: 1, explain: "\"Company\" is singular and needs the possessive \"its.\" \"It's\" means \"it is.\"" },
+        { q: "The novelist ______ spent years researching life aboard whaling ships before writing Moby-Dick.\n\nWhich choice completes the text so that it conforms to the conventions of Standard English?", choices: ["Herman Melville,", ", Herman Melville", "Herman Melville", "Herman Melville;"], answer: 2, explain: "The name is essential (it identifies which novelist), so no commas are used, and nothing should separate the subject from its verb." },
+      ],
+    },
+    {
+      title: "Algebra",
+      weightLabel: "≈35% of Math",
+      tldr: "Solve and interpret linear equations, inequalities, functions and systems. Many questions put these in real-world contexts and ask what a slope or intercept means.",
+      concepts: [
+        {
+          title: "Linear equations in one variable",
+          simple: "Solve by doing the same thing to both sides until the variable is alone.",
+          detail: "Distribute, combine like terms, move variables to one side, then divide. An equation has no solution if it simplifies to a false statement (3 = 5) and infinitely many if it simplifies to a true one (3 = 3). Watch signs when distributing negatives.",
+          example: "3x − 7 = 2x + 5 → x = 12.",
+        },
+        {
+          title: "Linear functions: slope and intercept",
+          simple: "In y = mx + b, m is the rate of change and b is the starting value.",
+          detail: "Slope = (y₂ − y₁)/(x₂ − x₁). In context, slope is \"per\" something (dollars per month) and the y-intercept is the value when x = 0 (a fee, a starting amount). Parallel lines have equal slopes; perpendicular slopes are negative reciprocals.",
+        },
+        {
+          title: "Systems of linear equations",
+          simple: "Find where two lines meet, or recognize when they never do.",
+          detail: "Solve by substitution, elimination, or graphing in Desmos. One solution: different slopes. No solution: same slope, different intercepts (parallel). Infinitely many: the same line. For ax + by = c systems, compare the ratios of coefficients.",
+          hook: "No solution = parallel lines = same slope, different intercept.",
+        },
+        {
+          title: "Linear inequalities",
+          simple: "Solve like equations, but flip the sign when multiplying or dividing by a negative.",
+          detail: "Inequalities describe ranges (\"at least,\" \"no more than\"). Translate phrases carefully: \"at least\" is ≥, \"at most\" is ≤. Systems of inequalities are shaded regions; a point is a solution if it satisfies every inequality.",
+        },
+        {
+          title: "Writing linear models from context",
+          simple: "Turn a word problem into an equation: starting amount plus rate times the variable.",
+          detail: "Identify what's fixed (the intercept) and what changes at a constant rate (the slope). \"A $40 fee plus $25 per month\" → C = 25m + 40. Check units: each term must have the same units as the output.",
+        },
+      ],
+      terms: [
+        ["Slope", "The rate of change of a line: rise over run."],
+        ["y-intercept", "The value of y when x = 0; often a starting amount."],
+        ["System of equations", "Two or more equations solved together."],
+        ["No solution", "A system whose lines are parallel and never intersect."],
+        ["Elimination", "Solving a system by adding equations to cancel a variable."],
+        ["Linear model", "An equation of the form y = mx + b describing constant change."],
+      ],
+      mistakes: [
+        "Forgetting to flip the inequality when dividing by a negative.",
+        "Swapping slope and intercept when writing a model from a word problem.",
+      ],
+      questions: [
+        { q: "If 3x − 7 = 2x + 5, what is the value of x?", choices: ["−12", "12", "−2", "2"], answer: 1, explain: "Subtract 2x from both sides: x − 7 = 5, so x = 12." },
+        { q: "A gym charges a one-time $40 sign-up fee plus $25 per month. Which function gives the total cost C, in dollars, after m months?", choices: ["C = 40m + 25", "C = 25m + 40", "C = 65m", "C = 25m − 40"], answer: 1, explain: "The monthly rate (25) multiplies m; the one-time fee (40) is the constant." },
+        { q: "For what value of k does the system 2x + 3y = 6 and 4x + ky = 10 have no solution?", choices: ["3", "6", "12", "−6"], answer: 1, explain: "No solution means parallel lines: 2/4 = 3/k gives k = 6, and 6/10 ≠ 2/4, so the lines are distinct." },
+        { q: "A line has a slope of −2 and passes through (0, 5). What is its x-intercept?", choices: ["5", "−2.5", "2.5", "10"], answer: 2, explain: "y = −2x + 5. Set y = 0: 2x = 5, x = 2.5." },
+      ],
+    },
+    {
+      title: "Advanced Math",
+      weightLabel: "≈35% of Math",
+      tldr: "Work with nonlinear expressions and functions: quadratics, exponentials, polynomials, radicals and rational equations. Rewrite expressions in equivalent forms and connect equations to graphs.",
+      concepts: [
+        {
+          title: "Quadratic equations and functions",
+          simple: "Quadratics make parabolas; solve them by factoring, the quadratic formula, or graphing.",
+          detail: "Standard form ax² + bx + c; vertex form a(x − h)² + k with vertex (h, k). Solutions: factor, complete the square, or use x = [−b ± √(b² − 4ac)]/(2a). The discriminant b² − 4ac tells the number of real solutions (> 0: two, = 0: one, < 0: none). Sum of roots = −b/a; product = c/a.",
+        },
+        {
+          title: "Exponential functions",
+          simple: "Exponential models multiply by the same factor each period.",
+          detail: "y = a(1 + r)ᵗ for growth and y = a(1 − r)ᵗ for decay, where r is the percent rate as a decimal. The base is the growth factor: 1.05 means 5% growth; 0.8 means 20% decay. Exponential change differs from linear change, which adds the same amount each period.",
+          example: "2,000 growing 5% per year: 2000(1.05)ᵗ.",
+        },
+        {
+          title: "Equivalent expressions and polynomials",
+          simple: "Rewrite expressions by expanding, factoring, or combining terms.",
+          detail: "Key patterns: (a + b)² = a² + 2ab + b²; a² − b² = (a + b)(a − b). Combine like terms carefully with negatives. Equivalent-form questions often want the form that reveals something: factored form shows zeros, vertex form shows the vertex.",
+        },
+        {
+          title: "Nonlinear functions and graphs",
+          simple: "Connect equations, graphs and function notation, including transformations.",
+          detail: "f(x) + k shifts up; f(x − h) shifts right; −f(x) reflects over the x-axis. The zeros of f are the x-intercepts. f(a) = b means the point (a, b) is on the graph. Use Desmos to graph functions and read intersections.",
+        },
+        {
+          title: "Radical and rational equations",
+          simple: "Squaring or clearing fractions can create fake solutions, so always check.",
+          detail: "For √(expression) = something, isolate the radical, square both sides, solve, then plug each answer back in: a solution that makes the original equation false is extraneous. For rational equations, multiply by the common denominator and reject values that make a denominator zero.",
+        },
+      ],
+      terms: [
+        ["Vertex form", "y = a(x − h)² + k, showing the vertex (h, k)."],
+        ["Discriminant", "b² − 4ac, which tells how many real solutions a quadratic has."],
+        ["Growth factor", "The base of an exponential model, 1 + r."],
+        ["Extraneous solution", "A solution from the algebra that fails in the original equation."],
+        ["Difference of squares", "a² − b² = (a + b)(a − b)"],
+        ["Zero of a function", "An input where the output is 0; an x-intercept."],
+      ],
+      mistakes: [
+        "Writing 5% growth as a factor of 0.05 or 1.5 instead of 1.05.",
+        "Forgetting to check radical equations for extraneous solutions.",
+      ],
+      questions: [
+        { q: "What is the sum of the solutions to x² − 5x + 6 = 0?", choices: ["−5", "6", "5", "1"], answer: 2, explain: "The solutions are 2 and 3, which add to 5 (also −b/a = 5)." },
+        { q: "A town's population is 2,000 and grows by 5% each year. Which expression gives the population after t years?", choices: ["2000(0.05)ᵗ", "2000(1.05)ᵗ", "2000 + 0.05t", "2000(1.5)ᵗ"], answer: 1, explain: "Growing 5% means multiplying by 1.05 each year." },
+        { q: "Which expression is equivalent to (x + 3)² − 9?", choices: ["x²", "x² + 6x", "x² − 6x", "x² + 9"], answer: 1, explain: "(x + 3)² = x² + 6x + 9. Subtracting 9 leaves x² + 6x." },
+        { q: "What is the solution to √(x + 7) = x − 5?", choices: ["2", "9", "2 and 9", "There is no solution."], answer: 1, explain: "Squaring gives x² − 11x + 18 = 0, so x = 2 or 9. Checking: x = 2 gives 3 = −3 (false), so only x = 9 works." },
+      ],
+    },
+    {
+      title: "Problem-Solving and Data Analysis",
+      weightLabel: "≈15% of Math",
+      tldr: "Use ratios, rates, percentages and units; describe data with center and spread; read scatterplots; and reason about probability and what a sample can tell you.",
+      concepts: [
+        {
+          title: "Ratios, rates and units",
+          simple: "Set up proportions and keep track of units as you convert.",
+          detail: "Find the unit rate (per 1), then scale. For unit conversions, multiply by conversion factors so unwanted units cancel. Check that your answer's units match the question.",
+          example: "150 miles in 2.5 hours = 60 mph → 240 miles in 4 hours.",
+        },
+        {
+          title: "Percentages and percent change",
+          simple: "Percent change = (new − old) ÷ old × 100.",
+          detail: "Always divide by the ORIGINAL value. A price increase of p% multiplies by (1 + p/100); a decrease multiplies by (1 − p/100). Successive percent changes multiply: +20% then −20% is ×1.2 × 0.8 = 0.96, a net 4% decrease.",
+        },
+        {
+          title: "One-variable data: center and spread",
+          simple: "Mean and median describe the center; range and standard deviation describe spread.",
+          detail: "Outliers pull the mean toward them but barely affect the median. Standard deviation measures how spread out values are around the mean. Compare distributions using both center and spread, and read box plots and histograms carefully.",
+        },
+        {
+          title: "Two-variable data and scatterplots",
+          simple: "A line of best fit models the trend, and its slope has a real-world meaning.",
+          detail: "Positive association: both rise together. The slope of the line of best fit is the predicted change in y per unit of x. Predictions within the data range are more reliable than extrapolations. Correlation doesn't prove causation.",
+        },
+        {
+          title: "Probability, sampling and margin of error",
+          simple: "Random samples let you generalize to a population, within a margin of error.",
+          detail: "Probability = favorable outcomes ÷ total outcomes (read two-way tables carefully: \"given\" means restrict to that row or column). Results from a random sample generalize only to the population sampled. A margin of error gives a plausible range; larger samples give smaller margins.",
+        },
+      ],
+      terms: [
+        ["Unit rate", "A rate expressed per one unit, like miles per hour."],
+        ["Percent change", "(new − old) ÷ old × 100"],
+        ["Median", "The middle value of ordered data; resistant to outliers."],
+        ["Standard deviation", "A measure of how spread out data values are."],
+        ["Margin of error", "The range within which the true population value likely falls."],
+        ["Line of best fit", "A line that models the trend in a scatterplot."],
+      ],
+      mistakes: [
+        "Dividing by the new value instead of the original when finding percent change.",
+        "Generalizing a sample result to a population that wasn't sampled.",
+      ],
+      questions: [
+        { q: "A jacket's price drops from $80 to $60. By what percent did the price decrease?", choices: ["20%", "25%", "33%", "75%"], answer: 1, explain: "The change is 20; 20 ÷ 80 = 0.25, a 25% decrease." },
+        { q: "A car travels 150 miles in 2.5 hours. At the same rate, how many miles will it travel in 4 hours?", choices: ["200", "240", "260", "375"], answer: 1, explain: "Unit rate: 150 ÷ 2.5 = 60 mph. 60 × 4 = 240 miles." },
+        { q: "A data set is 4, 5, 5, 6, 30. If the value 30 is removed, which statement is true?", choices: ["Both the mean and the median decrease.", "The mean decreases, and the median stays the same.", "The median decreases, and the mean stays the same.", "Neither the mean nor the median changes."], answer: 1, explain: "The mean drops from 10 to 5. The median is 5 both before and after." },
+        { q: "A random sample of 400 students at one high school found that 62% support a later start time, with a margin of error of 4 percentage points. Which conclusion is most appropriate?", choices: ["Exactly 62% of all students at the school support a later start.", "It's plausible that between 58% and 66% of all students at the school support a later start.", "About 62% of all U.S. high school students support a later start.", "The results are invalid because not every student was surveyed."], answer: 1, explain: "The margin of error gives a plausible range for the population the sample came from: this one school." },
+      ],
+    },
+    {
+      title: "Geometry and Trigonometry",
+      weightLabel: "≈15% of Math",
+      tldr: "Solve problems with area and volume, lines and angles, triangles (including similar and right triangles), right-triangle trigonometry, and circles. A reference sheet gives the main formulas.",
+      concepts: [
+        {
+          title: "Area and volume",
+          simple: "Use the reference-sheet formulas and match each measurement to the right part of the formula.",
+          detail: "The reference sheet lists area of circles, rectangles and triangles, and volumes of prisms, cylinders, spheres, cones and pyramids. Scaling: if lengths scale by k, area scales by k² and volume by k³.",
+          hook: "Double every length → 4× the area, 8× the volume.",
+        },
+        {
+          title: "Lines, angles and triangles",
+          simple: "Use angle rules for parallel lines and triangles to find missing angles.",
+          detail: "Angles in a triangle sum to 180°. Vertical angles are equal. With parallel lines cut by a transversal, corresponding and alternate interior angles are equal, and same-side interior angles add to 180°. Similar triangles have equal angles and proportional sides.",
+        },
+        {
+          title: "Right triangles and trigonometry",
+          simple: "Use the Pythagorean theorem and SOH-CAH-TOA in right triangles.",
+          detail: "a² + b² = c². sin = opposite/hypotenuse, cos = adjacent/hypotenuse, tan = opposite/adjacent. Special right triangles: 45-45-90 (x, x, x√2) and 30-60-90 (x, x√3, 2x). Complementary angles: sin x° = cos(90° − x°).",
+          hook: "SOH-CAH-TOA.",
+        },
+        {
+          title: "Circles",
+          simple: "Know circle equations, arc length and sector area, including radians.",
+          detail: "Equation: (x − h)² + (y − k)² = r², with center (h, k). Complete the square to find the center and radius. Arc length = (θ/360)·2πr and sector area = (θ/360)·πr², with θ in degrees. In radians, arc length = rθ. A full circle is 360° or 2π radians.",
+        },
+      ],
+      terms: [
+        ["Pythagorean theorem", "a² + b² = c² for a right triangle."],
+        ["Similar triangles", "Triangles with equal angles and proportional sides."],
+        ["Same-side interior angles", "Angles between parallel lines on the same side of a transversal; they add to 180°."],
+        ["Arc length", "The distance along part of a circle: (θ/360)·2πr."],
+        ["Radian", "The angle for which arc length equals the radius; π radians = 180°."],
+        ["Complementary angles", "Two angles that add to 90°; sin x° = cos(90° − x°)."],
+      ],
+      mistakes: [
+        "Forgetting to complete the square before reading a circle's radius.",
+        "Mixing up same-side interior angles (add to 180°) with alternate interior angles (equal).",
+      ],
+      questions: [
+        { q: "A right triangle has legs of length 6 and 8. What is the length of its hypotenuse?", choices: ["10", "14", "12", "48"], answer: 0, explain: "6² + 8² = 36 + 64 = 100, so the hypotenuse is 10." },
+        { q: "In a right triangle, sin A = 3/5, where A is an acute angle. What is cos(90° − A)?", choices: ["4/5", "3/5", "5/3", "3/4"], answer: 1, explain: "For complementary angles, cos(90° − A) = sin A = 3/5." },
+        { q: "A circle has the equation x² + y² − 6x + 4y = 12. What is its radius?", choices: ["√12", "12", "5", "25"], answer: 2, explain: "Completing the square: (x − 3)² + (y + 2)² = 12 + 9 + 4 = 25, so r = 5." },
+        { q: "Two parallel lines are cut by a transversal. One angle measures 65°. What is the measure of the same-side interior angle paired with it?", choices: ["65°", "115°", "25°", "130°"], answer: 1, explain: "Same-side interior angles add to 180°: 180 − 65 = 115°." },
+      ],
+    },
+  ],
+};

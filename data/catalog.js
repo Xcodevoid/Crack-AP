@@ -388,6 +388,26 @@ const COURSES = [
     units: ["Unit 1 covers personal security", "Units 2–5 cover career scenarios"],
     ced: CED("ap-cybersecurity"), page: PAGE("ap-cybersecurity"),
   },
+
+  // ---------- SAT (not an AP course: kept out of the AP course list and counts) ----------
+  {
+    id: "sat", name: "SAT", cat: "SAT", guide: true, examName: "SAT",
+    blurb: "Digital SAT prep: Reading and Writing plus Math, by content domain.",
+    exam: [
+      { name: "Reading and Writing", detail: "54 questions · 64 min (2 adaptive modules)", weight: 50 },
+      { name: "Math", detail: "44 questions · 70 min (2 adaptive modules)", weight: 50 },
+    ],
+    units: ["Information and Ideas", "Craft and Structure", "Expression of Ideas", "Standard English Conventions", "Algebra", "Advanced Math", "Problem-Solving and Data Analysis", "Geometry and Trigonometry"],
+    ced: null, page: "https://satsuite.collegeboard.org/sat",
+    links: [
+      ["Official full-length practice tests (Bluebook)", "https://satsuite.collegeboard.org/practice/practice-tests"],
+      ["Official SAT practice on Khan Academy", "https://www.khanacademy.org/test-prep/digital-sat"],
+      ["SAT test dates and registration", "https://satsuite.collegeboard.org/sat/dates-deadlines"],
+    ],
+  },
 ];
+
+// AP-only list for the "All AP courses" browser and counts.
+const AP_COURSES = COURSES.filter((c) => c.cat !== "SAT");
 
 const EXAM_WINDOW = { start: "2027-05-03", end: "2027-05-14", schedule: "https://apstudents.collegeboard.org/exam-dates" };
