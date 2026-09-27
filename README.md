@@ -27,7 +27,7 @@ Learn what you need → understand it → practice it → identify mistakes → 
 
 - ⚡ **"What should I study today?"**: pick 5, 12, 20 or 30 minutes and get a personalized plan built from your
   open mistakes, reviews due today, weakest concepts and new ones. No need to choose a course or unit.
-- 📚 **Deep unit coverage**: 740 key concepts across 14 courses (7–10 per unit), each with a plain-English
+- 📚 **Deep unit coverage**: about 1,000 key concepts across 19 AP courses plus SAT (6–10 per unit), each with a plain-English
   explanation, exam-level detail, and its own flashcards. A clickable concept list opens every unit.
 - ⚠️ **AP Traps**: every concept has a hand-written trap showing how the exam catches students on it.
 - 📝 **Learn → Trap → Try it**: every concept ends with an inline AP-style question, a prompt to explain your
@@ -44,7 +44,7 @@ Learn what you need → understand it → practice it → identify mistakes → 
 - ✍️ **Active learning**: each concept has "Explain it in your own words" (write, compare with the key
   points, rate yourself), and every unit has Drills built from its flashcards: fill in the blank, matching,
   and sorting terms into their concepts. All of it feeds mastery.
-- 🔗 **Connected concepts**: 85 hand-written idea chains ("Enzymes → power → Cellular respiration → …")
+- 🔗 **Connected concepts**: 118 hand-written idea chains ("Enzymes → power → Cellular respiration → …")
   show how concepts cause or lead to each other across units, on each course page and each concept.
 - 🧠 **Mistakes grouped by concept**: "Elasticity: 42% mastery. You've missed 4 questions involving this concept."
   Every missed question is analyzed in five parts: what you misunderstood, the concept behind it, why the
@@ -53,12 +53,12 @@ Learn what you need → understand it → practice it → identify mistakes → 
   it detects the weak concept, gives a refresher, and drills it on the spot.
 - 🗓️ **Spaced review**: concepts you get right come back after 1 → 3 → 7 → 14 → 30 days. Misses come
   back in the next session, with a prompt: "You learned this 5 days ago. Let's see if you still remember it."
-- 🃏 **Unlimited targeted questions**: besides 390 written questions, every flashcard term becomes a
+- 🃏 **Unlimited targeted questions**: besides 566 written questions, every flashcard term becomes a
   generated question tied to its concept, so each concept always has enough to practice.
 - 📈 **Progress = mastery**: a table of every concept with its mastery %, status and last practice date,
   sorted weakest first, plus "Recommended next" for each course.
 - 📖 **Study guides**: plain-English concepts with exam-level detail, flashcards, free-response
-  practice with scoring guides, common mistakes, and exam strategy for 14 courses.
+  practice with scoring guides, common mistakes, and exam strategy for 19 AP courses.
 - 🗂️ **All 42 AP courses (2026-27)**: exam formats, 2027 changes, and official CED links.
 - 📝 **SAT prep**: the digital SAT's eight content domains (Reading and Writing plus Math) as units, with
   original practice questions and the same adaptive tools, plus links to the free official practice tests.
@@ -71,8 +71,9 @@ Learn what you need → understand it → practice it → identify mistakes → 
 - 📄 **One file**: the whole site builds into a single self-contained `index.html`.
 
 Adaptive courses: AP Precalculus, Calculus AB, Calculus BC, Physics 1, Physics 2, Physics C: Mechanics,
-Physics C: E&M, Chemistry, Biology, Microeconomics, Psychology, U.S. History, World History: Modern,
-English Language. Plus SAT prep.
+Physics C: E&M, Chemistry, Biology, Environmental Science, Microeconomics, Macroeconomics, Psychology,
+U.S. History, World History: Modern, U.S. Government and Politics, Human Geography, English Language,
+English Literature. Plus SAT prep.
 
 ## Running it locally
 

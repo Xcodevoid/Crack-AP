@@ -1209,7 +1209,7 @@ const COURSES = [
     ced: CED("ap-comparative-government-and-politics"), page: PAGE("ap-comparative-government-and-politics"),
   },
   {
-    id: "human-geography", name: "AP Human Geography", cat: "History & Social Sciences",
+    id: "human-geography", name: "AP Human Geography", cat: "History & Social Sciences", guide: true,
     blurb: "Why people, cultures, cities and economies are located where they are.",
     exam: [
       { name: "Multiple choice", detail: "60 questions · 60 min", weight: 50 },
@@ -1331,7 +1331,7 @@ const COURSES = [
     ced: CED("ap-chemistry"), page: PAGE("ap-chemistry"),
   },
   {
-    id: "environmental-science", name: "AP Environmental Science", cat: "Sciences",
+    id: "environmental-science", name: "AP Environmental Science", cat: "Sciences", guide: true,
     blurb: "How natural systems work and how humans change them.",
     exam: [
       { name: "Multiple choice", detail: "80 questions · 90 min", weight: 60 },
@@ -1392,12 +1392,13 @@ const COURSES = [
     ced: CED("ap-english-language-and-composition"), page: PAGE("ap-english-language-and-composition"),
   },
   {
-    id: "english-literature", name: "AP English Literature and Composition", cat: "English",
+    id: "english-literature", name: "AP English Literature and Composition", cat: "English", guide: true,
     blurb: "Close reading and analytical writing about fiction, poetry and drama.",
     exam: [
       { name: "Multiple choice", detail: "55 questions · 60 min", weight: 45 },
       { name: "Free response", detail: "3 essays · 2 hr: poetry analysis, prose analysis, literary argument", weight: 55 },
     ],
+    units: ["Short Fiction I", "Poetry I", "Longer Fiction or Drama I", "Short Fiction II", "Poetry II", "Longer Fiction or Drama II", "Short Fiction III", "Poetry III", "Longer Fiction or Drama III"],
     ced: CED("ap-english-literature-and-composition"), page: PAGE("ap-english-literature-and-composition"),
   },
 
@@ -3511,6 +3512,1720 @@ window.AP_CONTENT["english-language"] = {
           "Each body paragraph is organized around a claim, not a single source.",
           "Plans to use at least 3 sources, with specific roles (e.g. the chart as data, the op-ed as a counterargument).",
           "Includes a plan to address an opposing source.",
+        ],
+      },
+    },
+  ],
+};
+
+</script>
+<script>/* content/english-literature.js */
+window.AP_CONTENT = window.AP_CONTENT || {};
+window.AP_CONTENT["english-literature"] = {
+  intro: "The course cycles three times through short fiction, poetry, and longer fiction or drama, building six skills each time: character, setting, structure, narration, figurative language, and literary argument. The exam has 55 multiple-choice questions on passages and three essays: poetry analysis, prose analysis, and a literary argument about a work you choose. All practice passages here are original.",
+  tips: [
+    "On essays, your thesis must make a defensible claim about MEANING, not just list devices. Ask: what does the author say about people, society or life?",
+    "Evidence plus commentary is where the points are. Every quotation needs sentences explaining how it supports your claim.",
+    "For the literary argument essay (Q3), prepare 3–4 works you know deeply (a tragedy, a novel with a complex narrator, a book about society). You can adapt them to almost any prompt.",
+    "In multiple choice, go back to the passage for every answer. The right answer is supported by specific lines; wrong answers often go too far.",
+    "Budget about 40 minutes per essay, including 5–8 minutes of reading and planning.",
+  ],
+  units: [
+    {
+      title: "Short Fiction I",
+      weightLabel: "Short fiction · foundations",
+      tldr: "Stories reveal meaning through characters, setting, plot structure and the narrator's point of view. A literary interpretation is a defensible claim about what a text means, supported by textual evidence.",
+      concepts: [
+        {
+          title: "Characterization",
+          simple: "Writers reveal characters through what they say, do and think, and how others react to them.",
+          detail: "Direct characterization tells us traits outright; indirect characterization shows them through speech, actions, thoughts, appearance and others' reactions. Look for details the author chose to include and what they suggest.",
+        },
+        {
+          title: "Character perspective and values",
+          simple: "A character's background and values shape how they see events.",
+          detail: "Characters interpret events through their own experiences, beliefs and desires. Contrasts between how characters see the same event reveal their values and create conflict.",
+        },
+        {
+          title: "Setting",
+          simple: "Setting is the time, place and social environment of a story.",
+          detail: "Setting creates mood, reflects characters' situations, and can shape conflict. A decaying house might mirror a family's decline; a strict social setting can pressure characters.",
+          example: "\"The house had outlived three owners and would outlive her too, she thought, pressing a thumb into the soft rot of the windowsill.\" The decaying house mirrors her sense of mortality.",
+        },
+        {
+          title: "Plot structure",
+          simple: "Plot is the sequence of events, usually built around a conflict.",
+          detail: "Exposition, rising action, climax, falling action and resolution. Conflict can be internal (within a character) or external (with another person, society or nature). The order of events shapes suspense and emphasis.",
+        },
+        {
+          title: "Narrator and point of view",
+          simple: "Who tells the story, and how much they know, shapes what readers learn.",
+          detail: "First-person narrators are limited to their own perspective. Third-person limited follows one character's thoughts; third-person omniscient knows everyone's. The narrator's position creates distance or closeness to characters.",
+        },
+        {
+          title: "Making a defensible interpretation",
+          simple: "An interpretation is an arguable claim about what a text means.",
+          detail: "A strong claim goes beyond summary to explain what the story suggests about people or life. It must be defensible (supported by the text) and arguable (a reasonable reader could disagree).",
+        },
+        {
+          title: "Using textual evidence",
+          simple: "Support every claim with specific details from the text, and explain them.",
+          detail: "Choose evidence that directly supports your point. Short, embedded quotations work best. Commentary explains how the evidence supports your interpretation; without it, evidence doesn't earn points.",
+        },
+      ],
+      terms: [
+        ["Indirect characterization", "Revealing a character through speech, actions, thoughts or others' reactions."],
+        ["Setting", "The time, place and social environment of a story."],
+        ["Exposition", "The opening of a story that introduces characters and setting."],
+        ["Internal conflict", "A struggle within a character's own mind."],
+        ["Third-person limited", "A narrator who knows the thoughts of only one character."],
+        ["Interpretation", "A defensible claim about a text's meaning."],
+        ["Commentary", "Explanation of how evidence supports a claim."],
+      ],
+      mistakes: [
+        "Summarizing the plot instead of interpreting its meaning.",
+        "Dropping in a quotation without explaining it.",
+      ],
+      questions: [
+        { q: "\"Margaret straightened the photographs on the mantel every morning, though no one had visited in years.\"\n\nThis detail most strongly suggests that Margaret", choices: ["is expecting guests soon", "holds on to routines and appearances despite her isolation", "dislikes the photographs", "has just moved into the house"], answer: 1, explain: "The daily ritual, despite no visitors, reveals her attachment to order and the past in the face of loneliness." },
+        { q: "A story is told by a narrator who reports only what one character, Leo, sees, thinks and feels. The point of view is", choices: ["first person", "third-person limited", "third-person omniscient", "second person"], answer: 1, explain: "Third-person limited follows one character's inner life using \"he/she.\"" },
+        { q: "Which statement is the most defensible interpretation of a story in which a boy lies to protect his sister and is punished?", choices: ["The boy lies to his parents.", "The story suggests that loyalty can require sacrificing one's own interests.", "The story has a boy and his sister.", "Lying is always wrong."], answer: 1, explain: "It makes an arguable claim about meaning that the events support." },
+        { q: "\"The rain had not stopped for eleven days, and the river crept up the steps of the church like a patient creditor.\"\n\nThe setting primarily creates a sense of", choices: ["celebration", "slow, inescapable threat", "peaceful calm", "confusion about the time period"], answer: 1, explain: "Endless rain and the river \"creeping\" like someone collecting a debt suggest a gradual, unavoidable danger." },
+      ],
+      frq: {
+        prompt: "Prose analysis practice: In an original passage, a young woman returns to her childhood home after her father's death and finds her old room unchanged.\nWrite a thesis and plan for an essay analyzing how the author uses setting to convey the woman's complex feelings about her past.",
+        points: [
+          "A defensible thesis about complex feelings (e.g., comfort mixed with grief or confinement).",
+          "Evidence: specific details of the room (objects, light, dust) that carry emotional meaning.",
+          "Commentary: explains how each setting detail reflects her mixed emotions, not just what it is.",
+          "Line of reasoning: body paragraphs build toward the overall interpretation.",
+        ],
+      },
+    },
+    {
+      title: "Poetry I",
+      weightLabel: "Poetry · foundations",
+      tldr: "Poems create meaning through a speaker, the arrangement of lines and stanzas, precise word choice, and comparisons like simile and metaphor. Close reading examines how these choices work together.",
+      concepts: [
+        {
+          title: "The speaker",
+          simple: "The speaker is the voice in a poem, which isn't necessarily the poet.",
+          detail: "Identify who is speaking, to whom, and in what situation. The speaker's attitude (tone) toward the subject shapes the poem's meaning.",
+        },
+        {
+          title: "Lines and stanzas",
+          simple: "How a poem is divided into lines and stanzas affects rhythm and emphasis.",
+          detail: "Line breaks create pauses and emphasize words at the end or start of lines. Stanzas group ideas like paragraphs. A change in stanza pattern can signal a shift in thought.",
+        },
+        {
+          title: "Diction and connotation",
+          simple: "Poets choose words carefully for their associations as well as their meanings.",
+          detail: "Connotation is the emotional association of a word (\"home\" vs. \"house\"). Diction can be formal, informal, concrete or abstract. Look for word patterns that build a tone or theme.",
+        },
+        {
+          title: "Simile and metaphor",
+          simple: "Comparisons help readers see one thing in terms of another.",
+          detail: "A simile compares using \"like\" or \"as\"; a metaphor makes the comparison directly. Analyze what qualities are transferred from one thing to the other and why.",
+          example: "\"Grief is a house with no doors\" suggests grief traps you with no way out.",
+        },
+        {
+          title: "Imagery",
+          simple: "Imagery is language that appeals to the senses.",
+          detail: "Visual, auditory, tactile, olfactory and gustatory images make experiences vivid. Patterns of imagery (light and dark, growth and decay) often support a poem's meaning.",
+        },
+        {
+          title: "Contrasts and shifts",
+          simple: "Poems often change direction, and the shift is key to meaning.",
+          detail: "Shifts in tone, speaker, time or imagery often appear after words like \"but\" or \"yet,\" or at a new stanza. Contrasts between ideas (youth and age, hope and despair) create tension.",
+        },
+      ],
+      terms: [
+        ["Speaker", "The voice that speaks in a poem."],
+        ["Stanza", "A group of lines in a poem, like a paragraph."],
+        ["Connotation", "The emotional associations of a word."],
+        ["Simile", "A comparison using \"like\" or \"as.\""],
+        ["Metaphor", "A direct comparison without \"like\" or \"as.\""],
+        ["Imagery", "Language appealing to the senses."],
+      ],
+      mistakes: [
+        "Assuming the speaker is the poet.",
+        "Naming a metaphor without explaining what it suggests.",
+      ],
+      questions: [
+        { q: "\"My father's hands were maps / of every field he'd ever lost.\"\n\nThe metaphor suggests that the father's hands", choices: ["are used to read maps", "show a record of hardship and failure", "are unusually large", "belong to a geographer"], answer: 1, explain: "Hands as maps of lost fields suggest his life's struggles are written on his body." },
+        { q: "Which word choice gives the most negative connotation to a small home?", choices: ["cozy", "snug", "cramped", "compact"], answer: 2, explain: "\"Cramped\" suggests discomfort; the others are neutral or positive." },
+        { q: "A poem describes summer in bright, warm images for two stanzas, then begins the third with \"But now the frost...\" This most likely signals", choices: ["a shift in tone or time", "a new speaker who disagrees", "the poem's title", "a repeated refrain"], answer: 0, explain: "\"But\" plus a new image pattern signals a shift in tone or time." },
+        { q: "The speaker of a poem is best described as", choices: ["always the poet", "the voice that speaks in the poem, which may differ from the poet", "the main character of a novel", "the reader"], answer: 1, explain: "Poets often create speakers who aren't themselves." },
+      ],
+      frq: {
+        prompt: "Poetry analysis practice: An original poem describes an old tree that has been cut down, moving from memories of climbing it to an image of the empty stump.\nWrite a thesis and two body paragraph plans analyzing how the poet uses imagery and structure to convey the speaker's complex response to loss.",
+        points: [
+          "A thesis naming the complex response (e.g., nostalgia mixed with acceptance) and the techniques.",
+          "Body 1: imagery of the living tree and childhood (sensory details) and their emotional effect.",
+          "Body 2: the structural shift to the stump and how it changes the tone.",
+          "Commentary connecting each technique to the speaker's feelings.",
+        ],
+      },
+    },
+    {
+      title: "Longer Fiction or Drama I",
+      weightLabel: "Novels and plays · foundations",
+      tldr: "Longer works develop characters, conflicts and themes over time. Plays rely on dialogue and structure; novels can develop complex narration and social settings. Literary argument essays need a thesis about the whole work.",
+      concepts: [
+        {
+          title: "Character motivation and complexity",
+          simple: "Complex characters have mixed or conflicting motivations.",
+          detail: "Characters in long works often want contradictory things or change over time. Explaining WHY a character acts reveals deeper meaning. Tensions within a character are rich material for essays.",
+        },
+        {
+          title: "Setting and social context",
+          simple: "The society in which characters live shapes their choices and conflicts.",
+          detail: "Class, gender roles, religion and historical moment can limit or pressure characters. Authors often use setting to critique social values.",
+        },
+        {
+          title: "Dramatic structure",
+          simple: "Plays are organized into acts and scenes that build toward a climax.",
+          detail: "Drama relies on dialogue, stage directions, soliloquies (a character's thoughts spoken alone) and asides. Dramatic irony occurs when the audience knows something a character doesn't.",
+        },
+        {
+          title: "Theme across a whole work",
+          simple: "A theme is a message about life that develops throughout a work.",
+          detail: "A theme is a complete idea (\"Ambition can destroy the relationships it was meant to serve\"), not a single word (\"ambition\"). Trace how it develops through characters, conflicts and symbols.",
+        },
+        {
+          title: "Conflict and its resolution",
+          simple: "How conflicts resolve, or don't, shapes a work's meaning.",
+          detail: "Conflicts can be resolved, left open, or resolved at a great cost. An ambiguous ending invites multiple interpretations.",
+        },
+        {
+          title: "Writing a literary argument thesis",
+          simple: "For Q3, choose a work and argue how an element in it contributes to meaning.",
+          detail: "The prompt gives a literary idea (e.g., a character torn between duty and desire). Choose a work that fits, and write a thesis explaining how that idea contributes to the meaning of the WHOLE work.",
+        },
+      ],
+      terms: [
+        ["Soliloquy", "A speech in which a character alone on stage reveals their thoughts."],
+        ["Dramatic irony", "When the audience knows something a character doesn't."],
+        ["Theme", "A message about life developed through a work."],
+        ["Motivation", "The reasons behind a character's actions."],
+        ["Social context", "The society and time that shape a work and its characters."],
+        ["Aside", "A brief remark to the audience that other characters don't hear."],
+      ],
+      mistakes: [
+        "Stating a theme as one word instead of a complete idea.",
+        "Summarizing the plot of the chosen work in Q3 instead of arguing about its meaning.",
+      ],
+      questions: [
+        { q: "In a play, the audience knows a letter has been forged, but the main character believes it is real. This is", choices: ["verbal irony", "situational irony", "dramatic irony", "a soliloquy"], answer: 2, explain: "The audience knows something the character doesn't." },
+        { q: "Which statement is a theme, rather than a topic?", choices: ["Jealousy", "Family and loyalty", "Jealousy can turn love into a destructive force", "The main character"], answer: 2, explain: "A theme is a complete statement about life." },
+        { q: "A character alone on stage speaks her thoughts about whether to betray a friend. This is a", choices: ["dialogue", "soliloquy", "stage direction", "chorus"], answer: 1, explain: "A soliloquy reveals inner thoughts to the audience while alone." },
+        { q: "A novel set in a rigid class society shows a servant who cannot marry the person she loves. The setting mainly functions to", choices: ["provide a pleasant backdrop", "create social pressures that drive the central conflict", "confuse the time period", "introduce comic relief"], answer: 1, explain: "The class system creates the obstacle at the heart of the conflict." },
+      ],
+      frq: {
+        prompt: "Literary argument practice: \"Many works feature a character who must choose between personal desire and responsibility to others.\"\nChoose a novel or play and write a thesis and outline explaining how this choice contributes to the meaning of the work as a whole.",
+        points: [
+          "A thesis naming the work and the character's choice, and explaining how it contributes to the work's meaning.",
+          "Two or more body paragraphs with specific evidence (events, details, quotations) from the work.",
+          "Commentary connecting the evidence to the larger meaning, not just retelling plot.",
+        ],
+      },
+    },
+    {
+      title: "Short Fiction II",
+      weightLabel: "Short fiction · deeper",
+      tldr: "Characters change or stay the same, and foils highlight their traits. Setting can become symbolic. Nonchronological structures and the narrator's distance and tone shape meaning, and essays need a clear line of reasoning.",
+      concepts: [
+        {
+          title: "Dynamic and static characters",
+          simple: "Dynamic characters change; static characters stay the same.",
+          detail: "A character's change (or failure to change) often carries the story's meaning. Epiphanies are sudden moments of realization. Foils are characters who contrast with another to highlight their traits.",
+        },
+        {
+          title: "Setting as symbol and mood",
+          simple: "Setting details can carry symbolic meaning and create atmosphere.",
+          detail: "A storm might mirror inner turmoil; a locked garden might symbolize lost innocence. Mood is the feeling the setting creates for the reader.",
+        },
+        {
+          title: "Nonchronological structure",
+          simple: "Stories don't always tell events in order, and the order matters.",
+          detail: "Flashbacks reveal past events; foreshadowing hints at future ones; in medias res starts in the middle of action. Rearranging time controls suspense and emphasizes connections between past and present.",
+        },
+        {
+          title: "Narrative distance and tone",
+          simple: "How close the narrator stays to characters, and the narrator's attitude, shape our response.",
+          detail: "A detached narrator can make tragic events feel cold or ironic; a close narrator invites sympathy. Tone words should be precise: wry, detached, tender, sardonic, reverent.",
+        },
+        {
+          title: "Symbols",
+          simple: "A symbol is an object, person or event that stands for a larger idea.",
+          detail: "Symbols gain meaning from repetition and context. Explain what the symbol represents AND how it develops or changes through the story.",
+        },
+        {
+          title: "Line of reasoning in essays",
+          simple: "Each body paragraph should build logically toward your thesis.",
+          detail: "Organize paragraphs by ideas, not by device. Topic sentences state claims that support the thesis. Transitions show how each paragraph adds to the argument.",
+        },
+      ],
+      terms: [
+        ["Dynamic character", "A character who changes significantly."],
+        ["Foil", "A character who contrasts with another to highlight traits."],
+        ["Epiphany", "A sudden moment of insight or realization."],
+        ["Flashback", "A scene that interrupts the present to show past events."],
+        ["Foreshadowing", "Hints about events to come."],
+        ["Symbol", "Something concrete that represents a larger idea."],
+        ["Mood", "The feeling a text creates in the reader."],
+      ],
+      mistakes: [
+        "Naming a symbol without explaining how its meaning develops.",
+        "Organizing essays device by device instead of idea by idea.",
+      ],
+      questions: [
+        { q: "Two brothers appear in a story: one is reckless and generous, the other cautious and stingy. The second brother mainly serves as a", choices: ["narrator", "foil", "flat antagonist only", "symbol of nature"], answer: 1, explain: "A foil contrasts with another character to highlight their traits." },
+        { q: "A story opens with a funeral, then jumps back twenty years to show how the friendship began. This structure mainly", choices: ["confuses the reader on purpose", "makes the reader view the past in light of the known ending", "hides the ending", "shows the story is set in the future"], answer: 1, explain: "Starting with the funeral colors every earlier scene with the knowledge of loss." },
+        { q: "\"The narrator describes the family's ruin in calm, precise sentences, noting the price of every lost possession.\"\n\nThe narrator's tone is best described as", choices: ["hysterical", "detached", "joyful", "confused"], answer: 1, explain: "Calm precision about ruin suggests emotional distance." },
+        { q: "A cracked mirror appears in three scenes, each time as a character's marriage worsens. The mirror most likely symbolizes", choices: ["wealth", "the deteriorating relationship", "vanity only", "the setting's time period"], answer: 1, explain: "Its repeated appearance alongside the marriage's decline links it to the broken relationship." },
+      ],
+      frq: {
+        prompt: "Prose analysis practice: In an original story, a man who has avoided his estranged brother for years sees him across a train platform and must decide whether to call out.\nWrite a thesis analyzing how the author uses structure (flashback) and narrative perspective to convey the man's conflicted feelings.",
+        points: [
+          "A thesis about his complex feelings (longing and pride, regret and fear) and the techniques.",
+          "Evidence from flashbacks and how they deepen the present moment.",
+          "Evidence of narrative perspective (close third person, inner thoughts) and its effect.",
+          "A clear line of reasoning connecting paragraphs to the thesis.",
+        ],
+      },
+    },
+    {
+      title: "Poetry II",
+      weightLabel: "Poetry · deeper",
+      tldr: "Poetic forms, rhyme and meter create patterns that shape meaning. Extended metaphors, symbols and allusions carry complex ideas. Tone shifts, like a sonnet's volta, reveal a speaker's changing thoughts.",
+      concepts: [
+        {
+          title: "Poetic forms",
+          simple: "Forms like the sonnet and villanelle have rules that shape a poem's meaning.",
+          detail: "Shakespearean sonnet: 14 lines, three quatrains and a final couplet. Petrarchan sonnet: an octave and a sestet with a turn (volta). Villanelle: 19 lines with two repeating refrains. Free verse has no fixed pattern. Ask why a poet chose or broke a form.",
+        },
+        {
+          title: "Rhyme and meter",
+          simple: "Patterns of sound and rhythm create music and emphasis.",
+          detail: "Rhyme scheme is labeled with letters (ABAB). Meter is the pattern of stressed and unstressed syllables; iambic pentameter has five iambs (da-DUM) per line. Breaks in the pattern draw attention to key words.",
+        },
+        {
+          title: "Extended metaphor and conceit",
+          simple: "An extended metaphor develops one comparison across many lines.",
+          detail: "A conceit is an elaborate, surprising extended metaphor (comparing lovers' souls to a drawing compass). Track how each part of the comparison adds meaning.",
+        },
+        {
+          title: "Symbol and allusion",
+          simple: "Symbols stand for larger ideas; allusions refer to other works or history.",
+          detail: "An allusion (to the Bible, mythology, history or other literature) brings that source's meaning into the poem. Explain what the reference adds, not just where it's from.",
+        },
+        {
+          title: "Tone and the volta",
+          simple: "A poem's tone can shift, especially at a turn called the volta.",
+          detail: "In sonnets the volta often comes at line 9 (Petrarchan) or the final couplet (Shakespearean). Identify the tone before and after and explain what the shift reveals.",
+        },
+        {
+          title: "Commentary in poetry essays",
+          simple: "Strong commentary explains how techniques create meaning, not just that they exist.",
+          detail: "Use the pattern: technique + example + effect + connection to the thesis. Avoid vague effects like \"this creates imagery.\" Say what the imagery makes the reader feel or understand.",
+        },
+      ],
+      terms: [
+        ["Sonnet", "A 14-line poem, often in iambic pentameter."],
+        ["Volta", "The turn or shift in a poem, especially a sonnet."],
+        ["Iambic pentameter", "A line of five iambs (unstressed-stressed pairs)."],
+        ["Villanelle", "A 19-line poem with two repeating refrains."],
+        ["Conceit", "An elaborate, surprising extended metaphor."],
+        ["Allusion", "A reference to another work, person or event."],
+        ["Free verse", "Poetry without regular rhyme or meter."],
+      ],
+      mistakes: [
+        "Labeling a rhyme scheme without explaining its effect.",
+        "Identifying an allusion without explaining what it contributes.",
+      ],
+      questions: [
+        { q: "A 14-line poem with three quatrains and a rhyming couplet at the end is a", choices: ["villanelle", "Petrarchan sonnet", "Shakespearean sonnet", "free-verse poem"], answer: 2, explain: "Three quatrains plus a couplet is the Shakespearean form." },
+        { q: "In a sonnet, the volta is", choices: ["the rhyme scheme", "the turn or shift in thought", "the first line", "a repeated refrain"], answer: 1, explain: "The volta marks a change in argument or tone." },
+        { q: "A poem calls a flood \"the second coming of Noah's rain.\" This is an example of", choices: ["an allusion", "a sonnet", "enjambment", "iambic pentameter"], answer: 0, explain: "It refers to the biblical flood story." },
+        { q: "Which commentary best explains a technique's effect?", choices: ["The poet uses a simile in line 4.", "Line 4 has imagery.", "The simile comparing memory to smoke shows how the speaker's past is slipping away despite her efforts to hold it.", "There are many literary devices in this poem."], answer: 2, explain: "It names the technique and explains what it reveals." },
+      ],
+      frq: {
+        prompt: "Poetry analysis practice: An original Petrarchan sonnet praises a lover in the octave, then in the sestet admits that time will destroy her beauty.\nExplain how the volta shapes the poem's meaning, and plan a thesis about the speaker's complex attitude toward love and time.",
+        points: [
+          "Identify the volta at line 9 and the tone shift from admiration to melancholy or resignation.",
+          "A thesis about the complex attitude (love's intensity heightened by awareness of loss).",
+          "Evidence from both octave and sestet with commentary on how the contrast creates meaning.",
+        ],
+      },
+    },
+    {
+      title: "Longer Fiction or Drama II",
+      weightLabel: "Novels and plays · deeper",
+      tldr: "Longer works use irony, contrasts between characters, and recurring motifs to build meaning. Narrators may be unreliable. Literary argument essays trace an idea through a whole work with specific evidence.",
+      concepts: [
+        {
+          title: "Types of irony",
+          simple: "Irony is a gap between expectation and reality.",
+          detail: "Verbal irony: saying the opposite of what one means. Situational irony: the outcome is the opposite of what's expected. Dramatic irony: the audience knows more than the characters. Irony often exposes hypocrisy or fate.",
+        },
+        {
+          title: "Character contrasts and relationships",
+          simple: "Relationships between characters reveal their values and the work's ideas.",
+          detail: "Pairs and groups of characters can represent competing values (tradition vs. change, duty vs. desire). How relationships change can mark a work's central development.",
+        },
+        {
+          title: "Motifs",
+          simple: "A motif is a recurring image, idea or object that develops a theme.",
+          detail: "Motifs (blood, light and darkness, water, clocks) gather meaning through repetition. Tracing a motif across a novel or play shows how the theme develops.",
+        },
+        {
+          title: "Unreliable narration",
+          simple: "Some narrators can't be fully trusted, and readers must read between the lines.",
+          detail: "Narrators may be biased, self-deceiving, naive or mentally unstable. Clues include contradictions, other characters' reactions, and gaps between what they say and what happens. The gap reveals the author's critique.",
+        },
+        {
+          title: "Tension and conflict in long works",
+          simple: "Multiple conflicts build tension and reveal character.",
+          detail: "Subplots can echo or contrast with the main plot. Rising tension across acts or chapters leads to a climax where values collide.",
+        },
+        {
+          title: "Evidence from a whole work (Q3)",
+          simple: "For the literary argument essay, use specific moments from across the work.",
+          detail: "Pick evidence from the beginning, middle and end to show development. Paraphrase specific events precisely; exact quotations aren't required. Always connect evidence to the prompt's idea and the work's meaning.",
+        },
+      ],
+      terms: [
+        ["Verbal irony", "Saying the opposite of what one means."],
+        ["Situational irony", "An outcome opposite to what was expected."],
+        ["Motif", "A recurring element that develops a theme."],
+        ["Unreliable narrator", "A narrator whose account can't be fully trusted."],
+        ["Subplot", "A secondary storyline that supports the main plot."],
+        ["Climax", "The turning point of highest tension in a work."],
+      ],
+      mistakes: [
+        "Calling any unexpected event \"ironic\" without identifying the type.",
+        "Using evidence from only one scene in a literary argument essay.",
+      ],
+      questions: [
+        { q: "A fire station burns down. This is an example of", choices: ["verbal irony", "situational irony", "dramatic irony", "foreshadowing"], answer: 1, explain: "The outcome is the opposite of what we'd expect." },
+        { q: "A narrator insists he is calm and reasonable while describing increasingly paranoid actions. This narrator is best described as", choices: ["omniscient", "unreliable", "objective", "a foil"], answer: 1, explain: "The gap between his claims and his actions shows he can't be trusted." },
+        { q: "Images of broken clocks appear throughout a novel about a woman who refuses to move on after being abandoned. The clocks function as a", choices: ["motif representing time frozen by grief", "flashback", "subplot", "verbal irony"], answer: 0, explain: "The recurring stopped clocks develop the theme of being trapped in the past." },
+        { q: "In a literary argument essay, the strongest evidence usually comes from", choices: ["a plot summary of the whole book", "specific moments across the work that show development", "the author's biography", "a single quotation from the first page"], answer: 1, explain: "Specific moments from across the work show how an idea develops." },
+      ],
+      frq: {
+        prompt: "Literary argument practice: \"In many works, a character's pride leads to their downfall.\"\nChoose a work and outline an essay explaining how the character's pride contributes to the meaning of the work as a whole.",
+        points: [
+          "Thesis: names the work and explains what the character's prideful downfall reveals about the work's meaning.",
+          "Evidence from early, middle and late in the work showing how pride develops and causes harm.",
+          "Commentary connecting the downfall to a broader idea (e.g., the limits of human control or the cost of refusing to change).",
+        ],
+      },
+    },
+    {
+      title: "Short Fiction III",
+      weightLabel: "Short fiction · advanced",
+      tldr: "Advanced reading handles ambiguity, multiple interpretations, and how an author's style creates meaning. Strong essays show complexity, the heart of the sophistication point.",
+      concepts: [
+        {
+          title: "Ambiguity",
+          simple: "Some details or endings allow more than one meaning, on purpose.",
+          detail: "Ambiguity invites readers to weigh possibilities. Rather than choosing one reading, strong essays explain why the ambiguity matters to the work's meaning.",
+        },
+        {
+          title: "Multiple interpretations",
+          simple: "Texts can support several reasonable interpretations.",
+          detail: "Different critical lenses (psychological, social, feminist, historical) highlight different meanings. Acknowledging an alternative reading, then arguing for yours, shows sophistication.",
+        },
+        {
+          title: "Style and syntax",
+          simple: "An author's sentence structures create rhythm and emphasis.",
+          detail: "Long, winding sentences can mirror a character's racing thoughts; short, fragmented sentences can signal shock. Repetition, parallel structure and sentence length changes create effects worth analyzing.",
+        },
+        {
+          title: "Narrator bias and perspective",
+          simple: "Even a reliable narrator sees through a particular lens.",
+          detail: "Narrators' class, age, culture and emotions color their descriptions. Asking what a narrator notices or ignores reveals the author's larger meaning.",
+        },
+        {
+          title: "Complexity and the sophistication point",
+          simple: "Essays earn sophistication by exploring tensions and nuance in the text.",
+          detail: "Ways to show complexity: explore tensions within a character or theme, consider alternative interpretations, connect the text to a broader context, or use a vivid, controlled writing style throughout. Complexity must run through the whole essay, not appear in one sentence.",
+        },
+      ],
+      terms: [
+        ["Ambiguity", "Openness to more than one interpretation."],
+        ["Critical lens", "A perspective used to interpret literature, such as a feminist or historical lens."],
+        ["Syntax", "The arrangement of words in sentences."],
+        ["Parallelism", "Repeating grammatical structure for emphasis."],
+        ["Sophistication", "Essay complexity shown through nuance, tension or context."],
+      ],
+      mistakes: [
+        "Treating ambiguity as a flaw in the story instead of part of its meaning.",
+        "Trying to earn sophistication with one fancy sentence at the end.",
+      ],
+      questions: [
+        { q: "A story ends with a character walking toward a lit window, and the author never reveals whether she knocks. The most sophisticated response is to", choices: ["assume she knocks and ignore the uncertainty", "argue that the ambiguous ending reflects her unresolved choice between belonging and independence", "call the ending a mistake", "summarize the final paragraph"], answer: 1, explain: "It interprets the ambiguity as meaningful." },
+        { q: "\"She ran. Stopped. Turned. The house was gone.\"\n\nThe short sentences primarily create", choices: ["a calm, reflective mood", "a sense of shock and sudden realization", "humor", "a detailed description of the house"], answer: 1, explain: "Fragmented syntax mimics abrupt, stunned perception." },
+        { q: "Which approach best demonstrates complexity in a literary essay?", choices: ["Listing as many devices as possible", "Exploring a tension, such as a character who is both victim and cause of her suffering", "Retelling the whole plot", "Using long quotations"], answer: 1, explain: "Tension and nuance show sophisticated thinking." },
+        { q: "A story's narrator describes servants only by their tasks, never their names. This detail most likely reveals", choices: ["the narrator's class-based blindness toward the servants", "that the servants are unimportant to the plot", "a printing error", "the story's setting is futuristic"], answer: 0, explain: "What the narrator ignores reveals her biases, which the author may be critiquing." },
+      ],
+      frq: {
+        prompt: "Prose analysis practice: An original story is narrated by a proud grandmother describing her grandson's wedding, but small details suggest she is being quietly excluded by the family.\nPlan an essay that earns the sophistication point by analyzing the gap between the narrator's perception and reality.",
+        points: [
+          "A thesis about the complex gap between perception and reality and what it reveals (e.g., pride as self-protection).",
+          "Evidence of the narrator's claims alongside contradicting details.",
+          "Commentary exploring the tension (sympathy and irony at once), sustained throughout the essay.",
+        ],
+      },
+    },
+    {
+      title: "Poetry III",
+      weightLabel: "Poetry · advanced",
+      tldr: "Advanced poetry analysis handles ambiguity, sound devices, figures of speech like personification and apostrophe, and paradox. Timed poetry essays need efficient reading and a clear, complex thesis.",
+      concepts: [
+        {
+          title: "Ambiguity and multiple meanings in poems",
+          simple: "Words and images in poems can mean more than one thing at once.",
+          detail: "Puns, double meanings and unclear references enrich poems. A strong reading explains how both meanings work together.",
+        },
+        {
+          title: "Sound devices",
+          simple: "The sounds of words contribute to a poem's meaning and mood.",
+          detail: "Alliteration (repeated initial consonants), assonance (repeated vowels), consonance, and onomatopoeia create sound effects. Enjambment (a sentence running past a line break) creates momentum; caesura (a pause within a line) creates emphasis.",
+        },
+        {
+          title: "Personification and apostrophe",
+          simple: "Personification gives human traits to non-human things; apostrophe addresses someone absent or something non-human.",
+          detail: "\"O Death, where is thy sting?\" is apostrophe. Personification can make nature or ideas feel alive or threatening. Explain what the figure reveals about the speaker's feelings.",
+        },
+        {
+          title: "Paradox and juxtaposition",
+          simple: "Paradoxes seem contradictory but reveal truth; juxtaposition places contrasts side by side.",
+          detail: "A paradox like \"the loneliest crowd\" reveals a hidden truth. Juxtaposing images (a wedding and a funeral) creates tension and complexity.",
+        },
+        {
+          title: "Writing the timed poetry essay",
+          simple: "Read the poem twice, identify the speaker's complex attitude, then write a focused thesis.",
+          detail: "First read: overall meaning and situation. Second read: shifts, patterns and key techniques. Thesis: the speaker's complex attitude plus how techniques convey it. Write two or three focused body paragraphs rather than covering everything.",
+        },
+      ],
+      terms: [
+        ["Alliteration", "Repetition of initial consonant sounds."],
+        ["Assonance", "Repetition of vowel sounds."],
+        ["Enjambment", "A sentence continuing beyond a line break."],
+        ["Caesura", "A pause within a line of poetry."],
+        ["Apostrophe", "Addressing an absent person or non-human thing."],
+        ["Paradox", "A seemingly contradictory statement that reveals a truth."],
+      ],
+      mistakes: [
+        "Spotting sound devices without linking them to meaning.",
+        "Trying to discuss every device instead of focusing on the most important ones.",
+      ],
+      questions: [
+        { q: "\"O quiet moon, why do you watch me grieve?\"\n\nThis line uses", choices: ["apostrophe", "enjambment", "caesura", "onomatopoeia"], answer: 0, explain: "The speaker addresses the moon directly." },
+        { q: "A line of poetry runs into the next without punctuation, carrying the sentence past the line break. This is", choices: ["caesura", "enjambment", "a couplet", "meter"], answer: 1, explain: "Enjambment continues a thought beyond the line break." },
+        { q: "\"I was never so alone as in that crowded room.\"\n\nThis line is an example of", choices: ["paradox", "allusion", "alliteration", "hyperbole only"], answer: 0, explain: "Being alone in a crowd seems contradictory but expresses a real truth about isolation." },
+        { q: "\"Slow, silent snow slid softly down.\"\n\nThe repeated \"s\" sounds mainly create", choices: ["a harsh, violent mood", "a hushed, gentle mood", "confusion about the speaker", "a shift in tone"], answer: 1, explain: "Soft sibilant alliteration mimics the quiet of falling snow." },
+      ],
+      frq: {
+        prompt: "Poetry analysis practice: An original poem addresses the speaker's childhood home directly (\"O house...\"), describing it with both love and resentment.\nWrite a thesis and plan analyzing how apostrophe and paradox convey the speaker's complex feelings.",
+        points: [
+          "A thesis naming the complex feelings (love and resentment) and the techniques.",
+          "Analysis of apostrophe: speaking to the house makes it a presence, like a person the speaker must confront.",
+          "Analysis of paradoxical images that hold both feelings at once.",
+          "Commentary tying the techniques to the speaker's unresolved relationship with the past.",
+        ],
+      },
+    },
+    {
+      title: "Longer Fiction or Drama III",
+      weightLabel: "Novels and plays · advanced",
+      tldr: "Advanced study of longer works examines tragic heroes and archetypes, social critique, and how complex themes develop. Success on the literary argument essay comes from choosing the right work and arguing with nuance.",
+      concepts: [
+        {
+          title: "Tragic heroes and archetypes",
+          simple: "Many long works use recurring character types and patterns.",
+          detail: "A tragic hero has a fatal flaw (hamartia), often pride (hubris), that leads to downfall; the audience feels catharsis. Archetypes (the mentor, the journey, the scapegoat) connect works across cultures.",
+        },
+        {
+          title: "Social critique",
+          simple: "Authors use characters and plots to criticize their societies.",
+          detail: "Works critique class systems, gender roles, racism, colonialism and more. Satire uses humor and exaggeration to expose flaws. Explain what the author criticizes and how the work makes that critique.",
+        },
+        {
+          title: "Complexity of theme",
+          simple: "Great works present themes with tensions and qualifications, not simple morals.",
+          detail: "Instead of \"ambition is bad,\" a complex theme might be \"ambition gives life purpose but, unchecked, destroys the relationships that make success meaningful.\" Show how the work complicates easy answers.",
+        },
+        {
+          title: "Choosing a work for Q3",
+          simple: "Pick a work you know well that clearly fits the prompt.",
+          detail: "Prepare works with rich characters and themes (e.g., a Shakespeare tragedy, a major novel). Choose the one where you can cite specific moments and argue meaning. Avoid works you've only skimmed or seen as films.",
+        },
+        {
+          title: "Earning sophistication in Q3",
+          simple: "Sophistication comes from nuanced arguments that go beyond the obvious.",
+          detail: "Explore how the prompt's idea is complicated in the work, consider broader significance, or discuss alternative interpretations. Sustain this across the essay.",
+        },
+      ],
+      terms: [
+        ["Tragic hero", "A protagonist whose flaw leads to downfall."],
+        ["Hamartia", "A tragic hero's fatal flaw or error."],
+        ["Hubris", "Excessive pride."],
+        ["Catharsis", "The emotional release an audience feels after a tragedy."],
+        ["Archetype", "A recurring character type, symbol or pattern across literature."],
+        ["Satire", "Using humor or exaggeration to criticize society."],
+      ],
+      mistakes: [
+        "Reducing a work's theme to a simple moral lesson.",
+        "Choosing a work for Q3 that you know only from summaries or films.",
+      ],
+      questions: [
+        { q: "A king ignores warnings because he believes he is above fate, and loses everything. His downfall comes mainly from", choices: ["catharsis", "hubris", "satire", "an allusion"], answer: 1, explain: "Excessive pride (hubris) is his tragic flaw." },
+        { q: "A novel exaggerates a wealthy family's absurd spending while their workers go hungry. This technique is", choices: ["satire", "a soliloquy", "free verse", "dramatic irony only"], answer: 0, explain: "Exaggeration and humor exposing social flaws is satire." },
+        { q: "Which thesis shows the most complex understanding of theme?", choices: ["The novel shows that greed is bad.", "The novel suggests that ambition gives the protagonist purpose but ultimately isolates her from those who helped her succeed.", "The novel is about ambition.", "The main character is ambitious."], answer: 1, explain: "It presents a theme with tension and qualification." },
+        { q: "When choosing a work for the literary argument essay, the best strategy is to pick one that", choices: ["is the longest you've read", "fits the prompt and that you know in specific detail", "has a film adaptation", "you haven't studied, to be original"], answer: 1, explain: "Specific knowledge lets you provide strong evidence." },
+      ],
+      frq: {
+        prompt: "Literary argument practice: \"Many works explore how a society's expectations shape, or limit, an individual.\"\nChoose a work and plan an essay that argues how this tension contributes to the meaning of the work, aiming for sophistication.",
+        points: [
+          "A thesis explaining how the society–individual tension creates meaning, with nuance (e.g., the character partly internalizes the expectations they resist).",
+          "Specific evidence from across the work.",
+          "Commentary connecting the tension to the work's critique of society.",
+          "Sophistication: exploring complexity or broader context throughout.",
+        ],
+      },
+    },
+  ],
+};
+
+</script>
+<script>/* content/environmental-science.js */
+window.AP_CONTENT = window.AP_CONTENT || {};
+window.AP_CONTENT["environmental-science"] = {
+  tips: [
+    "Calculators are allowed, but show every step of a calculation: the setup, the units and the answer. Use scientific notation for very large or small numbers.",
+    "Free-response questions often ask you to \"propose a solution\" and \"describe a disadvantage.\" Be specific: name the law, technology or practice.",
+    "For experimental design questions, identify the independent variable, dependent variable, control group and constants, and write a testable hypothesis.",
+    "Know the 10% rule, doubling time (rule of 70), and percent change. Many points come from simple math done carefully.",
+    "Connect causes to effects in chains: fertilizer runoff → algal bloom → decomposition → oxygen depletion → fish die-off.",
+  ],
+  units: [
+    {
+      title: "The Living World: Ecosystems",
+      weight: "6–8%",
+      tldr: "Ecosystems are communities interacting with their physical environment. Energy flows through food webs and is lost at each level, while matter cycles through biogeochemical cycles like carbon, nitrogen, phosphorus and water.",
+      concepts: [
+        {
+          title: "Ecosystems and biomes",
+          simple: "Biomes are large regions defined by climate, which determines the plants and animals that live there.",
+          detail: "Temperature and precipitation determine biomes (tundra, taiga, temperate forest, grassland, desert, tropical rainforest, savanna). Aquatic biomes depend on salinity, depth and flow (freshwater, estuaries, coral reefs, open ocean).",
+        },
+        {
+          title: "Species interactions",
+          simple: "Species interact through competition, predation and symbiosis.",
+          detail: "Competition leads to resource partitioning. Predation, herbivory and parasitism help one species and harm another. Mutualism helps both; commensalism helps one and doesn't affect the other.",
+        },
+        {
+          title: "Energy flow and the 10% rule",
+          simple: "Only about 10% of energy passes from one trophic level to the next.",
+          detail: "Producers capture solar energy (primary productivity). Gross primary productivity minus respiration = net primary productivity. About 90% of energy is lost as heat at each level, which limits food chain length and explains why eating lower on the food chain feeds more people.",
+          example: "10,000 kcal of producers → about 1,000 kcal for herbivores → about 100 kcal for carnivores.",
+        },
+        {
+          title: "Food chains and food webs",
+          simple: "Food webs show many feeding relationships and how energy moves through an ecosystem.",
+          detail: "Trophic levels: producers, primary consumers, secondary consumers, tertiary consumers, decomposers. Food webs show how removing one species affects others. Keystone species have outsized effects.",
+        },
+        {
+          title: "The carbon cycle",
+          simple: "Carbon moves among the air, living things, oceans and rocks.",
+          detail: "Photosynthesis removes CO₂; respiration, decomposition and combustion release it. Sinks (reservoirs) include oceans, sediments, fossil fuels and forests. Burning fossil fuels moves carbon from long-term storage to the atmosphere quickly.",
+        },
+        {
+          title: "The nitrogen and phosphorus cycles",
+          simple: "Nitrogen and phosphorus are key nutrients that cycle in different ways.",
+          detail: "Nitrogen: fixation by bacteria (N₂ → NH₃), nitrification, assimilation, ammonification, denitrification. Phosphorus has no significant gas phase; it cycles slowly through rocks, soil and water, so it's often a limiting nutrient. Excess of either causes eutrophication.",
+        },
+        {
+          title: "The hydrologic cycle",
+          simple: "Water moves through evaporation, transpiration, precipitation, runoff and infiltration.",
+          detail: "Solar energy drives evaporation; transpiration from plants adds water vapor. Water infiltrates to recharge aquifers or runs off into surface water. Most freshwater is locked in ice caps and groundwater.",
+        },
+      ],
+      terms: [
+        ["Biome", "A large region with similar climate, plants and animals."],
+        ["Mutualism", "A relationship that benefits both species."],
+        ["Net primary productivity", "Energy captured by producers minus energy they use in respiration."],
+        ["10% rule", "About 10% of energy passes to the next trophic level."],
+        ["Carbon sink", "A reservoir that stores carbon, like oceans or forests."],
+        ["Nitrogen fixation", "Conversion of atmospheric N₂ into usable ammonia by bacteria."],
+        ["Limiting nutrient", "The nutrient in shortest supply that limits growth, often phosphorus."],
+      ],
+      mistakes: [
+        "Saying energy cycles; energy flows, and matter cycles.",
+        "Forgetting that phosphorus has no significant atmospheric component.",
+      ],
+      questions: [
+        { q: "If producers in an ecosystem contain 20,000 kcal of energy, about how much energy is available to secondary consumers?", choices: ["2,000 kcal", "200 kcal", "20 kcal", "18,000 kcal"], answer: 1, explain: "20,000 → 2,000 (primary consumers) → 200 (secondary consumers)." },
+        { q: "Which process converts atmospheric nitrogen into a form plants can use?", choices: ["Denitrification", "Nitrogen fixation", "Transpiration", "Respiration"], answer: 1, explain: "Nitrogen-fixing bacteria convert N₂ into ammonia." },
+        { q: "Why is phosphorus often a limiting nutrient in ecosystems?", choices: ["It is abundant in the atmosphere", "It cycles slowly and has no significant gas phase", "Plants don't need it", "It is produced by photosynthesis"], answer: 1, explain: "Phosphorus cycles slowly through rock weathering, so it's often in short supply." },
+        { q: "A bird eats insects off a rhinoceros's skin, and the rhino benefits from pest removal. This relationship is", choices: ["commensalism", "mutualism", "parasitism", "competition"], answer: 1, explain: "Both species benefit." },
+      ],
+      frq: {
+        prompt: "A lake ecosystem has producers that capture 50,000 kcal of energy.\n(a) Calculate the energy available to tertiary consumers, showing your work.\n(b) Explain why there are fewer tertiary consumers than primary consumers.\n(c) Describe one way humans disrupt the carbon cycle.",
+        points: [
+          "(a) 50,000 → 5,000 → 500 → 50 kcal.",
+          "(b) About 90% of energy is lost as heat at each level, so less energy supports fewer organisms higher up.",
+          "(c) Burning fossil fuels or deforestation releases stored carbon into the atmosphere.",
+        ],
+      },
+    },
+    {
+      title: "The Living World: Biodiversity",
+      weight: "6–8%",
+      tldr: "Biodiversity includes genetic, species and ecosystem diversity. It provides ecosystem services and resilience. Island biogeography, ecological tolerance and succession explain how communities form and recover.",
+      concepts: [
+        {
+          title: "Levels of biodiversity",
+          simple: "Biodiversity includes genetic, species and ecosystem diversity.",
+          detail: "Genetic diversity helps populations adapt to change. Species richness is the number of species; evenness is how evenly individuals are spread among them. Higher biodiversity makes ecosystems more resilient to disturbance.",
+        },
+        {
+          title: "Ecosystem services",
+          simple: "Nature provides services that people depend on and that have economic value.",
+          detail: "Provisioning (food, timber, water), regulating (climate, flood control, pollination), supporting (nutrient cycling, soil formation), cultural (recreation, spiritual value). Human disruption of these services has real economic costs.",
+        },
+        {
+          title: "Island biogeography",
+          simple: "Larger islands closer to the mainland have more species.",
+          detail: "Species richness depends on immigration and extinction rates: larger islands have lower extinction rates (more habitat), and closer islands have higher immigration rates. The idea applies to habitat \"islands\" like fragmented forests or parks.",
+        },
+        {
+          title: "Ecological tolerance",
+          simple: "Each species survives only within a range of conditions.",
+          detail: "Organisms have an optimal range, zones of physiological stress, and zones of intolerance for factors like temperature, pH and salinity. Species with narrow tolerances are more vulnerable to environmental change.",
+        },
+        {
+          title: "Natural disruptions",
+          simple: "Natural events like fires, floods and climate cycles disrupt ecosystems.",
+          detail: "Disruptions can be periodic, episodic or random. Some ecosystems depend on disturbance (fire-adapted pine forests). Organisms may migrate or adapt; those that can't may decline.",
+        },
+        {
+          title: "Adaptations and evolution",
+          simple: "Populations adapt to environmental change through natural selection.",
+          detail: "Organisms with traits suited to changed conditions survive and reproduce more. Faster-reproducing species adapt more quickly. Rapid human-caused changes can outpace adaptation.",
+        },
+        {
+          title: "Ecological succession",
+          simple: "Communities change in predictable stages after disturbance.",
+          detail: "Primary succession starts on bare rock with pioneer species (lichens, mosses) that build soil. Secondary succession follows a disturbance that leaves soil (fire, abandoned farm), progressing faster. Communities move toward a mature (climax) community.",
+        },
+      ],
+      terms: [
+        ["Species richness", "The number of different species in an area."],
+        ["Species evenness", "How evenly individuals are distributed among species."],
+        ["Ecosystem services", "Benefits people get from ecosystems."],
+        ["Island biogeography", "Theory linking island size and distance to species richness."],
+        ["Range of tolerance", "The range of conditions a species can survive in."],
+        ["Pioneer species", "The first organisms to colonize a disturbed or bare area."],
+        ["Secondary succession", "Community recovery on existing soil after a disturbance."],
+      ],
+      mistakes: [
+        "Confusing primary succession (no soil) with secondary succession (soil present).",
+        "Treating species richness and evenness as the same measure.",
+      ],
+      questions: [
+        { q: "According to island biogeography, which island would have the most species?", choices: ["A small island far from the mainland", "A large island close to the mainland", "A small island close to the mainland", "A large island far from the mainland"], answer: 1, explain: "Large size lowers extinction; closeness raises immigration." },
+        { q: "Bees pollinating crops is an example of which type of ecosystem service?", choices: ["Provisioning", "Regulating", "Cultural", "None; pollination has no economic value"], answer: 1, explain: "Pollination regulates ecosystem processes (and supports food production)." },
+        { q: "After a forest fire leaves the soil intact, the community that develops shows", choices: ["primary succession", "secondary succession", "island biogeography", "eutrophication"], answer: 1, explain: "Soil is already present, so this is secondary succession." },
+        { q: "Why are populations with high genetic diversity more likely to survive environmental change?", choices: ["They reproduce more slowly", "Some individuals may have traits suited to new conditions", "They have fewer predators", "They are always larger in number"], answer: 1, explain: "Variation provides the raw material for natural selection." },
+      ],
+      frq: {
+        prompt: "A forest is divided into small patches by a new highway.\n(a) Explain how habitat fragmentation relates to island biogeography.\n(b) Describe one effect on species richness.\n(c) Propose one solution to reduce the impact.",
+        points: [
+          "(a) Fragments act like small, isolated islands: smaller area means higher extinction and isolation means lower immigration.",
+          "(b) Species richness declines, especially for species needing large territories.",
+          "(c) Build wildlife corridors or overpasses connecting fragments.",
+        ],
+      },
+    },
+    {
+      title: "Populations",
+      weight: "10–15%",
+      tldr: "Populations grow exponentially until limited by carrying capacity. Species differ in reproductive strategy (r vs. K). Human population growth depends on birth, death and fertility rates, which change as countries develop.",
+      concepts: [
+        {
+          title: "Generalist and specialist species",
+          simple: "Generalists survive in many conditions; specialists need narrow conditions.",
+          detail: "Generalists (raccoons, cockroaches) tolerate wide ranges and adapt well to change. Specialists (pandas, koalas) depend on specific food or habitat, making them more vulnerable to extinction.",
+        },
+        {
+          title: "r- and K-selected species",
+          simple: "Some species have many offspring with little care; others have few with lots of care.",
+          detail: "r-selected: many offspring, little parental care, short lifespan, early maturity (insects, mice); often invasive. K-selected: few offspring, much care, long lifespan (elephants, whales); populations stay near carrying capacity and recover slowly.",
+        },
+        {
+          title: "Survivorship curves",
+          simple: "Survivorship curves show when in life most individuals die.",
+          detail: "Type I: most survive to old age (humans, K-selected). Type II: constant death rate (many birds). Type III: most die young (fish, r-selected).",
+        },
+        {
+          title: "Carrying capacity and population growth",
+          simple: "Populations grow until resources limit them at the carrying capacity.",
+          detail: "Exponential growth (J-curve) occurs with unlimited resources. Logistic growth (S-curve) levels off at carrying capacity (K). Overshoot above K often causes a die-off. Density-dependent factors (food, disease) and density-independent factors (natural disasters) regulate populations.",
+        },
+        {
+          title: "Human population growth and demographics",
+          simple: "Human population changes through births, deaths and migration.",
+          detail: "Growth rate = (birth rate − death rate)/10 when rates are per 1,000. Rule of 70: doubling time ≈ 70 ÷ growth rate (%). Total fertility rate (TFR) near 2.1 is replacement level. Age structure diagrams predict future growth.",
+          example: "A growth rate of 2% doubles in about 35 years.",
+        },
+        {
+          title: "Demographic transition",
+          simple: "As countries industrialize, death rates fall first, then birth rates.",
+          detail: "Pre-industrial: high birth and death rates. Transitional: death rates drop, and population grows rapidly. Industrial: birth rates drop. Post-industrial: low rates, stable or declining population. Education and opportunities for women lower TFR.",
+        },
+      ],
+      terms: [
+        ["Carrying capacity", "The maximum population an environment can support."],
+        ["r-selected species", "Species with many offspring and little parental care."],
+        ["K-selected species", "Species with few offspring and extensive parental care."],
+        ["Logistic growth", "Growth that slows and levels off at carrying capacity."],
+        ["Rule of 70", "Doubling time ≈ 70 ÷ percent growth rate."],
+        ["Replacement-level fertility", "A total fertility rate of about 2.1."],
+        ["Density-dependent factor", "A limit on population whose effect grows with population density."],
+      ],
+      mistakes: [
+        "Mixing up r-selected (many offspring) and K-selected (few offspring).",
+        "Using 72 or 100 instead of 70 for doubling time on the exam.",
+      ],
+      questions: [
+        { q: "A population grows 3.5% per year. About how long does it take to double?", choices: ["10 years", "20 years", "35 years", "70 years"], answer: 1, explain: "70 ÷ 3.5 = 20 years." },
+        { q: "Which species is most likely K-selected?", choices: ["Housefly", "Mouse", "Elephant", "Dandelion"], answer: 2, explain: "Elephants have few offspring, long lives and extensive care." },
+        { q: "A population that exceeds carrying capacity will most likely", choices: ["keep growing exponentially", "experience a die-off", "become r-selected", "stop reproducing entirely"], answer: 1, explain: "Overshoot depletes resources, leading to a population crash." },
+        { q: "Which survivorship curve fits a fish species that releases thousands of eggs, most of which die quickly?", choices: ["Type I", "Type II", "Type III", "Logistic"], answer: 2, explain: "Type III: high mortality early in life." },
+      ],
+      frq: {
+        prompt: "Country Y has a birth rate of 30 per 1,000 and a death rate of 10 per 1,000.\n(a) Calculate the population growth rate as a percent (ignoring migration).\n(b) Calculate the doubling time.\n(c) Describe one factor that would likely lower Country Y's birth rate over time.",
+        points: [
+          "(a) (30 − 10) ÷ 10 = 2% per year.",
+          "(b) 70 ÷ 2 = 35 years.",
+          "(c) More education and job opportunities for women, access to family planning, or urbanization.",
+        ],
+      },
+    },
+    {
+      title: "Earth Systems and Resources",
+      weight: "10–15%",
+      tldr: "Plate tectonics shapes Earth's surface and hazards. Soil forms slowly and supports agriculture. The atmosphere's structure, global wind patterns, the water cycle and climate patterns like El Niño influence resources everywhere.",
+      concepts: [
+        {
+          title: "Plate tectonics",
+          simple: "Earth's plates move, causing earthquakes, volcanoes and mountains.",
+          detail: "Divergent boundaries (plates pull apart: mid-ocean ridges), convergent boundaries (collision: subduction zones, volcanoes, mountains), transform boundaries (slide past: earthquakes, like the San Andreas Fault). The Ring of Fire around the Pacific has many volcanoes and earthquakes.",
+        },
+        {
+          title: "Soil formation and properties",
+          simple: "Soil forms slowly from weathered rock and organic matter.",
+          detail: "Soil horizons: O (organic), A (topsoil), B (subsoil), C (weathered parent material). Texture depends on the mix of sand, silt and clay (use the soil texture triangle). Sand drains fast; clay holds water. Loam is best for most crops.",
+        },
+        {
+          title: "Soil erosion and conservation",
+          simple: "Farming and deforestation can erode soil faster than it forms.",
+          detail: "Erosion by wind and water removes topsoil. Conservation methods: contour plowing, terracing, windbreaks, no-till farming, cover crops and crop rotation.",
+        },
+        {
+          title: "Earth's atmosphere",
+          simple: "The atmosphere has layers with different temperatures and roles.",
+          detail: "Composition: about 78% N₂, 21% O₂, plus argon, CO₂ and water vapor. Layers: troposphere (weather), stratosphere (ozone layer absorbs UV), mesosphere, thermosphere. Temperature decreases with altitude in the troposphere.",
+        },
+        {
+          title: "Global wind patterns and solar radiation",
+          simple: "Uneven heating of Earth drives winds and climate zones.",
+          detail: "Sunlight is most intense at the equator. Warm air rises at the equator and sinks around 30° latitude, forming Hadley cells, deserts at 30°, and rainforests at the equator. The Coriolis effect deflects winds. Earth's tilt causes seasons.",
+        },
+        {
+          title: "Watersheds",
+          simple: "A watershed is all the land that drains into a particular body of water.",
+          detail: "Land use in a watershed (farming, development) affects the water quality downstream. Vegetation reduces runoff and erosion. Healthy watersheds filter water naturally.",
+        },
+        {
+          title: "El Niño and La Niña",
+          simple: "Changes in Pacific Ocean temperatures shift weather patterns worldwide.",
+          detail: "El Niño: weaker trade winds, warm water in the eastern Pacific, reduced upwelling off South America (hurting fisheries), and wetter conditions in parts of the Americas. La Niña: stronger trade winds and cooler eastern Pacific water. Both are part of the El Niño–Southern Oscillation (ENSO).",
+        },
+      ],
+      terms: [
+        ["Subduction", "One plate sinking beneath another at a convergent boundary."],
+        ["Soil horizon", "A distinct layer of soil."],
+        ["Loam", "Soil with a balanced mix of sand, silt and clay."],
+        ["Troposphere", "The lowest atmospheric layer, where weather occurs."],
+        ["Stratospheric ozone", "Ozone in the stratosphere that absorbs harmful UV radiation."],
+        ["Watershed", "Land area that drains into a particular body of water."],
+        ["Upwelling", "Rising of cold, nutrient-rich water to the ocean surface."],
+      ],
+      mistakes: [
+        "Confusing stratospheric ozone (good, blocks UV) with tropospheric ozone (a harmful pollutant).",
+        "Saying El Niño strengthens upwelling off South America (it weakens it).",
+      ],
+      questions: [
+        { q: "At which type of plate boundary do plates slide past each other, causing earthquakes?", choices: ["Divergent", "Convergent", "Transform", "Subduction"], answer: 2, explain: "Transform boundaries, like the San Andreas Fault, slide horizontally." },
+        { q: "Which soil type drains water most quickly?", choices: ["Clay", "Silt", "Sand", "Loam"], answer: 2, explain: "Sand has the largest particles and largest pore spaces." },
+        { q: "The ozone layer that protects life from UV radiation is located in the", choices: ["troposphere", "stratosphere", "mesosphere", "thermosphere"], answer: 1, explain: "Stratospheric ozone absorbs UV radiation." },
+        { q: "During an El Niño event, fisheries off the coast of Peru typically", choices: ["improve because of stronger upwelling", "decline because upwelling weakens", "are unaffected", "expand to colder waters permanently"], answer: 1, explain: "Warm water suppresses nutrient-rich upwelling, reducing fish populations." },
+      ],
+      frq: {
+        prompt: "A farmer notices topsoil loss on a sloped field.\n(a) Describe one cause of soil erosion on the field.\n(b) Propose one method to reduce erosion.\n(c) Explain why topsoil loss reduces crop yields.",
+        points: [
+          "(a) Water runoff on bare soil, plowing up and down the slope, or removing vegetation.",
+          "(b) Contour plowing, terracing, cover crops, windbreaks or no-till farming.",
+          "(c) Topsoil holds most nutrients and organic matter; losing it lowers fertility and water retention.",
+        ],
+      },
+    },
+    {
+      title: "Land and Water Use",
+      weight: "10–15%",
+      tldr: "People use land and water for agriculture, forestry, mining, cities and fishing. Each use has environmental impacts, and sustainable practices can reduce them. The tragedy of the commons explains overuse of shared resources.",
+      concepts: [
+        {
+          title: "The tragedy of the commons",
+          simple: "Shared resources get overused when each person acts in their own interest.",
+          detail: "Examples: overfishing, overgrazing, groundwater depletion, air pollution. Solutions include regulations, quotas, permits and private or community ownership.",
+        },
+        {
+          title: "Clear-cutting and forestry",
+          simple: "Cutting down whole forests increases erosion and loses habitat.",
+          detail: "Clear-cutting is cheap but increases erosion, raises stream temperatures, and releases carbon. Alternatives: selective cutting, sustainable forestry, reforestation, and prescribed burns to reduce wildfire fuel.",
+        },
+        {
+          title: "Agricultural practices",
+          simple: "Industrial agriculture boosts yields but causes environmental problems.",
+          detail: "The Green Revolution brought mechanization, high-yield seeds, fertilizers and irrigation. Monocultures reduce biodiversity and invite pests. Synthetic fertilizers cause runoff and eutrophication; tilling increases erosion. Slash-and-burn farming causes deforestation.",
+        },
+        {
+          title: "Irrigation and water use",
+          simple: "Agriculture uses most of the world's freshwater, and some methods waste a lot.",
+          detail: "Furrow and flood irrigation lose water to evaporation and runoff; drip irrigation is most efficient. Overirrigation causes waterlogging and salinization. Pumping groundwater faster than it recharges depletes aquifers and causes land subsidence.",
+        },
+        {
+          title: "Pest control and meat production",
+          simple: "Pesticides and industrial meat production have environmental trade-offs.",
+          detail: "Pests evolve resistance to pesticides (the pesticide treadmill). Integrated pest management combines biological, physical and limited chemical controls. CAFOs (concentrated animal feeding operations) produce cheap meat but create waste runoff, antibiotic resistance and high resource use.",
+        },
+        {
+          title: "Mining and urban land use",
+          simple: "Mining and urban development disturb land and water.",
+          detail: "Surface mining removes overburden, destroying habitat; acid mine drainage pollutes water. Urban sprawl increases impervious surfaces, runoff and flooding, and the urban heat island effect. Reclamation and smart growth reduce impacts.",
+        },
+        {
+          title: "Fishing and sustainable practices",
+          simple: "Overfishing depletes fish populations, and sustainable practices help them recover.",
+          detail: "Trawling and bycatch damage ecosystems. Fishery collapse happens when fish are removed faster than they reproduce. Solutions: catch quotas, marine protected areas, and sustainable aquaculture (which has its own pollution and disease issues).",
+        },
+      ],
+      terms: [
+        ["Tragedy of the commons", "Overuse of shared resources by individuals acting in self-interest."],
+        ["Clear-cutting", "Removing all trees from an area at once."],
+        ["Monoculture", "Growing a single crop over a large area."],
+        ["Salinization", "Buildup of salts in soil from irrigation."],
+        ["Drip irrigation", "Delivering water directly to plant roots; the most efficient method."],
+        ["Integrated pest management", "Combining biological, physical and limited chemical pest control."],
+        ["Bycatch", "Non-target species caught while fishing."],
+      ],
+      mistakes: [
+        "Naming flood irrigation as efficient (drip irrigation is the most efficient).",
+        "Forgetting that pesticide use can lead to resistant pests.",
+      ],
+      questions: [
+        { q: "Overfishing in international waters, where no one owns the fish, best illustrates", choices: ["the tragedy of the commons", "biomagnification", "ecological succession", "the 10% rule"], answer: 0, explain: "Each fleet takes as much as it can from a shared resource, depleting it." },
+        { q: "Which irrigation method uses water most efficiently?", choices: ["Flood irrigation", "Furrow irrigation", "Drip irrigation", "Spray irrigation"], answer: 2, explain: "Drip irrigation delivers water to roots with minimal evaporation and runoff." },
+        { q: "Repeated irrigation in a dry climate can leave salt deposits in the soil. This is", choices: ["desertification", "salinization", "eutrophication", "subsidence"], answer: 1, explain: "Evaporating irrigation water leaves salts behind." },
+        { q: "Which is a component of integrated pest management?", choices: ["Spraying broad-spectrum pesticides weekly", "Introducing natural predators of the pest", "Planting a monoculture", "Using more fertilizer"], answer: 1, explain: "IPM uses biological controls like predators, reducing chemical use." },
+      ],
+      frq: {
+        prompt: "An aquifer used for farm irrigation is being depleted.\n(a) Explain why the aquifer is being depleted.\n(b) Describe one environmental consequence of aquifer depletion.\n(c) Propose one solution and describe a drawback of it.",
+        points: [
+          "(a) Water is pumped out faster than precipitation can recharge the aquifer.",
+          "(b) Land subsidence, saltwater intrusion near coasts, or dry wells and streams.",
+          "(c) Switch to drip irrigation (drawback: high upfront cost) or grow less water-intensive crops (drawback: lower income for farmers).",
+        ],
+      },
+    },
+    {
+      title: "Energy Resources and Consumption",
+      weight: "10–15%",
+      tldr: "Most energy comes from nonrenewable fossil fuels, which release carbon dioxide and other pollutants. Nuclear and renewable sources like solar, wind, hydroelectric and geothermal have different benefits and drawbacks. Conservation reduces demand.",
+      concepts: [
+        {
+          title: "Nonrenewable vs. renewable energy",
+          simple: "Nonrenewable sources are finite; renewable sources replenish naturally.",
+          detail: "Nonrenewable: coal, oil, natural gas, nuclear (uranium). Renewable: solar, wind, hydroelectric, geothermal, biomass (if harvested sustainably). Global energy use is still dominated by fossil fuels, with use growing fastest in developing countries.",
+        },
+        {
+          title: "Fossil fuels",
+          simple: "Coal, oil and natural gas formed from ancient organisms and release CO₂ when burned.",
+          detail: "Coal: abundant, cheap, highest CO₂ and pollution (SO₂, mercury, particulates). Natural gas: cleaner burning but leaks methane; fracking can contaminate groundwater. Oil: used mainly for transportation; spills harm ecosystems. Combustion converts chemical energy to heat to steam to turbine to electricity.",
+        },
+        {
+          title: "Nuclear power",
+          simple: "Nuclear fission produces lots of energy without CO₂, but creates radioactive waste.",
+          detail: "Uranium-235 fission heats water to spin turbines. Advantages: no CO₂ during operation, high energy output. Disadvantages: radioactive waste with long half-lives, thermal pollution, accident risk (Chernobyl, Fukushima), and mining impacts.",
+        },
+        {
+          title: "Solar and wind energy",
+          simple: "Solar and wind produce electricity without emissions but depend on weather.",
+          detail: "Photovoltaic cells convert sunlight directly to electricity; passive solar design heats buildings. Wind turbines convert kinetic energy of wind. Both are intermittent and need storage; wind can harm birds and bats; manufacturing panels uses mined metals.",
+        },
+        {
+          title: "Hydroelectric, geothermal and biomass",
+          simple: "Water, Earth's heat and plant material can also generate energy.",
+          detail: "Hydroelectric dams produce reliable power but flood habitats, block fish migration, and trap sediment. Geothermal uses underground heat; it's limited to certain locations. Biomass (wood, ethanol) is renewable if replanted but releases CO₂ and particulates, and crops for fuel compete with food.",
+        },
+        {
+          title: "Energy conservation and efficiency",
+          simple: "Using less energy is often the cheapest and cleanest option.",
+          detail: "Efficiency measures: LED lighting, insulation, hybrid and electric vehicles, energy-efficient appliances, and fuel economy standards. Behavior changes (carpooling, thermostat settings) also reduce use. Energy efficiency = useful output ÷ total input.",
+        },
+      ],
+      terms: [
+        ["Nonrenewable resource", "A resource that forms far more slowly than it's used."],
+        ["Fracking", "Injecting pressurized fluid to release natural gas from shale."],
+        ["Nuclear fission", "Splitting atomic nuclei to release energy."],
+        ["Half-life", "Time for half of a radioactive substance to decay."],
+        ["Photovoltaic cell", "A solar cell that converts sunlight directly to electricity."],
+        ["Intermittency", "The variability of energy sources like solar and wind."],
+        ["Energy efficiency", "Useful energy output divided by total energy input."],
+      ],
+      mistakes: [
+        "Saying nuclear power emits CO₂ during operation.",
+        "Calling biomass carbon-free without mentioning combustion emissions.",
+      ],
+      questions: [
+        { q: "Which energy source produces the most carbon dioxide per unit of energy?", choices: ["Natural gas", "Coal", "Nuclear", "Wind"], answer: 1, explain: "Coal has the highest carbon content and CO₂ emissions per unit of energy." },
+        { q: "A major disadvantage of nuclear power is", choices: ["high CO₂ emissions", "radioactive waste that stays dangerous for thousands of years", "dependence on sunlight", "low energy output"], answer: 1, explain: "Long-lived radioactive waste requires secure long-term storage." },
+        { q: "A main drawback of hydroelectric dams is that they", choices: ["emit large amounts of CO₂ when running", "block fish migration and flood habitats", "only work at night", "require uranium"], answer: 1, explain: "Dams alter rivers, block migration and flood land upstream." },
+        { q: "A power plant converts 10,000 J of fuel energy into 3,500 J of electricity. What is its efficiency?", choices: ["3.5%", "35%", "65%", "285%"], answer: 1, explain: "3,500 ÷ 10,000 = 0.35 = 35%." },
+      ],
+      frq: {
+        prompt: "A town is deciding between a new coal plant and a wind farm.\n(a) Describe one environmental advantage of the wind farm.\n(b) Describe one disadvantage of the wind farm.\n(c) Explain one reason the town might still choose the coal plant.",
+        points: [
+          "(a) No CO₂ or air pollutant emissions during operation.",
+          "(b) Intermittency (needs storage or backup), bird and bat deaths, or visual and noise concerns.",
+          "(c) Coal provides reliable, continuous power, may be cheaper with existing infrastructure, or supports local mining jobs.",
+        ],
+      },
+    },
+    {
+      title: "Atmospheric Pollution",
+      weight: "7–10%",
+      tldr: "Burning fuels releases primary pollutants that form secondary pollutants like smog, acid rain and ground-level ozone. The Clean Air Act and technologies like scrubbers and catalytic converters reduce air pollution. Indoor air pollution is a major health risk worldwide.",
+      concepts: [
+        {
+          title: "Primary and secondary pollutants",
+          simple: "Primary pollutants are emitted directly; secondary pollutants form in the air.",
+          detail: "Primary: CO, NOx, SO₂, particulate matter, VOCs. Secondary: ground-level ozone (from NOx + VOCs + sunlight), sulfuric and nitric acids (acid rain). The Clean Air Act sets standards for criteria pollutants.",
+        },
+        {
+          title: "Photochemical smog",
+          simple: "Sunlight turns car exhaust into a brown haze with harmful ozone.",
+          detail: "NO₂ breaks down in sunlight, forming ozone with help from VOCs. Smog peaks on hot, sunny afternoons in cities with heavy traffic. It irritates lungs and damages plants.",
+        },
+        {
+          title: "Thermal inversions",
+          simple: "A layer of warm air traps cooler air and pollution near the ground.",
+          detail: "Normally air cools with altitude, letting pollutants rise. In an inversion, a warm layer above cool air stops mixing, concentrating smog, especially in valleys (Los Angeles, Mexico City).",
+        },
+        {
+          title: "Acid deposition",
+          simple: "Sulfur and nitrogen oxides form acids that fall as acid rain.",
+          detail: "SO₂ (mostly from coal) and NOx (from vehicles and power plants) react with water to form sulfuric and nitric acid. Effects: lower pH in lakes (killing fish), leaching of soil nutrients and toxic aluminum, damage to buildings. Limestone can buffer acidity.",
+        },
+        {
+          title: "Indoor air pollution",
+          simple: "Indoor air can be more polluted than outdoor air.",
+          detail: "In developing countries, burning wood and dung for cooking causes deadly particulate and CO exposure. In developed countries: radon (from soil, a leading cause of lung cancer after smoking), asbestos, mold, VOCs from furniture and cleaners, and CO from faulty appliances.",
+        },
+        {
+          title: "Reducing air pollution",
+          simple: "Laws and technology cut emissions from vehicles and industry.",
+          detail: "Catalytic converters reduce CO, NOx and hydrocarbons from cars. Scrubbers remove SO₂ from smokestacks; electrostatic precipitators and baghouse filters remove particulates. Cap-and-trade systems (like the U.S. SO₂ program) cut emissions efficiently.",
+        },
+      ],
+      terms: [
+        ["Primary pollutant", "A pollutant emitted directly from a source."],
+        ["Secondary pollutant", "A pollutant formed by chemical reactions in the atmosphere."],
+        ["Photochemical smog", "Air pollution formed when sunlight reacts with NOx and VOCs."],
+        ["Thermal inversion", "A warm air layer that traps cooler, polluted air near the ground."],
+        ["Acid deposition", "Acids from SO₂ and NOx falling in rain, snow or dry particles."],
+        ["Radon", "A naturally occurring radioactive gas that seeps from soil into buildings."],
+        ["Catalytic converter", "Device that reduces harmful emissions from vehicle exhaust."],
+      ],
+      mistakes: [
+        "Calling ground-level ozone a primary pollutant (it forms in the air).",
+        "Saying acid rain comes mainly from CO₂.",
+      ],
+      questions: [
+        { q: "Which is a secondary pollutant?", choices: ["Carbon monoxide", "Sulfur dioxide", "Ground-level ozone", "Particulate matter"], answer: 2, explain: "Ozone forms from NOx and VOCs reacting in sunlight." },
+        { q: "Acid rain is caused mainly by emissions of", choices: ["CO₂ and methane", "SO₂ and NOx", "CFCs", "radon"], answer: 1, explain: "Sulfur and nitrogen oxides form sulfuric and nitric acids." },
+        { q: "A valley city's smog gets much worse when a layer of warm air sits above cooler air. This is", choices: ["the greenhouse effect", "a thermal inversion", "acid deposition", "El Niño"], answer: 1, explain: "The warm layer stops vertical mixing, trapping pollution." },
+        { q: "Which device removes sulfur dioxide from power plant exhaust?", choices: ["Catalytic converter", "Scrubber", "Photovoltaic cell", "Baghouse only"], answer: 1, explain: "Scrubbers chemically remove SO₂ from smokestack gases." },
+      ],
+      frq: {
+        prompt: "A city experiences frequent photochemical smog.\n(a) Identify two pollutants that react to form ground-level ozone.\n(b) Explain why smog is usually worst on sunny summer afternoons.\n(c) Propose one policy to reduce smog.",
+        points: [
+          "(a) Nitrogen oxides (NOx) and volatile organic compounds (VOCs).",
+          "(b) Sunlight drives the reactions that form ozone, and heat speeds them; morning traffic builds up the ingredients.",
+          "(c) Stricter vehicle emission standards, expanding public transit, or encouraging electric vehicles.",
+        ],
+      },
+    },
+    {
+      title: "Aquatic and Terrestrial Pollution",
+      weight: "7–10%",
+      tldr: "Pollution from point and nonpoint sources harms water and land. Nutrient runoff causes eutrophication; persistent toxins biomagnify up food chains. Wastewater treatment, landfills and laws like the Clean Water Act reduce pollution.",
+      concepts: [
+        {
+          title: "Point and nonpoint source pollution",
+          simple: "Point sources come from one location; nonpoint sources come from many spread-out places.",
+          detail: "Point: a factory pipe, sewage outfall, or smokestack (easier to regulate). Nonpoint: farm and urban runoff, which is harder to control. The Clean Water Act regulates point-source discharges.",
+        },
+        {
+          title: "Eutrophication and hypoxia",
+          simple: "Excess nutrients cause algae blooms that use up oxygen and kill fish.",
+          detail: "Chain: fertilizer or sewage runoff (N and P) → algal bloom → algae die → decomposers use up dissolved oxygen → hypoxia → fish kills. Dead zones, like the one in the Gulf of Mexico, result.",
+          hook: "Nutrients → bloom → decay → no oxygen → dead zone.",
+        },
+        {
+          title: "Bioaccumulation and biomagnification",
+          simple: "Some toxins build up in organisms and become more concentrated higher in the food chain.",
+          detail: "Bioaccumulation: a toxin builds up in one organism over its lifetime. Biomagnification: concentrations increase at each trophic level. Persistent, fat-soluble toxins like mercury, DDT and PCBs affect top predators most (DDT thinned eagle eggshells).",
+        },
+        {
+          title: "Toxic substances and dose-response",
+          simple: "The amount of exposure determines how harmful a substance is.",
+          detail: "LD50: the dose that kills 50% of test organisms. Dose-response curves show effects at increasing doses. Endocrine disruptors interfere with hormones even at low doses. Pollutants in water include lead, mercury, pharmaceuticals and microplastics.",
+        },
+        {
+          title: "Solid waste and landfills",
+          simple: "Most trash goes to landfills, which must be designed to prevent leaks.",
+          detail: "Sanitary landfills have clay and plastic liners, leachate collection and methane capture. Incineration reduces volume but can release pollutants. Reduce, reuse and recycle (in that order of priority) cut waste. E-waste contains toxic metals.",
+        },
+        {
+          title: "Wastewater treatment",
+          simple: "Sewage treatment removes solids, organic matter and pathogens before water is released.",
+          detail: "Primary treatment: physical settling of solids. Secondary: bacteria break down organic matter. Tertiary: removes nutrients and other chemicals. Disinfection (chlorine, UV) kills pathogens. Combined sewer overflows can release raw sewage during storms.",
+        },
+        {
+          title: "Pathogens and human health",
+          simple: "Contaminated water and poor sanitation spread infectious diseases.",
+          detail: "Waterborne diseases (cholera, dysentery) spread through contaminated water. Vector-borne diseases (malaria) spread through insects and can expand with climate change. Access to clean water and sanitation dramatically reduces disease.",
+        },
+      ],
+      terms: [
+        ["Point source", "Pollution from a single, identifiable location."],
+        ["Nonpoint source", "Pollution from many diffuse sources, like runoff."],
+        ["Eutrophication", "Nutrient enrichment of water causing algal blooms and oxygen loss."],
+        ["Biomagnification", "Increasing toxin concentration at higher trophic levels."],
+        ["LD50", "The dose lethal to 50% of a test population."],
+        ["Leachate", "Contaminated liquid that drains from a landfill."],
+        ["Secondary treatment", "Wastewater treatment in which bacteria break down organic matter."],
+      ],
+      mistakes: [
+        "Mixing up bioaccumulation (in one organism) and biomagnification (up the food chain).",
+        "Calling farm runoff point-source pollution.",
+      ],
+      questions: [
+        { q: "Fertilizer runoff from many farms entering a river is an example of", choices: ["point-source pollution", "nonpoint-source pollution", "thermal pollution", "bioaccumulation"], answer: 1, explain: "It comes from many diffuse sources across the landscape." },
+        { q: "What is the direct cause of fish kills during eutrophication?", choices: ["Toxic nitrogen in the water", "Low dissolved oxygen from decomposing algae", "Higher water temperature from sunlight", "Increased salinity"], answer: 1, explain: "Decomposers consume oxygen as dead algae break down, causing hypoxia." },
+        { q: "Mercury concentrations are highest in which organism in an aquatic food chain?", choices: ["Phytoplankton", "Zooplankton", "Small fish", "Tuna"], answer: 3, explain: "Biomagnification concentrates mercury in top predators." },
+        { q: "In wastewater treatment, bacteria break down organic matter during", choices: ["primary treatment", "secondary treatment", "tertiary treatment only", "disinfection"], answer: 1, explain: "Secondary treatment uses biological processes to digest organic waste." },
+      ],
+      frq: {
+        prompt: "A lake near farmland develops large algal blooms each summer, followed by fish kills.\n(a) Identify the process occurring.\n(b) Explain the sequence of events that leads to fish kills.\n(c) Propose one solution and explain how it would help.",
+        points: [
+          "(a) Eutrophication (cultural eutrophication).",
+          "(b) Nitrogen and phosphorus runoff → algal bloom → algae die → decomposers use up dissolved oxygen → hypoxia kills fish.",
+          "(c) Riparian buffer zones, reduced or timed fertilizer application, or wetland restoration to absorb nutrients before they reach the lake.",
+        ],
+      },
+    },
+    {
+      title: "Global Change",
+      weight: "15–20%",
+      tldr: "Human activities are warming the planet through the enhanced greenhouse effect, depleting stratospheric ozone, acidifying oceans, and driving species loss. International agreements and local solutions aim to reduce these impacts.",
+      concepts: [
+        {
+          title: "Stratospheric ozone depletion",
+          simple: "CFCs destroyed part of the ozone layer, increasing harmful UV radiation.",
+          detail: "Chlorine from CFCs breaks apart ozone molecules in the stratosphere, especially over Antarctica. More UV-B causes skin cancer, cataracts and crop damage. The Montreal Protocol (1987) phased out CFCs, and the ozone layer is slowly recovering.",
+        },
+        {
+          title: "The greenhouse effect",
+          simple: "Greenhouse gases trap heat, keeping Earth warm, and more of them warm it further.",
+          detail: "Greenhouse gases (CO₂, methane, nitrous oxide, water vapor, CFCs) absorb infrared radiation from Earth's surface. Global warming potential compares gases to CO₂: methane traps about 25–30 times more heat per molecule over 100 years, nitrous oxide about 300 times.",
+        },
+        {
+          title: "Climate change evidence and effects",
+          simple: "Rising temperatures melt ice, raise sea levels and shift ecosystems.",
+          detail: "Evidence: rising CO₂ (Keeling Curve), ice cores, warming temperatures. Effects: sea-level rise (thermal expansion and melting ice), more extreme weather, shifting species ranges, coral bleaching, and permafrost melting (a positive feedback releasing methane).",
+        },
+        {
+          title: "Ocean warming and acidification",
+          simple: "The ocean absorbs heat and CO₂, becoming warmer and more acidic.",
+          detail: "CO₂ dissolves to form carbonic acid, lowering ocean pH. Acidification makes it harder for corals, shellfish and plankton to build calcium carbonate shells. Warming causes coral bleaching when corals expel their symbiotic algae.",
+        },
+        {
+          title: "Invasive species",
+          simple: "Non-native species can outcompete native species and disrupt ecosystems.",
+          detail: "Invasive species (often r-selected generalists) spread quickly without natural predators. Examples: zebra mussels, kudzu, cane toads, Asian carp. Control: prevention, early detection, removal and biological control.",
+        },
+        {
+          title: "Endangered species and biodiversity loss",
+          simple: "Species are declining mainly because of human activities.",
+          detail: "HIPPCO: Habitat loss, Invasive species, Population growth, Pollution, Climate change, Overexploitation. Habitat loss is the leading cause. Protections: the Endangered Species Act, CITES (limits trade in endangered species), and protected areas.",
+          hook: "HIPPCO: the main causes of biodiversity loss.",
+        },
+        {
+          title: "Reducing climate change",
+          simple: "Cutting emissions and capturing carbon can slow climate change.",
+          detail: "Strategies: renewable energy, efficiency, carbon taxes, cap-and-trade, reforestation, and carbon capture. International agreements: the Kyoto Protocol and the Paris Agreement. Adaptation (sea walls, drought-resistant crops) prepares for unavoidable effects.",
+        },
+      ],
+      terms: [
+        ["Montreal Protocol", "1987 treaty phasing out ozone-depleting chemicals."],
+        ["Greenhouse effect", "Warming of Earth's surface from gases that absorb infrared radiation."],
+        ["Global warming potential", "How much heat a gas traps compared with CO₂."],
+        ["Ocean acidification", "Lowering of ocean pH as it absorbs CO₂."],
+        ["Coral bleaching", "Corals expelling symbiotic algae because of stress such as heat."],
+        ["Invasive species", "A non-native species that spreads and harms ecosystems."],
+        ["HIPPCO", "Causes of biodiversity loss: habitat loss, invasive species, population, pollution, climate change, overexploitation."],
+      ],
+      mistakes: [
+        "Confusing ozone depletion with global warming. They are separate problems with different causes.",
+        "Saying the greenhouse effect is entirely bad; without it Earth would be too cold for life.",
+      ],
+      questions: [
+        { q: "The Montreal Protocol was designed to reduce", choices: ["CO₂ emissions", "ozone-depleting chemicals like CFCs", "acid rain", "overfishing"], answer: 1, explain: "It phased out CFCs and other ozone-depleting substances." },
+        { q: "Why does ocean acidification harm coral reefs?", choices: ["It makes water warmer", "It makes it harder to build calcium carbonate skeletons", "It increases oxygen levels", "It adds more nutrients"], answer: 1, explain: "Lower pH reduces available carbonate ions needed for shells and skeletons." },
+        { q: "What is the leading cause of biodiversity loss worldwide?", choices: ["Invasive species", "Habitat loss", "Pollution", "Overhunting"], answer: 1, explain: "Habitat destruction and fragmentation are the biggest threats." },
+        { q: "Melting permafrost releases methane, which causes more warming and more melting. This is an example of a", choices: ["negative feedback loop", "positive feedback loop", "carbon sink", "thermal inversion"], answer: 1, explain: "A positive feedback amplifies the original change." },
+      ],
+      frq: {
+        prompt: "Atmospheric CO₂ has risen from about 280 ppm before industrialization to over 420 ppm today.\n(a) Calculate the percent increase in CO₂.\n(b) Describe one effect of rising CO₂ on the oceans.\n(c) Propose one policy to reduce CO₂ emissions and describe a drawback.",
+        points: [
+          "(a) (420 − 280) ÷ 280 × 100 = 50%.",
+          "(b) Ocean acidification harms shell-building organisms and coral, or warming causes coral bleaching.",
+          "(c) A carbon tax (drawback: raises energy costs for consumers) or cap-and-trade (drawback: complex to enforce).",
+        ],
+      },
+    },
+  ],
+};
+
+</script>
+<script>/* content/human-geography.js */
+window.AP_CONTENT = window.AP_CONTENT || {};
+window.AP_CONTENT["human-geography"] = {
+  tips: [
+    "Think in scales: local, regional, national and global. Many questions ask how a pattern changes when you change the scale of analysis.",
+    "Learn each model's assumptions and limits (Demographic Transition, von Thünen, Burgess, Rostow, Wallerstein). The exam loves \"explain a limitation of this model.\"",
+    "Use specific place examples in free responses: name the country, city or region.",
+    "Free-response answers are short and precise: define, describe, explain, compare. Write one clear sentence per point.",
+    "Read maps, graphs and population pyramids carefully before answering. The data usually contains the answer.",
+  ],
+  units: [
+    {
+      title: "Thinking Geographically",
+      weight: "8–10%",
+      tldr: "Geographers use maps, data and spatial concepts like location, distance, scale and region to explain patterns. Human–environment interaction shapes how people use and change the Earth.",
+      concepts: [
+        {
+          title: "Maps and map projections",
+          simple: "Every flat map distorts the round Earth in some way.",
+          detail: "Projections distort shape, area, distance or direction. Mercator keeps direction and shape locally (useful for navigation) but exaggerates area near the poles. Equal-area projections (like Gall-Peters) keep area but distort shape. Thematic maps: choropleth (shading by area), dot density, graduated symbol, isoline, cartogram.",
+        },
+        {
+          title: "Geographic data and tools",
+          simple: "Geographers collect data from fieldwork, satellites, censuses and GIS.",
+          detail: "GIS layers spatial data for analysis; remote sensing collects data from satellites or aircraft; GPS pinpoints absolute location. Qualitative data (interviews, photos) and quantitative data (census counts) are both used.",
+        },
+        {
+          title: "Location, place and space",
+          simple: "Absolute location is a precise address; relative location describes a place compared to other places.",
+          detail: "Absolute location uses latitude and longitude. Relative location describes connections (\"near the Panama Canal\"). Site is a place's physical characteristics; situation is its location relative to other places. Sense of place and toponyms (place names) describe meaning.",
+        },
+        {
+          title: "Distance decay and time-space compression",
+          simple: "Interaction decreases with distance, but technology makes places feel closer.",
+          detail: "Distance decay: the farther apart two places are, the less they interact. Time-space compression: transportation and communication reduce the time it takes to connect places. Friction of distance is the cost of overcoming distance.",
+        },
+        {
+          title: "Scales of analysis",
+          simple: "Patterns can look different at local, regional, national and global scales.",
+          detail: "A country may look wealthy at the national scale while specific regions are poor. Choosing the scale changes what patterns appear. Good answers explain how data at different scales reveals different stories.",
+        },
+        {
+          title: "Regions",
+          simple: "Regions group places by shared characteristics, connections or perceptions.",
+          detail: "Formal (uniform) regions share a trait, such as a language. Functional (nodal) regions are organized around a central node, such as a newspaper's delivery area. Perceptual (vernacular) regions are based on people's feelings, such as \"the South.\"",
+          hook: "Formal = same trait. Functional = same hub. Perceptual = same feeling.",
+        },
+        {
+          title: "Human–environment interaction",
+          simple: "People adapt to, modify and depend on their environments.",
+          detail: "Environmental determinism (discredited) claimed that environment controls human behavior. Possibilism says the environment sets limits, but people make choices. Sustainability means meeting present needs without harming the future.",
+        },
+      ],
+      terms: [
+        ["Mercator projection", "Map projection that preserves direction but distorts area near the poles."],
+        ["Choropleth map", "Thematic map using shading to show data by area."],
+        ["Site", "The physical characteristics of a place."],
+        ["Situation", "A place's location relative to other places."],
+        ["Distance decay", "Interaction decreases as distance increases."],
+        ["Functional region", "A region organized around a central node."],
+        ["Possibilism", "The idea that the environment limits but doesn't determine human choices."],
+      ],
+      mistakes: [
+        "Confusing site (physical features) with situation (relative location).",
+        "Calling a perceptual region a formal region.",
+      ],
+      questions: [
+        { q: "Which map projection greatly exaggerates the size of Greenland and Antarctica?", choices: ["Equal-area projection", "Mercator projection", "Robinson projection", "Polar projection"], answer: 1, explain: "Mercator enlarges areas near the poles." },
+        { q: "The area served by a single television station is an example of a", choices: ["formal region", "functional region", "perceptual region", "physical region"], answer: 1, explain: "It's organized around a central node (the station)." },
+        { q: "A city located where two rivers meet, making it a trade hub, is described by its", choices: ["site", "situation", "absolute location", "toponym"], answer: 1, explain: "Situation describes a place's position relative to other places and connections." },
+        { q: "The spread of the internet has reduced the time it takes to communicate between distant places. This is called", choices: ["distance decay", "time-space compression", "environmental determinism", "friction of distance"], answer: 1, explain: "Technology compressing time and space makes places feel closer." },
+      ],
+      frq: {
+        prompt: "A choropleth map shows median household income by state in the United States.\n(a) Describe one advantage of using a choropleth map for this data.\n(b) Explain one limitation of showing income at the state scale.\n(c) Explain how a different scale of analysis could reveal a different pattern.",
+        points: [
+          "(a) It makes regional patterns and differences between states easy to see.",
+          "(b) State averages hide variation within states, such as poor rural counties in a wealthy state.",
+          "(c) County or city-level data could reveal pockets of poverty or wealth that the state average hides.",
+        ],
+      },
+    },
+    {
+      title: "Population and Migration Patterns and Processes",
+      weight: "12–17%",
+      tldr: "Population is unevenly distributed, and it grows or shrinks through births, deaths and migration. The Demographic Transition Model describes how these change as countries develop. Migration is driven by push and pull factors.",
+      concepts: [
+        {
+          title: "Population distribution and density",
+          simple: "People cluster in places with fertile land, water, mild climates and jobs.",
+          detail: "Arithmetic density = people ÷ total land area. Physiological density = people ÷ arable land (shows pressure on farmland). Agricultural density = farmers ÷ arable land (lower in developed countries with mechanized farming).",
+        },
+        {
+          title: "Population pyramids",
+          simple: "A population pyramid shows a population's age and sex structure.",
+          detail: "Wide bases show high birth rates (young, growing populations). Narrow bases and top-heavy shapes show aging populations. The dependency ratio compares people under 15 and over 64 to working-age people.",
+        },
+        {
+          title: "The Demographic Transition Model",
+          simple: "As countries develop, death rates fall first, then birth rates, changing population growth.",
+          detail: "Stage 1: high birth and death rates. Stage 2: death rates fall (medicine, sanitation), and population booms. Stage 3: birth rates fall (urbanization, women's education, contraception). Stage 4: low birth and death rates. Stage 5 (some countries): birth rates below death rates, and population declines.",
+        },
+        {
+          title: "Theories of population growth",
+          simple: "Malthus feared population would outgrow food; critics disagree.",
+          detail: "Malthus argued population grows geometrically while food grows arithmetically, leading to famine. Neo-Malthusians add resource depletion. Critics like Boserup argue population growth drives agricultural innovation. The Green Revolution raised food output beyond Malthus's predictions.",
+        },
+        {
+          title: "Population policies",
+          simple: "Governments try to raise or lower birth rates through policy.",
+          detail: "Antinatalist policies discourage births (China's former one-child policy). Pronatalist policies encourage births (tax benefits and parental leave in aging countries). Immigration policies also shape population change.",
+        },
+        {
+          title: "Women and demographic change",
+          simple: "When women gain education and jobs, birth rates usually fall.",
+          detail: "More education and employment for women lead to later marriage, fewer children, and lower infant mortality. This is one of the strongest predictors of falling total fertility rates.",
+        },
+        {
+          title: "Causes and types of migration",
+          simple: "People migrate because of push factors at home and pull factors elsewhere.",
+          detail: "Push and pull factors can be economic, political, social, cultural or environmental. Forced migration (refugees, slavery) vs. voluntary migration. Ravenstein's laws: most migrants move short distances; long-distance migrants go to big cities. Intervening obstacles and opportunities affect migration. Chain migration and step migration are common patterns.",
+        },
+        {
+          title: "Effects of migration",
+          simple: "Migration changes both the places people leave and the places they go.",
+          detail: "Sending countries may lose skilled workers (brain drain) but gain remittances. Receiving countries gain labor and cultural diversity but may see tension over resources and identity. Guest workers and transnational migrants maintain ties to home.",
+        },
+      ],
+      terms: [
+        ["Physiological density", "Number of people per unit of arable land."],
+        ["Dependency ratio", "Ratio of dependents (under 15 and over 64) to working-age people."],
+        ["Total fertility rate", "Average number of children a woman has in her lifetime."],
+        ["Rate of natural increase", "Crude birth rate minus crude death rate."],
+        ["Antinatalist policy", "A policy discouraging births."],
+        ["Remittances", "Money migrants send back to their home country."],
+        ["Chain migration", "Migration following family or friends who moved earlier."],
+      ],
+      mistakes: [
+        "Mixing up physiological density (arable land) and arithmetic density (total land).",
+        "Saying birth rates fall before death rates in the Demographic Transition Model.",
+      ],
+      questions: [
+        { q: "Which measure best shows the pressure a population puts on its farmland?", choices: ["Arithmetic density", "Physiological density", "Agricultural density", "Dependency ratio"], answer: 1, explain: "Physiological density divides population by arable land." },
+        { q: "In Stage 2 of the Demographic Transition Model, what happens?", choices: ["Birth rates fall while death rates stay high", "Death rates fall while birth rates stay high", "Both rates are low and stable", "Death rates rise sharply"], answer: 1, explain: "Improved medicine and sanitation lower death rates first, causing rapid growth." },
+        { q: "Malthus's theory is most often criticized because", choices: ["population never grows", "technology like the Green Revolution increased food supply faster than he predicted", "he ignored death rates", "he focused only on migration"], answer: 1, explain: "Agricultural innovation raised food output, which Malthus didn't anticipate." },
+        { q: "Money that migrants send back to family in their home country is called", choices: ["brain drain", "remittances", "chain migration", "foreign aid"], answer: 1, explain: "Remittances are an important income source for many developing countries." },
+      ],
+      frq: {
+        prompt: "Country X has a population pyramid with a narrow base and a wide top.\n(a) Identify the stage of the Demographic Transition Model this pyramid most likely represents.\n(b) Describe one economic challenge this population structure creates.\n(c) Explain one policy the government could use to address this challenge.",
+        points: [
+          "(a) Stage 4 or Stage 5.",
+          "(b) A high dependency ratio of elderly people: fewer workers support pensions and health care, and labor shortages may occur.",
+          "(c) A pronatalist policy (paid parental leave, child subsidies) or encouraging immigration of working-age people.",
+        ],
+      },
+    },
+    {
+      title: "Cultural Patterns and Processes",
+      weight: "12–17%",
+      tldr: "Culture includes language, religion, ethnicity and traditions. It spreads through different types of diffusion, and globalization both spreads and challenges local cultures.",
+      concepts: [
+        {
+          title: "Culture and cultural landscapes",
+          simple: "Culture is a group's shared beliefs and practices, and it leaves visible marks on the landscape.",
+          detail: "Cultural landscapes include buildings, land use, religious sites and signs. Sequent occupance describes layers left by successive groups. Traditional architecture reflects local materials and climate.",
+        },
+        {
+          title: "Types of diffusion",
+          simple: "Ideas and traits spread in different ways from where they start.",
+          detail: "Relocation diffusion: people carry culture with them when they move. Expansion diffusion spreads while staying in the hearth: contagious (to nearby people, like a virus), hierarchical (from powerful or large places to smaller ones), stimulus (the idea spreads but changes, like vegetarian burgers in India).",
+          hook: "Relocation = people move. Expansion = the idea moves.",
+        },
+        {
+          title: "Languages",
+          simple: "Language families and dialects show historical connections and diffusion.",
+          detail: "Language families (Indo-European, Sino-Tibetan), branches and groups show common origins. Lingua francas (English, Swahili) help trade between groups. Dialects are regional variations. Creole and pidgin languages form from contact between languages.",
+        },
+        {
+          title: "Religions",
+          simple: "Universalizing religions seek converts; ethnic religions are tied to a specific group or place.",
+          detail: "Universalizing: Christianity, Islam, Buddhism, Sikhism; spread through relocation and expansion diffusion. Ethnic: Hinduism, Judaism; mostly spread by relocation. Religious landscapes include sacred sites, pilgrimage routes and burial practices.",
+        },
+        {
+          title: "Globalization and cultural change",
+          simple: "Global media and trade spread popular culture, sometimes replacing local traditions.",
+          detail: "Popular culture diffuses quickly and widely; folk culture is local and traditional. Acculturation adopts some traits of another culture; assimilation absorbs a group fully; syncretism blends cultures. Cultural convergence vs. divergence describes whether cultures become more similar or different.",
+        },
+        {
+          title: "Ethnicity and identity",
+          simple: "Ethnic identity links people through shared ancestry, language and traditions.",
+          detail: "Ethnic neighborhoods (ethnic enclaves) preserve culture in new places. Gender roles, religion and language shape identity and space. Centripetal forces unify groups; centrifugal forces divide them.",
+        },
+        {
+          title: "Historical causes of diffusion",
+          simple: "Colonialism, imperialism and trade spread languages and religions worldwide.",
+          detail: "European colonialism spread English, Spanish, French and Portuguese, plus Christianity, to other continents. Trade routes spread Islam and Buddhism. Migration continues to reshape cultural patterns today.",
+        },
+      ],
+      terms: [
+        ["Relocation diffusion", "Spread of culture through the movement of people."],
+        ["Hierarchical diffusion", "Spread from larger or more powerful places to smaller ones."],
+        ["Stimulus diffusion", "An underlying idea spreads but the specific trait changes."],
+        ["Lingua franca", "A common language used between speakers of different languages."],
+        ["Universalizing religion", "A religion that seeks converts worldwide."],
+        ["Syncretism", "Blending of elements from different cultures."],
+        ["Assimilation", "A group fully adopting the culture of another."],
+      ],
+      mistakes: [
+        "Confusing contagious diffusion (nearby spread) with hierarchical diffusion (spread through levels of power).",
+        "Calling Hinduism a universalizing religion.",
+      ],
+      questions: [
+        { q: "A fashion trend starts in major cities like New York and Paris, then spreads to smaller towns. This is", choices: ["contagious diffusion", "hierarchical diffusion", "relocation diffusion", "stimulus diffusion"], answer: 1, explain: "It spreads from large, influential places to smaller ones." },
+        { q: "McDonald's in India serves vegetarian burgers instead of beef. This is an example of", choices: ["relocation diffusion", "stimulus diffusion", "assimilation", "contagious diffusion"], answer: 1, explain: "The idea (fast-food burgers) spread but was modified for local beliefs." },
+        { q: "Which is an ethnic religion?", choices: ["Islam", "Buddhism", "Hinduism", "Christianity"], answer: 2, explain: "Hinduism is closely tied to a specific culture and region and doesn't actively seek converts." },
+        { q: "English used for communication between business people from Japan and Brazil serves as a", choices: ["dialect", "lingua franca", "creole", "language isolate"], answer: 1, explain: "A lingua franca is a shared language between speakers of different native languages." },
+      ],
+      frq: {
+        prompt: "Many cities have ethnic neighborhoods such as Chinatowns and Little Italys.\n(a) Define ethnic enclave.\n(b) Describe one way ethnic enclaves shape the cultural landscape.\n(c) Explain one process by which later generations may change their cultural practices.",
+        points: [
+          "(a) A neighborhood where people of one ethnic group cluster and preserve their culture.",
+          "(b) Signs in the group's language, religious buildings, restaurants and stores, and architecture.",
+          "(c) Acculturation or assimilation: later generations adopt the host culture's language and customs.",
+        ],
+      },
+    },
+    {
+      title: "Political Patterns and Processes",
+      weight: "12–17%",
+      tldr: "States, nations and boundaries organize political space. Forces like devolution and supranationalism reshape power, and boundaries can cause conflict or cooperation.",
+      concepts: [
+        {
+          title: "States, nations and nation-states",
+          simple: "A state is a political unit; a nation is a group of people with shared identity.",
+          detail: "A nation-state is a state whose people mostly share one nationality (Japan). Multinational states contain several nations. Stateless nations (the Kurds, Palestinians) lack their own state. Sovereignty is a state's control over its territory.",
+        },
+        {
+          title: "Colonialism and political boundaries",
+          simple: "Colonialism drew many modern borders, often ignoring ethnic groups.",
+          detail: "The Berlin Conference (1884–85) divided Africa among European powers, creating borders that split and combined ethnic groups. This contributes to later conflicts. Decolonization created many new states after World War II.",
+        },
+        {
+          title: "Types of boundaries",
+          simple: "Boundaries are classified by how and when they were drawn.",
+          detail: "Antecedent: drawn before settlement. Subsequent: drawn after settlement, reflecting cultural differences. Superimposed: forced by outside powers (much of Africa). Relic: no longer function but remain visible (the Berlin Wall). Geometric boundaries follow straight lines; physical boundaries follow natural features.",
+        },
+        {
+          title: "Law of the Sea and maritime boundaries",
+          simple: "International law divides the ocean into zones controlled by coastal states.",
+          detail: "UN Convention on the Law of the Sea: territorial waters extend 12 nautical miles; the exclusive economic zone (EEZ) extends 200 nautical miles, giving rights to fish and resources. Overlapping claims cause disputes (the South China Sea).",
+        },
+        {
+          title: "Forms of government and territory",
+          simple: "Unitary states concentrate power centrally; federal states share it with regions.",
+          detail: "Unitary states (France, Japan) centralize power. Federal states (U.S., Germany, India) divide power between national and regional governments, helping manage diversity. Gerrymandering redraws electoral districts to favor a group.",
+        },
+        {
+          title: "Devolution and centrifugal forces",
+          simple: "Devolution moves power from the central government to regions, sometimes because of divisions.",
+          detail: "Centrifugal forces (ethnic separatism, economic inequality, terrorism) divide states. Centripetal forces (shared nationalism, infrastructure, religion) unite them. Devolution examples: Scotland, Catalonia. Extreme cases lead to balkanization (breakup of a region into smaller hostile states).",
+        },
+        {
+          title: "Supranationalism",
+          simple: "States join international organizations and give up some sovereignty for shared benefits.",
+          detail: "Examples: the United Nations, the European Union, NATO, ASEAN, the African Union. Benefits include trade and security; challenges include loss of sovereignty. Brexit shows tension between supranationalism and national sovereignty.",
+        },
+      ],
+      terms: [
+        ["Nation-state", "A state whose people largely share one national identity."],
+        ["Stateless nation", "A nation without its own state, like the Kurds."],
+        ["Superimposed boundary", "A boundary drawn by outside powers, ignoring existing cultures."],
+        ["Exclusive economic zone", "Area up to 200 nautical miles where a coastal state controls resources."],
+        ["Devolution", "Transfer of power from a central government to regional governments."],
+        ["Centripetal force", "A force that unites a state."],
+        ["Supranationalism", "Cooperation among states in organizations that share some sovereignty."],
+      ],
+      mistakes: [
+        "Using \"nation\" and \"state\" interchangeably.",
+        "Confusing antecedent (before settlement) and subsequent (after settlement) boundaries.",
+      ],
+      questions: [
+        { q: "The Kurds, spread across Turkey, Iraq, Iran and Syria, are an example of a", choices: ["nation-state", "stateless nation", "multistate nation with its own state", "microstate"], answer: 1, explain: "The Kurds share a national identity but have no sovereign state." },
+        { q: "Borders in Africa drawn by European powers at the Berlin Conference are best described as", choices: ["antecedent", "subsequent", "superimposed", "relic"], answer: 2, explain: "Outside powers imposed them, often ignoring existing ethnic boundaries." },
+        { q: "Scotland gaining its own parliament within the United Kingdom is an example of", choices: ["supranationalism", "devolution", "balkanization", "irredentism"], answer: 1, explain: "Power was transferred from the central government to a region." },
+        { q: "A coastal country's exclusive economic zone extends", choices: ["3 nautical miles", "12 nautical miles", "200 nautical miles", "500 nautical miles"], answer: 2, explain: "UNCLOS sets the EEZ at 200 nautical miles." },
+      ],
+      frq: {
+        prompt: "The European Union is a supranational organization.\n(a) Define supranationalism.\n(b) Describe one benefit member states gain from the EU.\n(c) Explain one reason a member state might choose to leave, using a real example.",
+        points: [
+          "(a) Cooperation among three or more states in an organization where they share some sovereignty for common goals.",
+          "(b) Free trade and movement of goods and people, a shared currency, or a stronger collective voice.",
+          "(c) Brexit: the UK left over concerns about loss of sovereignty, immigration control, and EU regulations.",
+        ],
+      },
+    },
+    {
+      title: "Agriculture and Rural Land-Use Patterns and Processes",
+      weight: "12–17%",
+      tldr: "Agriculture depends on climate, technology and markets. Farming ranges from subsistence to large commercial agribusiness. Agricultural revolutions transformed food production, with environmental and social trade-offs.",
+      concepts: [
+        {
+          title: "Types of agriculture",
+          simple: "Farming can be intensive or extensive, subsistence or commercial.",
+          detail: "Intensive agriculture uses a lot of labor or capital on small land (market gardening, rice farming, plantation). Extensive uses less input on large areas (pastoral nomadism, ranching, shifting cultivation). Subsistence farming feeds the family; commercial farming sells for profit.",
+        },
+        {
+          title: "Agricultural revolutions",
+          simple: "Three major revolutions changed how humans produce food.",
+          detail: "First (Neolithic): domestication of plants and animals. Second: in Europe, alongside the Industrial Revolution, with new tools, crop rotation and more output. Third (Green Revolution, mid-1900s): high-yield seeds, fertilizers, pesticides and irrigation, increasing yields in Asia and Latin America but raising environmental and inequality concerns.",
+        },
+        {
+          title: "The von Thünen model",
+          simple: "Farm land use forms rings around a market based on transport costs.",
+          detail: "Rings from the city: market gardening and dairy (perishable, near market), forest (heavy fuel and lumber), grain and field crops, then ranching (animals can walk to market). Limitations: assumes a flat, uniform landscape and one market; modern refrigeration and transport change the pattern.",
+          hook: "Perishable and heavy near the city; animals far away.",
+        },
+        {
+          title: "Rural settlement and survey patterns",
+          simple: "Rural land is divided and settled in different patterns.",
+          detail: "Settlements can be clustered, dispersed or linear. Survey systems: metes and bounds (natural features, original colonies), township and range (rectangular grid, the U.S. Midwest), long lots (narrow strips to a river, French settlement).",
+        },
+        {
+          title: "Agribusiness and food production",
+          simple: "Large corporations control many parts of the food chain.",
+          detail: "Agribusiness integrates production, processing and distribution. Commodity chains link farms to consumers globally. Economies of scale and mechanization reduce the number of farmers. Bid-rent theory also applies to farmland near cities.",
+        },
+        {
+          title: "Environmental effects of agriculture",
+          simple: "Farming can degrade land and water.",
+          detail: "Problems: soil erosion, desertification, deforestation (slash-and-burn), salinization from irrigation, pesticide and fertilizer runoff (eutrophication), and loss of biodiversity from monoculture. Sustainable practices include crop rotation, terracing, no-till farming and organic farming.",
+        },
+        {
+          title: "Food access and changing diets",
+          simple: "Access to healthy food varies, and diets change with development.",
+          detail: "Food deserts are areas with limited access to affordable, nutritious food. GMOs, organic and local food movements, and fair trade reflect changing consumer values. Women play major roles in farming in many developing countries.",
+        },
+      ],
+      terms: [
+        ["Intensive agriculture", "Farming with high inputs of labor or capital per unit of land."],
+        ["Green Revolution", "Spread of high-yield crops, fertilizers and irrigation in the mid-1900s."],
+        ["Von Thünen model", "Model of agricultural land use in rings around a market."],
+        ["Township and range", "Rectangular land survey system used in much of the U.S."],
+        ["Agribusiness", "Large-scale commercial farming integrated with processing and distribution."],
+        ["Desertification", "Degradation of dry land into desert, often from overgrazing."],
+        ["Food desert", "Area with limited access to affordable, nutritious food."],
+      ],
+      mistakes: [
+        "Putting ranching in the inner ring of the von Thünen model.",
+        "Treating the Green Revolution as having only benefits.",
+      ],
+      questions: [
+        { q: "In the von Thünen model, which activity is located closest to the market?", choices: ["Ranching", "Grain farming", "Market gardening and dairy", "Forestry"], answer: 2, explain: "Perishable products must be near the market." },
+        { q: "The Green Revolution is most associated with", choices: ["domestication of animals", "high-yield seeds, fertilizers and irrigation", "slash-and-burn agriculture", "township and range surveys"], answer: 1, explain: "It spread high-yield varieties and chemical inputs in the mid-20th century." },
+        { q: "Pastoral nomadism is an example of", choices: ["intensive commercial agriculture", "extensive subsistence agriculture", "plantation agriculture", "market gardening"], answer: 1, explain: "Herders move animals over large areas to meet their own needs." },
+        { q: "Narrow strips of land extending back from a river, common in French-settled Louisiana, are called", choices: ["metes and bounds", "township and range", "long lots", "clustered settlements"], answer: 2, explain: "Long lots gave each farmer access to the river." },
+      ],
+      frq: {
+        prompt: "The Green Revolution greatly increased crop yields in parts of Asia.\n(a) Identify two technologies of the Green Revolution.\n(b) Describe one positive effect of the Green Revolution.\n(c) Explain one negative environmental or social effect.",
+        points: [
+          "(a) High-yield seed varieties, chemical fertilizers, pesticides, irrigation or mechanization.",
+          "(b) Higher food production reduced famine and supported population growth.",
+          "(c) Environmental: water pollution, soil degradation, falling water tables. Social: wealthier farmers benefited more, widening inequality.",
+        ],
+      },
+    },
+    {
+      title: "Cities and Urban Land-Use Patterns and Processes",
+      weight: "12–17%",
+      tldr: "Cities grow for economic and social reasons and form hierarchies. Urban models describe land use, and cities face challenges like sprawl, segregation, gentrification and sustainability.",
+      concepts: [
+        {
+          title: "Origins and growth of cities",
+          simple: "Cities grow where site and situation provide advantages like water, defense and trade.",
+          detail: "Urbanization increases as countries industrialize. Megacities (10+ million) and metacities are growing fastest in developing countries. Suburbanization, boomburbs and edge cities reflect growth outward. World cities (New York, London, Tokyo) are global centers of finance and culture.",
+        },
+        {
+          title: "Urban hierarchies",
+          simple: "Cities form hierarchies based on size and the services they provide.",
+          detail: "Rank-size rule: the nth largest city is 1/n the size of the largest. Primate city: the largest city is far bigger than the next (Paris in France). Central place theory (Christaller): hexagonal market areas; higher-order services have larger thresholds and ranges.",
+        },
+        {
+          title: "Urban models",
+          simple: "Models describe how land use is arranged in cities.",
+          detail: "Burgess concentric zone: rings from the CBD. Hoyt sector: wedges along transportation lines. Harris-Ullman multiple nuclei: several centers. Galactic city: suburbs and edge cities around a highway ring. Latin American (Griffin-Ford), African and Southeast Asian models add regional differences, like squatter settlements on the edge.",
+        },
+        {
+          title: "Bid-rent theory and density",
+          simple: "Land costs most near the city center, so land use depends on who can pay.",
+          detail: "Commercial uses outbid others near the CBD, then industry and residential. Density decreases away from the center. Zoning laws also shape land use.",
+        },
+        {
+          title: "Urban infrastructure and housing",
+          simple: "Cities provide transportation, utilities and housing, but access is unequal.",
+          detail: "Redlining denied loans in minority neighborhoods, reinforcing segregation. Gentrification renovates poorer neighborhoods, raising costs and displacing residents. Squatter settlements house migrants in many developing cities. Public housing and inclusionary zoning address affordability.",
+        },
+        {
+          title: "Urban sustainability",
+          simple: "Planners try to reduce sprawl and make cities more livable and sustainable.",
+          detail: "Urban sprawl consumes farmland and increases car dependence. Smart growth, new urbanism (walkable, mixed-use neighborhoods), greenbelts, mass transit and mixed-use zoning are responses. Brownfields are abandoned industrial sites that can be redeveloped.",
+        },
+        {
+          title: "Urban data and challenges",
+          simple: "Census and survey data reveal patterns of inequality and change in cities.",
+          detail: "Data on income, race, housing and commuting show segregation, suburbanization and change over time. Challenges include traffic, pollution, crime, and aging infrastructure.",
+        },
+      ],
+      terms: [
+        ["Primate city", "A country's largest city, far bigger than the next largest."],
+        ["Central place theory", "Theory explaining the size and spacing of settlements providing services."],
+        ["Threshold", "The minimum population needed to support a service."],
+        ["Bid-rent theory", "Land value and rent decrease with distance from the CBD."],
+        ["Gentrification", "Renovation of neighborhoods that raises costs and displaces residents."],
+        ["Redlining", "Denying loans in certain neighborhoods based on race."],
+        ["New urbanism", "Planning for walkable, mixed-use neighborhoods."],
+      ],
+      mistakes: [
+        "Mixing up the concentric zone model (rings) and the sector model (wedges).",
+        "Confusing threshold (minimum population) with range (maximum distance people travel).",
+      ],
+      questions: [
+        { q: "Paris is many times larger than any other French city. Paris is a", choices: ["world city only", "primate city", "edge city", "boomburb"], answer: 1, explain: "A primate city is disproportionately larger than the country's next largest city." },
+        { q: "Which urban model shows wedges of land use along transportation routes?", choices: ["Concentric zone model", "Sector model", "Multiple nuclei model", "Galactic city model"], answer: 1, explain: "Hoyt's sector model places zones in wedges along transportation corridors." },
+        { q: "According to bid-rent theory, which land use is most likely closest to the CBD?", choices: ["Single-family homes", "Farms", "Commercial offices and retail", "Parks"], answer: 2, explain: "Commercial uses can pay the highest rents for central, accessible land." },
+        { q: "Wealthier residents moving into and renovating a low-income neighborhood, raising rents, is", choices: ["redlining", "gentrification", "suburbanization", "blockbusting"], answer: 1, explain: "Gentrification can displace longtime lower-income residents." },
+      ],
+      frq: {
+        prompt: "Many U.S. metropolitan areas have experienced urban sprawl.\n(a) Define urban sprawl.\n(b) Describe one environmental effect of sprawl.\n(c) Explain one planning approach that reduces sprawl.",
+        points: [
+          "(a) Low-density, car-dependent development spreading outward from a city.",
+          "(b) Loss of farmland and habitat, or more air pollution from longer commutes.",
+          "(c) Smart growth or new urbanism (denser, mixed-use, walkable development), greenbelts, or investment in public transit.",
+        ],
+      },
+    },
+    {
+      title: "Industrial and Economic Development Patterns and Processes",
+      weight: "12–17%",
+      tldr: "Industrialization changed where and how goods are made. Development is measured with indicators like GDP per capita and HDI. Theories explain uneven development, and globalization shifts industry around the world.",
+      concepts: [
+        {
+          title: "The Industrial Revolution and its diffusion",
+          simple: "Industrialization began in Britain and spread, reshaping economies and cities.",
+          detail: "Starting in the late 1700s in Britain, industry spread to Europe, the U.S., Japan and beyond. It increased demand for raw materials, often obtained through colonialism, and drove urbanization.",
+        },
+        {
+          title: "Economic sectors",
+          simple: "Economies shift from farming to manufacturing to services as they develop.",
+          detail: "Primary: extracting resources (farming, mining). Secondary: manufacturing. Tertiary: services. Quaternary: information and research. Quinary: top-level decision-making. Developed countries have most workers in the tertiary and higher sectors.",
+        },
+        {
+          title: "Measures of development",
+          simple: "Development is measured with economic and social indicators.",
+          detail: "GDP and GNI per capita, the Human Development Index (income, education, life expectancy), the Gender Inequality Index, and the informal economy share. The Gini coefficient measures income inequality within countries.",
+        },
+        {
+          title: "Theories of development",
+          simple: "Different theories explain why some countries are richer than others.",
+          detail: "Rostow's stages of growth: traditional society → preconditions for takeoff → takeoff → drive to maturity → high mass consumption (criticized for assuming one path). Wallerstein's world-systems theory: core, semi-periphery and periphery, with core countries benefiting from periphery resources. Dependency theory: colonial legacies keep poor countries dependent.",
+          hook: "Rostow = a ladder every country climbs. Wallerstein = a system that keeps some on top.",
+        },
+        {
+          title: "Industrial location and Weber's model",
+          simple: "Factories locate to minimize transportation and labor costs.",
+          detail: "Weber's least-cost theory: weight-losing (bulk-reducing) industries locate near raw materials; weight-gaining (bulk-gaining) industries locate near markets. Labor costs and agglomeration (clustering of related firms) also matter.",
+        },
+        {
+          title: "Globalization and the changing location of industry",
+          simple: "Manufacturing has shifted to lower-cost countries, changing economies worldwide.",
+          detail: "Outsourcing and offshoring move production abroad. Export processing zones and free trade zones (maquiladoras in Mexico) attract foreign investment. Deindustrialization hits former industrial regions. Post-Fordist, just-in-time production uses flexible global supply chains.",
+        },
+        {
+          title: "Sustainable development",
+          simple: "Development should improve lives without destroying resources for the future.",
+          detail: "The UN Sustainable Development Goals address poverty, education, gender equality and climate. Microloans help entrepreneurs, especially women, start businesses. Ecotourism can bring income while protecting environments.",
+        },
+      ],
+      terms: [
+        ["Tertiary sector", "The service sector of the economy."],
+        ["Human Development Index", "A measure combining income, education and life expectancy."],
+        ["World-systems theory", "Wallerstein's model of core, semi-periphery and periphery countries."],
+        ["Least-cost theory", "Weber's theory that industries locate to minimize costs."],
+        ["Agglomeration", "Clustering of related businesses to share resources and markets."],
+        ["Maquiladora", "Foreign-owned factory in Mexico that assembles goods for export."],
+        ["Microloan", "A small loan to help people in poverty start businesses."],
+      ],
+      mistakes: [
+        "Placing a weight-gaining industry near raw materials instead of markets.",
+        "Presenting Rostow's model as fitting every country without its criticisms.",
+      ],
+      questions: [
+        { q: "According to Weber's least-cost theory, a copper smelter (which greatly reduces the weight of ore) should locate", choices: ["near the market", "near the raw materials", "near cheap labor only", "anywhere, since location doesn't matter"], answer: 1, explain: "Weight-losing industries locate near raw materials to reduce transport costs." },
+        { q: "Which measure combines income, education and life expectancy?", choices: ["GDP per capita", "Gini coefficient", "Human Development Index", "Gender Inequality Index"], answer: 2, explain: "HDI combines those three dimensions." },
+        { q: "In Wallerstein's world-systems theory, countries that mainly export raw materials and have low wages are", choices: ["core", "semi-periphery", "periphery", "quaternary"], answer: 2, explain: "Periphery countries supply raw materials and cheap labor to the core." },
+        { q: "Most workers in a highly developed country work in the", choices: ["primary sector", "secondary sector", "tertiary sector", "subsistence sector"], answer: 2, explain: "Services dominate employment in developed countries." },
+      ],
+      frq: {
+        prompt: "Many U.S. manufacturing jobs have moved to other countries since the 1980s.\n(a) Identify one reason companies moved manufacturing abroad.\n(b) Describe one effect on former U.S. industrial regions.\n(c) Explain one effect on the countries that received the factories.",
+        points: [
+          "(a) Lower labor costs, fewer regulations, or free trade agreements.",
+          "(b) Deindustrialization: job losses, population decline, and abandoned factories (brownfields) in the Rust Belt.",
+          "(c) New jobs and investment, but also low wages, poor working conditions, or pollution.",
         ],
       },
     },
@@ -8323,6 +10038,127 @@ window.AP_DIAG["english-language"] = {
 };
 
 </script>
+<script>/* content/diagnostics/english-literature.js */
+// Concept tags and wrong-answer diagnoses for content/english-literature.js.
+window.AP_DIAG = window.AP_DIAG || {};
+window.AP_DIAG["english-literature"] = {
+  "0.0": [0, { 0: "\"No one had visited in years\" suggests the opposite: nobody is coming.", 2: "She tends the photographs every day, which suggests she values them.", 3: "\"In years\" shows she has lived there a long time." }],
+  "0.1": [4, { 0: "First person would use \"I.\"", 2: "Omniscient narrators know every character's thoughts, not just Leo's.", 3: "Second person addresses \"you.\"" }],
+  "0.2": [5, { 0: "That's a plot summary, not an interpretation.", 2: "That's a description, not a claim about meaning.", 3: "The story's events complicate this; it's an absolute moral, not a supported reading." }],
+  "0.3": [2, { 0: "Endless rain and rising water aren't celebratory.", 2: "The creeping river suggests danger, not peace.", 3: "The details don't create confusion about time." }],
+  "1.0": [3, { 0: "That reads the metaphor literally.", 2: "The metaphor is about experience, not size.", 3: "This takes \"maps\" literally instead of figuratively." }],
+  "1.1": [2, { 0: "\"Cozy\" suggests warmth and comfort.", 1: "\"Snug\" suggests pleasant closeness.", 3: "\"Compact\" is neutral or even positive." }],
+  "1.2": [5, { 1: "Nothing suggests a new speaker; the shift is in time or tone.", 2: "A title comes before the poem.", 3: "A refrain repeats earlier lines; this is a new direction." }],
+  "1.3": [0, { 0: "The speaker is often a created persona, not the poet.", 2: "Poems have speakers; novels have narrators and characters.", 3: "The reader receives the poem; they don't speak it." }],
+  "2.0": [2, { 0: "Verbal irony is saying the opposite of what one means.", 1: "Situational irony is an unexpected outcome; here it's about what the audience knows.", 3: "A soliloquy is a speech alone on stage." }],
+  "2.1": [3, { 0: "One word is a topic, not a theme.", 1: "These are topics; a theme states an idea about them.", 3: "That's a character, not a theme." }],
+  "2.2": [2, { 0: "Dialogue requires other characters to be speaking.", 2: "Stage directions describe action; they aren't spoken.", 3: "A chorus is a group commenting on the action." }],
+  "2.3": [1, { 0: "The class system actively blocks her happiness, so it's more than a backdrop.", 2: "Nothing suggests confusion about the period.", 3: "The setting creates conflict, not comedy." }],
+  "3.0": [0, { 0: "A narrator tells the story; a foil contrasts with another character.", 2: "\"Flat antagonist\" misses his role of highlighting his brother's traits by contrast.", 3: "He's a person, not a symbol of nature." }],
+  "3.1": [2, { 0: "The order is purposeful, not confusing.", 2: "The ending is revealed at the start, not hidden.", 3: "Jumping back in time doesn't suggest a future setting." }],
+  "3.2": [3, { 0: "Calm, precise sentences aren't hysterical.", 2: "Nothing about ruin is joyful.", 3: "Precise details show control, not confusion." }],
+  "3.3": [4, { 0: "Nothing connects the mirror to money.", 2: "Vanity misses the link to the failing marriage.", 3: "A mirror doesn't indicate a time period here." }],
+  "4.0": [0, { 0: "A villanelle has 19 lines with refrains.", 1: "A Petrarchan sonnet has an octave and a sestet, not three quatrains and a couplet.", 3: "Free verse has no fixed rhyme or structure." }],
+  "4.1": [4, { 0: "The rhyme scheme is the pattern of rhymes.", 2: "The volta usually comes later in the poem.", 3: "Refrains repeat lines; that's a feature of villanelles." }],
+  "4.2": [3, { 1: "A sonnet is a form, not a reference.", 2: "Enjambment is about line breaks.", 3: "Meter describes rhythm, not references." }],
+  "4.3": [5, { 0: "Naming a device isn't commentary; say what it does.", 1: "\"Has imagery\" identifies without explaining effect.", 3: "Vague statements earn no points." }],
+  "5.0": [0, { 0: "Verbal irony requires speech that means the opposite.", 2: "Dramatic irony is about the audience knowing more.", 3: "Foreshadowing hints at the future." }],
+  "5.1": [3, { 0: "An omniscient narrator knows everything, while this one misleads.", 2: "His claims contradict his actions, so he's not objective.", 3: "A foil is a contrasting character, not a narrator type." }],
+  "5.2": [2, { 1: "A flashback is a scene from the past, not a recurring image.", 2: "A subplot is a secondary storyline.", 3: "The clocks aren't a statement meaning the opposite." }],
+  "5.3": [5, { 0: "Summary doesn't argue anything.", 2: "Biography is outside the work.", 3: "One quotation can't show development across a work." }],
+  "6.0": [2, { 0: "Ignoring the ambiguity misses the point.", 2: "Ambiguity is a deliberate choice, not a mistake.", 3: "Summary isn't interpretation." }],
+  "6.1": [2, { 0: "Short, abrupt sentences create tension, not calm.", 2: "Nothing here is funny.", 3: "The sentences say little about the house itself." }],
+  "6.2": [3, { 0: "Listing devices isn't complexity.", 2: "Retelling the plot is summary.", 3: "Long quotations don't show thinking." }],
+  "6.3": [3, { 1: "The detail is about how the narrator SEES people, which matters.", 2: "It's deliberate, not an error.", 3: "Nothing suggests a futuristic setting." }],
+  "7.0": [2, { 1: "Enjambment is about line breaks.", 2: "Caesura is a pause within a line.", 3: "Onomatopoeia imitates sounds." }],
+  "7.1": [1, { 0: "Caesura is a pause WITHIN a line.", 2: "A couplet is two rhyming lines.", 3: "Meter is the rhythm pattern." }],
+  "7.2": [3, { 1: "Nothing is referenced from another work.", 2: "Alliteration is repeated initial sounds.", 3: "It's not exaggeration; it's a contradiction that reveals truth." }],
+  "7.3": [1, { 0: "Soft \"s\" sounds are gentle, not harsh.", 2: "The line doesn't concern the speaker's identity.", 3: "There's no change in direction." }],
+  "8.0": [0, { 0: "Catharsis is the audience's emotional release.", 2: "Satire uses humor to criticize society.", 3: "An allusion is a reference to another work." }],
+  "8.1": [0, { 1: "A soliloquy is a speech alone on stage.", 2: "Free verse is a poetic form.", 3: "Dramatic irony is about what the audience knows; this is social criticism through exaggeration." }],
+  "8.2": [2, { 0: "\"Greed is bad\" is a simple moral, not a complex theme.", 2: "That's a topic, not a theme.", 3: "That describes a character, not the theme." }],
+  "8.3": [3, { 0: "Length doesn't make a work a better fit.", 2: "Film versions often differ; use the text.", 3: "You need deep knowledge for specific evidence." }]
+};
+
+</script>
+<script>/* content/diagnostics/environmental-science.js */
+// Concept tags and wrong-answer diagnoses for content/environmental-science.js.
+window.AP_DIAG = window.AP_DIAG || {};
+window.AP_DIAG["environmental-science"] = {
+  "0.0": [2, { 0: "2,000 kcal reaches PRIMARY consumers. Secondary consumers are one more level up.", 2: "20 kcal is tertiary consumers, one level too far.", 3: "18,000 kcal is the energy LOST in the first transfer." }],
+  "0.1": [5, { 0: "Denitrification returns nitrogen to the atmosphere as N₂.", 2: "Transpiration is part of the water cycle.", 3: "Respiration releases CO₂; it doesn't fix nitrogen." }],
+  "0.2": [5, { 0: "Phosphorus has no significant atmospheric reservoir.", 2: "Plants need phosphorus for DNA, ATP and membranes.", 3: "Photosynthesis doesn't produce phosphorus." }],
+  "0.3": [1, { 0: "In commensalism only one species benefits; here both do.", 2: "In parasitism one is harmed; neither is harmed here.", 3: "They aren't competing for a resource." }],
+  "1.0": [2, { 0: "Small and far means low immigration and high extinction, so the fewest species.", 2: "Small islands have higher extinction rates.", 3: "Far islands receive fewer immigrants." }],
+  "1.1": [1, { 0: "Provisioning services are products like food or timber, not the process of pollination.", 2: "Cultural services are recreation and spiritual value.", 3: "Pollination is worth billions of dollars to agriculture." }],
+  "1.2": [6, { 0: "Primary succession starts without soil.", 2: "Island biogeography is about species richness on islands.", 3: "Eutrophication is nutrient overload in water." }],
+  "1.3": [0, { 0: "Reproduction speed isn't what genetic diversity provides.", 2: "Genetic diversity doesn't reduce predators.", 3: "Genetic diversity is about variety, not population size." }],
+  "2.0": [4, { 0: "70 ÷ 3.5 = 20, not 10.", 2: "35 years would be a 2% growth rate.", 3: "70 years would be a 1% growth rate." }],
+  "2.1": [1, { 0: "Houseflies have many offspring quickly (r-selected).", 1: "Mice reproduce early and often (r-selected).", 3: "Dandelions spread many seeds (r-selected)." }],
+  "2.2": [3, { 0: "Exponential growth can't continue past carrying capacity.", 2: "Reproductive strategy doesn't change because of overshoot.", 3: "Reproduction slows, but a die-off is the typical result." }],
+  "2.3": [2, { 0: "Type I is high survival until old age.", 1: "Type II is a constant death rate.", 3: "Logistic describes population growth, not survivorship." }],
+  "3.0": [0, { 0: "Divergent boundaries pull apart.", 1: "Convergent boundaries collide.", 3: "Subduction happens at convergent boundaries." }],
+  "3.1": [1, { 0: "Clay has tiny particles and holds water.", 1: "Silt drains moderately, not fastest.", 3: "Loam is a balanced mix and drains moderately." }],
+  "3.2": [3, { 0: "Tropospheric ozone is a harmful pollutant, not the protective layer.", 2: "The mesosphere is above the ozone layer.", 3: "The thermosphere is far above the ozone layer." }],
+  "3.3": [6, { 0: "El Niño WEAKENS upwelling.", 2: "Peruvian fisheries are strongly affected.", 3: "The effect is temporary, not a permanent shift." }],
+  "4.0": [0, { 1: "Biomagnification is about toxins moving up food chains.", 2: "Succession is community change over time.", 3: "The 10% rule describes energy transfer." }],
+  "4.1": [3, { 0: "Flood irrigation wastes a lot of water through evaporation and runoff.", 1: "Furrow irrigation loses water in channels.", 3: "Spray irrigation loses water to evaporation and wind." }],
+  "4.2": [3, { 0: "Desertification is land degrading into desert, not salt buildup.", 2: "Eutrophication happens in water.", 3: "Subsidence is sinking land from groundwater loss." }],
+  "4.3": [4, { 0: "Heavy spraying is the opposite of IPM and speeds up resistance.", 2: "Monocultures make pest problems worse.", 3: "Fertilizer doesn't control pests." }],
+  "5.0": [1, { 0: "Natural gas emits about half the CO₂ of coal per unit of energy.", 2: "Nuclear emits no CO₂ during operation.", 3: "Wind produces no emissions when running." }],
+  "5.1": [2, { 0: "Nuclear plants don't emit CO₂ while operating.", 2: "Nuclear doesn't depend on sunlight.", 3: "Nuclear has very high energy output." }],
+  "5.2": [4, { 0: "Dams don't burn fuel to generate power.", 2: "Dams generate power day and night.", 3: "Uranium is for nuclear power." }],
+  "5.3": [5, { 0: "Convert to a percent: 0.35 × 100 = 35%.", 2: "65% is the energy LOST, not the efficiency.", 3: "Efficiency can't exceed 100%." }],
+  "6.0": [0, { 0: "CO is emitted directly, so it's primary.", 1: "SO₂ is emitted directly from burning coal.", 3: "Particulates are emitted directly." }],
+  "6.1": [3, { 0: "CO₂ contributes slightly to acidity but isn't the main cause of acid rain.", 2: "CFCs deplete stratospheric ozone.", 3: "Radon is an indoor air pollutant." }],
+  "6.2": [2, { 0: "The greenhouse effect traps heat globally, not pollution in a valley.", 2: "Acid deposition is about acids falling to Earth.", 3: "El Niño is an ocean–atmosphere pattern." }],
+  "6.3": [5, { 0: "Catalytic converters clean vehicle exhaust.", 2: "Photovoltaic cells make electricity from sunlight.", 3: "Baghouses capture particles, not SO₂ gas." }],
+  "7.0": [0, { 0: "A point source has one identifiable outlet, like a pipe.", 2: "Thermal pollution is heated water.", 3: "Bioaccumulation is toxin buildup in organisms." }],
+  "7.1": [1, { 0: "Nutrients aren't directly toxic at these levels; oxygen loss kills the fish.", 2: "Warmer water holds less oxygen, but decomposition is the main cause.", 3: "Eutrophication doesn't increase salinity." }],
+  "7.2": [2, { 0: "Producers have the LOWEST concentration.", 1: "Zooplankton are low in the food chain.", 2: "Small fish have less mercury than the predators that eat them." }],
+  "7.3": [5, { 0: "Primary treatment physically removes solids.", 2: "Tertiary treatment removes nutrients and chemicals.", 3: "Disinfection kills pathogens; it doesn't break down organic matter." }],
+  "8.0": [0, { 0: "CO₂ was addressed by the Kyoto Protocol and the Paris Agreement.", 2: "Acid rain was addressed by the Clean Air Act.", 3: "Overfishing is managed by fishery agreements." }],
+  "8.1": [3, { 0: "Warming causes bleaching, but acidification specifically affects shell building.", 2: "Acidification doesn't raise oxygen levels.", 3: "Acidification isn't about added nutrients." }],
+  "8.2": [5, { 0: "Invasive species are serious, but habitat loss is the leading cause.", 2: "Pollution matters, but habitat loss is bigger.", 3: "Overhunting affects some species, but habitat loss affects the most." }],
+  "8.3": [2, { 0: "A negative feedback counteracts change; this one amplifies it.", 2: "Permafrost is releasing carbon here, not storing it.", 3: "A thermal inversion is an atmospheric layering event." }]
+};
+
+</script>
+<script>/* content/diagnostics/human-geography.js */
+// Concept tags and wrong-answer diagnoses for content/human-geography.js.
+window.AP_DIAG = window.AP_DIAG || {};
+window.AP_DIAG["human-geography"] = {
+  "0.0": [0, { 0: "Equal-area projections keep sizes accurate.", 2: "Robinson is a compromise projection with only moderate polar distortion.", 3: "A polar projection centers on a pole; it doesn't stretch Greenland the way Mercator does." }],
+  "0.1": [5, { 0: "A formal region shares a trait, not a central hub.", 2: "A perceptual region is based on feelings, not a broadcast area.", 3: "Broadcast areas are human, not physical, regions." }],
+  "0.2": [2, { 0: "Site means the physical characteristics of the place itself.", 2: "Absolute location is latitude and longitude.", 3: "A toponym is a place name." }],
+  "0.3": [3, { 0: "Distance decay says interaction drops with distance. The internet reduces that effect.", 2: "Environmental determinism is about the environment controlling behavior.", 3: "Friction of distance is the cost of distance, which the internet reduces." }],
+  "1.0": [0, { 0: "Arithmetic density uses total land, not farmland.", 2: "Agricultural density counts only farmers per arable land.", 3: "The dependency ratio is about age structure." }],
+  "1.1": [2, { 0: "Birth rates fall later, in Stage 3.", 2: "That describes Stage 4.", 3: "Death rates fall in Stage 2." }],
+  "1.2": [3, { 0: "Population obviously grows; that's not the criticism.", 2: "Malthus did consider deaths (famine, war).", 3: "Malthus focused on food supply, not migration." }],
+  "1.3": [7, { 0: "Brain drain is the loss of skilled workers, not money sent home.", 2: "Chain migration is following family, not sending money.", 3: "Foreign aid comes from governments, not individual migrants." }],
+  "2.0": [1, { 0: "Contagious diffusion spreads to nearby people regardless of status.", 2: "Relocation diffusion needs people to move.", 3: "Stimulus diffusion changes the trait; here it spreads unchanged." }],
+  "2.1": [1, { 0: "Relocation needs people moving, not an adapted menu.", 2: "Assimilation is a group fully adopting another culture.", 3: "Contagious diffusion spreads a trait unchanged to nearby places." }],
+  "2.2": [3, { 0: "Islam is universalizing: it seeks converts.", 1: "Buddhism is universalizing.", 3: "Christianity is universalizing." }],
+  "2.3": [2, { 0: "A dialect is a regional version of one language.", 2: "A creole is a new language formed from mixing languages.", 3: "A language isolate has no known relatives." }],
+  "3.0": [0, { 0: "The Kurds have no state of their own, so they can't be a nation-state.", 2: "The Kurds have no state of their own.", 3: "A microstate is a very small state, not a stateless nation." }],
+  "3.1": [2, { 0: "Antecedent boundaries were drawn before settlement.", 1: "Subsequent boundaries follow cultural differences; these ignored them.", 3: "Relic boundaries no longer function, but these are active borders." }],
+  "3.2": [5, { 0: "Supranationalism means states sharing power upward, not a region gaining power.", 2: "Balkanization is a breakup into hostile states.", 3: "Irredentism is claiming territory in another state." }],
+  "3.3": [3, { 0: "3 nautical miles was an old limit for territorial waters.", 1: "12 nautical miles is the territorial sea.", 3: "UNCLOS sets the EEZ at 200, not 500, nautical miles." }],
+  "4.0": [2, { 0: "Ranching is in the outermost ring; animals can walk to market.", 1: "Grain keeps well, so it can be farther out.", 3: "Forestry is in the second ring, not the innermost." }],
+  "4.1": [1, { 0: "Domestication was the First Agricultural Revolution.", 2: "Slash-and-burn is traditional shifting cultivation.", 3: "Township and range is a land survey system." }],
+  "4.2": [0, { 0: "Nomadic herding isn't intensive or commercial.", 2: "Plantations are intensive commercial farms.", 3: "Market gardening is intensive farming near cities." }],
+  "4.3": [3, { 0: "Metes and bounds uses natural features as borders.", 1: "Township and range is a rectangular grid.", 3: "Long lots are a land division, not a settlement pattern." }],
+  "5.0": [1, { 0: "Paris is a world city, but the key fact here is its size relative to other French cities.", 2: "Edge cities are suburban business centers.", 3: "Boomburbs are fast-growing suburbs." }],
+  "5.1": [2, { 0: "The concentric zone model uses rings, not wedges.", 2: "The multiple nuclei model has several centers.", 3: "The galactic model centers on a highway ring." }],
+  "5.2": [3, { 0: "Homes can't outbid businesses for central land.", 1: "Farms are far from the CBD, where land is cheap.", 3: "Parks don't pay rent; central land goes to the highest bidders." }],
+  "5.3": [4, { 0: "Redlining is denying loans in certain areas.", 2: "Suburbanization is movement out of the city.", 3: "Blockbusting was scaring white owners into selling cheaply." }],
+  "6.0": [4, { 0: "Heavy ore loses weight when processed, so shipping it is costly. Locate near the ore.", 2: "Transport costs dominate for weight-losing industries.", 3: "Location matters a lot under least-cost theory." }],
+  "6.1": [2, { 0: "GDP per capita measures only income.", 1: "The Gini coefficient measures inequality.", 3: "The Gender Inequality Index measures gender gaps." }],
+  "6.2": [3, { 0: "Core countries are wealthy and industrialized.", 1: "Semi-periphery countries are in between.", 3: "Quaternary refers to an economic sector, not a world-systems category." }],
+  "6.3": [1, { 0: "The primary sector dominates in less developed economies.", 1: "Manufacturing employment falls as countries reach high development.", 3: "Subsistence farming is rare in developed countries." }]
+};
+
+</script>
 <script>/* content/diagnostics/macroeconomics.js */
 // Concept tags and wrong-answer diagnoses for content/macroeconomics.js.
 window.AP_DIAG = window.AP_DIAG || {};
@@ -8904,6 +10740,189 @@ window.AP_TRAPS["english-language"] = {
   "6.0": "Use at LEAST 3 sources to reach the top Evidence scores, and cite them (Source A).",
   "6.1": "Organize by YOUR claims, not one paragraph per source. Sources support your argument; they don't replace it.",
   "6.2": "For charts, describe what the data SHOWS, then explain what it means for your argument (and any limits).",
+};
+
+</script>
+<script>/* content/traps/english-literature.js */
+// "AP Trap" for every concept in content/english-literature.js.
+window.AP_TRAPS = window.AP_TRAPS || {};
+window.AP_TRAPS["english-literature"] = {
+  "0.0": "Don't just list a character's traits. Explain what the author reveals through them.",
+  "0.1": "Different characters can see the same event differently. The contrast often IS the meaning.",
+  "0.2": "Setting is more than time and place. Explain how it shapes mood or conflict.",
+  "0.3": "Plot summary earns no analysis points. Discuss why events are ordered or resolved as they are.",
+  "0.4": "Third-person limited follows ONE character's mind; omniscient enters many.",
+  "0.5": "A thesis must be ARGUABLE. \"The story has symbolism\" isn't a claim about meaning.",
+  "0.6": "Evidence without commentary scores low. Explain every quotation.",
+  "1.0": "The speaker isn't automatically the poet. Say \"the speaker.\"",
+  "1.1": "Line breaks create emphasis. Notice the words that end or begin lines.",
+  "1.2": "Explain the CONNOTATION a word carries, not just its dictionary meaning.",
+  "1.3": "Name the comparison AND explain what qualities it transfers.",
+  "1.4": "Look for PATTERNS of imagery (light and dark, growth and decay), not isolated images.",
+  "1.5": "Shifts (after \"but,\" \"yet,\" or a new stanza) are where poems reveal complexity.",
+  "2.0": "Complex characters want conflicting things. That tension is great essay material.",
+  "2.1": "Social setting often explains WHY characters can't simply do what they want.",
+  "2.2": "Dramatic irony is when the AUDIENCE knows more than the character.",
+  "2.3": "A theme is a full statement about life, not one word.",
+  "2.4": "An unresolved ending is a choice. Explain what it suggests.",
+  "2.5": "Q3 asks how an element contributes to the meaning of the WHOLE work, not just one scene.",
+  "3.0": "A foil exists to highlight another character's traits by contrast.",
+  "3.1": "Symbolic settings reflect characters' inner states. Connect the two.",
+  "3.2": "Nonchronological order is deliberate. Explain what the reordering emphasizes.",
+  "3.3": "Use precise tone words (wry, detached, reverent) instead of \"positive\" or \"negative.\"",
+  "3.4": "Symbols DEVELOP. Explain how a symbol's meaning changes across the story.",
+  "3.5": "Organize by ideas, not devices. A \"device per paragraph\" essay rarely has a line of reasoning.",
+  "4.0": "Explain why the poet chose or broke a form. The form itself creates meaning.",
+  "4.1": "Breaks in meter or rhyme draw attention to key words. Notice them.",
+  "4.2": "Trace each part of an extended metaphor; don't stop at the first comparison.",
+  "4.3": "For allusions, explain what the reference ADDS to the poem.",
+  "4.4": "In Petrarchan sonnets the volta is usually at line 9; in Shakespearean sonnets, the final couplet.",
+  "4.5": "Commentary = technique + example + effect + link to the thesis.",
+  "5.0": "Name the TYPE of irony: verbal, situational or dramatic.",
+  "5.1": "Character pairs often represent competing values. Say what each stands for.",
+  "5.2": "Motifs gather meaning through repetition. Track them across the work.",
+  "5.3": "With unreliable narrators, the meaning lies in the GAP between what they say and what's true.",
+  "5.4": "Subplots often mirror or contrast with the main plot. Use them as evidence.",
+  "5.5": "Use evidence from across the work to show development, not one scene.",
+  "6.0": "Don't resolve ambiguity by picking one reading and ignoring the other. Explain why it's ambiguous.",
+  "6.1": "Acknowledging an alternative reading, then defending yours, shows sophistication.",
+  "6.2": "Explain how sentence structure mirrors meaning (short = shock, long = rushing thoughts).",
+  "6.3": "What a narrator ignores can reveal as much as what they describe.",
+  "6.4": "Sophistication has to run through the WHOLE essay, not appear in the last sentence.",
+  "7.0": "When a word has two meanings, explain how BOTH work in the poem.",
+  "7.1": "Sound devices matter only when you connect them to mood or meaning.",
+  "7.2": "Apostrophe addresses someone absent or something non-human. It's not the punctuation mark.",
+  "7.3": "Paradoxes reveal truth through apparent contradiction. Explain the truth.",
+  "7.4": "Focus on two or three strong techniques instead of listing every device.",
+  "8.0": "A tragic hero's downfall comes from a flaw WITHIN them, not only bad luck.",
+  "8.1": "Say what the author criticizes AND how the work makes the critique.",
+  "8.2": "Avoid simple morals. Complex themes include tensions and qualifications.",
+  "8.3": "Choose a work you know in detail. Film adaptations often differ from the text.",
+  "8.4": "Sophistication in Q3 comes from complicating the prompt's idea, not from vocabulary."
+};
+
+</script>
+<script>/* content/traps/environmental-science.js */
+// "AP Trap" for every concept in content/environmental-science.js.
+window.AP_TRAPS = window.AP_TRAPS || {};
+window.AP_TRAPS["environmental-science"] = {
+  "0.0": "Biomes are set by temperature AND precipitation. Name both when explaining a biome's location.",
+  "0.1": "Mutualism benefits both; commensalism benefits one and doesn't affect the other. Read carefully.",
+  "0.2": "Energy is LOST as heat at each level; it isn't recycled. Only about 10% moves up.",
+  "0.3": "Removing a keystone species changes the whole food web, not just its prey.",
+  "0.4": "Photosynthesis removes CO₂; respiration and combustion add it. Fossil fuels move carbon from LONG-TERM storage.",
+  "0.5": "Phosphorus has no significant gas phase; nitrogen does. That's why phosphorus is often limiting.",
+  "0.6": "Most freshwater is in ice and groundwater, not lakes and rivers.",
+  "1.0": "Species richness counts species; evenness measures balance. High richness with low evenness is still vulnerable.",
+  "1.1": "Ecosystem services have ECONOMIC value. Questions often ask you to connect them to money.",
+  "1.2": "Larger and closer islands have more species. Apply the same idea to habitat fragments.",
+  "1.3": "Species with narrow tolerance ranges are most at risk from environmental change.",
+  "1.4": "Some ecosystems NEED disturbance, like fire-adapted forests.",
+  "1.5": "Human-caused changes can happen faster than populations can adapt.",
+  "1.6": "Primary succession starts with no soil; secondary succession starts with soil.",
+  "2.0": "Specialists are more vulnerable to extinction than generalists.",
+  "2.1": "r-selected species are often INVASIVE; K-selected species are often endangered.",
+  "2.2": "Type I = most survive to old age; Type III = most die young.",
+  "2.3": "Overshooting carrying capacity leads to a die-off, not a gentle leveling off.",
+  "2.4": "Use the rule of 70 for doubling time, and convert per-1,000 rates into percents.",
+  "2.5": "In the demographic transition, DEATH rates fall first, then birth rates.",
+  "3.0": "Transform boundaries cause earthquakes but not volcanoes; convergent boundaries cause both.",
+  "3.1": "Sand drains fastest; clay holds the most water; loam is best for crops.",
+  "3.2": "Plowing up and down a slope increases erosion. Contour plowing follows the land's shape.",
+  "3.3": "Stratospheric ozone is protective; ground-level ozone is a pollutant.",
+  "3.4": "Deserts form around 30° latitude, where dry air sinks, not at the equator.",
+  "3.5": "Everything upstream in a watershed affects water quality downstream.",
+  "3.6": "El Niño WEAKENS upwelling off South America, hurting fisheries.",
+  "4.0": "Solutions to the tragedy of the commons include regulation, quotas and permits. Name a specific one.",
+  "4.1": "Clear-cutting increases erosion AND stream temperatures. Selective cutting reduces both.",
+  "4.2": "Monocultures reduce biodiversity and make crops more vulnerable to pests.",
+  "4.3": "Drip irrigation is the most efficient; flood irrigation is the least.",
+  "4.4": "Heavy pesticide use breeds resistant pests. IPM reduces chemical use.",
+  "4.5": "Impervious surfaces in cities increase runoff and flooding.",
+  "4.6": "Aquaculture reduces pressure on wild fish but can cause pollution and disease.",
+  "5.0": "Biomass is renewable only if it's replanted, and burning it still emits CO₂.",
+  "5.1": "Coal emits the most CO₂ per unit of energy; natural gas emits the least of the fossil fuels.",
+  "5.2": "Nuclear power emits no CO₂ during operation. Its main drawback is radioactive waste.",
+  "5.3": "Solar and wind are intermittent and need storage or backup.",
+  "5.4": "Dams trap sediment and block fish migration, even though they don't burn fuel.",
+  "5.5": "Efficiency = useful output ÷ total input. It can never exceed 100%.",
+  "6.0": "Ground-level ozone and acid rain are SECONDARY pollutants: they form in the air.",
+  "6.1": "Smog peaks on hot, sunny days, because sunlight drives the reactions.",
+  "6.2": "Inversions TRAP pollution; they don't create it.",
+  "6.3": "Acid rain comes from SO₂ and NOx, not CO₂.",
+  "6.4": "Radon is the leading indoor cause of lung cancer after smoking.",
+  "6.5": "Scrubbers remove SO₂; catalytic converters clean vehicle exhaust. Match the technology to the pollutant.",
+  "7.0": "Farm and urban runoff are NONPOINT sources, which are harder to regulate.",
+  "7.1": "Fish die from LOW OXYGEN caused by decomposing algae, not from the nutrients themselves.",
+  "7.2": "Biomagnification concentrates toxins in TOP predators.",
+  "7.3": "A lower LD50 means a MORE toxic substance.",
+  "7.4": "The priority order is reduce, then reuse, then recycle.",
+  "7.5": "Secondary treatment is biological; tertiary removes nutrients.",
+  "7.6": "Climate change can expand the range of vector-borne diseases like malaria.",
+  "8.0": "Ozone depletion (CFCs, UV) and global warming (greenhouse gases, heat) are DIFFERENT problems.",
+  "8.1": "The natural greenhouse effect is necessary for life; the ENHANCED effect causes warming.",
+  "8.2": "Melting permafrost is a POSITIVE feedback: it amplifies warming.",
+  "8.3": "Acidification comes from CO₂ dissolving in seawater, not from acid rain.",
+  "8.4": "Invasive species are often r-selected generalists with no natural predators in their new habitat.",
+  "8.5": "Habitat loss is the leading cause of biodiversity loss. Remember HIPPCO.",
+  "8.6": "Mitigation reduces emissions; adaptation prepares for effects. Questions may ask for one specifically."
+};
+
+</script>
+<script>/* content/traps/human-geography.js */
+// "AP Trap" for every concept in content/human-geography.js.
+window.AP_TRAPS = window.AP_TRAPS || {};
+window.AP_TRAPS["human-geography"] = {
+  "0.0": "Every projection distorts something. Name WHAT it distorts (shape, area, distance or direction).",
+  "0.1": "GIS analyzes layered data; GPS finds location; remote sensing collects images. Don't mix them up.",
+  "0.2": "Site = the place itself (terrain, water). Situation = its location relative to other places.",
+  "0.3": "Time-space compression doesn't mean distance disappears. Distance decay still applies, just less.",
+  "0.4": "When asked about scale, explain how the pattern CHANGES at another scale, not just what the scale is.",
+  "0.5": "Formal regions share a trait; functional regions share a hub; perceptual regions share a feeling.",
+  "0.6": "Environmental determinism is discredited. Possibilism is the accepted view.",
+  "1.0": "Physiological density uses ARABLE land. It shows pressure on farmland better than arithmetic density.",
+  "1.1": "A wide base means high birth rates; a top-heavy pyramid means an aging population.",
+  "1.2": "In the DTM, DEATH rates fall first (Stage 2), then birth rates (Stage 3).",
+  "1.3": "Malthus underestimated technology. The Green Revolution is the classic counterexample.",
+  "1.4": "Antinatalist = fewer births; pronatalist = more births. Name a real country's policy.",
+  "1.5": "Women's education is one of the strongest links to lower fertility. Use it in explanations.",
+  "1.6": "Push factors are at the ORIGIN; pull factors are at the DESTINATION.",
+  "1.7": "Migration affects both sending and receiving places. Answer for the one the question asks about.",
+  "2.0": "Cultural landscapes are VISIBLE: buildings, signs, land use. Use concrete examples.",
+  "2.1": "Hierarchical diffusion skips places based on importance; contagious diffusion spreads to neighbors like a wave.",
+  "2.2": "A lingua franca is a shared language between groups, not a dialect.",
+  "2.3": "Hinduism and Judaism are ETHNIC religions; Christianity, Islam, Buddhism and Sikhism are universalizing.",
+  "2.4": "Acculturation keeps the original culture while adopting some traits; assimilation absorbs it completely.",
+  "2.5": "Centripetal forces UNIFY; centrifugal forces DIVIDE. Remember centri-FUGAL = flee.",
+  "2.6": "Colonialism spread European languages and religions through relocation AND imposed expansion diffusion.",
+  "3.0": "A nation is a PEOPLE; a state is a political TERRITORY. A nation-state is where they match.",
+  "3.1": "Colonial borders were often SUPERIMPOSED, splitting ethnic groups, which contributes to later conflict.",
+  "3.2": "Superimposed boundaries are drawn by outsiders; subsequent boundaries follow existing cultural lines.",
+  "3.3": "Territorial waters reach 12 nautical miles; the EEZ reaches 200. Don't swap them.",
+  "3.4": "Federal states share power with regions; unitary states centralize it. Federalism can help manage diverse populations.",
+  "3.5": "Devolution transfers power to regions; it doesn't always mean independence.",
+  "3.6": "Supranationalism involves giving up SOME sovereignty. Brexit shows the tension.",
+  "4.0": "Intensive vs. extensive is about inputs per unit of land, not whether it's commercial.",
+  "4.1": "The Green Revolution raised yields but increased inequality and environmental damage. Mention both.",
+  "4.2": "Von Thünen assumes a flat, uniform plain and one market. Modern transport weakens the model.",
+  "4.3": "Long lots follow rivers; township and range is a grid; metes and bounds follows natural features.",
+  "4.4": "Commodity chains link farms to distant consumers. Agribusiness is vertically integrated.",
+  "4.5": "Desertification often comes from overgrazing and poor land management, not just climate.",
+  "4.6": "Food deserts are about ACCESS to healthy food, not the absence of any food.",
+  "5.0": "Most megacity growth today is in developing countries, not developed ones.",
+  "5.1": "Threshold is the minimum population needed; range is the maximum distance people will travel.",
+  "5.2": "Concentric = rings; sector = wedges; multiple nuclei = several centers.",
+  "5.3": "Bid-rent: commercial land use is closest to the CBD because it can pay the most.",
+  "5.4": "Gentrification improves buildings but can DISPLACE lower-income residents. Show both sides.",
+  "5.5": "Smart growth and new urbanism fight sprawl with density and mixed use, not more highways.",
+  "5.6": "Always describe the data accurately first, then explain it.",
+  "6.0": "Industrialization spread from Britain; colonialism supplied raw materials for it.",
+  "6.1": "As countries develop, employment shifts from primary to secondary to tertiary and higher sectors.",
+  "6.2": "HDI combines income, education and life expectancy. GDP alone misses social development.",
+  "6.3": "Rostow assumes one path for everyone. Wallerstein explains inequality BETWEEN countries.",
+  "6.4": "Weight-losing industries go near raw materials; weight-gaining industries go near markets.",
+  "6.5": "Deindustrialization hits former industrial regions while new industrial regions grow elsewhere.",
+  "6.6": "Microloans often target women and have been linked to development gains in many places."
 };
 
 </script>
@@ -13491,6 +15510,46 @@ window.AP_LINKS["english-language"] = [
   { title: "From reading to the analysis essay", chain: ["0:Reading a text with SOAPSTone", "helps you write", "4:A strong rhetorical analysis thesis", "developed with", "4:Commentary that earns points", "and pushed toward", "4:The sophistication point"] },
   { title: "Complexity wins points", chain: ["1:Qualifying a claim", "and", "2:Counterargument and rebuttal", "show", "5:Acknowledging complexity", "one path to", "4:The sophistication point"] },
   { title: "Sources in conversation", chain: ["6:Evaluating source credibility", "comes before", "6:Using sources in conversation", "which means", "6:Synthesis vs. summary", "with", "6:Citing sources correctly"] },
+];
+
+</script>
+<script>/* content/links/english-literature.js */
+// How ideas in AP English Literature connect across units. See content/links/_README.txt for the format.
+window.AP_LINKS = window.AP_LINKS || {};
+window.AP_LINKS["english-literature"] = [
+  { title: "Character, from traits to tragedy", chain: ["0:Characterization", "grows into", "2:Character motivation and complexity", "and change in", "3:Dynamic and static characters", "culminating in", "8:Tragic heroes and archetypes"] },
+  { title: "Setting carries meaning", chain: ["0:Setting", "becomes", "3:Setting as symbol and mood", "and social pressure in", "2:Setting and social context", "which enables", "8:Social critique"] },
+  { title: "Who tells the story", chain: ["0:Narrator and point of view", "sets", "3:Narrative distance and tone", "and can become", "5:Unreliable narration", "or reveal", "6:Narrator bias and perspective"] },
+  { title: "Comparisons deepen", chain: ["1:Simile and metaphor", "extend into", "4:Extended metaphor and conceit", "and", "4:Symbol and allusion", "and, at their richest,", "7:Paradox and juxtaposition"] },
+  { title: "From claim to sophistication", chain: ["0:Making a defensible interpretation", "is supported by", "0:Using textual evidence", "organized into a", "3:Line of reasoning in essays", "that shows", "6:Complexity and the sophistication point"] },
+  { title: "Themes grow more complex", chain: ["2:Theme across a whole work", "is developed through", "5:Motifs", "and deepened by", "6:Ambiguity", "into", "8:Complexity of theme"] },
+];
+
+</script>
+<script>/* content/links/environmental-science.js */
+// How ideas in AP Environmental Science connect across units. See content/links/_README.txt for the format.
+window.AP_LINKS = window.AP_LINKS || {};
+window.AP_LINKS["environmental-science"] = [
+  { title: "From fertilizer to dead zones", chain: ["4:Agricultural practices", "add excess nutrients to", "0:The nitrogen and phosphorus cycles", "which run off as", "7:Point and nonpoint source pollution", "causing", "7:Eutrophication and hypoxia"] },
+  { title: "Burning fuel changes the planet", chain: ["5:Fossil fuels", "release carbon, disrupting", "0:The carbon cycle", "and strengthening", "8:The greenhouse effect", "which drives", "8:Climate change evidence and effects"] },
+  { title: "Carbon dioxide in the ocean", chain: ["5:Fossil fuels", "raise CO₂ that causes", "8:Ocean warming and acidification", "adding to the causes of", "8:Endangered species and biodiversity loss"] },
+  { title: "From smokestacks to acid lakes", chain: ["5:Fossil fuels", "emit", "6:Primary and secondary pollutants", "that form", "6:Acid deposition", "reduced by", "6:Reducing air pollution"] },
+  { title: "Toxins climb the food chain", chain: ["0:Energy flow and the 10% rule", "means top predators eat many organisms, so", "7:Bioaccumulation and biomagnification", "concentrates toxins judged by", "7:Toxic substances and dose-response"] },
+  { title: "Population pressure on land and water", chain: ["2:Human population growth and demographics", "increases demand behind", "4:The tragedy of the commons", "seen in", "4:Irrigation and water use", "and", "4:Fishing and sustainable practices"] },
+  { title: "Fragmented habitats lose species", chain: ["4:Mining and urban land use", "fragment habitat, which", "1:Island biogeography", "predicts will lose species, opening the way for", "8:Invasive species"] },
+];
+
+</script>
+<script>/* content/links/human-geography.js */
+// How ideas in AP Human Geography connect across units. See content/links/_README.txt for the format.
+window.AP_LINKS = window.AP_LINKS || {};
+window.AP_LINKS["human-geography"] = [
+  { title: "Development drives population change", chain: ["6:Economic sectors", "shift as countries develop, which moves them through", "1:The Demographic Transition Model", "shaped by", "1:Women and demographic change", "and visible in", "1:Population pyramids"] },
+  { title: "From farms to cities", chain: ["4:Agricultural revolutions", "reduced the need for farm labor, driving", "1:Causes and types of migration", "to cities, fueling", "5:Origins and growth of cities"] },
+  { title: "Colonialism's long shadow", chain: ["3:Colonialism and political boundaries", "drew", "3:Types of boundaries", "that fuel", "3:Devolution and centrifugal forces", "and left patterns explained by", "6:Theories of development"] },
+  { title: "Culture moves with people", chain: ["1:Causes and types of migration", "carry culture through", "2:Types of diffusion", "shaping", "2:Ethnicity and identity", "and the", "2:Culture and cultural landscapes"] },
+  { title: "Location, cost and land use", chain: ["0:Distance decay and time-space compression", "underlies", "4:The von Thünen model", "and", "5:Bid-rent theory and density", "and", "6:Industrial location and Weber's model"] },
+  { title: "Globalization reshapes places", chain: ["0:Distance decay and time-space compression", "enables", "6:Globalization and the changing location of industry", "and", "2:Globalization and cultural change", "and", "3:Supranationalism"] },
 ];
 
 </script>

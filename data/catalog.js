@@ -86,7 +86,7 @@ const COURSES = [
     ced: CED("ap-comparative-government-and-politics"), page: PAGE("ap-comparative-government-and-politics"),
   },
   {
-    id: "human-geography", name: "AP Human Geography", cat: "History & Social Sciences",
+    id: "human-geography", name: "AP Human Geography", cat: "History & Social Sciences", guide: true,
     blurb: "Why people, cultures, cities and economies are located where they are.",
     exam: [
       { name: "Multiple choice", detail: "60 questions · 60 min", weight: 50 },
@@ -208,7 +208,7 @@ const COURSES = [
     ced: CED("ap-chemistry"), page: PAGE("ap-chemistry"),
   },
   {
-    id: "environmental-science", name: "AP Environmental Science", cat: "Sciences",
+    id: "environmental-science", name: "AP Environmental Science", cat: "Sciences", guide: true,
     blurb: "How natural systems work and how humans change them.",
     exam: [
       { name: "Multiple choice", detail: "80 questions · 90 min", weight: 60 },
@@ -269,12 +269,13 @@ const COURSES = [
     ced: CED("ap-english-language-and-composition"), page: PAGE("ap-english-language-and-composition"),
   },
   {
-    id: "english-literature", name: "AP English Literature and Composition", cat: "English",
+    id: "english-literature", name: "AP English Literature and Composition", cat: "English", guide: true,
     blurb: "Close reading and analytical writing about fiction, poetry and drama.",
     exam: [
       { name: "Multiple choice", detail: "55 questions · 60 min", weight: 45 },
       { name: "Free response", detail: "3 essays · 2 hr: poetry analysis, prose analysis, literary argument", weight: 55 },
     ],
+    units: ["Short Fiction I", "Poetry I", "Longer Fiction or Drama I", "Short Fiction II", "Poetry II", "Longer Fiction or Drama II", "Short Fiction III", "Poetry III", "Longer Fiction or Drama III"],
     ced: CED("ap-english-literature-and-composition"), page: PAGE("ap-english-literature-and-composition"),
   },
 

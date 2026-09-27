@@ -1,0 +1,32 @@
+// Concept tags and wrong-answer diagnoses for content/human-geography.js.
+window.AP_DIAG = window.AP_DIAG || {};
+window.AP_DIAG["human-geography"] = {
+  "0.0": [0, { 0: "Equal-area projections keep sizes accurate.", 2: "Robinson is a compromise projection with only moderate polar distortion.", 3: "A polar projection centers on a pole; it doesn't stretch Greenland the way Mercator does." }],
+  "0.1": [5, { 0: "A formal region shares a trait, not a central hub.", 2: "A perceptual region is based on feelings, not a broadcast area.", 3: "Broadcast areas are human, not physical, regions." }],
+  "0.2": [2, { 0: "Site means the physical characteristics of the place itself.", 2: "Absolute location is latitude and longitude.", 3: "A toponym is a place name." }],
+  "0.3": [3, { 0: "Distance decay says interaction drops with distance. The internet reduces that effect.", 2: "Environmental determinism is about the environment controlling behavior.", 3: "Friction of distance is the cost of distance, which the internet reduces." }],
+  "1.0": [0, { 0: "Arithmetic density uses total land, not farmland.", 2: "Agricultural density counts only farmers per arable land.", 3: "The dependency ratio is about age structure." }],
+  "1.1": [2, { 0: "Birth rates fall later, in Stage 3.", 2: "That describes Stage 4.", 3: "Death rates fall in Stage 2." }],
+  "1.2": [3, { 0: "Population obviously grows; that's not the criticism.", 2: "Malthus did consider deaths (famine, war).", 3: "Malthus focused on food supply, not migration." }],
+  "1.3": [7, { 0: "Brain drain is the loss of skilled workers, not money sent home.", 2: "Chain migration is following family, not sending money.", 3: "Foreign aid comes from governments, not individual migrants." }],
+  "2.0": [1, { 0: "Contagious diffusion spreads to nearby people regardless of status.", 2: "Relocation diffusion needs people to move.", 3: "Stimulus diffusion changes the trait; here it spreads unchanged." }],
+  "2.1": [1, { 0: "Relocation needs people moving, not an adapted menu.", 2: "Assimilation is a group fully adopting another culture.", 3: "Contagious diffusion spreads a trait unchanged to nearby places." }],
+  "2.2": [3, { 0: "Islam is universalizing: it seeks converts.", 1: "Buddhism is universalizing.", 3: "Christianity is universalizing." }],
+  "2.3": [2, { 0: "A dialect is a regional version of one language.", 2: "A creole is a new language formed from mixing languages.", 3: "A language isolate has no known relatives." }],
+  "3.0": [0, { 0: "The Kurds have no state of their own, so they can't be a nation-state.", 2: "The Kurds have no state of their own.", 3: "A microstate is a very small state, not a stateless nation." }],
+  "3.1": [2, { 0: "Antecedent boundaries were drawn before settlement.", 1: "Subsequent boundaries follow cultural differences; these ignored them.", 3: "Relic boundaries no longer function, but these are active borders." }],
+  "3.2": [5, { 0: "Supranationalism means states sharing power upward, not a region gaining power.", 2: "Balkanization is a breakup into hostile states.", 3: "Irredentism is claiming territory in another state." }],
+  "3.3": [3, { 0: "3 nautical miles was an old limit for territorial waters.", 1: "12 nautical miles is the territorial sea.", 3: "UNCLOS sets the EEZ at 200, not 500, nautical miles." }],
+  "4.0": [2, { 0: "Ranching is in the outermost ring; animals can walk to market.", 1: "Grain keeps well, so it can be farther out.", 3: "Forestry is in the second ring, not the innermost." }],
+  "4.1": [1, { 0: "Domestication was the First Agricultural Revolution.", 2: "Slash-and-burn is traditional shifting cultivation.", 3: "Township and range is a land survey system." }],
+  "4.2": [0, { 0: "Nomadic herding isn't intensive or commercial.", 2: "Plantations are intensive commercial farms.", 3: "Market gardening is intensive farming near cities." }],
+  "4.3": [3, { 0: "Metes and bounds uses natural features as borders.", 1: "Township and range is a rectangular grid.", 3: "Long lots are a land division, not a settlement pattern." }],
+  "5.0": [1, { 0: "Paris is a world city, but the key fact here is its size relative to other French cities.", 2: "Edge cities are suburban business centers.", 3: "Boomburbs are fast-growing suburbs." }],
+  "5.1": [2, { 0: "The concentric zone model uses rings, not wedges.", 2: "The multiple nuclei model has several centers.", 3: "The galactic model centers on a highway ring." }],
+  "5.2": [3, { 0: "Homes can't outbid businesses for central land.", 1: "Farms are far from the CBD, where land is cheap.", 3: "Parks don't pay rent; central land goes to the highest bidders." }],
+  "5.3": [4, { 0: "Redlining is denying loans in certain areas.", 2: "Suburbanization is movement out of the city.", 3: "Blockbusting was scaring white owners into selling cheaply." }],
+  "6.0": [4, { 0: "Heavy ore loses weight when processed, so shipping it is costly. Locate near the ore.", 2: "Transport costs dominate for weight-losing industries.", 3: "Location matters a lot under least-cost theory." }],
+  "6.1": [2, { 0: "GDP per capita measures only income.", 1: "The Gini coefficient measures inequality.", 3: "The Gender Inequality Index measures gender gaps." }],
+  "6.2": [3, { 0: "Core countries are wealthy and industrialized.", 1: "Semi-periphery countries are in between.", 3: "Quaternary refers to an economic sector, not a world-systems category." }],
+  "6.3": [1, { 0: "The primary sector dominates in less developed economies.", 1: "Manufacturing employment falls as countries reach high development.", 3: "Subsistence farming is rare in developed countries." }]
+};
