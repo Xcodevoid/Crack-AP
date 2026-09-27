@@ -1,4 +1,4 @@
-// AP Prep Hub: an adaptive AP learning system in one static page.
+// Crack AP: an adaptive AP learning system in one static page.
 // Course metadata: data/catalog.js. Study guides: content/<id>.js. Concept tags and
 // wrong-answer diagnoses: content/diagnostics/<id>.js. Learning engine: src/engine.js.
 // build.py inlines everything into one self-contained index.html.
@@ -328,7 +328,7 @@ async function route() {
 const homeState = { query: "", cat: "All" };
 
 function renderHome() {
-  document.title = "AP Prep Hub | Find what you don't know. Fix it. Keep it.";
+  document.title = "Crack AP | Find what you don't know. Fix it. Keep it.";
   const days = Math.ceil((new Date(EXAM_WINDOW.start + "T08:00:00") - new Date()) / 86400000);
   const active = GUIDE_IDS.filter((id) => Engine.concepts(id).some((c) => c.s.n));
   const totalQ = GUIDE_IDS.reduce((n, id) => { const c = window.AP_CONTENT[id]; return n + (c.own ? c.own.questions : c.units.reduce((a, u) => a + u.questions.length, 0)); }, 0);
@@ -403,7 +403,7 @@ function renderHome() {
         <div class="versus-grid">
           <div><div class="overline muted">A textbook</div><ul>
             <li>Here's everything. Good luck.</li><li>Same chapter for every student</li><li>Checks answers, never asks <em>why</em> you missed</li><li>"Completed 7/10 lessons"</li></ul></div>
-          <div class="us"><div class="overline">AP Prep Hub</div><ul>
+          <div class="us"><div class="overline">Crack AP</div><ul>
             <li>${icon("check", 14)} Here's what <b>you</b> don't know yet</li><li>${icon("check", 14)} Picks what you study each day</li><li>${icon("check", 14)} Names the misconception behind every miss</li><li>${icon("check", 14)} "Elasticity: 43% → 71% mastery"</li></ul></div>
         </div>
       </div>
@@ -488,7 +488,7 @@ document.addEventListener("click", (e) => {
 const todayState = { minutes: 12, scope: "all" };
 
 function renderToday() {
-  document.title = "Study today | AP Prep Hub";
+  document.title = "Study today | Crack AP";
   const active = GUIDE_IDS.filter((id) => Engine.concepts(id).some((c) => c.s.n));
   if (!active.length) {
     app.innerHTML = `
@@ -583,7 +583,7 @@ function courseCard(c) {
 /* ================= Course overview ================= */
 
 async function renderCourse(course) {
-  document.title = `${course.name} | AP Prep Hub`;
+  document.title = `${course.name} | Crack AP`;
   const content = course.guide ? await loadContent(course.id) : null;
   const isMine = store.data.mine.includes(course.id);
   const m = content ? Engine.courseMastery(course.id) : null;
@@ -1849,7 +1849,7 @@ function drillSort(el, course, idx, unit) {
 /* ================= Smart practice & concept practice ================= */
 
 function renderSmart(courseIds, title, course) {
-  document.title = `${title} | AP Prep Hub`;
+  document.title = `${title} | Crack AP`;
   const focus = pendingFocus; pendingFocus = [];
   const items = Engine.smartSession(courseIds, 10, focus);
   const cat = course ? course.cat : "Math & Computer Science";
@@ -1877,7 +1877,7 @@ function renderConceptPractice(courseId, unitIdx, conceptIdx) {
   const unit = window.AP_CONTENT[courseId]?.units?.[unitIdx];
   const c = unit?.concepts?.[conceptIdx];
   if (!c) { location.hash = `#/course/${courseId}`; return; }
-  document.title = `Practice: ${c.title} | AP Prep Hub`;
+  document.title = `Practice: ${c.title} | Crack AP`;
   const s = Engine.state(Engine.conceptKey(courseId, unitIdx, conceptIdx));
   const items = Engine.conceptItems(courseId, unitIdx, conceptIdx, 5);
   app.innerHTML = `
@@ -1962,7 +1962,7 @@ async function renderQuizSetup(course) {
 /* ================= Mistakes: every wrong answer becomes a lesson ================= */
 
 function renderReview() {
-  document.title = "My mistakes | AP Prep Hub";
+  document.title = "My mistakes | Crack AP";
   const list = Engine.mistakesIn(GUIDE_IDS);
   if (!list.length) {
     app.innerHTML = `
@@ -2037,7 +2037,7 @@ function renderReview() {
 let dashSort = "weakest";
 
 function renderDashboard() {
-  document.title = "My progress | AP Prep Hub";
+  document.title = "My progress | Crack AP";
   const active = GUIDE_IDS.filter((id) => Engine.concepts(id).some((c) => c.s.n) || store.data.mine.includes(id));
   const week = Engine.weekStats();
   const all = active.flatMap((id) => Engine.concepts(id));

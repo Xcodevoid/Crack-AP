@@ -1,4 +1,4 @@
-# AP Prep Hub 📘
+# Crack AP 📘
 
 **Stop rereading. Find what you actually don't know.**
 
