@@ -151,7 +151,7 @@ function mathify(h) {
   }
   return out
     .replace(/\^([−-]?(?:∞|[A-Za-z0-9]+(?:\.[0-9]+)?))/g, "<sup>$1</sup>")
-    .replace(/([A-Za-zΔ\u0370-\u03ff])_([A-Za-z0-9]+)/g, "$1<sub>$2</sub>");
+    .replace(/([A-Za-zΔ\u0370-\u03ff])_([A-Za-z0-9₀-₉]+)/g, "$1<sub>$2</sub>");
 }
 const fmt = (s) => mathify(esc(s)).replace(/\n/g, "<br>");
 // Like esc() but with math formatting, for text shown as HTML content (never inside attributes).

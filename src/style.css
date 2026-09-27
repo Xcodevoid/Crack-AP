@@ -1044,3 +1044,8 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 }
 /* Math superscripts/subscripts shouldn't stretch line height. */
 sup, sub { font-size: 0.72em; line-height: 0; }
+/* Long words and formulas wrap instead of pushing narrow screens sideways. */
+body { overflow-wrap: break-word; }
+.term-table { width: 100%; table-layout: fixed; }
+.term-table td { overflow-wrap: anywhere; }
+.term-table td:first-child { width: 38%; }
