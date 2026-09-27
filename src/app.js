@@ -149,7 +149,31 @@ function ring(pct, size = 56, stroke = 5, label = `${pct}%`) {
     </svg><span>${label}</span></div>`;
 }
 
-// Concept status chip: Not started / Needs practice / Getting there / Strong.
+// Spaced review prompt: "You learned this 5 days ago. Let's see if you still remember it."
+// Captured on first display, since answering updates the concept's last-practiced time.
+function memoryCheck(it, mode) {
+  if (mode === "diagnostic") return "";
+  if (it.memo === undefined) {
+    const s = Engine.state(Engine.conceptKey(it.courseId, it.unitIdx, it.q.concept));
+    const days = s.n ? Math.floor((Date.now() - s.last) / 86400000) : 0;
+    it.memo = days >= 1 ? { days, weak: s.m < 0.5 } : null;
+  }
+  if (!it.memo) return "";
+  const { days, weak } = it.memo;
+  const ago = days === 1 ? "yesterday" : `${days} days ago`;
+  return `<div class="memory-check">${icon("calendar", 14)} ${weak
+    ? `You struggled with this concept ${ago}. Let's see if it has stuck.`
+    : `You learned this ${ago}. Let's see if you still remember it.`}</div>`;
+}
+
+// Concept status chip: Not started / Needs review / Developing / Strong.
+// "6 strong · 4 developing · 2 need review" for a unit or course (zero counts are left out).
+function breakdown(m, cls = "") {
+  const parts = [[m.strong, "strong", "strong"], [m.developing, "developing", "learning"], [m.weak, m.weak === 1 ? "needs review" : "need review", "weak"]]
+    .filter(([n]) => n).map(([n, label, id]) => `<span class="bd bd-${id}"><i class="dot dot-${id}"></i>${n} ${label}</span>`);
+  return parts.length ? `<span class="breakdown-line ${cls}">${parts.join("")}</span>` : "";
+}
+
 const chip = (s) => { const st = Engine.status(s); return `<span class="st st-${st.id}">${st.label}</span>`; };
 
 function shuffle(arr) {
@@ -575,11 +599,11 @@ async function renderCourse(course) {
             <h3>${esc(u.title)}</h3>
             <div class="sub">${esc(weightText(u))} · ${u.concepts.length} concepts · ${u.questions.length} questions</div>
           </div>
-          <div class="unit-state"><div class="dots">${dots}</div><span>${um.tried ? `${um.pct}% mastery` : "Not started"}</span></div>
+          <div class="unit-state"><div class="dots">${dots}</div><span>${um.tried ? `<b>${um.pct}% mastery</b>` : "Not started"}</span>${um.tried ? breakdown(um) : ""}</div>
           ${icon("arrowR", 18)}
         </a>`;
     }).join("")}</div>
-    <div class="legend"><span><i class="dot dot-strong"></i>Strong</span><span><i class="dot dot-learning"></i>Getting there</span><span><i class="dot dot-weak"></i>Needs practice</span><span><i class="dot dot-new"></i>Not started</span></div>`;
+    <div class="legend"><span><i class="dot dot-strong"></i>Strong</span><span><i class="dot dot-learning"></i>Developing</span><span><i class="dot dot-weak"></i>Needs review</span><span><i class="dot dot-new"></i>Not started</span></div>`;
   } else {
     const related = course.related && courseById[course.related];
     unitsHtml = `
@@ -618,7 +642,7 @@ async function renderCourse(course) {
             <div>
               <div class="overline">Course mastery</div>
               <div class="hp-line"><b>${m.strong}</b>/${m.total} concepts strong</div>
-              <div class="hp-line"><b>${m.weak}</b> need practice · <b>${m.due}</b> due for review</div>
+              <div class="hp-line"><b>${m.developing}</b> developing · <b>${m.weak}</b> need review · <b>${m.due}</b> due</div>
               ${diag ? `<div class="hp-line muted small">Diagnostic: ${diag.right}/${diag.total} on ${new Date(diag.t).toLocaleDateString()}</div>` : ""}
             </div>
           </div>` : ""}
@@ -731,7 +755,7 @@ async function renderUnit(course, idx, tab) {
             <h1>${esc(unit.title)}</h1>
           </div>
           <div class="unit-head-side">
-            <div class="unit-head-stat">${ring(um.pct, 56, 5)}<div class="small muted">${um.tried ? `${um.strong}/${um.total} concepts strong` : "Not started"}</div></div>
+            <div class="unit-head-stat">${ring(um.pct, 56, 5)}<div class="small muted">${um.tried ? `${um.pct}% mastery · ${um.total} concepts${breakdown(um, "stack")}` : `${um.total} concepts · not started`}</div></div>
             <a class="btn btn-primary" href="#/course/${course.id}/unit/${idx + 1}/check">${icon("stethoscope", 16)} Check this unit</a>
           </div>
         </div>
@@ -811,14 +835,15 @@ function renderLearn(body, course, idx, unit) {
 }
 
 // An inline AP-style question for one concept: answer, explain your reasoning, check, then a similar question.
-function tryIt(el, course, unitIdx, conceptIdx) {
-  let queue = Engine.conceptItems(course.id, unitIdx, conceptIdx, 6);
+function tryIt(el, course, unitIdx, conceptIdx, excludeKey = null, label = "Try an AP-style question") {
+  let queue = Engine.conceptItems(course.id, unitIdx, conceptIdx, 6, excludeKey);
+  if (!queue.length) queue = Engine.conceptItems(course.id, unitIdx, conceptIdx, 6);
   let k = 0;
   let picked = null;
   let revealed = false;
   let change = null;
   const collapsed = () => {
-    el.innerHTML = `<button class="tryit-start">${icon("play", 16)} <b>Try an AP-style question</b> <span class="muted small">on this concept</span></button>`;
+    el.innerHTML = `<button class="tryit-start">${icon("play", 16)} <b>${label}</b> <span class="muted small">on this concept</span></button>`;
     el.querySelector("button").addEventListener("click", () => { k = 0; drawQ(); });
   };
   const drawQ = () => {
@@ -1123,6 +1148,7 @@ function runSession(body, items, opts = {}) {
             ${opts.showSource || it.rem ? `<span class="q-source" style="${catVars(course.cat)}">${catIcon(course.cat, 14)} ${esc(course.name)} · Unit ${unitIdx + 1}${opts.showSource ? `: ${esc(unitTitle)}` : ""}</span>` : ""}
             ${q.gen ? `<span class="q-source gen">${icon("cards", 14)} From your flashcards</span>` : ""}
           </div>
+          ${memoryCheck(it, mode)}
           <div class="q-text">${fmt(q.q)}</div>
           <div class="choices">
             ${perm.map((orig, ci) => {
@@ -1145,8 +1171,9 @@ function runSession(body, items, opts = {}) {
                   <div><span class="fb-label bad">Your answer</span><div>${LETTERS[picked]}. ${fmt(q.choices[perm[picked]])}</div></div>
                   <div><span class="fb-label good">Correct</span><div>${LETTERS[answerPos]}. ${fmt(q.choices[q.answer])}</div></div>
                 </div>
-                ${whyPicked ? `<div class="fb-why"><span class="fb-label">Why ${LETTERS[picked]} is tempting</span><p>${fmt(whyPicked)}</p></div>` : ""}
-                <div class="fb-why"><span class="fb-label">Explanation</span><p>${fmt(q.explain)}</p></div>
+                ${whyPicked ? `<div class="fb-why"><span class="fb-label">What you misunderstood</span><p>${fmt(whyPicked)}</p></div>` : ""}
+                <div class="fb-why"><span class="fb-label">Why ${LETTERS[answerPos]} is correct</span><p>${fmt(q.explain)}</p></div>
+                ${rememberNote(it)}
                 ${masteryLine(it)}
               </div>
             </div>`) : ""}
@@ -1414,7 +1441,7 @@ function renderDiagnosticReport(body, results, opts) {
           : `<a class="btn btn-primary btn-lg btn-block" href="${unitScoped && opts.unitIdx + 1 < window.AP_CONTENT[courseId].units.length ? `#/course/${courseId}/unit/${opts.unitIdx + 2}` : `#/course/${courseId}/smart`}">${icon("arrowR", 16)} ${unitScoped ? "Next unit" : "Continue with smart practice"}</a>`}
 
         <div class="diag-cols">
-          <div class="diag-col bad"><h3>${icon("target", 16)} Needs practice <span>${weak.length}</span></h3>
+          <div class="diag-col bad"><h3>${icon("target", 16)} Needs review <span>${weak.length}</span></h3>
             ${weak.length ? weak.map((e) => `<a href="#/practice/concept/${e.r.courseId}/${e.r.unitIdx}/${e.r.q.concept}"><b>${esc(title(e))}</b><span>${e.ok}/${e.n} right</span></a>`).join("") : `<p class="muted small">Nothing! Great start.</p>`}
           </div>
           <div class="diag-col good"><h3>${icon("check", 16)} Understood <span>${strong.length}</span></h3>
@@ -1427,6 +1454,7 @@ function renderDiagnosticReport(body, results, opts) {
           <div class="miss-list">${misses.map((r) => missCard(r, r.pickedOrig)).join("")}</div>` : ""}
       </div>
     </div>`;
+  initMissTryIts(body);
   body.querySelector("#fix")?.addEventListener("click", () => {
     const course = courseById[courseId];
     body.innerHTML = "";
@@ -1435,10 +1463,14 @@ function renderDiagnosticReport(body, results, opts) {
   });
 }
 
+// A missed question, analyzed in five parts: what you misunderstood, the concept behind it,
+// why your answer was wrong, what to remember, and a similar question to try right away.
 function missCard(r, pickedOrig, actions = "") {
   const q = r.q;
   const c = window.AP_CONTENT[r.courseId].units[r.unitIdx].concepts[q.concept];
   const s = Engine.state(Engine.conceptKey(r.courseId, r.unitIdx, q.concept));
+  const why = pickedOrig != null && q.why && q.why[pickedOrig];
+  const step = (n, label, body) => `<div class="ma-step"><span class="ma-n">${n}</span><div class="grow"><span class="fb-label">${label}</span>${body}</div></div>`;
   return `
     <div class="miss" style="${catVars(courseById[r.courseId].cat)}">
       <div class="miss-q">${fmt(q.q)}</div>
@@ -1446,13 +1478,33 @@ function missCard(r, pickedOrig, actions = "") {
         ${pickedOrig != null ? `<div><span class="fb-label bad">Your answer</span><div>${fmt(q.choices[pickedOrig])}</div></div>` : ""}
         <div><span class="fb-label good">Correct</span><div>${fmt(q.choices[q.answer])}</div></div>
       </div>
-      ${pickedOrig != null && q.why && q.why[pickedOrig] ? `<div class="fb-why"><span class="fb-label">Why you might have picked it</span><p>${fmt(q.why[pickedOrig])}</p></div>` : ""}
-      <div class="fb-why"><span class="fb-label">Explanation</span><p>${fmt(q.explain)}</p></div>
+      <div class="miss-analysis">
+        ${why ? step(1, "What you misunderstood", `<p>${fmt(why)}</p>`) : ""}
+        ${step(why ? 2 : 1, "The concept behind it", `<p><b>${esc(c.title)}</b> ${chip(s)}<br>${fmt(c.simple)}</p>`)}
+        ${step(why ? 3 : 2, "Why the correct answer is right", `<p>${fmt(q.explain)}</p>`)}
+        ${c.trap ? step(why ? 4 : 3, "What to remember", `<p>${fmt(c.trap)}</p>`) : ""}
+      </div>
       <div class="miss-foot">
-        <span class="concept-tag">${icon("target", 14)} ${esc(c.title)} ${chip(s)}</span>
-        <div class="btn-row">${actions || `<a class="btn btn-sm" href="#/practice/concept/${r.courseId}/${r.unitIdx}/${q.concept}">${icon("play", 14)} Practice 5 similar</a>`}</div>
+        <div class="tryit" data-try-miss="${r.courseId}|${r.unitIdx}|${q.concept}" data-exclude="${esc(r.key || "")}"></div>
+        ${actions === "" ? `<div class="btn-row"><a class="btn btn-sm" href="#/practice/concept/${r.courseId}/${r.unitIdx}/${q.concept}">${icon("play", 14)} Practice 5 similar</a></div>`
+          : actions.trim() ? `<div class="btn-row">${actions}</div>` : ""}
       </div>
     </div>`;
+}
+
+// "What to remember" for a question's concept (its AP trap), shown after a wrong answer.
+function rememberNote(it) {
+  const c = window.AP_CONTENT[it.courseId].units[it.unitIdx].concepts[it.q.concept];
+  if (!c) return "";
+  return `<div class="fb-why"><span class="fb-label">Concept: ${esc(c.title)}${c.trap ? " · what to remember" : ""}</span>${c.trap ? `<p>${fmt(c.trap)}</p>` : ""}</div>`;
+}
+
+// Wire up the "similar question" slots inside rendered mistake cards.
+function initMissTryIts(root) {
+  root.querySelectorAll("[data-try-miss]").forEach((el) => {
+    const [courseId, u, c] = el.dataset.tryMiss.split("|");
+    tryIt(el, courseById[courseId], +u, +c, el.dataset.exclude || null, "Try a similar question");
+  });
 }
 
 /* ================= Smart practice & concept practice ================= */
@@ -1634,6 +1686,7 @@ function renderReview() {
       }).join("")}
     </div>
   `;
+  initMissTryIts(app);
   app.querySelector("#fix-all").addEventListener("click", () => {
     app.innerHTML = `<div class="page narrow">${crumbs(["My mistakes", "#/review"], ["Fix all"])}<div id="quiz-body"></div></div>`;
     runSession(document.getElementById("quiz-body"), fixItems(), { title: "Mistake fix-up", mode: "review", showSource: true, onRestart: renderReview });
@@ -1655,6 +1708,21 @@ function renderDashboard() {
   const rec = active.length ? Engine.recommend(active) : null;
   const open = Engine.mistakesIn(GUIDE_IDS).length;
   const ago = (t) => { if (!t) return "–"; const d = Math.floor((Date.now() - t) / 86400000); return d <= 0 ? "Today" : d === 1 ? "Yesterday" : `${d} days ago`; };
+
+  // Unit 3: 73% mastery · Strong 6 · Developing 4 · Needs review 2 · Not started 0
+  const unitTable = (id) => `
+    <table class="unit-table">
+      <thead><tr><th>Unit</th><th>Mastery</th><th class="num">Strong</th><th class="num">Developing</th><th class="num">Needs review</th><th class="num">Not started</th></tr></thead>
+      <tbody>${window.AP_CONTENT[id].units.map((u, ui) => {
+        const um = Engine.unitMastery(id, ui);
+        return `<tr>
+          <td><a href="#/course/${id}/unit/${ui + 1}"><span class="muted">Unit ${ui + 1}</span> ${esc(u.title)}</a></td>
+          <td class="ut-m">${um.tried ? `<b>${um.pct}%</b>${bar(um.pct)}` : `<span class="muted">—</span>`}</td>
+          <td class="num st-strong-t">${um.strong || ""}</td><td class="num st-learning-t">${um.developing || ""}</td>
+          <td class="num st-weak-t">${um.weak || ""}</td><td class="num muted">${um.fresh || ""}</td>
+        </tr>`;
+      }).join("")}</tbody>
+    </table>`;
 
   const table = (id) => {
     let rows = Engine.concepts(id);
@@ -1710,9 +1778,10 @@ function renderDashboard() {
           <section class="card dash-table-card" style="${catVars(c.cat)}">
             <div class="dtc-head">
               <div class="cat-icon">${catIcon(c.cat)}</div>
-              <div class="grow"><h3>${esc(c.name)}</h3><div class="muted small">${m.strong}/${m.total} concepts mastered · ${m.weak} need practice · ${m.due} due for review</div></div>
+              <div class="grow"><h3>${esc(c.name)}</h3><div class="muted small">${m.strong}/${m.total} concepts strong · ${m.developing} developing · ${m.weak} need review · ${m.due} due for review</div></div>
               ${ring(m.pct, 52, 5)}
             </div>
+            ${unitTable(id)}
             ${table(id)}
           </section>`;
         }).join("")}

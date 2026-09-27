@@ -150,8 +150,8 @@ const Engine = (() => {
   function status(s) {
     if (!s.n) return { id: "new", label: "Not started" };
     if (s.m >= 0.8) return { id: "strong", label: "Strong" };
-    if (s.m >= 0.5) return { id: "learning", label: "Getting there" };
-    return { id: "weak", label: "Needs practice" };
+    if (s.m >= 0.5) return { id: "learning", label: "Developing" };
+    return { id: "weak", label: "Needs review" };
   }
 
   // Update question, concept and history after an answer. Returns the concept change for the UI.
@@ -193,7 +193,8 @@ const Engine = (() => {
     const ss = u.concepts.map((_, ci) => state(conceptKey(courseId, unitIdx, ci)));
     const tried = ss.filter((s) => s.n).length;
     const pct = Math.round((ss.reduce((a, s) => a + s.m, 0) / ss.length) * 100);
-    return { pct, tried, total: ss.length, strong: ss.filter((s) => status(s).id === "strong").length };
+    const count = (id) => ss.filter((s) => status(s).id === id).length;
+    return { pct, tried, total: ss.length, strong: count("strong"), developing: count("learning"), weak: count("weak"), fresh: count("new") };
   }
 
   function courseMastery(courseId) {
@@ -204,6 +205,7 @@ const Engine = (() => {
       tried: cs.filter((c) => c.s.n).length,
       strong: cs.filter((c) => status(c.s).id === "strong").length,
       weak: cs.filter((c) => status(c.s).id === "weak").length,
+      developing: cs.filter((c) => status(c.s).id === "learning").length,
       due: cs.filter((c) => c.s.n && c.s.due <= Date.now()).length,
     };
   }

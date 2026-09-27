@@ -929,3 +929,33 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 :root[data-theme="dark"] .footer, :root[data-theme="dark"] .topbar { background: #000; }
 .hero .loop-step { color: var(--text); }
 .hero .loop-step b { color: var(--text); }
+
+/* ---------- Mastery breakdown (Strong / Developing / Needs review) ---------- */
+.breakdown-line { display: flex; flex-wrap: wrap; gap: 4px 10px; font-size: 0.78rem; color: var(--text-2); }
+.breakdown-line.stack { margin-top: 4px; }
+.breakdown-line .bd { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
+.unit-state .breakdown-line { justify-content: flex-end; }
+.unit-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin-bottom: 18px; }
+.unit-table th { text-align: left; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); padding: 8px; border-bottom: 2px solid var(--text); }
+.unit-table td { padding: 9px 8px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+.unit-table td a { color: var(--text); font-weight: 600; }
+.unit-table .num { text-align: center; width: 88px; }
+.unit-table .ut-m { width: 22%; }
+.unit-table .ut-m b { display: block; font-size: 0.85rem; }
+.st-strong-t { color: var(--good); font-weight: 700; }
+.st-learning-t { color: var(--warn); font-weight: 700; }
+.st-weak-t { color: var(--bad); font-weight: 700; }
+@media (max-width: 680px) {
+  .unit-table th:nth-child(6), .unit-table td:nth-child(6) { display: none; }
+  .unit-table .num { width: auto; }
+  .unit-table th { font-size: 0.64rem; }
+}
+.memory-check { display: flex; align-items: center; gap: 8px; font-size: 0.86rem; font-weight: 600; color: var(--brand); background: var(--brand-soft); border-left: 4px solid var(--brand); padding: 8px 12px; margin-bottom: 12px; }
+
+/* ---------- Five-part mistake analysis ---------- */
+.miss-analysis { display: flex; flex-direction: column; gap: 10px; margin: 12px 0; }
+.ma-step { display: flex; gap: 12px; align-items: flex-start; }
+.ma-step p { margin: 2px 0 0; }
+.ma-n { width: 24px; height: 24px; flex-shrink: 0; display: grid; place-items: center; background: var(--ink); color: #fff; font-weight: 700; font-size: 0.78rem; border-radius: 3px; }
+:root[data-theme="dark"] .ma-n { background: var(--text); color: var(--bg); }
+.miss-foot { display: flex; flex-direction: column; align-items: stretch; gap: 10px; }
