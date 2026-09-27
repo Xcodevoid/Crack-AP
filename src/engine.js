@@ -118,6 +118,12 @@ const Engine = (() => {
   const termItem = (courseId, unitIdx, termIdx) =>
     ({ courseId, unitIdx, key: `${courseId}|${unitIdx}|t${termIdx}`, q: termQuestion(courseId, unitIdx, termIdx) });
 
+  // Drills (fill-in-the-blank, matching, sorting) record against a flashcard term's concept.
+  const recordTerm = (courseId, unitIdx, termIdx, ok) => record(termItem(courseId, unitIdx, termIdx), null, ok);
+  // "Explain it in your own words": the student's self-check counts toward the concept.
+  const recordExplain = (courseId, unitIdx, conceptIdx, ok) =>
+    record({ courseId, unitIdx, key: `${courseId}|${unitIdx}|e${conceptIdx}`, q: { concept: conceptIdx } }, null, ok);
+
   // Every question that practices one concept: authored ones first, then flashcard-generated ones.
   function pool(courseId, unitIdx, conceptIdx) {
     const unit = window.AP_CONTENT[courseId].units[unitIdx];
@@ -333,7 +339,9 @@ const Engine = (() => {
     const [courseId, u, q] = key.split("|");
     const unit = window.AP_CONTENT[courseId]?.units?.[+u];
     if (!unit) return null;
-    const ci = q[0] === "t" ? termConcepts(courseId, +u)[+q.slice(1)] : unit.questions[+q]?.concept;
+    const ci = q[0] === "t" ? termConcepts(courseId, +u)[+q.slice(1)]
+      : q[0] === "e" ? +q.slice(1) // "explain it in your own words" self-checks
+      : unit.questions[+q]?.concept;
     return ci == null ? null : conceptKey(courseId, +u, ci);
   }
 
@@ -429,7 +437,7 @@ const Engine = (() => {
   }
 
   return {
-    annotate, deepen, pool, conceptItems, item, record, state, status, conceptKey, reviewInDays,
+    annotate, deepen, pool, termConcepts, recordTerm, recordExplain, conceptItems, item, record, state, status, conceptKey, reviewInDays,
     concepts, unitMastery, courseMastery, diagnostic, smartSession, weakest, due, weekStats, recommend, migrate,
     studyPlan, mistakesIn, conceptOfKey, errorProfile, unitCheck, focusedReview, MIN_PER_QUESTION,
   };

@@ -76,7 +76,7 @@ const catIcon = (cat, size = 20) => icon((CAT_META[cat] || CAT_META["AP Capstone
 // switches to "apprep.v1.s.<CODE>", so students sharing a computer each keep their own progress.
 const STORE_KEY = "apprep.v1";
 const STUDENT_KEY = "apprep.student";
-const EMPTY = () => ({ v: 2, q: {}, cs: {}, hist: [], diag: {}, skip: {}, known: {}, mine: [], frq: {}, days: [], recent: null });
+const EMPTY = () => ({ v: 2, q: {}, cs: {}, hist: [], diag: {}, skip: {}, expl: {}, known: {}, mine: [], frq: {}, days: [], recent: null });
 const keyFor = (code) => (code ? `${STORE_KEY}.s.${code}` : STORE_KEY);
 function readProgress(code) {
   try {
@@ -704,6 +704,7 @@ async function renderCourse(course) {
 const TABS = [
   ["learn", "Learn", "book"],
   ["practice", "Practice", "check"],
+  ["drills", "Drills", "zap"],
   ["cards", "Flashcards", "cards"],
   ["frq", "Free response", "pen"],
   ["watch", "Watch out", "alert"],
@@ -777,6 +778,7 @@ async function renderUnit(course, idx, tab) {
 
   if (tab === "learn") renderLearn(body, course, idx, unit);
   else if (tab === "cards") renderFlashcards(body, course, idx, unit);
+  else if (tab === "drills") renderDrills(body, course, idx, unit);
   else if (tab === "practice") {
     body.innerHTML = `<p class="muted small practice-note">${icon("zap", 14)} Get one wrong and we'll pinpoint the concept, explain the misconception, and give you targeted follow-up questions.</p><div id="session"></div>`;
     runSession(body.querySelector("#session"), unit.questions.map((_, i) => Engine.item(course.id, idx, i)), {
@@ -821,6 +823,7 @@ function renderLearn(body, course, idx, unit) {
           ${c.example ? `<div class="note note-example"><b>${icon("pen", 14)} Example</b><div>${fmt(c.example)}</div></div>` : ""}
           ${c.hook ? `<div class="note note-hook"><b>${icon("bulb", 14)} Memory hook</b><div>${fmt(c.hook)}</div></div>` : ""}
           ${c.trap ? `<div class="note note-trap"><b>⚠️ AP Trap</b><div>${fmt(c.trap)}</div></div>` : ""}
+          <div class="explain-own" data-explain="${i}"></div>
           <div class="tryit" data-try="${i}"></div>
         </article>`;
       }).join("")}
@@ -830,6 +833,7 @@ function renderLearn(body, course, idx, unit) {
       body.querySelector(`#concept-${b.dataset.jump}`).scrollIntoView({ behavior: "smooth", block: "start" });
     }));
     body.querySelectorAll("[data-try]").forEach((el) => tryIt(el, course, idx, +el.dataset.try));
+    body.querySelectorAll("[data-explain]").forEach((el) => explainOwn(el, course, idx, +el.dataset.explain));
   };
   draw();
 }
@@ -1505,6 +1509,261 @@ function initMissTryIts(root) {
     const [courseId, u, c] = el.dataset.tryMiss.split("|");
     tryIt(el, courseById[courseId], +u, +c, el.dataset.exclude || null, "Try a similar question");
   });
+}
+
+
+/* ================= Active learning: explain it, fill in the blank, matching, sorting ================= */
+
+// "Explain it in your own words": write, compare with the key points, then rate yourself.
+function explainOwn(el, course, unitIdx, conceptIdx) {
+  const unit = window.AP_CONTENT[course.id].units[unitIdx];
+  const c = unit.concepts[conceptIdx];
+  const key = Engine.conceptKey(course.id, unitIdx, conceptIdx);
+  const owned = unit.terms.filter((_, ti) => Engine.termConcepts(course.id, unitIdx)[ti] === conceptIdx).map(([t]) => t).slice(0, 4);
+  const collapsed = () => {
+    el.innerHTML = `<button class="tryit-start explain-start">${icon("pen", 16)} <b>Explain it in your own words</b> <span class="muted small">then compare</span></button>`;
+    el.querySelector("button").addEventListener("click", open);
+  };
+  const open = () => {
+    el.innerHTML = `
+      <div class="explain-card">
+        <div class="overline">${icon("pen", 12)} Explain "${esc(c.title)}" as if teaching a friend</div>
+        <textarea rows="4" placeholder="What is it, why does it matter, and how would the exam test it?">${esc(store.data.expl[key] || "")}</textarea>
+        <div class="btn-row end"><button class="btn btn-ghost" data-x="close">Cancel</button><button class="btn btn-primary" data-x="compare">Compare with the key points</button></div>
+      </div>`;
+    const ta = el.querySelector("textarea");
+    ta.focus();
+    ta.addEventListener("input", () => { store.data.expl[key] = ta.value; store.save(); });
+    el.querySelector('[data-x="close"]').addEventListener("click", collapsed);
+    el.querySelector('[data-x="compare"]').addEventListener("click", () => compare(ta.value));
+  };
+  const compare = (text) => {
+    const lower = text.toLowerCase();
+    el.innerHTML = `
+      <div class="explain-card">
+        <div class="explain-cols">
+          <div><span class="fb-label">You wrote</span><p>${text.trim() ? fmt(text) : `<span class="muted">(nothing yet)</span>`}</p></div>
+          <div><span class="fb-label good">Key points</span><p>${fmt(c.simple)}</p><p class="small">${fmt(c.detail)}</p></div>
+        </div>
+        ${owned.length ? `<div class="explain-terms"><span class="fb-label">Did you use these ideas?</span>${owned.map((t) => {
+          const hit = lower.includes(t.toLowerCase().replace(/\s*\(.*?\)\s*/g, "").trim());
+          return `<span class="xterm ${hit ? "is-hit" : ""}">${icon(hit ? "check" : "x", 12)} ${esc(t)}</span>`;
+        }).join("")}</div>` : ""}
+        <span class="fb-label">How did you do?</span>
+        <div class="btn-row">
+          <button class="btn btn-good" data-rate="good">${icon("check", 16)} I explained it well</button>
+          <button class="btn" data-rate="part">Partly</button>
+          <button class="btn btn-bad" data-rate="miss">I missed key ideas</button>
+        </div>
+      </div>`;
+    el.querySelectorAll("[data-rate]").forEach((b) => b.addEventListener("click", () => {
+      const r = b.dataset.rate;
+      if (r !== "part") Engine.recordExplain(course.id, unitIdx, conceptIdx, r === "good");
+      const s = Engine.state(key);
+      el.innerHTML = `<div class="explain-card done">${icon(r === "good" ? "check" : "rotate", 16)} ${
+        r === "good" ? "Nice. Explaining it is the best proof you understand it." :
+        r === "part" ? "Good start. Reread the key points, then try the question below." :
+        "That's useful to know. This concept is now scheduled for review."}
+        <span class="muted small">Mastery: ${pctOf(s.m)}%</span> <button class="btn btn-sm btn-ghost" data-x="again">Try again</button></div>`;
+      el.querySelector('[data-x="again"]').addEventListener("click", open);
+      updateConceptStatus(el, key);
+    }));
+  };
+  collapsed();
+}
+
+// Refresh the status chip on a Learn-tab concept card after a self-check.
+function updateConceptStatus(el, key) {
+  const card = el.closest(".concept");
+  const s = Engine.state(key);
+  const slot = card && card.querySelector(".concept-status");
+  if (slot) slot.innerHTML = `${chip(s)}${s.n ? ` <span class="muted small">${pctOf(s.m)}%</span>` : ""}`;
+}
+
+// Terms that can reasonably be typed (no formulas), for fill-in-the-blank.
+const typeable = (t) => /^[A-Za-z0-9 ,'’\-()\/.&]+$/.test(t) && t.length <= 40;
+const normTerm = (t) => t.toLowerCase().replace(/\(.*?\)/g, " ").replace(/[^a-z0-9]+/g, " ").trim();
+function termVariants(term) {
+  const v = new Set([normTerm(term)]);
+  term.split("/").forEach((p) => v.add(normTerm(p)));
+  const paren = term.match(/\((.*?)\)/);
+  if (paren && paren[1].length > 3) v.add(normTerm(paren[1]));
+  return [...v].filter(Boolean);
+}
+function editDistance(a, b) {
+  const d = Array.from({ length: a.length + 1 }, (_, i) => [i, ...Array(b.length).fill(0)]);
+  for (let j = 1; j <= b.length; j++) d[0][j] = j;
+  for (let i = 1; i <= a.length; i++) for (let j = 1; j <= b.length; j++)
+    d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+  return d[a.length][b.length];
+}
+function termMatches(answer, term) {
+  const a = normTerm(answer);
+  if (!a) return false;
+  return termVariants(term).some((v) => a === v || (v.length >= 5 && editDistance(a, v) <= (v.length >= 9 ? 2 : 1)));
+}
+// Hide the term inside its own definition so the blank isn't given away.
+function maskTerm(def, term) {
+  let out = def;
+  termVariants(term).concat([term.replace(/\s*\(.*?\)\s*/g, "").trim()]).forEach((v) => {
+    if (v.length < 3) return;
+    out = out.replace(new RegExp(v.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "gi"), "_____");
+  });
+  return out;
+}
+
+let drillMode = "blank";
+function renderDrills(body, course, idx, unit) {
+  const modes = [["blank", "Fill in the blank", "pen"], ["match", "Matching", "shuffle"], ["sort", "Sort by concept", "list"]];
+  body.innerHTML = `
+    <p class="muted small practice-note">${icon("zap", 14)} Active recall beats rereading. Every answer here updates your concept mastery.</p>
+    <div class="seg drill-seg" role="group" aria-label="Drill type">${modes.map(([k, label, ic]) =>
+      `<button data-mode="${k}" class="${drillMode === k ? "is-active" : ""}">${icon(ic, 14)} ${label}</button>`).join("")}</div>
+    <div id="drill" class="drill"></div>`;
+  body.querySelectorAll("[data-mode]").forEach((b) => b.addEventListener("click", () => { drillMode = b.dataset.mode; renderDrills(body, course, idx, unit); }));
+  const el = body.querySelector("#drill");
+  ({ blank: drillBlank, match: drillMatch, sort: drillSort })[drillMode](el, course, idx, unit);
+}
+
+function drillDone(el, title, score, total, again) {
+  el.innerHTML = `
+    <div class="card drill-done">
+      ${ring(Math.round((score / Math.max(total, 1)) * 100), 64, 6, `${score}/${total}`)}
+      <div class="grow"><h3>${esc(title)}</h3><p class="muted small">Correct answers raised mastery on their concepts; misses are scheduled for review.</p></div>
+      <button class="btn btn-primary" data-x="again">${icon("rotate", 16)} Go again</button>
+    </div>`;
+  el.querySelector('[data-x="again"]').addEventListener("click", again);
+}
+
+function drillBlank(el, course, idx, unit) {
+  const pool = shuffle(unit.terms.map((t, i) => i).filter((i) => typeable(unit.terms[i][0]))).slice(0, 8);
+  if (pool.length < 3) { el.innerHTML = `<p class="muted">This unit's key terms are mostly formulas, so try Matching instead.</p>`; return; }
+  let k = 0, score = 0;
+  const draw = () => {
+    if (k >= pool.length) return drillDone(el, `Fill in the blank: ${score} of ${pool.length}`, score, pool.length, () => drillBlank(el, course, idx, unit));
+    const ti = pool[k];
+    const [term, def] = unit.terms[ti];
+    el.innerHTML = `
+      <div class="card drill-card">
+        <div class="overline">Fill in the blank · ${k + 1} of ${pool.length}</div>
+        <p class="drill-prompt">${fmt(maskTerm(def, term))}</p>
+        <label class="drill-input"><span class="muted small">Which term is this?</span>
+          <input autocomplete="off" spellcheck="false" placeholder="Type the term…" /></label>
+        <div id="fb"></div>
+        <div class="btn-row"><button class="btn btn-ghost" data-x="hint">Hint</button><button class="btn btn-primary" data-x="check">Check</button></div>
+      </div>`;
+    const input = el.querySelector("input");
+    input.focus();
+    const check = () => {
+      let ok = termMatches(input.value, term);
+      const fb = el.querySelector("#fb");
+      const finish = () => { Engine.recordTerm(course.id, idx, ti, ok); if (ok) score++; k++; draw(); };
+      input.disabled = true;
+      fb.innerHTML = `<div class="feedback ${ok ? "good" : "bad"}"><div class="fb-ico">${icon(ok ? "check" : "alert", 18)}</div>
+        <div class="grow"><strong>${ok ? "Correct!" : "Not quite."}</strong><p>The term is <b>${esc(term)}</b>.</p></div></div>`;
+      const row = el.querySelector(".btn-row");
+      row.innerHTML = `${ok ? "" : `<button class="btn btn-ghost" data-x="override">I was right</button>`}<button class="btn btn-primary" data-x="next">Next ${icon("arrowR", 16)}</button>`;
+      row.querySelector('[data-x="override"]')?.addEventListener("click", () => { ok = true; finish(); });
+      row.querySelector('[data-x="next"]').addEventListener("click", finish);
+      row.querySelector('[data-x="next"]').focus();
+    };
+    el.querySelector('[data-x="check"]').addEventListener("click", check);
+    // preventDefault stops this same Enter press from also clicking the "Next" button that takes focus.
+    input.addEventListener("keydown", (e) => { if (e.key === "Enter") { e.preventDefault(); check(); } });
+    el.querySelector('[data-x="hint"]').addEventListener("click", (e) => {
+      const clean = term.replace(/\s*\(.*?\)\s*/g, "");
+      e.target.outerHTML = `<span class="muted small">Starts with "<b>${esc(clean.slice(0, 2))}</b>" · ${clean.length} characters</span>`;
+    });
+  };
+  draw();
+}
+
+function drillMatch(el, course, idx, unit) {
+  const pick = shuffle(unit.terms.map((_, i) => i)).slice(0, 5);
+  const defs = shuffle(pick.slice());
+  const missed = new Set(), done = new Set();
+  let sel = null;
+  el.innerHTML = `
+    <div class="card drill-card">
+      <div class="overline">Matching · pick a term, then its definition</div>
+      <div class="match-grid">
+        <div class="match-col">${pick.map((ti) => `<button class="match-item term" data-t="${ti}">${esc(unit.terms[ti][0])}</button>`).join("")}</div>
+        <div class="match-col">${defs.map((ti) => `<button class="match-item def" data-d="${ti}">${esc(unit.terms[ti][1])}</button>`).join("")}</div>
+      </div>
+    </div>`;
+  el.querySelectorAll("[data-t]").forEach((b) => b.addEventListener("click", () => {
+    if (done.has(+b.dataset.t)) return;
+    el.querySelectorAll("[data-t]").forEach((x) => x.classList.remove("is-sel"));
+    b.classList.add("is-sel"); sel = +b.dataset.t;
+  }));
+  el.querySelectorAll("[data-d]").forEach((b) => b.addEventListener("click", () => {
+    const d = +b.dataset.d;
+    if (sel === null || done.has(d)) return;
+    const tBtn = el.querySelector(`[data-t="${sel}"]`);
+    if (d === sel) {
+      done.add(d);
+      Engine.recordTerm(course.id, idx, d, !missed.has(d));
+      tBtn.classList.remove("is-sel"); tBtn.classList.add("is-done"); b.classList.add("is-done");
+      sel = null;
+      if (done.size === pick.length) {
+        const score = pick.filter((ti) => !missed.has(ti)).length;
+        setTimeout(() => drillDone(el, `Matched ${score} of ${pick.length} on the first try`, score, pick.length, () => drillMatch(el, course, idx, unit)), 500);
+      }
+    } else {
+      missed.add(sel);
+      b.classList.add("is-wrong"); tBtn.classList.add("is-wrong");
+      setTimeout(() => { b.classList.remove("is-wrong"); tBtn.classList.remove("is-wrong"); }, 450);
+    }
+  }));
+}
+
+function drillSort(el, course, idx, unit) {
+  const map = Engine.termConcepts(course.id, idx);
+  const byConcept = {};
+  map.forEach((ci, ti) => { (byConcept[ci] ||= []).push(ti); });
+  const groups = shuffle(Object.keys(byConcept).filter((ci) => byConcept[ci].length >= 2)).slice(0, 3).map(Number);
+  if (groups.length < 2) { el.innerHTML = `<p class="muted">Not enough terms per concept in this unit to sort. Try Matching instead.</p>`; return; }
+  const chips = shuffle(groups.flatMap((ci) => shuffle(byConcept[ci]).slice(0, 3)));
+  const placed = {};
+  let sel = null;
+  const draw = (checked = false) => {
+    const chipHtml = (ti) => {
+      const right = checked && placed[ti] === map[ti];
+      return `<button class="sort-chip ${sel === ti ? "is-sel" : ""} ${checked ? (right ? "is-right" : "is-wrong") : ""}" data-chip="${ti}" ${checked ? "disabled" : ""}>
+        ${checked ? icon(right ? "check" : "x", 12) : ""} ${esc(unit.terms[ti][0])}</button>`;
+    };
+    const tray = chips.filter((ti) => placed[ti] === undefined);
+    el.innerHTML = `
+      <div class="card drill-card">
+        <div class="overline">Sort by concept · which concept does each term belong to?</div>
+        <div class="sort-tray">${tray.length ? tray.map(chipHtml).join("") : `<span class="muted small">All placed. Check your answers.</span>`}</div>
+        <div class="sort-buckets">${groups.map((ci) => `
+          <div class="sort-bucket" data-bucket="${ci}">
+            <div class="sb-title">${esc(unit.concepts[ci].title)}</div>
+            <div class="sb-chips">${chips.filter((ti) => placed[ti] === ci).map(chipHtml).join("")}</div>
+            ${checked ? chips.filter((ti) => map[ti] === ci && placed[ti] !== ci).map((ti) => `<div class="sb-missing">${icon("arrowR", 12)} ${esc(unit.terms[ti][0])} belongs here</div>`).join("") : ""}
+          </div>`).join("")}</div>
+        <div class="btn-row">${checked
+          ? `<button class="btn btn-primary" data-x="again">${icon("rotate", 16)} Go again</button>`
+          : `<button class="btn btn-primary" data-x="check" ${tray.length ? "disabled" : ""}>Check</button>`}</div>
+      </div>`;
+    if (checked) { el.querySelector('[data-x="again"]').addEventListener("click", () => drillSort(el, course, idx, unit)); return; }
+    el.querySelectorAll("[data-chip]").forEach((b) => b.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const ti = +b.dataset.chip;
+      if (placed[ti] !== undefined) { delete placed[ti]; sel = null; } else sel = sel === ti ? null : ti;
+      draw();
+    }));
+    el.querySelectorAll("[data-bucket]").forEach((b) => b.addEventListener("click", () => {
+      if (sel === null) return;
+      placed[sel] = +b.dataset.bucket; sel = null; draw();
+    }));
+    el.querySelector('[data-x="check"]').addEventListener("click", () => {
+      chips.forEach((ti) => Engine.recordTerm(course.id, idx, ti, placed[ti] === map[ti]));
+      draw(true);
+    });
+  };
+  draw();
 }
 
 /* ================= Smart practice & concept practice ================= */
