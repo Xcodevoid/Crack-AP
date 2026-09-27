@@ -1011,3 +1011,24 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .btn.btn-good:hover { background: var(--good); color: #fff; }
 .btn.btn-bad:hover { background: var(--bad); color: #fff; }
 .btn.btn-ghost { background: transparent; border-color: transparent; color: var(--text-2); }
+
+/* ---------- Concept connections ---------- */
+.connections { display: flex; flex-direction: column; gap: 6px; margin-top: 12px; padding: 12px 14px; border: 1px solid var(--border); border-left: 4px solid var(--brand); background: var(--surface); }
+.conn { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; color: var(--text); font-size: 0.92rem; }
+.conn:hover { text-decoration: none; }
+.conn:hover b { text-decoration: underline; text-underline-offset: 3px; }
+.conn-rel { color: var(--brand); font-style: italic; }
+.conn-this { font-weight: 700; color: var(--muted); text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.05em; }
+.chains { display: flex; flex-direction: column; gap: 12px; }
+.chain h3 { margin: 0 0 10px; font-size: 1rem; }
+.chain-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.chain-node { display: flex; flex-direction: column; padding: 8px 12px; border: 1px solid var(--border-strong); border-left-width: 4px; border-radius: 4px; background: var(--surface); color: var(--text); max-width: 230px; line-height: 1.3; }
+.chain-node:hover { text-decoration: none; border-color: var(--text); }
+.chain-node b { font-size: 0.9rem; }
+.chain-rel { display: inline-flex; align-items: center; gap: 4px; font-size: 0.8rem; font-style: italic; color: var(--brand); max-width: 180px; }
+.st-border-new { border-left-color: var(--border-strong); }
+.st-border-weak { border-left-color: var(--bad); }
+.st-border-learning { border-left-color: var(--warn); }
+.st-border-strong { border-left-color: var(--good); }
+.concept.is-flash { animation: flash 1.6s ease; }
+@keyframes flash { 0%, 40% { box-shadow: 0 0 0 3px var(--accent); } 100% { box-shadow: none; } }

@@ -1034,6 +1034,27 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .btn.btn-bad:hover { background: var(--bad); color: #fff; }
 .btn.btn-ghost { background: transparent; border-color: transparent; color: var(--text-2); }
 
+/* ---------- Concept connections ---------- */
+.connections { display: flex; flex-direction: column; gap: 6px; margin-top: 12px; padding: 12px 14px; border: 1px solid var(--border); border-left: 4px solid var(--brand); background: var(--surface); }
+.conn { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; color: var(--text); font-size: 0.92rem; }
+.conn:hover { text-decoration: none; }
+.conn:hover b { text-decoration: underline; text-underline-offset: 3px; }
+.conn-rel { color: var(--brand); font-style: italic; }
+.conn-this { font-weight: 700; color: var(--muted); text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.05em; }
+.chains { display: flex; flex-direction: column; gap: 12px; }
+.chain h3 { margin: 0 0 10px; font-size: 1rem; }
+.chain-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.chain-node { display: flex; flex-direction: column; padding: 8px 12px; border: 1px solid var(--border-strong); border-left-width: 4px; border-radius: 4px; background: var(--surface); color: var(--text); max-width: 230px; line-height: 1.3; }
+.chain-node:hover { text-decoration: none; border-color: var(--text); }
+.chain-node b { font-size: 0.9rem; }
+.chain-rel { display: inline-flex; align-items: center; gap: 4px; font-size: 0.8rem; font-style: italic; color: var(--brand); max-width: 180px; }
+.st-border-new { border-left-color: var(--border-strong); }
+.st-border-weak { border-left-color: var(--bad); }
+.st-border-learning { border-left-color: var(--warn); }
+.st-border-strong { border-left-color: var(--good); }
+.concept.is-flash { animation: flash 1.6s ease; }
+@keyframes flash { 0%, 40% { box-shadow: 0 0 0 3px var(--accent); } 100% { box-shadow: none; } }
+
 </style>
 </head>
 <body>
@@ -11914,6 +11935,180 @@ window.AP_DEEP["world-history"] = {
 };
 
 </script>
+<script>/* content/links/biology.js */
+// How ideas in AP Biology connect across units. See content/links/_README.txt for the format.
+window.AP_LINKS = window.AP_LINKS || {};
+window.AP_LINKS["biology"] = [
+  { title: "From DNA to a working cell", chain: ["5:Transcription and RNA processing", "produces the mRNA used in", "5:Translation", "builds proteins whose shape comes from", "0:Protein structure determines function", "including the enzymes in", "2:Enzymes"] },
+  { title: "Energy for life", chain: ["2:The light reactions", "make ATP and NADPH for", "2:Photosynthesis", "makes the sugar broken down in", "2:Stages of cellular respiration", "supplies the ATP used for", "1:Bulk transport and cotransport"] },
+  { title: "Water and membranes", chain: ["0:Why water is special", "explains how", "1:Membrane structure and permeability", "controls", "1:Tonicity and water potential", "which is limited by", "1:Surface area to volume ratio"] },
+  { title: "Variation drives evolution", chain: ["4:Meiosis creates variation", "adds to mutations from", "5:Gene regulation and mutations", "to supply the variation for", "6:How natural selection works", "which, over time, leads to", "6:Speciation"] },
+  { title: "Signals control the cell cycle", chain: ["3:Types of cell communication", "trigger", "3:Signal transduction", "which regulates", "3:Cell cycle checkpoints", "and when that control fails:", "3:When regulation fails"] },
+  { title: "Energy and matter in ecosystems", chain: ["2:Photosynthesis", "captures the energy that flows through", "7:Energy flow and trophic levels", "while matter is recycled in", "7:Biogeochemical cycles", "and disturbance resets", "7:Community structure and succession"] },
+];
+
+</script>
+<script>/* content/links/calculus-ab.js */
+// How ideas in AP Calculus AB connect across units. See content/links/_README.txt for the format.
+window.AP_LINKS = window.AP_LINKS || {};
+window.AP_LINKS["calculus-ab"] = [
+  { title: "Limits build the derivative", chain: ["0:What a limit really means", "defines", "1:The derivative as a limit", "which requires", "1:Differentiable vs. continuous", "and gives the slope of", "1:Tangent lines"] },
+  { title: "Derivatives describe motion", chain: ["1:The derivative as a function", "gives velocity in", "3:Motion along a line", "whose signs decide", "3:Speeding up and slowing down", "and whose integral gives", "7:Position from velocity with an initial condition"] },
+  { title: "Using f′ to understand f", chain: ["1:The derivative as a function", "tells where f increases in", "4:Increasing/decreasing and the First Derivative Test", "combined with", "4:Concavity and the Second Derivative Test", "to finish", "4:Connecting the graphs of f, f′ and f″"] },
+  { title: "Accumulation and the Fundamental Theorem", chain: ["5:Riemann sums", "approach the", "5:Accumulation: the integral of a rate is net change", "evaluated with the", "5:Fundamental Theorem of Calculus", "and used in", "7:Accumulation in applied contexts"] },
+  { title: "Change rules become models", chain: ["2:The chain rule", "undoes into", "5:Antiderivatives and u-substitution", "which solves", "6:Separation of variables", "to produce", "6:Exponential growth and decay"] },
+  { title: "Continuity guarantees results", chain: ["0:Continuity and its three conditions", "is required by the", "0:Intermediate Value Theorem and asymptotes", "and by the", "4:The Extreme Value Theorem and the Candidates Test", "used in", "4:Solving optimization problems"] },
+];
+
+</script>
+<script>/* content/links/calculus-bc.js */
+// Calculus BC reuses AB's chains (its first 8 units are AB's) and adds BC-only ones (units 8 and 9).
+window.AP_LINKS = window.AP_LINKS || {};
+window.AP_LINKS["calculus-bc"] = [
+  ...(window.AP_LINKS["calculus-ab"] || []),
+  { title: "Motion in the plane", chain: ["8:Parametric derivatives", "give the velocity in", "8:Motion with vectors", "whose speed is integrated for", "8:Parametric arc length"] },
+  { title: "Series approximate functions", chain: ["9:Geometric series and the nth-term test", "starts with", "9:The convergence tests", "which set the", "9:Error bounds and intervals of convergence", "of", "9:Taylor and Maclaurin polynomials", "built from", "2:Higher-order derivatives"] },
+];
+
+</script>
+<script>/* content/links/chemistry.js */
+// How ideas in AP Chemistry connect across units. See content/links/_README.txt for the format.
+window.AP_LINKS = window.AP_LINKS || {};
+window.AP_LINKS["chemistry"] = [
+  { title: "From atoms to properties", chain: ["0:Periodic trends and Coulomb's law", "decide", "1:Types of bonds", "whose shapes set", "1:Molecular polarity", "which determines", "2:Intermolecular forces", "and so", "2:Vapor pressure and boiling point"] },
+  { title: "Why reactions go (or don't)", chain: ["5:Bond enthalpies", "set ΔH in", "8:Gibbs free energy", "which fixes", "8:ΔG° and the equilibrium constant", "but speed depends on", "8:Thermodynamic vs. kinetic control"] },
+  { title: "Rates and mechanisms", chain: ["4:Collision model and energy profiles", "explain", "4:Factors that affect reaction rate", "and how", "4:Catalysis", "lowers the barrier in", "4:Elementary reactions and the rate-determining step"] },
+  { title: "Equilibrium runs acid–base chemistry", chain: ["6:The equilibrium constant K", "becomes Ka in", "7:Strong vs. weak acids", "which lets", "7:Buffers", "resist change, as seen in", "7:Titration curves"] },
+  { title: "Counting particles", chain: ["0:Moles and molar mass", "power", "3:Stoichiometry and limiting reactant", "used in", "3:Titration, acid–base and redox", "and in", "3:Gravimetric analysis"] },
+  { title: "Electrons do work", chain: ["3:Titration, acid–base and redox", "separated into half-reactions makes", "8:Galvanic (voltaic) cells", "whose voltage links to", "8:Cell potential and free energy", "and can be reversed in", "8:Electrolytic cells"] },
+];
+
+</script>
+<script>/* content/links/english-language.js */
+// How ideas in AP English Language connect across units. See content/links/_README.txt for the format.
+window.AP_LINKS = window.AP_LINKS || {};
+window.AP_LINKS["english-language"] = [
+  { title: "Situation shapes every choice", chain: ["0:The parts of the rhetorical situation", "determine", "0:Choices are made for an audience", "such as", "3:Diction and connotation", "which create", "3:Tone"] },
+  { title: "Building an argument", chain: ["1:Claims and theses", "are supported by", "1:Types of evidence", "explained through", "1:Commentary", "arranged into a", "2:Line of reasoning"] },
+  { title: "From reading to the analysis essay", chain: ["0:Reading a text with SOAPSTone", "helps you write", "4:A strong rhetorical analysis thesis", "developed with", "4:Commentary that earns points", "and pushed toward", "4:The sophistication point"] },
+  { title: "Complexity wins points", chain: ["1:Qualifying a claim", "and", "2:Counterargument and rebuttal", "show", "5:Acknowledging complexity", "one path to", "4:The sophistication point"] },
+  { title: "Sources in conversation", chain: ["6:Evaluating source credibility", "comes before", "6:Using sources in conversation", "which means", "6:Synthesis vs. summary", "with", "6:Citing sources correctly"] },
+];
+
+</script>
+<script>/* content/links/microeconomics.js */
+// How ideas in AP Microeconomics connect across units. See content/links/_README.txt for the format.
+window.AP_LINKS = window.AP_LINKS || {};
+window.AP_LINKS["microeconomics"] = [
+  { title: "Thinking at the margin", chain: ["0:Scarcity and opportunity cost", "forces choices made by", "0:Marginal analysis and consumer choice", "which becomes MR = MC in", "2:Profit maximization", "and MRP = MRC in", "4:Hiring rule"] },
+  { title: "Markets and efficiency", chain: ["1:Equilibrium and changes", "maximizes", "1:Consumer and producer surplus", "until interventions like", "1:Taxes and tax incidence", "create", "1:Surplus and government intervention"] },
+  { title: "Costs shape market outcomes", chain: ["2:Production and diminishing returns", "shape", "2:Cost curves", "which drive", "2:Long-run adjustment in perfect competition", "while", "2:Economies of scale", "can lead to", "3:Regulating natural monopolies"] },
+  { title: "Market power costs society", chain: ["3:Monopoly", "sets MR = MC where P > MC, so", "3:Why monopoly is inefficient", "which governments address with", "5:Antitrust policy"] },
+  { title: "When markets fail", chain: ["5:Negative externalities", "push output past", "5:Finding the socially optimal quantity", "which a corrective tax restores, using the logic of", "1:Taxes and tax incidence"] },
+  { title: "Labor comes from product markets", chain: ["1:Demand and supply, shifts vs. movements", "in product markets create", "4:Derived demand and MRP", "which sets hiring in", "4:Perfectly competitive labor markets", "and differs under", "4:Monopsony"] },
+];
+
+</script>
+<script>/* content/links/physics-1.js */
+// How ideas in AP Physics 1 connect across units. See content/links/_README.txt for the format.
+window.AP_LINKS = window.AP_LINKS || {};
+window.AP_LINKS["physics-1"] = [
+  { title: "Forces cause motion", chain: ["1:Free-body diagrams", "give the net force in", "1:Newton's three laws", "which sets the acceleration used in", "0:The constant-acceleration equations", "including", "0:Projectile motion"] },
+  { title: "Forces over distance and time", chain: ["1:Newton's three laws", "over a distance give", "2:The work-energy theorem", "and over time give", "3:Momentum and impulse", "shown on", "3:Force–time graphs"] },
+  { title: "Energy is conserved, or converted", chain: ["2:Kinetic and potential energy", "trade off in", "2:Conservation of energy", "unless", "2:Work done by friction", "which also explains", "3:Energy in collisions"] },
+  { title: "Linear ideas have rotational twins", chain: ["1:Newton's three laws", "become", "4:Rotational inertia and Newton's 2nd law for rotation", "and momentum becomes", "5:Angular momentum", "conserved in", "5:Conservation of angular momentum"] },
+  { title: "Gravity from falling to orbiting", chain: ["0:Free fall", "is caused by", "1:Gravitational field strength", "which also holds planets in", "5:Orbits", "with energy described in", "5:Energy of orbiting satellites"] },
+  { title: "Restoring forces make oscillations", chain: ["1:Friction and springs", "introduces Hooke's law behind", "6:Restoring forces", "which produce", "6:Simple harmonic motion", "with energy stored as", "2:Spring potential energy"] },
+];
+
+</script>
+<script>/* content/links/physics-2.js */
+// How ideas in AP Physics 2 connect across units. See content/links/_README.txt for the format.
+window.AP_LINKS = window.AP_LINKS || {};
+window.AP_LINKS["physics-2"] = [
+  { title: "Molecules explain thermodynamics", chain: ["0:Pressure from molecular collisions", "underlies", "0:Temperature, kinetic theory and ideal gases", "whose energy changes follow", "0:The first law of thermodynamics", "shown on", "0:PV diagrams"] },
+  { title: "From charge to circuits", chain: ["1:Coulomb's law", "creates", "1:Electric fields", "and differences in", "1:Electric potential and energy", "which push current in", "2:Current, resistance and Ohm's law"] },
+  { title: "Moving charge makes magnetism", chain: ["2:Current, resistance and Ohm's law", "creates", "3:Magnetic fields from currents", "and a changing field causes", "3:Electromagnetic induction", "as in", "3:Motional emf"] },
+  { title: "Light as a ray and a wave", chain: ["5:Wave properties", "explain", "4:Refraction and Snell's law", "and also", "5:Interference and diffraction of light", "while light also acts as particles in", "6:Photons and the photoelectric effect"] },
+  { title: "Energy at the atomic scale", chain: ["6:Photons and the photoelectric effect", "match the gaps between", "6:Atomic energy levels and spectra", "while nuclei release energy through", "6:Mass–energy equivalence and binding energy", "in", "6:Types of radioactive decay"] },
+];
+
+</script>
+<script>/* content/links/physics-c-em.js */
+// How ideas in AP Physics C: E&M connect across units. See content/links/_README.txt for the format.
+window.AP_LINKS = window.AP_LINKS || {};
+window.AP_LINKS["physics-c-em"] = [
+  { title: "Field and potential", chain: ["0:Coulomb's law and the electric field", "integrates to", "1:Electric potential", "and back through", "1:Relating field and potential", "with surfaces shown in", "1:Equipotential surfaces"] },
+  { title: "Gauss's law everywhere", chain: ["0:Electric flux and Gauss's law", "explains", "2:Conductors in electrostatic equilibrium", "and finds the field for", "2:Capacitance of cylinders and spheres", "which store", "2:Energy stored in capacitors"] },
+  { title: "Capacitors in circuits", chain: ["2:Capacitance", "charges over time in", "3:RC circuits", "and empties in", "3:Discharging RC circuits", "with energy tracked in", "3:Power and energy in circuits"] },
+  { title: "Currents make fields, changing fields make currents", chain: ["4:The Biot–Savart law", "and", "4:Ampère's law", "give the field whose change drives", "5:Magnetic flux and Faraday's law", "with direction from", "5:Lenz's law"] },
+  { title: "Inductors mirror capacitors", chain: ["5:Self-inductance of a solenoid", "sets behavior in", "5:Inductance and LR circuits", "and combines with capacitors in", "5:LC circuits", "storing", "5:Energy in inductors and magnetic fields"] },
+];
+
+</script>
+<script>/* content/links/physics-c-mechanics.js */
+// How ideas in AP Physics C: Mechanics connect across units. See content/links/_README.txt for the format.
+window.AP_LINKS = window.AP_LINKS || {};
+window.AP_LINKS["physics-c-mechanics"] = [
+  { title: "Calculus links the motion variables", chain: ["0:Derivatives: from position to acceleration", "reverse into", "0:Integrals: from acceleration to position", "which, with forces from", "1:Newton's laws and free-body diagrams", "solve", "1:Velocity-dependent forces (drag)"] },
+  { title: "Force, energy and potential", chain: ["2:Work as an integral", "defines", "2:Potential energy and force", "which is read from", "2:Energy diagrams and turning points", "and conserved in", "2:Conservation of energy"] },
+  { title: "Impulse and momentum", chain: ["3:Impulse as an integral", "changes momentum, as in", "3:Momentum and Newton's second law", "which is conserved in", "3:Collisions", "about the", "3:Center of mass"] },
+  { title: "Rotation mirrors translation", chain: ["4:Calculating rotational inertia by integration", "feeds", "4:Newton's second law for rotation and equilibrium", "and", "5:Rotational kinetic energy and rolling", "while", "5:Conservation of angular momentum", "explains", "5:Orbits and Kepler's laws"] },
+  { title: "Oscillations from a differential equation", chain: ["1:Spring forces", "produce", "6:The SHM differential equation", "solved with", "6:Phase and initial conditions", "and extended to", "6:The physical pendulum"] },
+];
+
+</script>
+<script>/* content/links/precalculus.js */
+// How ideas in AP Precalculus connect across units. See content/links/_README.txt for the format.
+window.AP_LINKS = window.AP_LINKS || {};
+window.AP_LINKS["precalculus"] = [
+  { title: "Patterns of change", chain: ["0:Rates of change", "are constant in", "1:Arithmetic vs. geometric sequences", "and multiply in", "1:Exponential functions and models", "chosen with", "1:Choosing and validating a model"] },
+  { title: "Inverses undo functions", chain: ["1:Function composition", "defines", "1:Inverses, equations and semi-log plots", "such as", "1:Logarithms and their properties", "used in", "1:Solving exponential and logarithmic equations"] },
+  { title: "Zeros and asymptotes", chain: ["0:Polynomial functions: zeros and end behavior", "include", "0:Complex zeros and the number of zeros", "and divide into", "0:Rational functions: asymptotes and holes", "with", "0:Polynomial division and slant asymptotes"] },
+  { title: "Circles become waves", chain: ["2:The unit circle and radians", "generate", "2:Sinusoidal functions", "which describe", "2:Periodic phenomena", "in", "2:Sinusoidal modeling"] },
+  { title: "Angles and distance", chain: ["2:The unit circle and radians", "extend to", "2:Polar coordinates and graphs", "and", "3:Parametric functions", "and", "3:Vector-valued functions"] },
+];
+
+</script>
+<script>/* content/links/psychology.js */
+// How ideas in AP Psychology connect across units. See content/links/_README.txt for the format.
+window.AP_LINKS = window.AP_LINKS || {};
+window.AP_LINKS["psychology"] = [
+  { title: "From neurons to treatment", chain: ["0:Neurons and neural firing", "communicate through", "0:Neurotransmitters and hormones", "whose imbalance appears in", "4:Major categories of disorders", "and is targeted by", "4:Biomedical therapies"] },
+  { title: "Learning shapes behavior and therapy", chain: ["2:Classical conditioning", "and", "2:Operant and observational learning", "explain how fears form in", "4:Anxiety, obsessive-compulsive and trauma disorders", "and are unlearned through", "4:Psychotherapy approaches"] },
+  { title: "How memory works", chain: ["0:Sleep and sensation", "feed", "1:Perception", "which is stored through", "1:Encoding and storing memories", "and lost or distorted in", "1:Retrieval, forgetting and memory errors"] },
+  { title: "Stress, body and mind", chain: ["0:The nervous system and brain", "drives", "4:Stress and health", "whose impact depends on", "4:Positive psychology and coping", "and on", "3:Theories of emotion"] },
+  { title: "People in groups", chain: ["3:Attribution and attitudes", "shape", "3:Persuasion, prejudice and discrimination", "and", "3:Conformity and obedience", "within", "3:Group behavior"] },
+  { title: "Research ties it together", chain: ["0:Research methods and ethics", "rely on", "0:Statistics in psychology", "to test ideas like", "0:Heredity, environment and evolutionary psychology", "and", "1:Theories of intelligence"] },
+];
+
+</script>
+<script>/* content/links/us-history.js */
+// How ideas in AP U.S. History connect across periods. See content/links/_README.txt for the format.
+window.AP_LINKS = window.AP_LINKS || {};
+window.AP_LINKS["us-history"] = [
+  { title: "Slavery from the colonies to the Civil War", chain: ["0:The beginnings of the Atlantic slave trade", "grew into", "1:The growth of slavery", "which became the center of", "4:Expansion and the slavery question", "leading to", "4:The Civil War", "and", "4:The Reconstruction Amendments and their limits"] },
+  { title: "From empire to independence", chain: ["1:Colonial self-government and the Enlightenment", "clashed with new taxes after", "2:The French and Indian War", "leading to", "2:Colonial resistance and escalation", "and", "2:Winning independence"] },
+  { title: "Debates over federal power", chain: ["2:From the Articles to the Constitution", "sparked", "2:Debates of the early republic", "continued in", "3:Nationalism and the Marshall Court", "and", "3:Jacksonian democracy"] },
+  { title: "Industry reshapes America", chain: ["3:The Market Revolution", "grew into", "5:Big business", "which provoked", "5:Labor", "and reforms in", "6:The Progressive Era"] },
+  { title: "Civil rights, unfinished and renewed", chain: ["4:The Reconstruction Amendments and their limits", "were undermined by", "5:Jim Crow and responses to it", "until", "7:Strategies of the civil rights movement", "inspired", "7:Other rights movements and the 1970s"] },
+  { title: "The U.S. becomes a world power", chain: ["6:Causes and debates over American imperialism", "led to", "6:World War I and the home front", "then", "6:World War II at home and abroad", "then", "7:The Cold War abroad", "until", "8:The end of the Cold War and a new world role"] },
+];
+
+</script>
+<script>/* content/links/world-history.js */
+// How ideas in AP World History connect across units. See content/links/_README.txt for the format.
+window.AP_LINKS = window.AP_LINKS || {};
+window.AP_LINKS["world-history"] = [
+  { title: "Networks spread goods, ideas and disease", chain: ["1:The Mongol Empire", "protected", "1:The Silk Roads", "which spread", "1:Cultural and technological diffusion", "and", "1:Environmental consequences of exchange"] },
+  { title: "Gunpowder builds empires", chain: ["1:Cultural and technological diffusion", "spread gunpowder that powered", "2:Expansion of the gunpowder empires", "such as", "2:The Ottoman Empire", "which had to manage", "2:Administering empires"] },
+  { title: "The first global economy", chain: ["3:Maritime technology and exploration", "began", "3:The Columbian Exchange", "and", "3:Silver and the first global economy", "which relied on", "3:Labor systems and resistance"] },
+  { title: "Ideas become revolutions", chain: ["4:Enlightenment and political revolutions", "inspired", "4:Latin American independence", "and", "4:Nationalism", "which later fueled", "5:Resistance to imperialism"] },
+  { title: "Industry drives imperialism", chain: ["4:The Industrial Revolution", "created demand behind", "5:Rationales for imperialism", "and", "5:The Scramble for Africa", "producing", "5:Export economies"] },
+  { title: "World wars end empires", chain: ["6:World War I", "and", "6:Colonies and the world wars", "weakened empires, enabling", "7:Decolonization", "then", "7:Challenges for newly independent states"] },
+];
+
+</script>
 <script>/* src/engine.js */
 // The learning engine: a rules-based model of what each student knows, concept by concept.
 //
@@ -12653,7 +12848,11 @@ async function route() {
     if (parts[0] === "course" && courseById[parts[1]]) {
       const course = courseById[parts[1]];
       if (parts[2] === "unit" && parts[4] === "check") renderUnitCheck(course, +parts[3] - 1);
-      else if (parts[2] === "unit") await renderUnit(course, +parts[3] - 1, parts[4] || "learn");
+      else if (parts[2] === "unit") {
+        await renderUnit(course, +parts[3] - 1, parts[4] || "learn");
+        const target = parts[5] != null && document.getElementById(`concept-${parts[5]}`);
+        if (target) { target.scrollIntoView({ block: "start" }); target.classList.add("is-flash"); }
+      }
       else if (parts[2] === "quiz") await renderQuizSetup(course);
       else if (parts[2] === "diagnostic") renderDiagnostic(course);
       else if (parts[2] === "smart") renderSmart([course.id], `Smart practice · ${course.name}`, course);
@@ -13029,6 +13228,7 @@ async function renderCourse(course) {
           <div class="section-head"><h2>Units</h2>${content ? `<a href="#/course/${course.id}/quiz">${icon("shuffle", 14)} Mixed quiz</a>` : ""}</div>
           ${content && content.intro ? `<p class="muted intro">${esc(content.intro)}</p>` : ""}
           ${unitsHtml}
+          ${content ? chainsHtml(course.id) : ""}
         </div>
         <aside class="course-aside" style="${catVars(course.cat)}">
           <div class="card">
@@ -13187,6 +13387,7 @@ function renderLearn(body, course, idx, unit) {
           ${c.example ? `<div class="note note-example"><b>${icon("pen", 14)} Example</b><div>${fmt(c.example)}</div></div>` : ""}
           ${c.hook ? `<div class="note note-hook"><b>${icon("bulb", 14)} Memory hook</b><div>${fmt(c.hook)}</div></div>` : ""}
           ${c.trap ? `<div class="note note-trap"><b>⚠️ AP Trap</b><div>${fmt(c.trap)}</div></div>` : ""}
+          ${connectionsHtml(course.id, idx, i)}
           <div class="explain-own" data-explain="${i}"></div>
           <div class="tryit" data-try="${i}"></div>
         </article>`;
@@ -13875,6 +14076,68 @@ function initMissTryIts(root) {
   });
 }
 
+
+
+/* ================= Connecting concepts ================= */
+
+// Resolve content/links/<id>.js chains ("2:Enzymes", "powers", "2:Cellular respiration", …) to concepts.
+const chainCache = {};
+function courseChains(id) {
+  if (chainCache[id]) return chainCache[id];
+  const units = window.AP_CONTENT[id]?.units || [];
+  const find = (ref) => {
+    const [u, ...rest] = ref.split(":");
+    const want = rest.join(":").toLowerCase();
+    const list = (units[+u]?.concepts || []).map((c) => c.title.toLowerCase());
+    let ci = list.indexOf(want);
+    if (ci < 0) { const hits = list.map((t, i) => (t.startsWith(want) ? i : -1)).filter((i) => i >= 0); ci = hits.length === 1 ? hits[0] : -1; }
+    return ci < 0 ? null : { u: +u, c: ci, title: units[+u].concepts[ci].title };
+  };
+  return (chainCache[id] = ((window.AP_LINKS && window.AP_LINKS[id]) || []).map((ch) => {
+    const nodes = ch.chain.filter((_, i) => i % 2 === 0).map(find);
+    const rels = ch.chain.filter((_, i) => i % 2 === 1);
+    return nodes.every(Boolean) ? { title: ch.title, nodes, rels } : null;
+  }).filter(Boolean));
+}
+
+const conceptHref = (id, n) => `#/course/${id}/unit/${n.u + 1}/learn/${n.c}`;
+
+// "How this connects" on a concept card: the links into and out of it.
+function connectionsHtml(id, u, c) {
+  const rows = [];
+  courseChains(id).forEach((ch) => ch.nodes.forEach((n, k) => {
+    if (n.u !== u || n.c !== c) return;
+    if (k > 0) rows.push({ dir: "in", other: ch.nodes[k - 1], rel: ch.rels[k - 1], chain: ch.title });
+    if (k < ch.nodes.length - 1) rows.push({ dir: "out", other: ch.nodes[k + 1], rel: ch.rels[k], chain: ch.title });
+  }));
+  if (!rows.length) return "";
+  const where = (n) => (n.u === u ? "this unit" : `Unit ${n.u + 1}`);
+  return `
+    <div class="connections">
+      <span class="fb-label">${icon("shuffle", 12)} How this connects</span>
+      ${rows.map((r) => r.dir === "out"
+        ? `<a class="conn" href="${conceptHref(id, r.other)}"><span class="conn-this">This</span><span class="conn-rel">${esc(r.rel)}</span><b>${esc(r.other.title)}</b><span class="muted small">${where(r.other)}</span></a>`
+        : `<a class="conn" href="${conceptHref(id, r.other)}"><b>${esc(r.other.title)}</b><span class="muted small">${where(r.other)}</span><span class="conn-rel">${esc(r.rel)}</span><span class="conn-this">this</span></a>`).join("")}
+    </div>`;
+}
+
+// Course page: every chain as Concept → relationship → Concept, with each concept's mastery.
+function chainsHtml(id) {
+  const chains = courseChains(id);
+  if (!chains.length) return "";
+  const node = (n) => {
+    const s = Engine.state(Engine.conceptKey(id, n.u, n.c));
+    return `<a class="chain-node st-border-${Engine.status(s).id}" href="${conceptHref(id, n)}"><span class="muted small">Unit ${n.u + 1}</span><b>${esc(n.title)}</b>${s.n ? `<span class="small">${pctOf(s.m)}%</span>` : ""}</a>`;
+  };
+  return `
+    <div class="section-head"><h2>How the ideas connect</h2></div>
+    <p class="muted intro">Concepts don't live alone. Follow each chain to see how one idea causes, powers or leads to the next, across units.</p>
+    <div class="chains">${chains.map((ch) => `
+      <div class="card chain">
+        <h3>${esc(ch.title)}</h3>
+        <div class="chain-flow">${ch.nodes.map((n, k) => `${node(n)}${k < ch.rels.length ? `<span class="chain-rel">${icon("arrowR", 14)} ${esc(ch.rels[k])}</span>` : ""}`).join("")}</div>
+      </div>`).join("")}</div>`;
+}
 
 /* ================= Active learning: explain it, fill in the blank, matching, sorting ================= */
 

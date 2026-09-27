@@ -289,7 +289,11 @@ async function route() {
     if (parts[0] === "course" && courseById[parts[1]]) {
       const course = courseById[parts[1]];
       if (parts[2] === "unit" && parts[4] === "check") renderUnitCheck(course, +parts[3] - 1);
-      else if (parts[2] === "unit") await renderUnit(course, +parts[3] - 1, parts[4] || "learn");
+      else if (parts[2] === "unit") {
+        await renderUnit(course, +parts[3] - 1, parts[4] || "learn");
+        const target = parts[5] != null && document.getElementById(`concept-${parts[5]}`);
+        if (target) { target.scrollIntoView({ block: "start" }); target.classList.add("is-flash"); }
+      }
       else if (parts[2] === "quiz") await renderQuizSetup(course);
       else if (parts[2] === "diagnostic") renderDiagnostic(course);
       else if (parts[2] === "smart") renderSmart([course.id], `Smart practice · ${course.name}`, course);
@@ -665,6 +669,7 @@ async function renderCourse(course) {
           <div class="section-head"><h2>Units</h2>${content ? `<a href="#/course/${course.id}/quiz">${icon("shuffle", 14)} Mixed quiz</a>` : ""}</div>
           ${content && content.intro ? `<p class="muted intro">${esc(content.intro)}</p>` : ""}
           ${unitsHtml}
+          ${content ? chainsHtml(course.id) : ""}
         </div>
         <aside class="course-aside" style="${catVars(course.cat)}">
           <div class="card">
@@ -823,6 +828,7 @@ function renderLearn(body, course, idx, unit) {
           ${c.example ? `<div class="note note-example"><b>${icon("pen", 14)} Example</b><div>${fmt(c.example)}</div></div>` : ""}
           ${c.hook ? `<div class="note note-hook"><b>${icon("bulb", 14)} Memory hook</b><div>${fmt(c.hook)}</div></div>` : ""}
           ${c.trap ? `<div class="note note-trap"><b>⚠️ AP Trap</b><div>${fmt(c.trap)}</div></div>` : ""}
+          ${connectionsHtml(course.id, idx, i)}
           <div class="explain-own" data-explain="${i}"></div>
           <div class="tryit" data-try="${i}"></div>
         </article>`;
@@ -1511,6 +1517,68 @@ function initMissTryIts(root) {
   });
 }
 
+
+
+/* ================= Connecting concepts ================= */
+
+// Resolve content/links/<id>.js chains ("2:Enzymes", "powers", "2:Cellular respiration", …) to concepts.
+const chainCache = {};
+function courseChains(id) {
+  if (chainCache[id]) return chainCache[id];
+  const units = window.AP_CONTENT[id]?.units || [];
+  const find = (ref) => {
+    const [u, ...rest] = ref.split(":");
+    const want = rest.join(":").toLowerCase();
+    const list = (units[+u]?.concepts || []).map((c) => c.title.toLowerCase());
+    let ci = list.indexOf(want);
+    if (ci < 0) { const hits = list.map((t, i) => (t.startsWith(want) ? i : -1)).filter((i) => i >= 0); ci = hits.length === 1 ? hits[0] : -1; }
+    return ci < 0 ? null : { u: +u, c: ci, title: units[+u].concepts[ci].title };
+  };
+  return (chainCache[id] = ((window.AP_LINKS && window.AP_LINKS[id]) || []).map((ch) => {
+    const nodes = ch.chain.filter((_, i) => i % 2 === 0).map(find);
+    const rels = ch.chain.filter((_, i) => i % 2 === 1);
+    return nodes.every(Boolean) ? { title: ch.title, nodes, rels } : null;
+  }).filter(Boolean));
+}
+
+const conceptHref = (id, n) => `#/course/${id}/unit/${n.u + 1}/learn/${n.c}`;
+
+// "How this connects" on a concept card: the links into and out of it.
+function connectionsHtml(id, u, c) {
+  const rows = [];
+  courseChains(id).forEach((ch) => ch.nodes.forEach((n, k) => {
+    if (n.u !== u || n.c !== c) return;
+    if (k > 0) rows.push({ dir: "in", other: ch.nodes[k - 1], rel: ch.rels[k - 1], chain: ch.title });
+    if (k < ch.nodes.length - 1) rows.push({ dir: "out", other: ch.nodes[k + 1], rel: ch.rels[k], chain: ch.title });
+  }));
+  if (!rows.length) return "";
+  const where = (n) => (n.u === u ? "this unit" : `Unit ${n.u + 1}`);
+  return `
+    <div class="connections">
+      <span class="fb-label">${icon("shuffle", 12)} How this connects</span>
+      ${rows.map((r) => r.dir === "out"
+        ? `<a class="conn" href="${conceptHref(id, r.other)}"><span class="conn-this">This</span><span class="conn-rel">${esc(r.rel)}</span><b>${esc(r.other.title)}</b><span class="muted small">${where(r.other)}</span></a>`
+        : `<a class="conn" href="${conceptHref(id, r.other)}"><b>${esc(r.other.title)}</b><span class="muted small">${where(r.other)}</span><span class="conn-rel">${esc(r.rel)}</span><span class="conn-this">this</span></a>`).join("")}
+    </div>`;
+}
+
+// Course page: every chain as Concept → relationship → Concept, with each concept's mastery.
+function chainsHtml(id) {
+  const chains = courseChains(id);
+  if (!chains.length) return "";
+  const node = (n) => {
+    const s = Engine.state(Engine.conceptKey(id, n.u, n.c));
+    return `<a class="chain-node st-border-${Engine.status(s).id}" href="${conceptHref(id, n)}"><span class="muted small">Unit ${n.u + 1}</span><b>${esc(n.title)}</b>${s.n ? `<span class="small">${pctOf(s.m)}%</span>` : ""}</a>`;
+  };
+  return `
+    <div class="section-head"><h2>How the ideas connect</h2></div>
+    <p class="muted intro">Concepts don't live alone. Follow each chain to see how one idea causes, powers or leads to the next, across units.</p>
+    <div class="chains">${chains.map((ch) => `
+      <div class="card chain">
+        <h3>${esc(ch.title)}</h3>
+        <div class="chain-flow">${ch.nodes.map((n, k) => `${node(n)}${k < ch.rels.length ? `<span class="chain-rel">${icon("arrowR", 14)} ${esc(ch.rels[k])}</span>` : ""}`).join("")}</div>
+      </div>`).join("")}</div>`;
+}
 
 /* ================= Active learning: explain it, fill in the blank, matching, sorting ================= */
 
