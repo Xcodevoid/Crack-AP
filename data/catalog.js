@@ -66,7 +66,7 @@ const COURSES = [
     ced: CED("ap-african-american-studies"), page: PAGE("ap-african-american-studies"),
   },
   {
-    id: "us-government", name: "AP U.S. Government and Politics", cat: "History & Social Sciences",
+    id: "us-government", name: "AP U.S. Government and Politics", cat: "History & Social Sciences", guide: true,
     blurb: "How the U.S. Constitution, institutions and citizens shape American politics.",
     exam: [
       { name: "Multiple choice", detail: "55 questions · 80 min", weight: 50 },
@@ -105,7 +105,7 @@ const COURSES = [
     ced: CED("ap-psychology"), page: PAGE("ap-psychology"),
   },
   {
-    id: "macroeconomics", name: "AP Macroeconomics", cat: "History & Social Sciences",
+    id: "macroeconomics", name: "AP Macroeconomics", cat: "History & Social Sciences", guide: true,
     blurb: "The economy as a whole: GDP, inflation, unemployment, money and policy.",
     exam: [
       { name: "Multiple choice", detail: "60 questions · 70 min", weight: 66.7 },

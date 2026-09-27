@@ -1189,7 +1189,7 @@ const COURSES = [
     ced: CED("ap-african-american-studies"), page: PAGE("ap-african-american-studies"),
   },
   {
-    id: "us-government", name: "AP U.S. Government and Politics", cat: "History & Social Sciences",
+    id: "us-government", name: "AP U.S. Government and Politics", cat: "History & Social Sciences", guide: true,
     blurb: "How the U.S. Constitution, institutions and citizens shape American politics.",
     exam: [
       { name: "Multiple choice", detail: "55 questions · 80 min", weight: 50 },
@@ -1228,7 +1228,7 @@ const COURSES = [
     ced: CED("ap-psychology"), page: PAGE("ap-psychology"),
   },
   {
-    id: "macroeconomics", name: "AP Macroeconomics", cat: "History & Social Sciences",
+    id: "macroeconomics", name: "AP Macroeconomics", cat: "History & Social Sciences", guide: true,
     blurb: "The economy as a whole: GDP, inflation, unemployment, money and policy.",
     exam: [
       { name: "Multiple choice", detail: "60 questions · 70 min", weight: 66.7 },
@@ -3511,6 +3511,440 @@ window.AP_CONTENT["english-language"] = {
           "Each body paragraph is organized around a claim, not a single source.",
           "Plans to use at least 3 sources, with specific roles (e.g. the chart as data, the op-ed as a counterargument).",
           "Includes a plan to address an opposing source.",
+        ],
+      },
+    },
+  ],
+};
+
+</script>
+<script>/* content/macroeconomics.js */
+window.AP_CONTENT = window.AP_CONTENT || {};
+window.AP_CONTENT["macroeconomics"] = {
+  tips: [
+    "Graphs earn most free-response points. Label every axis and curve, show the shift with an arrow, and mark the new equilibrium.",
+    "Trace chains of cause and effect step by step: \"The Fed buys bonds → money supply rises → interest rate falls → investment rises → AD shifts right → real GDP and price level rise.\"",
+    "Know which graph each question needs: AD–AS for output and prices, the money market for the nominal interest rate, loanable funds for the real interest rate, and foreign exchange for currencies.",
+    "Distinguish nominal from real everywhere: GDP, wages and interest rates.",
+    "Short run and long run behave differently. In the long run the economy returns to full employment, and only the price level changes.",
+  ],
+  units: [
+    {
+      title: "Basic Economic Concepts",
+      weight: "5–10%",
+      tldr: "Scarcity forces choices with opportunity costs. The production possibilities curve shows trade-offs and growth, comparative advantage explains trade, and supply and demand set prices in individual markets.",
+      concepts: [
+        {
+          title: "Scarcity and opportunity cost",
+          simple: "Resources are limited, so every choice means giving up the next-best option.",
+          detail: "Scarcity exists because wants are unlimited and resources (land, labor, capital, entrepreneurship) are limited. The opportunity cost of a choice is the value of the next-best alternative given up, not every alternative combined.",
+          example: "Spending an evening studying costs you the shift you could have worked; that lost pay is the opportunity cost.",
+        },
+        {
+          title: "The production possibilities curve",
+          simple: "The PPC shows the maximum combinations of two goods an economy can make.",
+          detail: "Points on the curve are efficient; inside, resources are unemployed or wasted; outside is unattainable now. A bowed-out curve shows increasing opportunity costs. Economic growth (more resources, better technology) shifts the curve outward. Recessions move the economy inside the curve.",
+        },
+        {
+          title: "Comparative advantage and gains from trade",
+          simple: "Countries gain by specializing in what they make at the lowest opportunity cost.",
+          detail: "Absolute advantage means producing more with the same resources; comparative advantage means a lower opportunity cost. Both countries gain if they specialize by comparative advantage and trade at terms between their opportunity costs.",
+          hook: "Comparative = cheapest in terms of what you give up.",
+        },
+        {
+          title: "Demand, supply and market equilibrium",
+          simple: "Prices adjust until the amount buyers want equals the amount sellers offer.",
+          detail: "A change in price moves along a curve; changes in other factors shift it. Demand shifters: tastes, income, prices of related goods, number of buyers, expectations. Supply shifters: input costs, technology, taxes, number of sellers, expectations. Shortages push prices up; surpluses push them down.",
+        },
+        {
+          title: "Economic systems",
+          simple: "Societies answer what, how and for whom to produce through markets, command, or a mix.",
+          detail: "Market economies rely on prices and private property; command economies rely on central planning; real economies are mixed. The circular flow model connects households and firms through product and factor markets, with government and foreign sectors added in macro.",
+        },
+        {
+          title: "Macroeconomics vs. microeconomics",
+          simple: "Macro studies the whole economy: total output, overall prices, unemployment and growth.",
+          detail: "Macroeconomics looks at aggregates: GDP, the price level, unemployment, interest rates and exchange rates, plus government policies that influence them. Microeconomics studies individual markets, firms and consumers.",
+        },
+        {
+          title: "Changes in supply and demand together",
+          simple: "When both curves shift, one outcome is certain and the other depends on which shift is bigger.",
+          detail: "If demand and supply both increase, quantity rises but price is indeterminate. If demand rises and supply falls, price rises but quantity is indeterminate. State which variable is ambiguous rather than guessing.",
+        },
+      ],
+      terms: [
+        ["Scarcity", "Limited resources relative to unlimited wants."],
+        ["Opportunity cost", "The value of the next-best alternative given up."],
+        ["Comparative advantage", "Producing a good at a lower opportunity cost than others."],
+        ["Factors of production", "Land, labor, capital and entrepreneurship."],
+        ["Circular flow model", "Diagram of money, goods and resources moving between sectors."],
+        ["Indeterminate", "An outcome that can't be predicted without knowing the relative size of shifts."],
+        ["Shortage", "Quantity demanded exceeds quantity supplied at the current price."],
+      ],
+      mistakes: [
+        "Adding up all alternatives instead of using only the next-best one as the opportunity cost.",
+        "Confusing absolute advantage with comparative advantage.",
+      ],
+      questions: [
+        { q: "A country moves from a point inside its PPC to a point on the curve. This is most likely caused by", choices: ["a new technology", "a decrease in unemployment", "an increase in the labor force", "more capital goods"], answer: 1, explain: "Moving from inside to the curve means using idle resources, such as unemployed workers. The others shift the curve outward." },
+        { q: "Country A can make 10 cars or 20 computers; Country B can make 6 cars or 18 computers. Who has the comparative advantage in cars?", choices: ["Country A", "Country B", "Neither", "Both"], answer: 0, explain: "Opportunity cost of 1 car: A gives up 2 computers, B gives up 3. A's cost is lower." },
+        { q: "Demand for a good increases while supply decreases. What happens in the market?", choices: ["Price rises; quantity is indeterminate", "Price falls; quantity rises", "Price is indeterminate; quantity rises", "Both price and quantity fall"], answer: 0, explain: "Both shifts push price up. They push quantity in opposite directions, so quantity is indeterminate." },
+        { q: "Which of the following is a macroeconomic question?", choices: ["How will a tax on sugar affect candy prices?", "What causes the overall unemployment rate to rise?", "How does a firm decide how many workers to hire?", "Why do movie tickets cost more on weekends?"], answer: 1, explain: "The overall unemployment rate is an economy-wide aggregate." },
+      ],
+      frq: {
+        prompt: "Country X is producing at a point on its production possibilities curve for consumer goods and capital goods.\n(a) Draw a correctly labeled PPC and mark point A on the curve.\n(b) Show on your graph the effect of a large increase in the country's labor force.\n(c) Explain how choosing to produce more capital goods today affects the country's PPC in the future.",
+        points: [
+          "(a) Correctly labeled axes (consumer goods, capital goods), a bowed-out PPC, and point A on the curve.",
+          "(b) The PPC shifts outward.",
+          "(c) More capital goods increase future productive capacity, so the PPC shifts further outward in the future (economic growth).",
+        ],
+      },
+    },
+    {
+      title: "Economic Indicators and the Business Cycle",
+      weight: "12–17%",
+      tldr: "GDP measures output, the unemployment rate measures joblessness, and price indexes measure inflation. Real values adjust for inflation. The business cycle moves the economy between expansions and recessions around its full-employment output.",
+      concepts: [
+        {
+          title: "Measuring GDP",
+          simple: "GDP is the market value of all final goods and services produced within a country in a year.",
+          detail: "Expenditure approach: GDP = C + I + G + Xn. Excluded: intermediate goods (to avoid double counting), used goods, financial transactions (stocks, bonds), transfer payments, and non-market activity. Production by foreign firms inside the country counts; production by domestic firms abroad doesn't.",
+          hook: "Final, new, made here, this year.",
+        },
+        {
+          title: "Real vs. nominal GDP and the GDP deflator",
+          simple: "Real GDP removes the effect of price changes so you can compare output over time.",
+          detail: "Nominal GDP uses current prices; real GDP uses base-year prices. GDP deflator = (nominal GDP ÷ real GDP) × 100. Real GDP per capita is the best simple measure of living standards. Growth rate = (new − old) ÷ old × 100.",
+        },
+        {
+          title: "Unemployment",
+          simple: "The unemployment rate counts people in the labor force who are looking for work but don't have jobs.",
+          detail: "Unemployment rate = unemployed ÷ labor force × 100; labor force = employed + unemployed. Discouraged workers aren't counted, which understates true unemployment. Types: frictional (between jobs), structural (skills mismatch), cyclical (from recessions). Natural rate = frictional + structural; full employment means zero cyclical unemployment.",
+        },
+        {
+          title: "Inflation and price indexes",
+          simple: "Inflation is a rise in the overall price level, measured with indexes like the CPI.",
+          detail: "CPI = (cost of market basket in current year ÷ cost in base year) × 100. Inflation rate = percent change in the index. The CPI can overstate inflation (substitution bias, new products, quality changes). Real interest rate ≈ nominal interest rate − inflation rate.",
+        },
+        {
+          title: "Costs of inflation",
+          simple: "Unexpected inflation helps borrowers and hurts lenders and people on fixed incomes.",
+          detail: "Unanticipated inflation redistributes wealth: debtors repay with less valuable money, while savers, lenders and fixed-income earners lose purchasing power. Other costs: shoe-leather costs, menu costs, and uncertainty. Deflation raises the real burden of debt.",
+        },
+        {
+          title: "The business cycle",
+          simple: "The economy alternates between expansions and contractions around its long-run trend.",
+          detail: "Phases: expansion, peak, contraction (recession), trough. A recession has falling real GDP and rising cyclical unemployment. The economy's potential (full-employment) output grows over time; the gap between actual and potential output is the output gap.",
+        },
+        {
+          title: "Real vs. nominal values",
+          simple: "Nominal values are in current dollars; real values adjust for inflation to show purchasing power.",
+          detail: "Real value = nominal value ÷ price index × 100. If your wage rises 3% while prices rise 5%, your real wage falls about 2%. Always compare real values over time.",
+        },
+      ],
+      terms: [
+        ["GDP", "Market value of all final goods and services produced within a country in a year."],
+        ["GDP deflator", "(Nominal GDP ÷ real GDP) × 100; a broad price index."],
+        ["Labor force", "People who are employed plus those actively seeking work."],
+        ["Cyclical unemployment", "Unemployment caused by recessions."],
+        ["Natural rate of unemployment", "Frictional plus structural unemployment."],
+        ["Consumer Price Index", "Measures the cost of a fixed market basket relative to a base year."],
+        ["Discouraged worker", "Someone who has stopped looking for work and isn't counted as unemployed."],
+      ],
+      mistakes: [
+        "Counting transfer payments or stock purchases in GDP.",
+        "Counting discouraged workers as unemployed.",
+        "Forgetting to subtract inflation to get the real interest rate or real wage.",
+      ],
+      questions: [
+        { q: "Which of the following is included in U.S. GDP?", choices: ["A used car sold this year", "Social Security payments", "A new house built this year", "Shares of stock bought on the stock market"], answer: 2, explain: "A newly built house is a final good produced this year (it counts as investment)." },
+        { q: "A country has 180 million employed and 20 million unemployed people. What is the unemployment rate?", choices: ["11.1%", "10%", "20%", "9%"], answer: 1, explain: "20 ÷ (180 + 20) = 20 ÷ 200 = 10%." },
+        { q: "A bank lends money at 6% nominal interest, expecting 2% inflation. Actual inflation is 5%. Who benefits?", choices: ["The bank", "The borrower", "Neither", "Both equally"], answer: 1, explain: "Unexpectedly high inflation lowers the real interest rate (6 − 5 = 1% instead of 4%), which helps the borrower." },
+        { q: "A worker who lost a factory job because robots now do the work, and whose skills don't match available jobs, is", choices: ["frictionally unemployed", "structurally unemployed", "cyclically unemployed", "not in the labor force"], answer: 1, explain: "A mismatch between skills and available jobs is structural unemployment." },
+      ],
+      frq: {
+        prompt: "In 2025, nominal GDP was $22 trillion and the GDP deflator was 110.\n(a) Calculate real GDP.\n(b) If real GDP grows to $21 trillion in 2026, calculate the growth rate of real GDP.\n(c) Explain why real GDP, rather than nominal GDP, is used to measure growth.",
+        points: [
+          "(a) Real GDP = 22 ÷ 1.10 = $20 trillion.",
+          "(b) (21 − 20) ÷ 20 × 100 = 5%.",
+          "(c) Nominal GDP can rise just because prices rise; real GDP removes inflation, so it reflects changes in output.",
+        ],
+      },
+    },
+    {
+      title: "National Income and Price Determination",
+      weight: "17–27%",
+      tldr: "Aggregate demand and aggregate supply determine real output and the price level. Shocks cause recessionary or inflationary gaps. The multiplier magnifies spending changes, and fiscal policy uses government spending and taxes to close gaps.",
+      concepts: [
+        {
+          title: "Aggregate demand",
+          simple: "AD shows the total quantity of output demanded at each price level.",
+          detail: "AD slopes down because of the wealth effect, the interest-rate effect, and the exchange-rate effect. AD shifts with changes in C, I, G or Xn: consumer confidence, wealth, interest rates (for investment), government spending, taxes, foreign incomes and exchange rates.",
+        },
+        {
+          title: "Short-run aggregate supply",
+          simple: "SRAS shows the output firms supply at each price level when some input costs are fixed.",
+          detail: "SRAS slopes up because wages and other input prices are sticky in the short run. It shifts with changes in input prices (wages, oil), productivity, business taxes and subsidies, and inflation expectations. Higher input costs shift SRAS left.",
+        },
+        {
+          title: "Long-run aggregate supply",
+          simple: "LRAS is vertical at full-employment output, which doesn't depend on the price level.",
+          detail: "In the long run, all prices and wages adjust, so output returns to potential output (the natural rate of unemployment). LRAS shifts right with more or better resources, technology and human capital. It matches the PPC: an outward PPC shift means LRAS shifts right.",
+        },
+        {
+          title: "Equilibrium, gaps and self-correction",
+          simple: "Where AD meets SRAS the economy may be above or below full employment, creating gaps.",
+          detail: "Recessionary gap: output below potential, unemployment above natural. Inflationary gap: output above potential. Without policy, wages adjust: in a recessionary gap, falling wages shift SRAS right; in an inflationary gap, rising wages shift SRAS left, until output returns to potential.",
+        },
+        {
+          title: "The spending and tax multipliers",
+          simple: "A change in spending ripples through the economy, changing GDP by more than the original amount.",
+          detail: "MPC + MPS = 1. Spending multiplier = 1/MPS = 1/(1 − MPC). Tax multiplier = −MPC/MPS, smaller than the spending multiplier because part of a tax cut is saved. Balanced-budget multiplier = 1.",
+          example: "MPC = 0.8: spending multiplier = 5, tax multiplier = −4.",
+        },
+        {
+          title: "Fiscal policy",
+          simple: "Government changes spending and taxes to fight recessions or inflation.",
+          detail: "Expansionary: increase G or cut taxes to shift AD right (for a recessionary gap). Contractionary: cut G or raise taxes to shift AD left (for inflation). Discretionary policy requires new legislation; automatic stabilizers (progressive taxes, unemployment benefits) work without it. Lags can make fiscal policy mistimed.",
+        },
+        {
+          title: "Supply shocks and stagflation",
+          simple: "A negative supply shock raises prices and lowers output at the same time.",
+          detail: "A sudden rise in oil prices shifts SRAS left: the price level rises and real GDP falls (stagflation). This creates a policy dilemma: fighting unemployment worsens inflation, and fighting inflation deepens the recession.",
+        },
+      ],
+      terms: [
+        ["Aggregate demand", "Total spending on domestic output at each price level: C + I + G + Xn."],
+        ["Short-run aggregate supply", "Total output firms supply at each price level with sticky input prices."],
+        ["Long-run aggregate supply", "Vertical line at full-employment (potential) output."],
+        ["Recessionary gap", "Real GDP below full-employment output."],
+        ["Marginal propensity to consume", "The fraction of extra income spent on consumption."],
+        ["Automatic stabilizers", "Taxes and transfers that adjust automatically to the business cycle."],
+        ["Stagflation", "Rising prices combined with falling output."],
+      ],
+      mistakes: [
+        "Shifting SRAS when a change in spending should shift AD.",
+        "Using the spending multiplier for a change in taxes.",
+        "Drawing LRAS as upward sloping.",
+      ],
+      questions: [
+        { q: "If the MPC is 0.75, what is the maximum change in real GDP from a $100 billion increase in government spending?", choices: ["$75 billion", "$133 billion", "$400 billion", "$300 billion"], answer: 2, explain: "Multiplier = 1/(1 − 0.75) = 4, so 4 × 100 = $400 billion." },
+        { q: "A large increase in the price of oil will most likely", choices: ["shift AD right, raising output and prices", "shift SRAS left, raising prices and lowering output", "shift LRAS right", "shift SRAS right, lowering prices"], answer: 1, explain: "Higher input costs shift SRAS left: stagflation." },
+        { q: "The economy is in a recessionary gap. Which fiscal policy is appropriate?", choices: ["Raise taxes", "Cut government spending", "Increase government spending", "Sell government bonds"], answer: 2, explain: "Expansionary fiscal policy (more G or lower taxes) shifts AD right. Selling bonds is monetary policy." },
+        { q: "With no government policy, how does an economy in a recessionary gap return to full employment in the long run?", choices: ["Wages fall and SRAS shifts right", "Wages rise and SRAS shifts left", "AD shifts right on its own", "LRAS shifts left"], answer: 0, explain: "High unemployment pushes nominal wages down, lowering costs and shifting SRAS right." },
+      ],
+      frq: {
+        prompt: "An economy is in short-run equilibrium with real GDP below full-employment output.\n(a) Draw a correctly labeled AD–AS graph showing this situation.\n(b) Identify a fiscal policy that would move the economy to full employment and show its effect on your graph.\n(c) If the MPC is 0.8 and the gap is $500 billion, calculate the minimum increase in government spending needed.",
+        points: [
+          "(a) AD, SRAS and a vertical LRAS, with equilibrium to the left of LRAS; labeled price level and real GDP.",
+          "(b) Increase government spending or cut taxes: AD shifts right toward LRAS, raising output and the price level.",
+          "(c) Multiplier = 5, so ΔG = 500 ÷ 5 = $100 billion.",
+        ],
+      },
+    },
+    {
+      title: "Financial Sector",
+      weight: "18–23%",
+      tldr: "Money serves as a medium of exchange, and banks create money through lending. The central bank uses monetary policy tools to change interest rates and the money supply, which affects investment, aggregate demand and output.",
+      concepts: [
+        {
+          title: "Financial assets and interest rates",
+          simple: "Bond prices and interest rates move in opposite directions.",
+          detail: "Assets include money (liquid, no interest), bonds (interest-bearing loans) and stocks (ownership). When interest rates rise, existing bonds with lower fixed payments become less attractive, so their prices fall. The nominal interest rate = real interest rate + expected inflation.",
+          hook: "Bond prices and rates are on a seesaw.",
+        },
+        {
+          title: "Functions and measures of money",
+          simple: "Money is a medium of exchange, a unit of account and a store of value.",
+          detail: "M1: currency, checkable deposits, and savings deposits (since 2020). M2: M1 plus small time deposits and money market funds. Credit cards are not money; they are loans.",
+        },
+        {
+          title: "Banking and the money multiplier",
+          simple: "Banks lend out excess reserves, and each loan creates new deposits, expanding the money supply.",
+          detail: "Required reserves = reserve requirement × deposits; excess reserves can be lent. Money multiplier = 1 ÷ reserve requirement. Maximum change in money supply = excess reserves × money multiplier. A cash deposit doesn't change the money supply immediately; new loans do.",
+          example: "Reserve requirement 10% → multiplier 10. $1,000 of new excess reserves can create up to $10,000 of money.",
+        },
+        {
+          title: "The money market",
+          simple: "The supply and demand for money set the nominal interest rate.",
+          detail: "Money demand slopes down (higher interest rates raise the opportunity cost of holding money) and shifts with the price level and real GDP. Money supply is vertical, set by the central bank. An increase in money supply lowers the nominal interest rate.",
+        },
+        {
+          title: "Monetary policy tools",
+          simple: "The Fed changes the money supply and interest rates to steer the economy.",
+          detail: "With ample reserves, the main tool is the interest rate on reserve balances (IORB), with the discount rate and overnight reverse repos supporting it. Open market operations: buying bonds increases reserves and the money supply; selling does the opposite. The reserve requirement is another (currently unused) tool. Expansionary policy lowers interest rates, raising investment and AD.",
+        },
+        {
+          title: "The loanable funds market",
+          simple: "The supply of savings and the demand for borrowing set the real interest rate.",
+          detail: "Supply comes from savers; demand comes from borrowers (firms investing, government deficits). Government borrowing increases demand for loanable funds, raising the real interest rate and reducing private investment: crowding out. Higher national saving increases supply and lowers the real rate.",
+        },
+        {
+          title: "Transmission of monetary policy",
+          simple: "Monetary policy works through interest rates to affect spending and output.",
+          detail: "Expansionary chain: Fed buys bonds → reserves and money supply rise → interest rate falls → investment and interest-sensitive consumption rise → AD shifts right → real GDP and the price level rise. Contractionary policy reverses each step.",
+        },
+      ],
+      terms: [
+        ["Liquidity", "How easily an asset can be used to buy things."],
+        ["Required reserve ratio", "Fraction of deposits banks must hold as reserves."],
+        ["Money multiplier", "1 ÷ reserve requirement."],
+        ["Open market operations", "The central bank buying or selling government bonds."],
+        ["Federal funds rate", "Interest rate banks charge each other for overnight loans of reserves."],
+        ["Crowding out", "Government borrowing raises interest rates and reduces private investment."],
+        ["Loanable funds market", "Market where savers supply and borrowers demand funds, setting the real interest rate."],
+      ],
+      mistakes: [
+        "Saying bond prices and interest rates move together.",
+        "Using the money market graph for crowding out (use loanable funds for the real rate).",
+        "Counting a cash deposit as an increase in the money supply.",
+      ],
+      questions: [
+        { q: "The reserve requirement is 20%, and a bank receives a new $1,000 deposit from money kept outside the banking system. What is the maximum increase in the money supply from new lending?", choices: ["$1,000", "$4,000", "$5,000", "$800"], answer: 1, explain: "Excess reserves = $800; multiplier = 5; 800 × 5 = $4,000." },
+        { q: "To fight a recession, the Fed would most likely", choices: ["sell government bonds", "buy government bonds", "raise the interest rate on reserves", "raise the discount rate"], answer: 1, explain: "Buying bonds increases reserves and the money supply, lowering interest rates." },
+        { q: "If market interest rates rise, the prices of existing bonds will", choices: ["rise", "fall", "stay the same", "rise, then fall"], answer: 1, explain: "Existing bonds pay a fixed rate that is now less attractive, so their prices fall." },
+        { q: "A large increase in government borrowing will, in the loanable funds market,", choices: ["lower the real interest rate", "raise the real interest rate and crowd out private investment", "increase the supply of loanable funds", "have no effect on interest rates"], answer: 1, explain: "Demand for loanable funds rises, pushing up the real rate and reducing private investment." },
+      ],
+      frq: {
+        prompt: "The economy is experiencing high inflation.\n(a) Identify an open market operation the central bank could use.\n(b) Draw a correctly labeled money market graph showing the effect on the nominal interest rate.\n(c) Explain how this policy affects aggregate demand and the price level.",
+        points: [
+          "(a) Sell government bonds.",
+          "(b) The money supply shifts left, raising the nominal interest rate.",
+          "(c) Higher interest rates reduce investment and interest-sensitive consumption, shifting AD left and lowering the price level.",
+        ],
+      },
+    },
+    {
+      title: "Long-Run Consequences of Stabilization Policies",
+      weight: "20–30%",
+      tldr: "The Phillips curve links inflation and unemployment in the short run, but not in the long run. Deficits add to debt and can crowd out investment. Long-run growth comes from more capital, better technology and a more productive workforce.",
+      concepts: [
+        {
+          title: "Fiscal and monetary policy together",
+          simple: "Policies can work together or pull in opposite directions.",
+          detail: "Expansionary fiscal policy raises interest rates (crowding out), which expansionary monetary policy can offset. Coordinated expansionary policy strongly increases AD; mixing expansionary fiscal with contractionary monetary policy raises interest rates sharply.",
+        },
+        {
+          title: "The short-run Phillips curve",
+          simple: "In the short run, lower unemployment comes with higher inflation.",
+          detail: "The SRPC slopes down: movements along AD cause movements along the SRPC (AD right → lower unemployment, higher inflation). Shifts in SRAS shift the SRPC: a negative supply shock shifts SRAS left and the SRPC right (higher inflation and unemployment together).",
+        },
+        {
+          title: "The long-run Phillips curve",
+          simple: "In the long run, there's no trade-off: unemployment returns to its natural rate.",
+          detail: "The LRPC is vertical at the natural rate of unemployment, matching the vertical LRAS. Higher expected inflation shifts the SRPC up. Persistent expansionary policy only raises inflation in the long run.",
+          hook: "LRAS vertical at full-employment output ↔ LRPC vertical at the natural rate.",
+        },
+        {
+          title: "Money growth and inflation",
+          simple: "In the long run, printing more money mainly causes inflation.",
+          detail: "Quantity theory of money: MV = PY. If velocity (V) and real output (Y) are stable, increases in the money supply (M) lead to proportional increases in the price level (P). Money is neutral in the long run: it doesn't change real output.",
+        },
+        {
+          title: "Government deficits and national debt",
+          simple: "A deficit is one year's shortfall; the debt is the total of all past deficits.",
+          detail: "Budget deficit = spending − tax revenue in a year; debt accumulates deficits minus surpluses. Deficits financed by borrowing can raise real interest rates and crowd out private investment, reducing long-run growth. Interest payments on the debt use future tax revenue.",
+        },
+        {
+          title: "Economic growth",
+          simple: "Long-run growth means more output per person, driven by productivity.",
+          detail: "Growth comes from increases in physical capital, human capital (education, skills), technology, and natural resources. It shows as an outward PPC shift and a rightward LRAS shift. Policies that encourage saving, investment, education and research promote growth.",
+        },
+        {
+          title: "Supply-side policies",
+          simple: "Some policies aim to increase aggregate supply rather than aggregate demand.",
+          detail: "Supply-side fiscal policies (lower marginal tax rates, investment tax credits, reduced regulation) aim to increase incentives to work, save and invest, shifting SRAS and LRAS right, raising output without raising the price level.",
+        },
+      ],
+      terms: [
+        ["Phillips curve", "A graph of the relationship between inflation and unemployment."],
+        ["Natural rate of unemployment", "The unemployment rate when the economy is at full employment."],
+        ["Quantity theory of money", "MV = PY; long-run money growth causes inflation."],
+        ["Velocity of money", "How many times a dollar is spent in a year."],
+        ["Budget deficit", "Government spending exceeds tax revenue in a given year."],
+        ["National debt", "The total accumulated amount the government owes."],
+        ["Human capital", "Knowledge and skills that make workers more productive."],
+      ],
+      mistakes: [
+        "Treating the national debt and the budget deficit as the same thing.",
+        "Drawing the long-run Phillips curve as downward sloping.",
+      ],
+      questions: [
+        { q: "An increase in aggregate demand, in the short run, causes a movement along the short-run Phillips curve toward", choices: ["higher unemployment and lower inflation", "lower unemployment and higher inflation", "lower unemployment and lower inflation", "no change in either"], answer: 1, explain: "AD right raises output (lower unemployment) and the price level (higher inflation)." },
+        { q: "The long-run Phillips curve is vertical at", choices: ["zero unemployment", "the natural rate of unemployment", "the target inflation rate", "the current unemployment rate"], answer: 1, explain: "In the long run, unemployment returns to the natural rate at any inflation rate." },
+        { q: "According to the quantity theory of money, if velocity and real output are constant and the money supply grows 5%, the price level will", choices: ["fall 5%", "stay constant", "rise about 5%", "rise about 10%"], answer: 2, explain: "MV = PY with V and Y fixed means P rises with M." },
+        { q: "Which policy would most directly increase long-run economic growth?", choices: ["A one-time tax rebate", "Subsidies for education and research", "Higher interest rates", "A decrease in government spending on infrastructure"], answer: 1, explain: "Education and research increase human capital and technology, shifting LRAS right." },
+      ],
+      frq: {
+        prompt: "The economy is at long-run equilibrium when the government runs a large budget deficit financed by borrowing.\n(a) Using a loanable funds graph, show the effect on the real interest rate.\n(b) Explain the effect on private investment.\n(c) Explain how this affects the economy's long-run growth.",
+        points: [
+          "(a) Demand for loanable funds shifts right, raising the real interest rate.",
+          "(b) Higher real interest rates reduce private investment (crowding out).",
+          "(c) Less investment means slower growth of the capital stock, so long-run growth slows (LRAS shifts right less than it would have).",
+        ],
+      },
+    },
+    {
+      title: "Open Economy: International Trade and Finance",
+      weight: "10–13%",
+      tldr: "Countries record trade and financial flows in the balance of payments. Exchange rates are set in foreign exchange markets and affect exports and imports. Interest rate differences drive capital flows, linking monetary policy to exchange rates.",
+      concepts: [
+        {
+          title: "The balance of payments",
+          simple: "The balance of payments records all transactions between a country and the rest of the world.",
+          detail: "The current account includes trade in goods and services, investment income, and transfers. The financial (capital) account records purchases of assets across borders. The two accounts balance: a current account deficit is matched by a financial account surplus.",
+        },
+        {
+          title: "Exchange rates",
+          simple: "An exchange rate is the price of one currency in terms of another.",
+          detail: "If the dollar appreciates, it buys more foreign currency: U.S. exports become more expensive for foreigners and imports cheaper for Americans, so net exports fall. If the dollar depreciates, net exports rise.",
+          hook: "Strong dollar: good for tourists, bad for exporters.",
+        },
+        {
+          title: "The foreign exchange market",
+          simple: "Supply and demand for a currency determine its value.",
+          detail: "Demand for dollars comes from foreigners buying U.S. goods, services and assets. Supply of dollars comes from Americans buying foreign goods and assets. Factors: relative interest rates, incomes, price levels and tastes. In a two-currency market, an increase in demand for one currency is an increase in supply of the other.",
+        },
+        {
+          title: "Interest rates and capital flows",
+          simple: "Higher interest rates attract foreign financial investment, which raises demand for the currency.",
+          detail: "If U.S. interest rates rise relative to others, foreign investors buy U.S. assets (financial capital inflow), increasing demand for dollars and appreciating the dollar, which reduces net exports. This links contractionary monetary policy to a stronger currency.",
+        },
+        {
+          title: "Policy effects in an open economy",
+          simple: "Monetary and fiscal policies affect exchange rates and net exports.",
+          detail: "Expansionary monetary policy lowers interest rates → capital outflow → the dollar depreciates → net exports rise, reinforcing the policy. Expansionary fiscal policy raises interest rates → capital inflow → the dollar appreciates → net exports fall, weakening the policy.",
+        },
+        {
+          title: "Trade and specialization",
+          simple: "International trade lets countries specialize and consume beyond their own PPC.",
+          detail: "Trade based on comparative advantage raises total output and consumption. Tariffs and quotas protect some domestic producers but raise prices and reduce efficiency.",
+        },
+      ],
+      terms: [
+        ["Current account", "Records trade in goods and services, investment income, and transfers."],
+        ["Financial account", "Records purchases and sales of assets across borders."],
+        ["Appreciation", "An increase in a currency's value relative to another."],
+        ["Depreciation", "A decrease in a currency's value relative to another."],
+        ["Capital inflow", "Foreign purchases of domestic financial assets."],
+        ["Net exports", "Exports minus imports."],
+      ],
+      mistakes: [
+        "Saying a stronger currency increases exports.",
+        "Forgetting that the current and financial accounts must balance.",
+      ],
+      questions: [
+        { q: "If the U.S. dollar appreciates against the euro, what happens to U.S. net exports?", choices: ["They rise", "They fall", "They stay the same", "Exports and imports both fall"], answer: 1, explain: "A stronger dollar makes U.S. goods pricier abroad and imports cheaper, so net exports fall." },
+        { q: "The Fed raises U.S. interest rates relative to other countries. What happens to the value of the dollar?", choices: ["It depreciates", "It appreciates", "It stays the same", "It depreciates, then appreciates"], answer: 1, explain: "Higher rates attract foreign financial capital, increasing demand for dollars." },
+        { q: "A country has a current account deficit. Its financial account must have", choices: ["a deficit of the same size", "a surplus of the same size", "a balance of zero", "no relationship to the current account"], answer: 1, explain: "The balance of payments balances: a current account deficit is matched by a financial account surplus." },
+        { q: "Which of the following would increase the demand for Japanese yen?", choices: ["Japanese consumers buying more U.S. goods", "U.S. consumers buying more Japanese cars", "Lower interest rates in Japan", "Higher inflation in Japan"], answer: 1, explain: "To buy Japanese cars, Americans need yen, so demand for yen rises." },
+      ],
+      frq: {
+        prompt: "The Central Bank of Country Z sells government bonds.\n(a) What happens to the interest rate in Country Z?\n(b) Using a correctly labeled foreign exchange graph for Country Z's currency, show the effect on its value.\n(c) Explain the effect on Country Z's net exports.",
+        points: [
+          "(a) The interest rate rises.",
+          "(b) Higher rates attract foreign capital: demand for Z's currency shifts right, and it appreciates.",
+          "(c) Z's exports become more expensive and imports cheaper, so net exports fall.",
         ],
       },
     },
@@ -6360,6 +6794,380 @@ window.AP_CONTENT["sat"] = {
 };
 
 </script>
+<script>/* content/us-government.js */
+window.AP_CONTENT = window.AP_CONTENT || {};
+window.AP_CONTENT["us-government"] = {
+  tips: [
+    "Know the 9 required foundational documents and 15 required Supreme Court cases cold. The SCOTUS comparison FRQ always uses one required case.",
+    "On free response, answer exactly what the task verb asks: \"identify\" is short, \"describe\" adds detail, \"explain\" needs a how or why.",
+    "The argument essay needs a defensible thesis, two pieces of specific evidence (at least one from a foundational document), reasoning, and a response to an opposing view.",
+    "Quantitative analysis questions give you a chart or graph. Describe the data accurately first, then draw a conclusion.",
+    "Connect every answer to a constitutional principle: federalism, separation of powers, checks and balances, or popular sovereignty.",
+  ],
+  units: [
+    {
+      title: "Foundations of American Democracy",
+      weight: "15–22%",
+      tldr: "The Constitution was built on Enlightenment ideas of natural rights and popular sovereignty, with compromises between large and small states and between federal and state power. Federalism divides power between the national and state governments.",
+      concepts: [
+        {
+          title: "Ideals of democracy",
+          simple: "American government rests on natural rights, popular sovereignty, the social contract and limited government.",
+          detail: "The Declaration of Independence (1776) draws on Locke's natural rights (life, liberty, property/pursuit of happiness) and the social contract: government gets its power from the consent of the governed and can be replaced if it violates rights. Republicanism means elected representatives govern.",
+        },
+        {
+          title: "Models of representative democracy",
+          simple: "Participatory, pluralist and elite models describe who really influences government.",
+          detail: "Participatory democracy: broad participation by citizens (e.g., state ballot initiatives). Pluralist democracy: groups compete for influence (interest groups). Elite democracy: a small, wealthy, educated group holds most influence (the Electoral College was designed partly this way). Federalist No. 10 and Brutus No. 1 debate these ideas.",
+        },
+        {
+          title: "Federalist No. 10 and Brutus No. 1",
+          simple: "Madison argued a large republic controls factions; Brutus argued it would threaten liberty.",
+          detail: "Federalist No. 10 (Madison): factions are inevitable; a large republic with many factions prevents any one majority from dominating. Brutus No. 1 (Anti-Federalist): a large republic can't represent diverse people; the necessary and proper and supremacy clauses would let the national government swallow state power.",
+          hook: "Madison: big republic = safe. Brutus: big republic = dangerous.",
+        },
+        {
+          title: "Weaknesses of the Articles of Confederation",
+          simple: "The first national government was too weak to tax, raise an army or regulate trade.",
+          detail: "Under the Articles, Congress couldn't tax or regulate interstate commerce, there was no national executive or judiciary, amendments required unanimity, and laws needed 9 of 13 states. Shays' Rebellion (1786–87) exposed the weakness and led to the Constitutional Convention.",
+        },
+        {
+          title: "Compromises at the Constitutional Convention",
+          simple: "Delegates settled big conflicts through compromises over representation, slavery and the presidency.",
+          detail: "Great (Connecticut) Compromise: House by population, Senate equal per state. Three-Fifths Compromise counted enslaved people as three-fifths for representation. The Electoral College compromised between direct election and selection by Congress. Article V makes amendments possible but difficult.",
+        },
+        {
+          title: "Separation of powers and checks and balances",
+          simple: "Power is split among three branches, and each can limit the others.",
+          detail: "Federalist No. 51 (Madison): \"ambition must be made to counteract ambition.\" Examples: presidential veto; Congress overrides with two-thirds; Senate confirms appointments and ratifies treaties; courts use judicial review; Congress can impeach and remove officials.",
+        },
+        {
+          title: "Federalism",
+          simple: "Power is shared between the national government and the states.",
+          detail: "Enumerated (delegated) powers belong to Congress; reserved powers belong to states (Tenth Amendment); concurrent powers are shared (taxing). The supremacy clause makes federal law supreme. Categorical grants come with strict conditions; block grants give states flexibility. Mandates require state action, sometimes unfunded.",
+        },
+        {
+          title: "Federalism in the courts",
+          simple: "Supreme Court cases have expanded and limited federal power over time.",
+          detail: "McCulloch v. Maryland (1819): implied powers through the necessary and proper clause, and states can't tax the national government. United States v. Lopez (1995): the commerce clause doesn't allow Congress to ban guns near schools, limiting federal power.",
+        },
+      ],
+      terms: [
+        ["Popular sovereignty", "The idea that government's power comes from the people."],
+        ["Faction", "A group pursuing its own interests, which Madison warned against in Federalist No. 10."],
+        ["Great Compromise", "Created a House based on population and a Senate with equal state representation."],
+        ["Enumerated powers", "Powers specifically given to Congress in the Constitution."],
+        ["Reserved powers", "Powers kept by the states under the Tenth Amendment."],
+        ["Necessary and proper clause", "Lets Congress make laws needed to carry out its enumerated powers (elastic clause)."],
+        ["Block grant", "Federal money given to states with few restrictions on how it's used."],
+        ["Unfunded mandate", "A federal requirement placed on states without money to pay for it."],
+      ],
+      mistakes: [
+        "Mixing up Federalist No. 10 (factions) and Federalist No. 51 (checks and balances).",
+        "Saying McCulloch limited federal power; it expanded it (Lopez limited it).",
+      ],
+      questions: [
+        { q: "Which argument does Madison make in Federalist No. 10?", choices: ["A strong executive is needed for energetic government", "A large republic helps control the effects of factions", "The judiciary is the least dangerous branch", "A bill of rights is unnecessary"], answer: 1, explain: "Madison argues that many competing factions in a large republic prevent a tyranny of the majority." },
+        { q: "Which weakness of the Articles of Confederation did the Constitution fix by giving Congress power over interstate commerce?", choices: ["No national courts", "States placed tariffs on each other's goods", "No president", "Unanimous consent for amendments"], answer: 1, explain: "Under the Articles, states taxed each other's trade; the commerce clause gave Congress that power." },
+        { q: "In United States v. Lopez (1995), the Supreme Court ruled that", choices: ["states cannot tax the national bank", "Congress exceeded its commerce clause power by banning guns near schools", "school prayer is unconstitutional", "segregated schools are unconstitutional"], answer: 1, explain: "Lopez limited the commerce clause and favored state power." },
+        { q: "A block grant differs from a categorical grant because a block grant", choices: ["must be spent on a narrow, specific purpose", "gives states more flexibility in how to spend the money", "is paid by states to the federal government", "cannot be used for education"], answer: 1, explain: "Block grants give broad discretion; categorical grants come with specific conditions." },
+      ],
+      frq: {
+        prompt: "Congress passes a law requiring states to meet new air quality standards but provides no funding.\n(a) Identify the type of federal policy described.\n(b) Explain how this policy affects the balance of power between the national and state governments.\n(c) Describe one way states could respond.",
+        points: [
+          "(a) An unfunded mandate.",
+          "(b) It increases national power: the federal government sets policy that states must carry out and pay for, limiting state discretion.",
+          "(c) States could lobby Congress, sue in federal court claiming the law exceeds Congress's power, or raise taxes or cut other programs to comply.",
+        ],
+      },
+    },
+    {
+      title: "Interactions Among Branches of Government",
+      weight: "25–36%",
+      tldr: "Congress makes laws through a complex process shaped by its two chambers, committees and parties. The president uses formal and informal powers. The courts use judicial review, and the bureaucracy carries out policy. Each branch checks the others.",
+      concepts: [
+        {
+          title: "Congress: structure and powers",
+          simple: "The House and Senate differ in size, terms and special powers.",
+          detail: "House: 435 members, 2-year terms, based on population; starts revenue bills and impeaches. Senate: 100 members, 6-year terms; confirms appointments, ratifies treaties (two-thirds), and holds impeachment trials. Enumerated powers include taxing, borrowing, regulating commerce and declaring war.",
+        },
+        {
+          title: "How a bill becomes law",
+          simple: "Bills pass through committees and both chambers, and many die along the way.",
+          detail: "Committees do most of the work (markups, hearings). The House Rules Committee sets debate terms; the Committee of the Whole speeds debate. In the Senate, filibusters can block bills unless 60 senators vote for cloture; holds and unanimous consent agreements shape the schedule. Both chambers must pass identical bills (conference committees reconcile differences), then the president signs or vetoes.",
+        },
+        {
+          title: "Congressional behavior and representation",
+          simple: "Members of Congress balance their constituents' wishes, their own judgment and their party.",
+          detail: "Delegate model: vote as constituents want. Trustee model: use one's own judgment. Politico model: a mix. Gerrymandering and partisan polarization affect Congress; divided government can cause gridlock. Pork-barrel spending and logrolling help members serve their districts.",
+        },
+        {
+          title: "Presidential powers",
+          simple: "The president has formal powers in the Constitution and informal powers that have grown over time.",
+          detail: "Formal: veto, commander in chief, treaties (with Senate), appointments (with Senate confirmation), pardons. Informal: executive orders, executive agreements, signing statements, bargaining and persuasion, the bully pulpit. Federalist No. 70 (Hamilton) argues for a single energetic executive.",
+        },
+        {
+          title: "Checks on the presidency",
+          simple: "Congress and the courts can limit presidential power.",
+          detail: "Congress can override vetoes (two-thirds of both chambers), reject nominees, refuse to fund programs, investigate through oversight, and impeach. The War Powers Resolution (1973) requires notifying Congress within 48 hours of deploying troops and limits deployments without authorization. The Twenty-Second Amendment limits presidents to two terms.",
+        },
+        {
+          title: "The judicial branch and judicial review",
+          simple: "Federal courts interpret the Constitution and can strike down laws.",
+          detail: "Federalist No. 78 (Hamilton): the judiciary is the least dangerous branch; life terms protect independence. Marbury v. Madison (1803) established judicial review. Stare decisis (precedent) guides rulings. Judicial activism vs. judicial restraint describes how willing courts are to overturn laws.",
+        },
+        {
+          title: "Checks on the judiciary",
+          simple: "The other branches can limit the courts' power.",
+          detail: "The president nominates and the Senate confirms judges. Congress can change the courts' jurisdiction, pass new legislation, or propose constitutional amendments to overturn rulings. The executive branch may be slow to enforce rulings, since the courts can't enforce them themselves.",
+        },
+        {
+          title: "The federal bureaucracy",
+          simple: "Executive agencies carry out laws and write detailed rules to implement them.",
+          detail: "Agencies (departments, independent agencies, regulatory commissions) have discretionary and rule-making authority. Civil service jobs are merit-based. Congress oversees agencies through hearings and funding; the president through appointments and executive orders. Iron triangles link agencies, congressional committees and interest groups.",
+        },
+      ],
+      terms: [
+        ["Filibuster", "A Senate tactic to delay or block a bill by extended debate."],
+        ["Cloture", "A Senate vote of 60 senators to end a filibuster."],
+        ["Gerrymandering", "Drawing district lines to benefit a party or group."],
+        ["Executive order", "A presidential directive with the force of law to manage the executive branch."],
+        ["Judicial review", "The courts' power to declare laws unconstitutional (Marbury v. Madison)."],
+        ["Stare decisis", "The principle of following precedent in court decisions."],
+        ["Iron triangle", "The relationship among an agency, a congressional committee and an interest group."],
+        ["Trustee model", "Representatives vote based on their own judgment."],
+      ],
+      mistakes: [
+        "Saying the House ratifies treaties (only the Senate does).",
+        "Confusing executive orders (formal-seeming but informal powers) with laws passed by Congress.",
+      ],
+      questions: [
+        { q: "Which power belongs only to the Senate?", choices: ["Starting revenue bills", "Impeaching federal officials", "Confirming presidential appointments", "Declaring war"], answer: 2, explain: "The Senate confirms appointments. The House starts revenue bills and impeaches; both declare war." },
+        { q: "In Federalist No. 70, Hamilton argues for", choices: ["a plural executive", "a single, energetic executive", "limiting the president to one term", "judicial review"], answer: 1, explain: "Hamilton argues that a single executive brings energy, accountability and decisiveness." },
+        { q: "Marbury v. Madison (1803) is significant because it", choices: ["established judicial review", "upheld segregation", "expanded the commerce clause", "created the federal court system"], answer: 0, explain: "The Court claimed the power to strike down laws that conflict with the Constitution." },
+        { q: "A senator votes for a bill her constituents oppose because she believes it's best for the country. She is acting according to the", choices: ["delegate model", "trustee model", "politico model", "partisan model"], answer: 1, explain: "Trustees use their own judgment rather than following constituent opinion." },
+      ],
+      frq: {
+        prompt: "The president issues an executive order directing federal agencies to change how they enforce an existing environmental law.\n(a) Describe the presidential power used.\n(b) Explain how Congress could check this action.\n(c) Explain how the judicial branch could check this action.",
+        points: [
+          "(a) An executive order: a directive to executive agencies about how to carry out laws, an informal power.",
+          "(b) Congress could pass a new law overriding the order, cut funding for enforcement, or hold oversight hearings.",
+          "(c) Courts could rule that the order exceeds the president's authority or conflicts with the law or Constitution.",
+        ],
+      },
+    },
+    {
+      title: "Civil Liberties and Civil Rights",
+      weight: "13–18%",
+      tldr: "Civil liberties are protections from government (the Bill of Rights); civil rights are protections from discrimination (the Fourteenth Amendment's equal protection clause). Through selective incorporation, most Bill of Rights protections now apply to the states.",
+      concepts: [
+        {
+          title: "Freedom of religion",
+          simple: "The First Amendment bars establishing a religion and protects the free exercise of religion.",
+          detail: "Establishment clause: Engel v. Vitale (1962) struck down school-sponsored prayer. Free exercise clause: Wisconsin v. Yoder (1972) let Amish families stop schooling after eighth grade. The two clauses can conflict.",
+        },
+        {
+          title: "Freedom of speech and the press",
+          simple: "Speech is broadly protected, but some limits are allowed.",
+          detail: "Tinker v. Des Moines (1969): students' symbolic speech (armbands) is protected unless it disrupts school. Schenck v. U.S. (1919): speech posing a \"clear and present danger\" can be limited. New York Times Co. v. U.S. (1971): prior restraint (blocking publication) faces a heavy presumption against it.",
+        },
+        {
+          title: "Rights of the accused",
+          simple: "The Fourth through Eighth Amendments protect people suspected or accused of crimes.",
+          detail: "Fourth: no unreasonable searches (exclusionary rule). Fifth: no self-incrimination, due process, no double jeopardy. Sixth: speedy trial and a lawyer; Gideon v. Wainwright (1963) requires states to provide counsel to poor defendants in felony cases. Eighth: no cruel and unusual punishment.",
+        },
+        {
+          title: "Selective incorporation",
+          simple: "The Supreme Court applies Bill of Rights protections to the states one right at a time.",
+          detail: "The Fourteenth Amendment's due process clause is used to incorporate rights against the states. McDonald v. Chicago (2010) incorporated the Second Amendment right to bear arms. Gideon incorporated the right to counsel.",
+        },
+        {
+          title: "Privacy",
+          simple: "The Court has found an implied right to privacy in the Constitution.",
+          detail: "Roe v. Wade (1973) used the right to privacy to protect abortion rights in early pregnancy. It was overturned by Dobbs v. Jackson Women's Health Organization (2022), which returned abortion regulation to the states. Roe remains on the required case list for comparison questions.",
+        },
+        {
+          title: "Equal protection and civil rights",
+          simple: "The Fourteenth Amendment requires states to treat people equally under the law.",
+          detail: "Brown v. Board of Education (1954) ruled that segregated public schools violate equal protection, overturning Plessy v. Ferguson. Social movements (the civil rights movement, Letter from Birmingham Jail) and laws (Civil Rights Act of 1964, Voting Rights Act of 1965, Title IX) expanded protections.",
+        },
+        {
+          title: "Balancing liberty and order",
+          simple: "Courts weigh individual freedoms against public safety and order.",
+          detail: "Government may limit rights when it has a compelling interest and uses the least restrictive means, especially during national security threats. Majority rule is balanced against minority rights. Many cases turn on how the Court strikes this balance.",
+        },
+      ],
+      terms: [
+        ["Civil liberties", "Protections of individuals from government power."],
+        ["Civil rights", "Protections from discrimination based on group characteristics."],
+        ["Establishment clause", "Bars the government from establishing an official religion."],
+        ["Free exercise clause", "Protects the right to practice one's religion."],
+        ["Selective incorporation", "Applying Bill of Rights protections to the states case by case."],
+        ["Prior restraint", "Government blocking publication before it happens."],
+        ["Exclusionary rule", "Illegally obtained evidence can't be used at trial."],
+        ["Equal protection clause", "Fourteenth Amendment requirement that states treat people equally."],
+      ],
+      mistakes: [
+        "Confusing civil liberties (freedom from government) with civil rights (freedom from discrimination).",
+        "Mixing up Engel (establishment clause) and Yoder (free exercise clause).",
+      ],
+      questions: [
+        { q: "In Tinker v. Des Moines (1969), the Court ruled that students wearing black armbands to protest the Vietnam War", choices: ["could be suspended because schools may ban all political speech", "engaged in protected symbolic speech that did not disrupt school", "violated the establishment clause", "posed a clear and present danger"], answer: 1, explain: "Students keep free speech rights at school unless their speech causes substantial disruption." },
+        { q: "Which case required states to provide lawyers to poor defendants in felony cases?", choices: ["Gideon v. Wainwright", "Schenck v. United States", "Engel v. Vitale", "Baker v. Carr"], answer: 0, explain: "Gideon incorporated the Sixth Amendment right to counsel." },
+        { q: "Selective incorporation relies mainly on which part of the Constitution?", choices: ["The Tenth Amendment", "The necessary and proper clause", "The due process clause of the Fourteenth Amendment", "The supremacy clause"], answer: 2, explain: "The Court uses Fourteenth Amendment due process to apply Bill of Rights protections to the states." },
+        { q: "Brown v. Board of Education (1954) was decided mainly on the basis of", choices: ["the First Amendment", "the equal protection clause", "the commerce clause", "the Second Amendment"], answer: 1, explain: "Segregated schools denied Black students the equal protection of the laws." },
+      ],
+      frq: {
+        prompt: "A public school district begins each school day with a prayer led by teachers over the loudspeaker, though students may leave the room.\n(a) Identify the constitutional clause at issue.\n(b) Explain how the facts are similar to those in Engel v. Vitale (1962).\n(c) Explain how the Court would likely rule, based on Engel.",
+        points: [
+          "(a) The establishment clause of the First Amendment.",
+          "(b) In both, a public school sponsors prayer, even though participation is described as voluntary.",
+          "(c) The Court would likely rule it unconstitutional, because government-sponsored prayer in public schools establishes religion.",
+        ],
+      },
+    },
+    {
+      title: "American Political Ideologies and Beliefs",
+      weight: "10–15%",
+      tldr: "People form political beliefs through family, schools, media and experiences. Polls measure public opinion. Liberal and conservative ideologies lead to different views on the role of government in the economy and in social issues.",
+      concepts: [
+        {
+          title: "Core American values",
+          simple: "Americans broadly share values like individualism, equality of opportunity, free enterprise, rule of law and limited government.",
+          detail: "Even when Americans disagree on policy, they tend to share these core values. Disagreements come from how people weigh them against each other, like individual liberty vs. equality.",
+        },
+        {
+          title: "Political socialization",
+          simple: "People learn political attitudes from family, school, peers, media and religion.",
+          detail: "Family is usually the strongest early influence. Generational effects and life-cycle effects shape views: major events (wars, economic crises) can shape a generation. Globalization and media also influence beliefs.",
+        },
+        {
+          title: "Measuring public opinion",
+          simple: "Scientific polls use random samples to estimate what the public thinks.",
+          detail: "Reliable polls use random sampling, a representative sample, neutral question wording, and report a margin of error. Types: opinion polls, tracking polls, entrance and exit polls, benchmark polls. Push polls and biased wording produce unreliable results.",
+        },
+        {
+          title: "Political ideologies",
+          simple: "Liberals and conservatives differ on how much government should do.",
+          detail: "Liberals generally favor more government regulation of the economy and social programs, and less government regulation of personal social choices. Conservatives generally favor free markets and less economic regulation, and often more traditional social policies. Libertarians favor minimal government in both areas.",
+        },
+        {
+          title: "Ideology and economic policy",
+          simple: "Ideologies lead to different views on taxes, spending and the role of the Federal Reserve.",
+          detail: "Keynesian economics supports government spending to boost demand in recessions (often favored by liberals). Supply-side economics supports tax cuts and less regulation to encourage investment (often favored by conservatives). The Federal Reserve sets monetary policy independently.",
+        },
+        {
+          title: "Ideology and social policy",
+          simple: "Ideologies shape views on how government should balance liberty and order in social issues.",
+          detail: "Debates over health care, education and personal freedoms reflect different views of government's role. Liberals more often support government action to promote equality; conservatives more often emphasize individual responsibility and limited government.",
+        },
+      ],
+      terms: [
+        ["Political socialization", "The process of forming political beliefs and values."],
+        ["Random sample", "A sample in which everyone in the population has an equal chance of selection."],
+        ["Margin of error", "The range within which the true population value likely falls."],
+        ["Exit poll", "A poll of voters as they leave the polling place."],
+        ["Libertarian", "Ideology favoring minimal government in both economic and social matters."],
+        ["Keynesian economics", "Theory that government spending can stabilize the economy."],
+        ["Supply-side economics", "Theory that tax cuts and deregulation encourage growth."],
+      ],
+      mistakes: [
+        "Treating a poll with a biased sample or loaded question as reliable.",
+        "Assuming ideology is only about social issues and not the economy.",
+      ],
+      questions: [
+        { q: "Which of the following most improves a poll's reliability?", choices: ["A large online poll anyone can join", "A random, representative sample and neutral wording", "Asking only likely supporters", "Leading questions that clarify the issue"], answer: 1, explain: "Random, representative samples and neutral wording produce accurate estimates." },
+        { q: "Which statement best reflects a libertarian view?", choices: ["Government should regulate the economy and personal choices", "Government should play a minimal role in both economic and personal matters", "Government should regulate the economy but not personal choices", "Government should promote traditional moral values"], answer: 1, explain: "Libertarians favor minimal government in both areas." },
+        { q: "The most important early agent of political socialization for most people is", choices: ["the media", "their family", "their employer", "interest groups"], answer: 1, explain: "Family usually has the strongest early influence on political views." },
+        { q: "A politician who supports cutting taxes on businesses to encourage investment is most likely following", choices: ["Keynesian economics", "supply-side economics", "monetary policy", "a command economy"], answer: 1, explain: "Supply-side economics focuses on tax cuts to boost production and investment." },
+      ],
+      frq: {
+        prompt: "A poll finds that 58% of adults support a proposed policy, with a margin of error of ±4%.\n(a) Describe what the margin of error means.\n(b) Identify one feature that would make this poll reliable.\n(c) Explain one way elected officials might use this poll.",
+        points: [
+          "(a) The true level of support is likely between 54% and 62%.",
+          "(b) A random, representative sample, or neutral question wording.",
+          "(c) Officials might support the policy to respond to constituents (delegate model) or use it to decide how to frame their message.",
+        ],
+      },
+    },
+    {
+      title: "Political Participation",
+      weight: "20–27%",
+      tldr: "Citizens participate by voting and through parties, interest groups, elections, campaigns and media. Voting laws and turnout shape who is heard. Money and media influence campaigns and policy.",
+      concepts: [
+        {
+          title: "Voting rights and turnout",
+          simple: "Amendments and laws have expanded who can vote, but turnout varies widely.",
+          detail: "Key amendments: 15th (race), 17th (direct election of senators), 19th (women), 24th (no poll taxes), 26th (age 18). Turnout is higher among older, wealthier, more educated citizens and in presidential elections. Registration rules, voter ID laws and early voting affect turnout.",
+        },
+        {
+          title: "Voting behavior",
+          simple: "People vote based on party, issues, candidate traits and the economy.",
+          detail: "Rational-choice voting: based on self-interest. Retrospective voting: judging the incumbent's past performance. Prospective voting: based on predictions about the future. Party-line voting: supporting one party's candidates.",
+        },
+        {
+          title: "Political parties",
+          simple: "Parties recruit candidates, mobilize voters and organize government.",
+          detail: "Parties adapt to changing demographics and campaign technology. The U.S. has a two-party system because of winner-take-all, single-member districts; third parties struggle but can push major parties to adopt their ideas. Party realignments reshape coalitions over time.",
+        },
+        {
+          title: "Interest groups",
+          simple: "Interest groups try to influence policy through lobbying, donations and public campaigns.",
+          detail: "Methods: lobbying, testimony, litigation (amicus briefs), grassroots mobilization, and political action committees (PACs). Iron triangles and issue networks connect groups with agencies and committees. The free-rider problem makes it hard to organize groups for broad public goods.",
+        },
+        {
+          title: "Elections and campaigns",
+          simple: "Candidates move through primaries to the general election, and the Electoral College picks the president.",
+          detail: "Open, closed and blanket primaries; caucuses; front-loading. The Electoral College gives each state electors equal to its House plus Senate seats; most are winner-take-all, so candidates focus on swing states. Incumbents usually win congressional races (incumbency advantage).",
+        },
+        {
+          title: "Money in politics",
+          simple: "Campaign finance rules limit some contributions, but courts protect political spending as speech.",
+          detail: "The Bipartisan Campaign Reform Act (2002) limited soft money. Citizens United v. FEC (2010) ruled that corporations and unions can spend unlimited amounts on independent political expenditures, leading to super PACs. Debate continues over free speech vs. political equality.",
+        },
+        {
+          title: "The media",
+          simple: "The media shapes what the public pays attention to and how issues are framed.",
+          detail: "Roles: gatekeeper (decides what's news), scorekeeper (tracks the \"horse race\"), watchdog (investigates). The shift to online and partisan media has increased ideological sorting and made it harder to judge credibility.",
+        },
+        {
+          title: "Redistricting and representation",
+          simple: "How district lines are drawn affects fair representation.",
+          detail: "Baker v. Carr (1962) established that redistricting is justiciable, leading to \"one person, one vote.\" Shaw v. Reno (1993) ruled that districts drawn mainly by race must meet strict scrutiny under the equal protection clause.",
+        },
+      ],
+      terms: [
+        ["Retrospective voting", "Voting based on an incumbent's past performance."],
+        ["Winner-take-all", "The candidate with the most votes wins all of a state's electors or a district's seat."],
+        ["Political action committee", "A group that raises and spends money to elect candidates."],
+        ["Super PAC", "A group that can spend unlimited amounts independently of candidates."],
+        ["Incumbency advantage", "The electoral edge officeholders have when running for reelection."],
+        ["Free-rider problem", "People benefit from a group's work without contributing."],
+        ["Linkage institutions", "Parties, interest groups, elections and media that connect people to government."],
+      ],
+      mistakes: [
+        "Confusing Baker v. Carr (one person, one vote) with Shaw v. Reno (racial gerrymandering).",
+        "Saying Citizens United allowed unlimited direct contributions to candidates (it's about independent expenditures).",
+      ],
+      questions: [
+        { q: "Which amendment lowered the voting age to 18?", choices: ["15th", "19th", "24th", "26th"], answer: 3, explain: "The 26th Amendment (1971) set the voting age at 18." },
+        { q: "Citizens United v. FEC (2010) ruled that", choices: ["corporations may give unlimited amounts directly to candidates", "the government may not limit independent political spending by corporations and unions", "poll taxes are unconstitutional", "districts must have equal populations"], answer: 1, explain: "Independent expenditures are protected political speech; direct contributions to candidates can still be limited." },
+        { q: "A voter supports the incumbent president because the economy grew during the last four years. This is an example of", choices: ["prospective voting", "retrospective voting", "party-line voting", "rational-choice voting based on future promises"], answer: 1, explain: "Judging an incumbent on past performance is retrospective voting." },
+        { q: "Which feature of U.S. elections best explains why the country has a two-party system?", choices: ["Proportional representation", "Winner-take-all, single-member districts", "Open primaries", "The 22nd Amendment"], answer: 1, explain: "Winner-take-all rules make it hard for third parties to win seats." },
+      ],
+      frq: {
+        prompt: "Voter turnout among 18-to-24-year-olds is much lower than among adults over 65.\n(a) Describe one reason for this difference.\n(b) Describe one policy that could increase young voter turnout.\n(c) Explain how this turnout gap might affect which policies elected officials support.",
+        points: [
+          "(a) Younger people move more often, so registration is harder; they may have weaker party ties or less habit of voting.",
+          "(b) Same-day registration, automatic registration, online registration, or pre-registration at 16–17.",
+          "(c) Officials respond to groups that vote, so they may prioritize older voters' concerns (like Social Security) over issues important to young people.",
+        ],
+      },
+    },
+  ],
+};
+
+</script>
 <script>/* content/us-history.js */
 window.AP_CONTENT = window.AP_CONTENT || {};
 window.AP_CONTENT["us-history"] = {
@@ -7515,6 +8323,37 @@ window.AP_DIAG["english-language"] = {
 };
 
 </script>
+<script>/* content/diagnostics/macroeconomics.js */
+// Concept tags and wrong-answer diagnoses for content/macroeconomics.js.
+window.AP_DIAG = window.AP_DIAG || {};
+window.AP_DIAG["macroeconomics"] = {
+  "0.0": [1, { 0: "New technology shifts the PPC outward; it doesn't move a point from inside to the curve.", 2: "A bigger labor force shifts the whole curve out.", 3: "More capital goods shifts the curve out over time." }],
+  "0.1": [2, { 1: "B gives up 3 computers per car, more than A's 2. B has the comparative advantage in computers.", 2: "Opportunity costs differ, so someone must have a comparative advantage.", 3: "Only one country can have the lower opportunity cost for a good." }],
+  "0.2": [6, { 1: "Higher demand and lower supply both push price UP.", 2: "Price is certain to rise; it's quantity that's uncertain.", 3: "Higher demand pushes quantity up while lower supply pushes it down, so it's uncertain, not a sure fall." }],
+  "0.3": [5, { 0: "A tax on one product is a single-market (micro) question.", 2: "A single firm's hiring decision is microeconomics.", 3: "Pricing in one market is microeconomics." }],
+  "1.0": [0, { 0: "Used goods were counted when first produced. Resales aren't new production.", 1: "Social Security is a transfer payment. Nothing new is produced.", 3: "Buying stock is a financial transaction, not production." }],
+  "1.1": [2, { 0: "You divided by the employed (180), not the labor force (200).", 2: "The labor force is 200 million, so 20 million is 10%, not 20%.", 3: "Recheck: 20 ÷ 200 = 0.10." }],
+  "1.2": [4, { 0: "Unexpected inflation hurts lenders: they're repaid in less valuable dollars.", 2: "Unexpected inflation always redistributes between borrowers and lenders.", 3: "The real interest rate fell, which helps the borrower at the lender's expense." }],
+  "1.3": [2, { 0: "Frictional unemployment is short-term job searching, not a skills mismatch.", 2: "Cyclical unemployment comes from recessions, not technology.", 3: "The worker is looking for work, so they're in the labor force." }],
+  "2.0": [4, { 0: "$75 billion multiplies by the MPC, not the multiplier.", 1: "$133 billion uses 1/MPC; the multiplier is 1/MPS = 4.", 3: "The multiplier is 4, not 3." }],
+  "2.1": [6, { 0: "Oil is an input cost, so it shifts SRAS, not AD.", 2: "An oil price shock doesn't increase long-run capacity.", 3: "Higher input costs shift SRAS left, not right." }],
+  "2.2": [5, { 0: "Raising taxes shifts AD left and deepens a recession.", 1: "Cutting spending shifts AD left.", 3: "Selling bonds is contractionary MONETARY policy, not fiscal policy." }],
+  "2.3": [3, { 1: "Rising wages happen in an inflationary gap, not a recessionary one.", 2: "Self-correction works through wages and SRAS, not a spontaneous AD shift.", 3: "LRAS doesn't shift left in self-correction." }],
+  "3.0": [2, { 0: "$1,000 ignores the money multiplier.", 2: "$5,000 multiplies the whole deposit; only excess reserves ($800) can be lent.", 3: "$800 is only the first loan, not the total money created." }],
+  "3.1": [4, { 0: "Selling bonds reduces the money supply, which is contractionary.", 2: "Raising the rate on reserves encourages banks to hold reserves, which is contractionary.", 3: "Raising the discount rate discourages borrowing, which is contractionary." }],
+  "3.2": [0, { 0: "Bond prices and interest rates move in OPPOSITE directions.", 2: "Old bonds pay less than new ones, so their prices must adjust down.", 3: "The relationship is immediate and inverse." }],
+  "3.3": [5, { 0: "More borrowing raises demand for loanable funds, pushing the rate UP.", 2: "Government borrowing is DEMAND for loanable funds, not supply.", 3: "Higher demand for loanable funds raises the real interest rate." }],
+  "4.0": [1, { 0: "More AD means more output, which lowers unemployment, and higher prices.", 2: "More AD raises the price level, so inflation rises.", 3: "AD shifts cause movements along the SRPC." }],
+  "4.1": [2, { 0: "Some frictional and structural unemployment always exists.", 2: "The LRPC is about unemployment, vertical at the natural rate, not an inflation target.", 3: "The current rate can differ from the natural rate in the short run." }],
+  "4.2": [3, { 0: "More money raises prices; it doesn't lower them.", 1: "With V and Y constant, more M must raise P.", 3: "The price level rises by about the same percent as money, 5%." }],
+  "4.3": [5, { 0: "A one-time rebate affects AD briefly, not long-run capacity.", 2: "Higher interest rates discourage investment and slow growth.", 3: "Cutting infrastructure reduces capital, slowing growth." }],
+  "5.0": [1, { 0: "A stronger dollar makes U.S. exports MORE expensive abroad.", 2: "Exchange rates directly affect export and import prices.", 3: "Imports become cheaper, so they rise." }],
+  "5.1": [3, { 0: "Higher rates attract foreign capital, which increases demand for the dollar.", 2: "Interest rate differences drive capital flows and currency demand.", 3: "Appreciation is the lasting effect of higher relative rates." }],
+  "5.2": [0, { 0: "The accounts offset each other; they don't match in sign.", 2: "A current account deficit means the financial account is in surplus, not zero.", 3: "The two accounts always balance each other." }],
+  "5.3": [2, { 0: "Japanese buying U.S. goods SUPPLY yen to get dollars.", 2: "Lower Japanese interest rates push capital out of Japan, reducing demand for yen.", 3: "Higher Japanese inflation makes Japanese goods less attractive, lowering demand for yen." }]
+};
+
+</script>
 <script>/* content/diagnostics/microeconomics.js */
 // Concept tags and wrong-answer diagnoses for content/microeconomics.js.
 // Key "unit.question" -> [concept index, { wrongChoiceIndex: "why a student might pick it" }]
@@ -7785,6 +8624,33 @@ window.AP_DIAG["sat"] = {
 };
 
 </script>
+<script>/* content/diagnostics/us-government.js */
+// Concept tags and wrong-answer diagnoses for content/us-government.js.
+window.AP_DIAG = window.AP_DIAG || {};
+window.AP_DIAG["us-government"] = {
+  "0.0": [2, { 0: "That's Federalist No. 70, by Hamilton, about the executive.", 2: "That's Federalist No. 78, about the judiciary.", 3: "Arguments against a bill of rights are in Federalist No. 84, not No. 10." }],
+  "0.1": [3, { 0: "Lacking national courts was a weakness, but it isn't fixed by the commerce clause.", 2: "The Articles had no executive, but the commerce clause didn't fix that.", 3: "Unanimity for amendments was fixed by Article V, not the commerce clause." }],
+  "0.2": [7, { 0: "That's McCulloch v. Maryland (1819).", 2: "School prayer was Engel v. Vitale.", 3: "Segregation was Brown v. Board of Education." }],
+  "0.3": [6, { 0: "Narrow, specific purposes describe CATEGORICAL grants.", 2: "Grants flow from the federal government to states, not the other way.", 3: "Block grants can fund many areas, including education." }],
+  "1.0": [0, { 0: "Revenue bills must start in the House.", 1: "The House impeaches; the Senate holds the trial.", 3: "Declaring war requires both chambers of Congress." }],
+  "1.1": [3, { 0: "Hamilton explicitly rejected a plural executive.", 2: "Federalist No. 70 doesn't argue for term limits.", 3: "Judicial review is discussed in Federalist No. 78." }],
+  "1.2": [5, { 1: "Segregation was upheld in Plessy v. Ferguson, not Marbury.", 2: "The commerce clause was expanded in cases like Gibbons v. Ogden, not Marbury.", 3: "The Judiciary Act of 1789, passed by Congress, created the federal court system." }],
+  "1.3": [2, { 0: "A delegate follows constituents' wishes, which she didn't do here.", 2: "A politico mixes both; here she used only her own judgment.", 3: "Nothing in the scenario is about party loyalty." }],
+  "2.0": [1, { 0: "Tinker protected students' speech rights at school.", 2: "Tinker involved free speech, not religion.", 3: "The Court found no clear and present danger in the armbands." }],
+  "2.1": [2, { 1: "Schenck was about limits on speech during wartime.", 2: "Engel was about school prayer.", 3: "Baker v. Carr was about redistricting." }],
+  "2.2": [3, { 0: "The Tenth Amendment reserves powers to the states; it isn't the basis for incorporation.", 1: "The necessary and proper clause concerns Congress's powers, not rights against states.", 3: "The supremacy clause concerns federal vs. state law, not incorporating rights." }],
+  "2.3": [5, { 0: "Brown was about equal protection, not speech or religion.", 2: "Brown wasn't a commerce clause case.", 3: "The Second Amendment concerns the right to bear arms." }],
+  "3.0": [2, { 0: "Self-selected online polls aren't random, so they're biased.", 2: "Asking only supporters creates a biased sample.", 3: "Leading questions bias results, making the poll less reliable." }],
+  "3.1": [3, { 0: "That's closer to a populist or statist view, the opposite of libertarian.", 2: "That describes a typical liberal position.", 3: "Promoting traditional values describes social conservatism, not libertarianism." }],
+  "3.2": [1, { 0: "Media matters, but family has the earliest and strongest influence for most people.", 2: "Employers rarely shape early political views.", 3: "Interest groups affect adults, not early socialization." }],
+  "3.3": [4, { 0: "Keynesian economics emphasizes government spending to boost demand.", 2: "Monetary policy is set by the Federal Reserve, not tax policy.", 3: "A command economy relies on government planning, not tax incentives." }],
+  "4.0": [0, { 0: "The 15th Amendment banned racial discrimination in voting.", 1: "The 19th Amendment gave women the vote.", 2: "The 24th Amendment banned poll taxes in federal elections." }],
+  "4.1": [5, { 0: "Direct contributions to candidates can still be limited. Citizens United was about independent spending.", 2: "Poll taxes were banned by the 24th Amendment.", 3: "Equal-population districts come from Baker v. Carr and later cases." }],
+  "4.2": [1, { 0: "Prospective voting looks at future promises, not past performance.", 2: "Nothing in the scenario says the voter chose based on party.", 3: "The vote is based on past results, not future promises." }],
+  "4.3": [2, { 0: "Proportional representation encourages multiple parties.", 2: "Open primaries affect nominations, not the number of parties.", 3: "The 22nd Amendment limits presidential terms." }]
+};
+
+</script>
 <script>/* content/diagnostics/us-history.js */
 // Concept tags and wrong-answer diagnoses for content/us-history.js.
 // Key "unit.question" -> [concept index, { wrongChoiceIndex: "why a student might pick it" }]
@@ -8038,6 +8904,54 @@ window.AP_TRAPS["english-language"] = {
   "6.0": "Use at LEAST 3 sources to reach the top Evidence scores, and cite them (Source A).",
   "6.1": "Organize by YOUR claims, not one paragraph per source. Sources support your argument; they don't replace it.",
   "6.2": "For charts, describe what the data SHOWS, then explain what it means for your argument (and any limits).",
+};
+
+</script>
+<script>/* content/traps/macroeconomics.js */
+// "AP Trap" for every concept in content/macroeconomics.js.
+window.AP_TRAPS = window.AP_TRAPS || {};
+window.AP_TRAPS["macroeconomics"] = {
+  "0.0": "Opportunity cost is only the NEXT-BEST alternative, not the sum of everything you gave up.",
+  "0.1": "Unemployment moves the economy INSIDE the PPC; it doesn't shift the curve. Only changes in resources or technology shift it.",
+  "0.2": "Comparative advantage uses OPPORTUNITY COST, not who can make more. A country can have an absolute advantage in both goods but a comparative advantage in only one.",
+  "0.3": "A change in the good's own price moves along the curve. Only non-price factors shift demand or supply.",
+  "0.4": "In the circular flow, households SELL factors and BUY products. Firms do the reverse.",
+  "0.5": "Macro questions are about aggregates (total output, overall prices). A single market is micro.",
+  "0.6": "When both curves shift, one variable is always indeterminate. Say so instead of guessing.",
+  "1.0": "Intermediate goods, used goods, stocks and transfer payments are NOT in GDP. Only final goods and services produced this year count.",
+  "1.1": "Nominal GDP can rise with no increase in output. Use real GDP for growth.",
+  "1.2": "Discouraged workers aren't in the labor force, so they don't count as unemployed. The official rate can understate joblessness.",
+  "1.3": "Real interest rate ≈ nominal rate − inflation. Unexpected inflation lowers the real rate borrowers pay.",
+  "1.4": "Unexpected inflation HELPS borrowers and HURTS lenders and people on fixed incomes.",
+  "1.5": "Full employment doesn't mean 0% unemployment. It means no cyclical unemployment.",
+  "1.6": "A nominal raise smaller than inflation is a real pay CUT.",
+  "2.0": "Changes in the price level move along AD. Only changes in C, I, G or Xn shift it.",
+  "2.1": "Changes in input prices (wages, oil) shift SRAS, not AD.",
+  "2.2": "LRAS is VERTICAL at full employment. The price level doesn't change long-run output.",
+  "2.3": "Self-correction works through WAGES shifting SRAS, and it's slow. That's why policy may be used.",
+  "2.4": "The tax multiplier (−MPC/MPS) is smaller than the spending multiplier (1/MPS). Don't mix them up.",
+  "2.5": "Buying and selling bonds is MONETARY policy. Fiscal policy is only government spending and taxes.",
+  "2.6": "A negative supply shock raises prices AND unemployment at the same time (stagflation).",
+  "3.0": "Bond prices and interest rates move in OPPOSITE directions.",
+  "3.1": "Credit cards aren't money. They're loans.",
+  "3.2": "Only EXCESS reserves can be loaned. Multiply excess reserves, not the whole deposit, by the money multiplier.",
+  "3.3": "The money market determines the NOMINAL interest rate; loanable funds determines the REAL rate. Use the right graph.",
+  "3.4": "Buying bonds is expansionary (adds reserves); selling bonds is contractionary.",
+  "3.5": "Government deficits increase DEMAND for loanable funds, raising the real rate and crowding out private investment.",
+  "3.6": "Write the whole chain: tool → money supply → interest rate → investment → AD → output and prices. Skipped steps lose points.",
+  "4.0": "Expansionary fiscal policy raises interest rates. Expansionary monetary policy can offset that crowding out.",
+  "4.1": "AD shifts move you ALONG the SRPC; SRAS shifts SHIFT the SRPC.",
+  "4.2": "The LRPC is vertical at the natural rate of unemployment. There's no long-run trade-off.",
+  "4.3": "In the long run, money growth changes only the PRICE LEVEL, not real output.",
+  "4.4": "Deficit is a yearly flow; debt is the accumulated stock. Don't use them interchangeably.",
+  "4.5": "Growth shifts LRAS and the PPC outward. Short-run AD stimulus doesn't create long-run growth.",
+  "4.6": "Supply-side policies aim to shift AS right, lowering prices while raising output. Don't draw them as AD shifts.",
+  "5.0": "A current account deficit is always matched by a financial account surplus.",
+  "5.1": "A stronger (appreciating) currency REDUCES net exports.",
+  "5.2": "In a two-currency market, more demand for one currency means more supply of the other.",
+  "5.3": "Higher domestic interest rates attract foreign capital and APPRECIATE the currency.",
+  "5.4": "Expansionary monetary policy depreciates the currency and boosts net exports; expansionary fiscal policy does the opposite through higher rates.",
+  "5.5": "Tariffs protect specific producers but raise prices for consumers and create deadweight loss."
 };
 
 </script>
@@ -8300,6 +9214,50 @@ window.AP_TRAPS["sat"] = {
   "7.1": "Same-side interior angles add to 180°. Alternate interior and corresponding angles are equal.",
   "7.2": "sin x° = cos(90° − x°). Complementary-angle trig questions show up often.",
   "7.3": "Complete the square before reading the radius. The right side of the finished equation is r², not r."
+};
+
+</script>
+<script>/* content/traps/us-government.js */
+// "AP Trap" for every concept in content/us-government.js.
+window.AP_TRAPS = window.AP_TRAPS || {};
+window.AP_TRAPS["us-government"] = {
+  "0.0": "The Declaration of Independence isn't law. It explains why independence and government by consent are justified.",
+  "0.1": "Elite democracy doesn't mean dictatorship. It describes influence concentrated among the wealthy and educated within a democracy.",
+  "0.2": "Federalist No. 10 is about controlling factions with a large republic. Federalist No. 51 is about checks and balances. Don't swap them.",
+  "0.3": "The Articles created a weak NATIONAL government; the states kept most power. Shays' Rebellion showed Congress couldn't respond.",
+  "0.4": "The Great Compromise is about representation in Congress. The Three-Fifths Compromise is separate.",
+  "0.5": "Checks and balances let branches limit each other; separation of powers just divides the jobs. Questions test the difference.",
+  "0.6": "Categorical grants have strings attached; block grants are flexible. States usually prefer block grants.",
+  "0.7": "McCulloch EXPANDED federal power (implied powers); Lopez LIMITED it (commerce clause).",
+  "1.0": "Only the Senate ratifies treaties and confirms appointments. Only the House starts revenue bills and impeaches.",
+  "1.1": "The filibuster exists only in the Senate. The House uses the Rules Committee to control debate.",
+  "1.2": "Gerrymandering is about drawing district lines; apportionment is about how many seats each state gets.",
+  "1.3": "Executive orders manage the executive branch. They can't create new laws or spending that Congress hasn't authorized.",
+  "1.4": "A veto override needs two-thirds of BOTH chambers, not a simple majority.",
+  "1.5": "Judicial review isn't in the Constitution's text. It comes from Marbury v. Madison.",
+  "1.6": "Courts have no enforcement power of their own. They rely on the executive branch to carry out rulings.",
+  "1.7": "Agencies write RULES that carry out laws; they don't pass laws. Congress checks them through oversight and funding.",
+  "2.0": "Engel is the establishment clause; Yoder is the free exercise clause.",
+  "2.1": "Schenck's \"clear and present danger\" test allows limits on speech; Tinker and NYT v. U.S. PROTECT speech.",
+  "2.2": "The Miranda warning and exclusionary rule are about the accused's rights, not free speech.",
+  "2.3": "Incorporation runs through the FOURTEENTH Amendment's due process clause, not the Tenth Amendment.",
+  "2.4": "Roe v. Wade was overturned by Dobbs (2022), but it's still a required case for comparison questions.",
+  "2.5": "Civil rights protect against DISCRIMINATION; civil liberties protect against government overreach. Brown is a civil rights case.",
+  "2.6": "Rights aren't absolute. The Court weighs them against compelling government interests.",
+  "3.0": "Core values are broadly shared; disagreements come from how people balance them.",
+  "3.1": "Family is usually the MOST influential early agent of political socialization.",
+  "3.2": "Large polls aren't automatically accurate. A biased sample stays biased no matter how big it is.",
+  "3.3": "Libertarians want less government in BOTH economic and social areas. They don't fit neatly on the liberal–conservative line.",
+  "3.4": "The Federal Reserve sets monetary policy; Congress and the president set fiscal policy.",
+  "3.5": "Ideology shapes views on social AND economic policy. Many questions ask you to predict a position from an ideology.",
+  "4.0": "The 24th Amendment banned poll taxes; the 26th set the voting age at 18. Match each amendment carefully.",
+  "4.1": "Retrospective voting looks BACK at performance; prospective voting looks FORWARD at promises.",
+  "4.2": "Winner-take-all, single-member districts explain the two-party system, and why third parties struggle.",
+  "4.3": "Interest groups don't run candidates. That's what distinguishes them from parties.",
+  "4.4": "Most states award electors winner-take-all, so candidates focus on swing states.",
+  "4.5": "Citizens United allows unlimited INDEPENDENT spending, not unlimited direct contributions to candidates.",
+  "4.6": "The media as \"gatekeeper\" decides what becomes news; as \"watchdog\" it investigates wrongdoing.",
+  "4.7": "Baker v. Carr is about \"one person, one vote\"; Shaw v. Reno is about racial gerrymandering."
 };
 
 </script>
@@ -12536,6 +13494,19 @@ window.AP_LINKS["english-language"] = [
 ];
 
 </script>
+<script>/* content/links/macroeconomics.js */
+// How ideas in AP Macroeconomics connect across units. See content/links/_README.txt for the format.
+window.AP_LINKS = window.AP_LINKS || {};
+window.AP_LINKS["macroeconomics"] = [
+  { title: "Monetary policy, step by step", chain: ["3:Monetary policy tools", "change reserves and the", "3:The money market", "lowering interest rates in", "3:Transmission of monetary policy", "which shifts", "2:Aggregate demand"] },
+  { title: "Spending ripples through the economy", chain: ["2:Fiscal policy", "is magnified by", "2:The spending and tax multipliers", "moving the economy along", "4:The short-run Phillips curve", "but not", "4:The long-run Phillips curve"] },
+  { title: "Deficits and long-run growth", chain: ["4:Government deficits and national debt", "raise demand in", "3:The loanable funds market", "crowding out investment and slowing", "4:Economic growth", "which shifts", "2:Long-run aggregate supply"] },
+  { title: "Growth on two graphs", chain: ["0:The production possibilities curve", "shifts outward with", "4:Economic growth", "the same change as a rightward shift of", "2:Long-run aggregate supply"] },
+  { title: "Interest rates cross borders", chain: ["3:Monetary policy tools", "change domestic rates, driving", "5:Interest rates and capital flows", "which move", "5:Exchange rates", "and so net exports in", "2:Aggregate demand"] },
+  { title: "Shocks and measurement", chain: ["2:Supply shocks and stagflation", "raise", "1:Inflation and price indexes", "and", "1:Unemployment", "together, shifting", "4:The short-run Phillips curve"] },
+];
+
+</script>
 <script>/* content/links/microeconomics.js */
 // How ideas in AP Microeconomics connect across units. See content/links/_README.txt for the format.
 window.AP_LINKS = window.AP_LINKS || {};
@@ -12631,6 +13602,19 @@ window.AP_LINKS["sat"] = [
   { title: "Logic words, two ways", chain: ["1:Words in context", "uses contrast clues like the ones in", "2:Transitions: logical relationships", "which also decide how to punctuate when", "3:Joining independent clauses"] },
   { title: "From lines to curves", chain: ["4:Linear functions: slope and intercept", "add a constant amount, unlike", "5:Exponential functions", "which model repeated", "6:Percentages and percent change"] },
   { title: "Algebra inside geometry", chain: ["5:Quadratic equations and functions", "use completing the square, also used in", "7:Circles", "whose equation comes from the Pythagorean theorem in", "7:Right triangles and trigonometry"] },
+];
+
+</script>
+<script>/* content/links/us-government.js */
+// How ideas in AP U.S. Government and Politics connect across units. See content/links/_README.txt for the format.
+window.AP_LINKS = window.AP_LINKS || {};
+window.AP_LINKS["us-government"] = [
+  { title: "From weak Articles to a stronger Constitution", chain: ["0:Weaknesses of the Articles of Confederation", "led to", "0:Compromises at the Constitutional Convention", "which built", "0:Separation of powers and checks and balances", "seen in", "1:Checks on the presidency"] },
+  { title: "Federalism in the courts", chain: ["0:Federalism", "was expanded by the necessary and proper clause in", "0:Federalism in the courts", "and applied to rights through", "2:Selective incorporation"] },
+  { title: "Courts protect rights", chain: ["1:The judicial branch and judicial review", "lets courts enforce", "2:Freedom of speech and the press", "and", "2:Equal protection and civil rights", "balanced against", "2:Balancing liberty and order"] },
+  { title: "From opinion to policy", chain: ["3:Political socialization", "shapes", "3:Political ideologies", "measured by", "3:Measuring public opinion", "and expressed through", "4:Voting behavior"] },
+  { title: "Linkage institutions connect people to government", chain: ["4:Political parties", "and", "4:Interest groups", "influence Congress, as described in", "1:Congressional behavior and representation", "and agencies through", "1:The federal bureaucracy"] },
+  { title: "Who gets represented", chain: ["4:Voting rights and turnout", "combine with", "4:Redistricting and representation", "to shape", "1:Congressional behavior and representation"] },
 ];
 
 </script>
