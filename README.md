@@ -65,7 +65,8 @@ Learn what you need → understand it → practice it → identify mistakes → 
 - 🔎 Search (`/` or `Ctrl K`), timed mixed quizzes, dark mode, mobile layout, keyboard shortcuts.
 - 🔑 **Student codes**: sign in with a code like `AP-7K3QXM` (or make your own) and your progress is kept
   separate from everyone else who uses the same computer. No email, no Google, no server, so it works
-  in China too. A guest's progress can move into a new code.
+  in China too. Without a code, progress is not saved and is erased on refresh; a guest can move
+  their progress into a new code before leaving.
 - 🔒 **Local-first**: no tracking. Progress lives in `localStorage`, with backup/restore as a JSON file
   (the way to move a code's progress to another device).
 - 📄 **One file**: the whole site builds into a single self-contained `index.html`.
@@ -113,7 +114,7 @@ research/                    notes from researching the official College Board C
 
 ### The data model
 
-Progress is stored per browser: `apprep.v1` for a guest and `apprep.v1.s.<CODE>` for each student
+Guest progress is kept in memory only and is erased on refresh. Signed-in progress is stored per browser under `apprep.v1.s.<CODE>` for each student
 code (`apprep.student` remembers who is signed in). It's shaped so it can later sync to a backend:
 
 ```

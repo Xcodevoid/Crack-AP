@@ -75,8 +75,9 @@ const catIcon = (cat, size = 20) => icon((CAT_META[cat] || CAT_META["AP Capstone
 
 /* ================= Storage (per browser; one progress file per student code; see src/engine.js) ================= */
 
-// Signed out, progress lives under "apprep.v1" (guest). Signing in with a student code
-// switches to "apprep.v1.s.<CODE>", so students sharing a computer each keep their own progress.
+// Signed out (guest), progress lives only in memory and is gone on refresh, so the next person
+// on a shared computer starts clean. Signing in with a student code saves progress under
+// "apprep.v1.s.<CODE>", so students sharing a computer each keep their own.
 const STORE_KEY = "apprep.v1";
 const STUDENT_KEY = "apprep.student";
 const EMPTY = () => ({ v: 2, q: {}, cs: {}, hist: [], diag: {}, skip: {}, expl: {}, known: {}, mine: [], frq: {}, days: [], recent: null });
@@ -91,10 +92,13 @@ function readProgress(code) {
 const hasProgress = (d) => d.hist.length > 0 || Object.keys(d.q).length > 0 || Object.keys(d.known).length > 0 || d.mine.length > 0;
 const store = (() => {
   let student = null;
-  try { student = localStorage.getItem(STUDENT_KEY) || null; } catch (_) {}
-  const data = readProgress(student);
+  try {
+    student = localStorage.getItem(STUDENT_KEY) || null;
+    localStorage.removeItem(keyFor(null)); // older versions saved guest progress; clear it
+  } catch (_) {}
+  const data = student ? readProgress(student) : EMPTY();
   const save = () => {
-    try { localStorage.setItem(keyFor(store.student), JSON.stringify(data)); } catch (_) {}
+    if (store.student) try { localStorage.setItem(keyFor(store.student), JSON.stringify(data)); } catch (_) {}
     updateMistakeCount();
   };
   // Swap in another progress file. `data` is changed in place so every reference stays valid.
@@ -1054,7 +1058,7 @@ function renderFrq(body, course, idx, unit) {
         <div class="frq-prompt">${fmt(unit.frq.prompt)}</div>
         <textarea id="frq-text" placeholder="Write your answer the way you would on the exam…">${esc(saved.text)}</textarea>
         <div class="frq-foot">
-          <span class="muted small" id="frq-saved">${saved.text ? "Saved in this browser" : "Your answer saves automatically"}</span>
+          <span class="muted small" id="frq-saved">${saved.text ? (store.student ? "Saved in this browser" : "Kept until you refresh (sign in to save)") : store.student ? "Your answer saves automatically" : "Sign in to save your answer"}</span>
           <div class="btn-row">
             <button class="btn btn-ghost" id="clear">Clear</button>
             <button class="btn btn-primary" id="reveal">${saved.shown ? "Hide" : "Show"} scoring guide</button>
@@ -1079,7 +1083,7 @@ function renderFrq(body, course, idx, unit) {
   body.querySelector("#frq-text").addEventListener("input", (e) => {
     saved.text = e.target.value;
     clearTimeout(typingTimer);
-    typingTimer = setTimeout(() => { markStudied(); persist(); body.querySelector("#frq-saved").textContent = "Saved in this browser"; }, 400);
+    typingTimer = setTimeout(() => { markStudied(); persist(); body.querySelector("#frq-saved").textContent = store.student ? "Saved in this browser" : "Kept until you refresh (sign in to save)"; }, 400);
   });
   body.querySelector("#reveal").addEventListener("click", (e) => {
     saved.shown = !saved.shown; persist();
@@ -2113,7 +2117,7 @@ function renderDashboard() {
 
   app.innerHTML = `
     <div class="page">
-      <div class="page-head"><div class="cat-icon lg">${icon("chart", 26)}</div><div class="grow"><h1>My progress</h1><p class="muted">Mastery per concept, not lessons completed. ${store.student ? `Signed in as <b>${esc(store.student)}</b>. Saved in this browser.` : `Saved in this browser as a guest. <a href="#" data-sign-in>Sign in with a student code</a> to keep your own progress.`}</p></div>
+      <div class="page-head"><div class="cat-icon lg">${icon("chart", 26)}</div><div class="grow"><h1>My progress</h1><p class="muted">Mastery per concept, not lessons completed. ${store.student ? `Signed in as <b>${esc(store.student)}</b>. Saved in this browser.` : `<b>You're a guest: this progress is erased when you refresh or close the page.</b> <a href="#" data-sign-in>Sign in with a student code</a> to keep it.`}</p></div>
         <div class="btn-row"><button class="btn btn-ghost" id="export">${icon("download", 16)} Back up</button><label class="btn btn-ghost">${icon("upload", 16)} Restore<input type="file" id="import" accept="application/json" hidden></label></div></div>
 
       ${rec ? `
@@ -2299,16 +2303,12 @@ function newCode() {
 }
 
 function switchStudent(code, moveGuest = false) {
-  let next = readProgress(code);
-  if (code && moveGuest) {
-    next = readProgress(null);
-    try { localStorage.removeItem(keyFor(null)); } catch (_) {}
-  }
+  // Guest progress is only in memory, so moving it means copying the current data.
+  const next = code && moveGuest ? JSON.parse(JSON.stringify(store.data)) : code ? readProgress(code) : EMPTY();
   store.student = code || null;
   try { code ? localStorage.setItem(STUDENT_KEY, code) : localStorage.removeItem(STUDENT_KEY); } catch (_) {}
   store.replace(next);
   store.save(); // creates the code's file, so it's recognized next time
-  if (!code) try { if (!hasProgress(next)) localStorage.removeItem(keyFor(null)); } catch (_) {}
   updateAccountButton();
   route();
 }
@@ -2352,7 +2352,7 @@ function openSignIn(showForm = false) {
           <button class="btn btn-ghost" id="si-out">${icon("logout", 16)} Sign out</button>
         </div>
       </div>`;
-    signInEl.querySelector("#si-out").addEventListener("click", () => { closeSignIn(); switchStudent(null); toast("Signed out. You're studying as a guest."); });
+    signInEl.querySelector("#si-out").addEventListener("click", () => { closeSignIn(); switchStudent(null); toast("Signed out. As a guest, progress isn't saved."); });
     signInEl.querySelector("#si-switch").addEventListener("click", () => { closeSignIn(); openSignIn(true); });
     signInEl.querySelector("#si-switch").focus();
     return;
@@ -2367,7 +2367,7 @@ function drawSignInForm() {
       <button type="button" class="icon-btn signin-x" data-close aria-label="Close">${icon("x", 16)}</button>
       <div class="signin-icon">${icon("key", 22)}</div>
       <h2 id="si-title">Sign in with your student code</h2>
-      <p class="muted">Each code has its own progress: mastery, mistakes, flashcards and diagnostics. Everyone who shares this computer can have their own.</p>
+      <p class="muted">Each code has its own progress: mastery, mistakes, flashcards and diagnostics. Everyone who shares this computer can have their own. Without a code, progress is erased when you refresh.</p>
       <label class="signin-field">
         <span>Student code</span>
         <input id="si-code" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="24" placeholder="e.g. AP-7K3QXM" />
