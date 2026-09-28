@@ -153,7 +153,12 @@ function mathify(h) {
     .replace(/\^([−-]?(?:∞|[A-Za-z0-9]+(?:\.[0-9]+)?))/g, "<sup>$1</sup>")
     .replace(/([A-Za-zΔ\u0370-\u03ff])_([A-Za-z0-9₀-₉]+)/g, "$1<sub>$2</sub>");
 }
-const fmt = (s) => mathify(esc(s)).replace(/\n/g, "<br>");
+// Content text → HTML. ```code blocks``` keep their indentation and `inline code` is monospaced;
+// neither gets math formatting (so a_b or x^y in code stay as written).
+const fmt = (s) => String(s ?? "").split(/```\n?([\s\S]*?)\n?```\n?/).map((part, i) =>
+  i % 2 ? `<pre class="code"><code>${esc(part)}</code></pre>`
+    : part.split(/`([^`\n]+)`/).map((t, j) => (j % 2 ? `<code>${esc(t)}</code>` : mathify(esc(t)).replace(/\n/g, "<br>"))).join("")
+).join("");
 // Like esc() but with math formatting, for text shown as HTML content (never inside attributes).
 const txt = (s) => mathify(esc(s));
 const bar = (pct, cls = "") => `<div class="bar ${cls}" role="progressbar" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100"><span style="width:${pct}%"></span></div>`;

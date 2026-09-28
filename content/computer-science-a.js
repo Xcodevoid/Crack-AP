@@ -1,0 +1,402 @@
+window.AP_CONTENT = window.AP_CONTENT || {};
+window.AP_CONTENT["computer-science-a"] = {
+  intro: "AP Computer Science A was revised starting in 2025–26. The course now has four units, and the exam has 42 multiple-choice questions (55%) and 4 free-response coding questions (45%), taken in the Bluebook app. Inheritance and polymorphism are no longer tested; reading data from text files and working with data sets were added. All code is Java, and the exam includes a Java Quick Reference.",
+  tips: [
+    "Trace code by hand with a table of variable values. Most multiple-choice questions are really tracing questions.",
+    "Watch the loop bounds: `i < arr.length` vs `i <= arr.length` is the most common off-by-one trap.",
+    "On free response, write the method header exactly as given and return the right type. Partial credit is per requirement, so attempt every part.",
+    "Know the Java Quick Reference: String, Math, Integer, Double, ArrayList, File and Scanner methods you're allowed to use.",
+    "Integer division truncates: `7 / 2` is 3, not 3.5. Cast to double when you need a decimal.",
+  ],
+  units: [
+    {
+      title: "Using Objects and Methods",
+      weight: "15–25%",
+      tldr: "Java programs are built from primitive values (int, double, boolean) and objects (like String). You call methods on objects, pass arguments, and use return values. Know how expressions evaluate, especially integer division, casting and String methods.",
+      concepts: [
+        {
+          title: "Primitive types and variables",
+          simple: "int stores whole numbers, double stores decimals, boolean stores true or false.",
+          detail: "A variable must be declared with a type before use. `final` makes a constant. int values have a limited range (`Integer.MIN_VALUE` to `Integer.MAX_VALUE`), and going past it causes overflow, which wraps around silently.",
+          example: "```\nint count = 5;\ndouble price = 2.50;\nboolean done = false;\nfinal int MAX = 100;\n```",
+        },
+        {
+          title: "Expressions and integer division",
+          simple: "When both operands are int, / drops the decimal and % gives the remainder.",
+          detail: "`7 / 2` is 3 and `7 % 2` is 1. If either operand is a double, the result is a double: `7 / 2.0` is 3.5. Operator precedence: *, / and % before + and −, left to right. Compound operators like `+=` and `++` update a variable in place.",
+          example: "`17 % 5` is 2, `17 / 5` is 3, and `n % 2 == 0` tests whether n is even.",
+          hook: "% is the leftover after sharing equally.",
+        },
+        {
+          title: "Casting",
+          simple: "A cast converts a value to another type, like (int) 3.9 which gives 3.",
+          detail: "Casting a double to int truncates toward zero; it doesn't round. To round a positive double x, use `(int) (x + 0.5)`. Casting happens before arithmetic, so `(double) 7 / 2` is 3.5 but `(double) (7 / 2)` is 3.0.",
+        },
+        {
+          title: "Objects, classes and constructors",
+          simple: "A class is a blueprint; an object is one instance made with new.",
+          detail: "A constructor call like `new Point(3, 4)` creates an object and returns a reference to it. The variable stores the reference, not the object itself. A reference that points to nothing is `null`, and calling a method on null throws a NullPointerException.",
+        },
+        {
+          title: "Calling methods",
+          simple: "Methods are called on an object with a dot, and may take arguments and return a value.",
+          detail: "A void method does something but returns nothing. A non-void method returns a value you should use or store. Static methods belong to the class and are called with the class name, like `Math.sqrt(9)`. Arguments must match the parameter types in order.",
+        },
+        {
+          title: "String methods",
+          simple: "Strings are immutable objects with methods like length, substring, indexOf and equals.",
+          detail: "Indexes start at 0. `s.substring(a, b)` includes index a but stops BEFORE b. `s.indexOf(str)` returns −1 if not found. Compare Strings with `equals`, not `==`, because == compares references. `compareTo` returns a negative, zero or positive int for alphabetical order.",
+          example: "```\nString s = \"compute\";\ns.substring(1, 4)  // \"omp\"\ns.indexOf(\"put\")   // 3\ns.length()          // 7\n```",
+        },
+        {
+          title: "Math class and wrapper classes",
+          simple: "Math has static methods like abs, pow, sqrt and random; Integer and Double wrap primitives as objects.",
+          detail: "`Math.random()` returns a double in [0.0, 1.0). A random int from a to b inclusive: `(int) (Math.random() * (b - a + 1)) + a`. Autoboxing converts int to Integer automatically (needed for ArrayList). `Integer.parseInt(\"42\")` turns a String into an int.",
+        },
+      ],
+      terms: [
+        ["Primitive type", "A basic type like int, double or boolean that stores a value directly."],
+        ["Reference", "A value that points to where an object is stored."],
+        ["Constructor", "A special method called with new that initializes an object."],
+        ["Immutable", "Cannot be changed after creation, like a String."],
+        ["Casting", "Converting a value from one type to another, like (int) or (double)."],
+        ["Overflow", "When an int calculation goes past its maximum value and wraps around."],
+        ["Autoboxing", "Automatic conversion of a primitive to its wrapper object, like int to Integer."],
+      ],
+      mistakes: [
+        "Expecting `5 / 2` to be 2.5 instead of 2.",
+        "Comparing Strings with == instead of equals.",
+        "Thinking substring(a, b) includes the character at index b.",
+        "Thinking (int) rounds instead of truncating.",
+      ],
+      questions: [
+        {
+          q: "What is the value of `result`?\n```\nint result = 17 / 5 + 17 % 5;\n```",
+          choices: ["3", "5", "5.4", "6"],
+          answer: 1,
+          explain: "17 / 5 is 3 (integer division) and 17 % 5 is 2, so 3 + 2 = 5.",
+        },
+        {
+          q: "What does this print?\n```\nString s = \"programming\";\nSystem.out.println(s.substring(3, 7));\n```",
+          choices: ["\"gram\"", "\"ogra\"", "\"gramm\"", "\"ogram\""],
+          answer: 0,
+          explain: "Indexes: p0 r1 o2 g3 r4 a5 m6. substring(3, 7) takes indexes 3 through 6: \"gram\".",
+        },
+        {
+          q: "What is the value of `x`?\n```\ndouble x = (double) (9 / 2);\n```",
+          choices: ["4.5", "4.0", "5.0", "4"],
+          answer: 1,
+          explain: "9 / 2 is evaluated first as integer division, giving 4. Casting 4 to double gives 4.0.",
+        },
+        {
+          q: "Which expression correctly checks whether String a has the same characters as String b?",
+          choices: ["`a == b`", "`a.equals(b)`", "`a = b`", "`a.compareTo(b) == 1`"],
+          answer: 1,
+          explain: "equals compares the characters. == compares whether two references point to the same object.",
+        },
+      ],
+      frq: {
+        prompt: "Write a static method `initials` that takes a String `fullName` in the form \"First Last\" (one space) and returns the uppercase initials, such as \"AL\" for \"ada lovelace\".",
+        points: [
+          "Find the space with `fullName.indexOf(\" \")`.",
+          "Get the first letter with `fullName.substring(0, 1)` and the last-name letter with `substring(space + 1, space + 2)`.",
+          "Join the two letters and call `toUpperCase()` on the result.",
+          "Return a String; the header is `public static String initials(String fullName)`.",
+        ],
+      },
+    },
+    {
+      title: "Selection and Iteration",
+      weight: "25–35%",
+      tldr: "Programs make decisions with if statements and Boolean expressions, and repeat work with while and for loops. Master tracing loops, counting iterations, short-circuit evaluation and standard algorithms like sums, counts and finding a max.",
+      concepts: [
+        {
+          title: "Boolean expressions and relational operators",
+          simple: "Relational operators (<, >, ==, !=) and logical operators (&&, ||, !) produce true or false.",
+          detail: "&& is true only if both sides are true; || is true if either side is. Java uses short-circuit evaluation: with &&, if the left side is false, the right side isn't evaluated. This lets you guard against errors, like `x != 0 && 10 / x > 2`.",
+        },
+        {
+          title: "If, else if and else",
+          simple: "An if statement runs code only when its condition is true.",
+          detail: "In an if / else if / else chain, only the FIRST true branch runs. Separate if statements can each run. Order conditions from most specific to least specific, for example check score >= 90 before score >= 80.",
+          example: "```\nif (score >= 90) grade = \"A\";\nelse if (score >= 80) grade = \"B\";\nelse grade = \"C\";\n```",
+        },
+        {
+          title: "De Morgan's laws and equivalent expressions",
+          simple: "!(a && b) equals !a || !b, and !(a || b) equals !a && !b.",
+          detail: "When you negate a compound condition, flip && and || and negate each part. `!(x > 5)` is `x <= 5`, not `x < 5`. Truth tables help check whether two expressions are equivalent.",
+          hook: "Break the line, change the sign.",
+        },
+        {
+          title: "While loops",
+          simple: "A while loop repeats as long as its condition is true.",
+          detail: "Use while when you don't know how many repetitions you need, like reading until a sentinel value. Something inside the loop must eventually make the condition false, or you get an infinite loop. If the condition starts false, the body never runs.",
+        },
+        {
+          title: "For loops",
+          simple: "A for loop combines initialization, condition and update in one line.",
+          detail: "`for (int i = 0; i < n; i++)` runs n times with i from 0 to n − 1. The number of iterations for `for (int i = a; i <= b; i++)` is b − a + 1. The loop variable exists only inside the loop.",
+        },
+        {
+          title: "Nested loops",
+          simple: "A loop inside another loop runs completely for each pass of the outer loop.",
+          detail: "If the outer loop runs m times and the inner loop n times, the inner body runs m × n times. When the inner bound depends on the outer variable, count carefully: `for (i = 0; i < 4; i++) for (j = 0; j < i; j++)` runs 0 + 1 + 2 + 3 = 6 times.",
+        },
+        {
+          title: "Standard loop algorithms",
+          simple: "Common patterns: sum, count, find max or min, and check if any or all meet a condition.",
+          detail: "For a max, start with the first value (not 0, in case all values are negative). To check whether ALL items meet a condition, return false on the first failure and return true after the loop. String loops use `s.substring(i, i + 1)` to look at each character.",
+        },
+        {
+          title: "Informal run-time analysis",
+          simple: "Count how many times a statement executes to compare algorithms.",
+          detail: "A single loop over n items does about n steps; nested loops over n items do about n² steps. The exam asks you to count exact executions for small loops, so trace them rather than guessing.",
+        },
+      ],
+      terms: [
+        ["Short-circuit evaluation", "Skipping the right side of && or || when the left side already decides the result."],
+        ["De Morgan's laws", "Rules for negating && and || expressions."],
+        ["Infinite loop", "A loop whose condition never becomes false."],
+        ["Off-by-one error", "A loop that runs one time too many or too few."],
+        ["Sentinel value", "A special value that signals a loop to stop."],
+        ["Nested loop", "A loop placed inside the body of another loop."],
+        ["Accumulator", "A variable that builds up a total or count during a loop."],
+      ],
+      mistakes: [
+        "Using `i <= arr.length` and going out of bounds.",
+        "Negating `x > 5` as `x < 5` instead of `x <= 5`.",
+        "Initializing a max variable to 0 when values can be negative.",
+        "Returning true inside the loop on the first match when the question asks whether ALL items match.",
+      ],
+      questions: [
+        {
+          q: "How many times does this print \"hi\"?\n```\nfor (int i = 2; i <= 10; i += 2)\n    System.out.println(\"hi\");\n```",
+          choices: ["4", "5", "8", "9"],
+          answer: 1,
+          explain: "i takes the values 2, 4, 6, 8, 10, so the body runs 5 times.",
+        },
+        {
+          q: "Which expression is equivalent to `!(a > 3 && b < 7)`?",
+          choices: ["`a < 3 && b > 7`", "`a <= 3 || b >= 7`", "`a <= 3 && b >= 7`", "`a < 3 || b > 7`"],
+          answer: 1,
+          explain: "By De Morgan's law, negate each part and switch && to ||: !(a > 3) is a <= 3 and !(b < 7) is b >= 7.",
+        },
+        {
+          q: "What is printed?\n```\nint count = 0;\nfor (int i = 0; i < 3; i++)\n    for (int j = i; j < 3; j++)\n        count++;\nSystem.out.println(count);\n```",
+          choices: ["3", "6", "9", "5"],
+          answer: 1,
+          explain: "When i = 0 the inner loop runs 3 times, i = 1 twice, i = 2 once: 3 + 2 + 1 = 6.",
+        },
+        {
+          q: "What is printed when x is 0?\n```\nif (x != 0 && 10 / x > 1)\n    System.out.println(\"A\");\nelse\n    System.out.println(\"B\");\n```",
+          choices: ["A", "B", "Nothing; an ArithmeticException is thrown", "A and B"],
+          answer: 1,
+          explain: "x != 0 is false, so && short-circuits and 10 / x is never evaluated. The else branch prints B.",
+        },
+      ],
+      frq: {
+        prompt: "Write a static method `countVowels` that takes a String `word` and returns the number of vowels (a, e, i, o, u, lowercase only) it contains.",
+        points: [
+          "Initialize a counter to 0.",
+          "Loop with `for (int i = 0; i < word.length(); i++)`.",
+          "Get each character as a String with `word.substring(i, i + 1)` and check it with `\"aeiou\".indexOf(letter) >= 0` (or equals checks).",
+          "Increment the counter for each vowel and return it after the loop.",
+        ],
+      },
+    },
+    {
+      title: "Class Creation",
+      weight: "10–18%",
+      tldr: "You write your own classes with private instance variables, constructors, and methods. Encapsulation keeps data private and exposes behavior through public methods. Understand scope, the this keyword, static members, and passing references to methods.",
+      concepts: [
+        {
+          title: "Anatomy of a class",
+          simple: "A class has instance variables (state), constructors (setup) and methods (behavior).",
+          detail: "Instance variables are declared private. The constructor has the same name as the class and no return type. If you write no constructor, Java provides a default one with no parameters.",
+          example: "```\npublic class Dog {\n    private String name;\n    private int age;\n\n    public Dog(String n, int a) {\n        name = n;\n        age = a;\n    }\n\n    public String getName() { return name; }\n}\n```",
+        },
+        {
+          title: "Encapsulation and access",
+          simple: "Keep instance variables private and provide public methods to use them.",
+          detail: "Private members can be accessed only inside their own class. Accessor (getter) methods return values; mutator (setter) methods change them and can validate input. Code outside the class can't write `dog.age = 5` if age is private.",
+        },
+        {
+          title: "Writing methods",
+          simple: "A method header gives access, return type, name and parameters.",
+          detail: "A non-void method must return a value of its declared type on every path. Parameters are local copies: for primitives, changing the parameter doesn't change the caller's variable. Overloaded methods share a name but have different parameter lists.",
+        },
+        {
+          title: "Scope and the this keyword",
+          simple: "A variable exists only inside the block where it's declared; this refers to the current object.",
+          detail: "Local variables and parameters disappear when the method ends. If a parameter has the same name as an instance variable, it shadows it, so use `this.name = name;` to set the instance variable.",
+        },
+        {
+          title: "Static variables and methods",
+          simple: "Static members belong to the class, shared by all objects, not to any single object.",
+          detail: "A static counter can track how many objects were created. Static methods can't use instance variables or this, because they aren't called on an object.",
+        },
+        {
+          title: "Object references as parameters",
+          simple: "Passing an object passes a copy of the reference, so the method can change the object.",
+          detail: "If a method calls a mutator on an object parameter, the caller sees the change because both references point to the same object. Reassigning the parameter to a new object does NOT affect the caller's variable. Two variables pointing to the same object are aliases.",
+        },
+        {
+          title: "Ethical and social issues in computing",
+          simple: "Programs affect people, so programmers must consider privacy, security and bias.",
+          detail: "Software that collects personal data should protect it. Algorithms trained or designed on unrepresentative data can treat groups unfairly. Using others' code requires respecting licenses and giving credit.",
+        },
+      ],
+      terms: [
+        ["Instance variable", "A variable that belongs to each object and stores its state."],
+        ["Encapsulation", "Hiding an object's data behind private access and public methods."],
+        ["Accessor method", "A method that returns an instance variable's value (a getter)."],
+        ["Mutator method", "A method that changes an instance variable's value (a setter)."],
+        ["Overloading", "Methods with the same name but different parameter lists."],
+        ["Static", "Belonging to the class rather than to individual objects."],
+        ["Alias", "Two references that point to the same object."],
+      ],
+      mistakes: [
+        "Giving a constructor a return type such as void.",
+        "Writing `name = name;` when a parameter shadows the instance variable.",
+        "Accessing a private variable from outside the class.",
+        "Forgetting to return a value on every path of a non-void method.",
+      ],
+      questions: [
+        {
+          q: "Which is a correct constructor header for class `Book`?",
+          choices: ["`public void Book(String t)`", "`public Book(String t)`", "`public static Book(String t)`", "`private int Book(String t)`"],
+          answer: 1,
+          explain: "A constructor has the class name and no return type, not even void.",
+        },
+        {
+          q: "What is printed?\n```\npublic static void change(int n) { n = 10; }\n\nint x = 5;\nchange(x);\nSystem.out.println(x);\n```",
+          choices: ["10", "5", "0", "Compile error"],
+          answer: 1,
+          explain: "Primitives are passed by value. The method changes its own copy, so x stays 5.",
+        },
+        {
+          q: "A class has `private int count;` and the constructor `public Counter(int count) { count = count; }`. What happens?",
+          choices: ["The instance variable is set correctly", "The instance variable stays 0", "A compile error occurs", "A runtime error occurs"],
+          answer: 1,
+          explain: "Both names refer to the parameter, which shadows the instance variable. Use `this.count = count;`.",
+        },
+        {
+          q: "Why are instance variables usually declared private?",
+          choices: ["It makes the program run faster", "It enforces encapsulation so data changes only through the class's methods", "Private variables can't be changed at all", "Java requires it"],
+          answer: 1,
+          explain: "Private access hides the data so the class controls and can validate every change.",
+        },
+      ],
+      frq: {
+        prompt: "Write a class `BankAccount` with a private double `balance`, a constructor that takes a starting balance, a method `deposit(double amt)` that adds amt only if it's positive, a method `withdraw(double amt)` that subtracts amt only if there is enough money and returns true if it succeeded, and a `getBalance()` method.",
+        points: [
+          "Declare `private double balance;` and set it in the constructor.",
+          "deposit checks `amt > 0` before adding.",
+          "withdraw checks `amt <= balance`, subtracts and returns true; otherwise returns false without changing balance.",
+          "getBalance returns balance with return type double.",
+        ],
+      },
+    },
+    {
+      title: "Data Collections",
+      weight: "30–40%",
+      tldr: "Collections store many values: arrays (fixed size), ArrayLists (resizable) and 2D arrays (grids). You traverse them with loops, apply standard algorithms like searching, sorting and filtering, and read data from text files. This is the biggest unit on the exam.",
+      concepts: [
+        {
+          title: "Arrays",
+          simple: "An array stores a fixed number of values of one type, accessed by index starting at 0.",
+          detail: "Create with `new int[5]` (filled with 0, 0.0, false or null) or an initializer list `{3, 1, 4}`. Length is `arr.length` with no parentheses. Valid indexes are 0 to length − 1; anything else throws ArrayIndexOutOfBoundsException.",
+        },
+        {
+          title: "Traversing arrays",
+          simple: "Use a for loop to visit elements by index, or an enhanced for loop to read each value.",
+          detail: "The enhanced for loop `for (int v : arr)` gives a copy of each value, so assigning to v doesn't change the array. Use an indexed loop when you need the index or want to modify elements.",
+          example: "```\nint sum = 0;\nfor (int v : nums)\n    sum += v;\ndouble avg = (double) sum / nums.length;\n```",
+        },
+        {
+          title: "ArrayList",
+          simple: "An ArrayList is a resizable list of objects with methods add, get, set, remove and size.",
+          detail: "It holds objects, so use Integer and Double instead of int and double (autoboxing handles conversion). `remove(i)` shifts later elements left and returns the removed element. `size()` gives the count, not `length`.",
+        },
+        {
+          title: "Removing while traversing",
+          simple: "Removing from an ArrayList inside a forward loop skips the next element.",
+          detail: "After `list.remove(i)`, the next element moves into index i, but i++ skips it. Fix it by looping backward, or by only incrementing i when you don't remove. Never add or remove inside an enhanced for loop; it throws ConcurrentModificationException.",
+          example: "```\nfor (int i = list.size() - 1; i >= 0; i--)\n    if (list.get(i) < 0)\n        list.remove(i);\n```",
+        },
+        {
+          title: "2D arrays",
+          simple: "A 2D array is an array of rows; grid[r][c] is row r, column c.",
+          detail: "`grid.length` is the number of rows and `grid[0].length` the number of columns. Row-major traversal uses the row loop outside and the column loop inside; column-major swaps them.",
+          example: "```\nfor (int r = 0; r < grid.length; r++)\n    for (int c = 0; c < grid[0].length; c++)\n        total += grid[r][c];\n```",
+        },
+        {
+          title: "Searching",
+          simple: "Linear search checks each element; binary search halves a SORTED list each step.",
+          detail: "Linear search works on any list and takes up to n checks. Binary search requires sorted data and takes about log₂ n checks, so 1,000 items need at most about 10 comparisons.",
+        },
+        {
+          title: "Sorting and recursion",
+          simple: "Selection and insertion sort use nested loops; merge sort uses recursion.",
+          detail: "Selection sort swaps the smallest remaining value into place each pass. Insertion sort shifts each new value left into its spot in the sorted part. A recursive method calls itself and needs a base case to stop. Merge sort splits the list, sorts each half recursively and merges them, which is faster on large lists.",
+        },
+        {
+          title: "Reading text files and data sets",
+          simple: "Use File and Scanner to read data from a text file line by line or value by value.",
+          detail: "`Scanner sc = new Scanner(new File(\"data.txt\"));` then loop `while (sc.hasNext())` or `sc.hasNextLine()`. Methods throwing IOException must declare `throws IOException`. `String.split(\",\")` breaks a line into an array of fields. Data sets can be incomplete or biased, which limits conclusions.",
+        },
+      ],
+      terms: [
+        ["Array", "A fixed-size collection of values of one type."],
+        ["ArrayList", "A resizable list of objects from java.util."],
+        ["Enhanced for loop", "A loop that visits each element's value without using an index."],
+        ["Row-major order", "Visiting a 2D array one row at a time."],
+        ["Linear search", "Checking each element in order until the target is found."],
+        ["Binary search", "Repeatedly halving a sorted list to find a target."],
+        ["Base case", "The condition that stops a recursive method from calling itself."],
+        ["Scanner", "A class that reads input values from a source like a file."],
+      ],
+      mistakes: [
+        "Using `arr.length()` or `list.length` instead of `arr.length` and `list.size()`.",
+        "Removing from an ArrayList in a forward loop and skipping elements.",
+        "Using binary search on unsorted data.",
+        "Mixing up rows and columns in a 2D array.",
+      ],
+      questions: [
+        {
+          q: "What is in `list` after this code runs?\n```\nArrayList<Integer> list = new ArrayList<>();\nlist.add(5); list.add(8); list.add(3);\nlist.add(1, 9);\nlist.remove(2);\n```",
+          choices: ["[5, 9, 3]", "[5, 9, 8]", "[5, 8, 3]", "[9, 5, 3]"],
+          answer: 0,
+          explain: "After adds: [5, 8, 3]. add(1, 9) inserts at index 1: [5, 9, 8, 3]. remove(2) removes 8: [5, 9, 3].",
+        },
+        {
+          q: "`int[][] grid = new int[3][5];` What are `grid.length` and `grid[0].length`?",
+          choices: ["5 and 3", "3 and 5", "15 and 5", "3 and 3"],
+          answer: 1,
+          explain: "The first size is rows (3), and each row has 5 columns.",
+        },
+        {
+          q: "What is the maximum number of comparisons binary search needs on a sorted array of 64 elements?",
+          choices: ["64", "7", "32", "6"],
+          answer: 1,
+          explain: "Each step halves the range: 64, 32, 16, 8, 4, 2, 1 gives 7 comparisons (log₂ 64 + 1).",
+        },
+        {
+          q: "What does `arr` contain afterward?\n```\nint[] arr = {1, 2, 3};\nfor (int v : arr)\n    v = v * 2;\n```",
+          choices: ["{2, 4, 6}", "{1, 2, 3}", "{1, 4, 9}", "A compile error"],
+          answer: 1,
+          explain: "The enhanced for variable v is a copy of each value. Changing v doesn't change the array.",
+        },
+      ],
+      frq: {
+        prompt: "Write a static method `removeBelow(ArrayList<Integer> scores, int min)` that removes every score less than min and returns how many scores were removed.",
+        points: [
+          "Initialize a removed counter to 0.",
+          "Traverse backward: `for (int i = scores.size() - 1; i >= 0; i--)` (or forward, decrementing i after a removal).",
+          "When `scores.get(i) < min`, call `scores.remove(i)` and increment the counter.",
+          "Return the counter; don't use an enhanced for loop to remove.",
+        ],
+      },
+    },
+  ],
+};

@@ -48,14 +48,14 @@ const COURSES = [
     ced: CED("ap-world-history-modern"), page: PAGE("ap-world-history"),
   },
   {
-    id: "european-history", name: "AP European History", cat: "History & Social Sciences", status: "changed",
+    id: "european-history", name: "AP European History", cat: "History & Social Sciences", guide: true, status: "changed",
     blurb: "Europe from the Renaissance (c. 1450) to the present day.",
     exam: HISTORY_EXAM, changes: HISTORY_CHANGE,
     units: ["Renaissance and Exploration", "Age of Reformation", "Absolutism and Constitutionalism", "Scientific, Philosophical, and Political Developments", "Conflict, Crisis, and Reaction in the Late 18th Century", "Industrialization and Its Effects", "19th-Century Perspectives and Political Developments", "20th-Century Global Conflicts", "Cold War and Contemporary Europe"],
     ced: CED("ap-european-history"), page: PAGE("ap-european-history"),
   },
   {
-    id: "african-american-studies", name: "AP African American Studies", cat: "History & Social Sciences",
+    id: "african-american-studies", name: "AP African American Studies", cat: "History & Social Sciences", guide: true,
     blurb: "An interdisciplinary look at the African diaspora through history, literature, arts and politics.",
     exam: [
       { name: "Multiple choice", detail: "Source-based questions" },
@@ -76,7 +76,7 @@ const COURSES = [
     ced: CED("ap-us-government-and-politics"), page: PAGE("ap-united-states-government-and-politics"),
   },
   {
-    id: "comparative-government", name: "AP Comparative Government and Politics", cat: "History & Social Sciences",
+    id: "comparative-government", name: "AP Comparative Government and Politics", cat: "History & Social Sciences", guide: true,
     blurb: "Compare political systems across six countries: China, Iran, Mexico, Nigeria, Russia and the UK.",
     exam: [
       { name: "Multiple choice", detail: "55 questions · 60 min", weight: 50 },
@@ -157,17 +157,18 @@ const COURSES = [
     ced: CED("ap-precalculus"), page: PAGE("ap-precalculus"),
   },
   {
-    id: "statistics", name: "AP Statistics", cat: "Math & Computer Science", status: "changed",
+    id: "statistics", name: "AP Statistics", cat: "Math & Computer Science", guide: true, status: "changed",
     blurb: "Collecting, exploring and drawing conclusions from data.",
     exam: [
       { name: "Multiple choice", detail: "42 questions, 4 answer choices each" },
       { name: "Free response", detail: "4 questions, 10 points each (no Investigative Task)" },
     ],
+    units: ["Exploring Data and Designing Studies", "Probability, Random Variables, and Sampling Distributions", "Inference for Categorical Data: Proportions", "Inference for Quantitative Data: Means", "Regression"],
     changes: "Revised for 2026-27: eight units are consolidated into five, and the Algebra II prerequisite is removed. Removed topics include departures from linearity, combining random variables, the geometric distribution, chi-square goodness of fit, and inference for slopes. The exam becomes fully digital.",
     ced: null, page: PAGE("ap-statistics"),
   },
   {
-    id: "computer-science-a", name: "AP Computer Science A", cat: "Math & Computer Science",
+    id: "computer-science-a", name: "AP Computer Science A", cat: "Math & Computer Science", guide: true,
     blurb: "Object-oriented programming and problem solving in Java.",
     exam: [
       { name: "Multiple choice", detail: "42 questions · 90 min", weight: 55 },
@@ -177,7 +178,7 @@ const COURSES = [
     ced: CED("ap-computer-science-a"), page: PAGE("ap-computer-science-a"),
   },
   {
-    id: "computer-science-principles", name: "AP Computer Science Principles", cat: "Math & Computer Science",
+    id: "computer-science-principles", name: "AP Computer Science Principles", cat: "Math & Computer Science", guide: true,
     blurb: "The big ideas of computing: data, algorithms, the internet and computing's impact.",
     exam: [
       { name: "Multiple choice", detail: "70 questions · 2 hr", weight: 70 },

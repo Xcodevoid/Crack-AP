@@ -1049,3 +1049,9 @@ body { overflow-wrap: break-word; }
 .term-table { width: 100%; table-layout: fixed; }
 .term-table td { overflow-wrap: anywhere; }
 .term-table td:first-child { width: 38%; }
+
+/* ---------- Code in questions and concepts ---------- */
+pre.code { margin: 10px 0; padding: 12px 14px; background: var(--surface-2); border: 1px solid var(--border); border-left: 4px solid var(--brand); border-radius: 4px; overflow-x: auto; font-size: 0.88rem; line-height: 1.5; text-align: left; white-space: pre; }
+code { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 0.92em; }
+:not(pre) > code { background: var(--surface-2); border: 1px solid var(--border); border-radius: 3px; padding: 0 4px; }
+.choice-text pre.code { margin: 0; }
