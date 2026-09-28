@@ -649,10 +649,11 @@ main { outline: none; min-height: 70vh; }
 .versus-grid li { display: flex; gap: 8px; align-items: flex-start; }
 .versus-grid div:first-child li { color: var(--muted); }
 .versus-grid .us .ico { color: var(--good); margin-top: 4px; }
-.picker { padding: 22px; max-width: 720px; }
+.picker { padding: 22px; max-width: 720px; display: flex; flex-direction: column; max-height: calc(90vh - 16px); max-height: calc(90dvh - 16px); }
+.picker > .muted { flex: none; }
 .picker-head { display: flex; justify-content: space-between; align-items: center; }
 .picker-head h2 { margin: 0; }
-.picker-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; margin-top: 12px; }
+.picker-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; margin-top: 12px; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 2px; }
 .picker-item { display: flex; align-items: center; gap: 10px; padding: 12px; border: 1px solid var(--border); border-radius: 4px; color: var(--text); font-weight: 600; }
 .picker-item:hover, .picker-item:focus { text-decoration: none; border-color: var(--c); background: var(--c-soft); outline: none; }
 .streak-pill { display: inline-flex; align-items: center; gap: 6px; background: var(--bad-soft); color: var(--bad); border-radius: 3px; padding: 4px 12px; font-weight: 700; }
