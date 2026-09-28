@@ -51,6 +51,9 @@ const ICON_PATHS = {
   user: '<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',
   logout: '<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/>',
   key: '<circle cx="7.5" cy="15.5" r="4.5"/><path d="m10.7 12.3 9.8-9.8M17 6l3 3M14.5 8.5l2 2"/>',
+  mail: '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/>',
+  heart: '<path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/>',
+  copy: '<rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>',
   briefcase: '<rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>',
 };
 const icon = (name, size = 18) =>
@@ -339,6 +342,8 @@ async function route() {
       renderReview();
     } else if (parts[0] === "dashboard") {
       renderDashboard();
+    } else if (parts[0] === "support") {
+      renderSupport();
     } else {
       renderHome();
     }
@@ -443,6 +448,11 @@ function renderHome() {
         </div>
       </div>
       <div id="course-results"></div>
+
+      <a class="card home-support" href="#/support">
+        <div><span class="support-ico">${icon("heart", 20)}</span><span><b>Support Crack AP.</b> <span class="muted">Found a mistake or have an idea? Tell us.</span></span></div>
+        <span class="btn">Support us ${icon("arrowR", 16)}</span>
+      </a>
     </div>
   `;
 
@@ -2194,6 +2204,57 @@ function renderDashboard() {
       toast(`That file isn't a valid progress backup.`);
     }
   });
+}
+
+/* ================= Support us ================= */
+
+const CONTACT_EMAIL = "CodegamerA@gmail.com";
+const SITE_URL = "https://xcodevoid.github.io/Crack-AP/";
+
+function copyText(text, done) {
+  const fallback = () => {
+    const t = document.createElement("textarea");
+    t.value = text; document.body.appendChild(t); t.select();
+    try { document.execCommand("copy"); } catch (_) {}
+    t.remove();
+  };
+  (navigator.clipboard ? navigator.clipboard.writeText(text).catch(fallback) : Promise.resolve(fallback())).then(() => toast(`${icon("check", 14)} ${done}`));
+}
+
+function renderSupport() {
+  document.title = "Support Crack AP";
+  const mail = (subject) => `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}`;
+  app.innerHTML = `
+    <div class="page support">
+      <div class="page-head"><div class="cat-icon lg">${icon("heart", 26)}</div><div class="grow"><h1>Support Crack AP</h1>
+        <p class="muted">Crack AP is free and built by students in our school's Vibe Coding Club. Here's how you can help it get better.</p></div></div>
+      <div class="support-grid">
+        <div class="card support-card">
+          <div class="support-ico">${icon("alert", 20)}</div>
+          <h3>Report a mistake</h3>
+          <p class="muted">Found a wrong answer, a typo or something confusing? Tell us the course, unit and question so we can fix it.</p>
+          <a class="btn" href="${mail("Crack AP: mistake report")}">${icon("mail", 16)} Email a report</a>
+        </div>
+        <div class="card support-card">
+          <div class="support-ico">${icon("bulb", 20)}</div>
+          <h3>Suggest an idea</h3>
+          <p class="muted">Want a new course, a feature, or more practice on a topic? We read every message.</p>
+          <a class="btn" href="${mail("Crack AP: idea")}">${icon("mail", 16)} Email an idea</a>
+        </div>
+        <div class="card support-card">
+          <div class="support-ico">${icon("user", 20)}</div>
+          <h3>Share it with classmates</h3>
+          <p class="muted">The best way to help is to tell a friend who's taking AP courses.</p>
+          <button class="btn" data-copy="${SITE_URL}" data-done="Link copied">${icon("copy", 16)} Copy the link</button>
+        </div>
+      </div>
+      <div class="card support-contact">
+        <div>${icon("mail", 18)} Write to us at <b>${CONTACT_EMAIL}</b></div>
+        <button class="btn btn-ghost btn-sm" data-copy="${CONTACT_EMAIL}" data-done="Email address copied">${icon("copy", 14)} Copy</button>
+      </div>
+      <p class="small muted">If the email buttons don't open your mail app, copy the address and send from any email service, such as QQ Mail or 163 Mail.</p>
+    </div>`;
+  app.querySelectorAll("[data-copy]").forEach((b) => b.addEventListener("click", () => copyText(b.dataset.copy, b.dataset.done)));
 }
 
 /* ================= Search palette ================= */

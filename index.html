@@ -726,6 +726,7 @@ main { outline: none; min-height: 70vh; }
 .rec-next .ico { color: var(--brand); }
 .rec-next:hover { text-decoration: none; filter: brightness(0.98); }
 @media (max-width: 1020px) {
+  .footer-inner { grid-template-columns: 1fr 1fr; }
   .loop-strip { grid-template-columns: 1fr 1fr; }
   .loop-arrow { display: none; }
 }
@@ -768,7 +769,7 @@ main { outline: none; min-height: 70vh; }
 
 /* ================= Footer ================= */
 .footer { border-top: 1px solid var(--border); background: var(--surface); margin-top: 40px; }
-.footer-inner { max-width: 1180px; margin: 0 auto; padding: 40px 20px 20px; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 32px; }
+.footer-inner { max-width: 1180px; margin: 0 auto; padding: 40px 20px 20px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; }
 .footer-brand p { color: var(--text-2); font-size: 0.9rem; margin-top: 12px; max-width: 320px; }
 .footer-col { display: flex; flex-direction: column; gap: 8px; }
 .footer-col h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); margin: 0 0 4px; }
@@ -1079,6 +1080,19 @@ code { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-si
 :not(pre) > code { background: var(--surface-2); border: 1px solid var(--border); border-radius: 3px; padding: 0 4px; }
 .choice-text pre.code { margin: 0; }
 
+/* Support us */
+.support-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; margin: 8px 0 14px; }
+.support-card { display: flex; flex-direction: column; gap: 8px; }
+.support-card h3 { margin: 4px 0 0; }
+.support-card p { flex: 1; margin: 0 0 6px; }
+.support-card .btn { align-self: flex-start; }
+.support-ico { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 4px; background: var(--brand-soft, var(--surface-2)); color: var(--brand); }
+.support-contact { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.support-contact > div { display: flex; align-items: center; gap: 8px; overflow-wrap: anywhere; }
+.home-support { color: var(--text); display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+.home-support > div { display: flex; align-items: center; gap: 10px; }
+.home-support:hover { text-decoration: none; border-color: var(--brand); }
+
 </style>
 </head>
 <body>
@@ -1126,6 +1140,12 @@ code { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-si
       <a href="https://apcentral.collegeboard.org/courses" target="_blank" rel="noopener">AP course descriptions</a>
       <a href="https://apstudents.collegeboard.org/exam-dates" target="_blank" rel="noopener">2027 exam dates</a>
       <a href="https://github.com/Xcodevoid/Crack-AP" target="_blank" rel="noopener">Source code</a>
+    </div>
+    <div class="footer-col">
+      <h4>Support us</h4>
+      <a href="#/support">Report a mistake</a>
+      <a href="#/support">Suggest an idea</a>
+      <a href="mailto:CodegamerA@gmail.com">CodegamerA@gmail.com</a>
     </div>
   </div>
   <p class="footer-legal">
@@ -19624,6 +19644,9 @@ const ICON_PATHS = {
   user: '<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',
   logout: '<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/>',
   key: '<circle cx="7.5" cy="15.5" r="4.5"/><path d="m10.7 12.3 9.8-9.8M17 6l3 3M14.5 8.5l2 2"/>',
+  mail: '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/>',
+  heart: '<path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/>',
+  copy: '<rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>',
   briefcase: '<rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>',
 };
 const icon = (name, size = 18) =>
@@ -19912,6 +19935,8 @@ async function route() {
       renderReview();
     } else if (parts[0] === "dashboard") {
       renderDashboard();
+    } else if (parts[0] === "support") {
+      renderSupport();
     } else {
       renderHome();
     }
@@ -20016,6 +20041,11 @@ function renderHome() {
         </div>
       </div>
       <div id="course-results"></div>
+
+      <a class="card home-support" href="#/support">
+        <div><span class="support-ico">${icon("heart", 20)}</span><span><b>Support Crack AP.</b> <span class="muted">Found a mistake or have an idea? Tell us.</span></span></div>
+        <span class="btn">Support us ${icon("arrowR", 16)}</span>
+      </a>
     </div>
   `;
 
@@ -21767,6 +21797,57 @@ function renderDashboard() {
       toast(`That file isn't a valid progress backup.`);
     }
   });
+}
+
+/* ================= Support us ================= */
+
+const CONTACT_EMAIL = "CodegamerA@gmail.com";
+const SITE_URL = "https://xcodevoid.github.io/Crack-AP/";
+
+function copyText(text, done) {
+  const fallback = () => {
+    const t = document.createElement("textarea");
+    t.value = text; document.body.appendChild(t); t.select();
+    try { document.execCommand("copy"); } catch (_) {}
+    t.remove();
+  };
+  (navigator.clipboard ? navigator.clipboard.writeText(text).catch(fallback) : Promise.resolve(fallback())).then(() => toast(`${icon("check", 14)} ${done}`));
+}
+
+function renderSupport() {
+  document.title = "Support Crack AP";
+  const mail = (subject) => `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}`;
+  app.innerHTML = `
+    <div class="page support">
+      <div class="page-head"><div class="cat-icon lg">${icon("heart", 26)}</div><div class="grow"><h1>Support Crack AP</h1>
+        <p class="muted">Crack AP is free and built by students in our school's Vibe Coding Club. Here's how you can help it get better.</p></div></div>
+      <div class="support-grid">
+        <div class="card support-card">
+          <div class="support-ico">${icon("alert", 20)}</div>
+          <h3>Report a mistake</h3>
+          <p class="muted">Found a wrong answer, a typo or something confusing? Tell us the course, unit and question so we can fix it.</p>
+          <a class="btn" href="${mail("Crack AP: mistake report")}">${icon("mail", 16)} Email a report</a>
+        </div>
+        <div class="card support-card">
+          <div class="support-ico">${icon("bulb", 20)}</div>
+          <h3>Suggest an idea</h3>
+          <p class="muted">Want a new course, a feature, or more practice on a topic? We read every message.</p>
+          <a class="btn" href="${mail("Crack AP: idea")}">${icon("mail", 16)} Email an idea</a>
+        </div>
+        <div class="card support-card">
+          <div class="support-ico">${icon("user", 20)}</div>
+          <h3>Share it with classmates</h3>
+          <p class="muted">The best way to help is to tell a friend who's taking AP courses.</p>
+          <button class="btn" data-copy="${SITE_URL}" data-done="Link copied">${icon("copy", 16)} Copy the link</button>
+        </div>
+      </div>
+      <div class="card support-contact">
+        <div>${icon("mail", 18)} Write to us at <b>${CONTACT_EMAIL}</b></div>
+        <button class="btn btn-ghost btn-sm" data-copy="${CONTACT_EMAIL}" data-done="Email address copied">${icon("copy", 14)} Copy</button>
+      </div>
+      <p class="small muted">If the email buttons don't open your mail app, copy the address and send from any email service, such as QQ Mail or 163 Mail.</p>
+    </div>`;
+  app.querySelectorAll("[data-copy]").forEach((b) => b.addEventListener("click", () => copyText(b.dataset.copy, b.dataset.done)));
 }
 
 /* ================= Search palette ================= */
